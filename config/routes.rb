@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+
   ActiveAdmin.routes(self)
   mount Sidekiq::Web => "/sidekiq"
 

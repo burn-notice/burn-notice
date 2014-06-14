@@ -21,6 +21,7 @@ gem "omniauth-twitter"
 gem "omniauth-github"
 gem "omniauth-facebook"
 gem "decent_exposure"
+gem 'slim-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :production do
