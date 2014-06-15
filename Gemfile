@@ -4,7 +4,6 @@ ruby "2.1.1"
 
 gem 'rails', '4.1.1'
 gem 'sass-rails'
-gem 'bootstrap-sass'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
