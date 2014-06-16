@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :policies
+
+  resources :openings
+
+  resources :notices
+
   resources :users
 
   ActiveAdmin.routes(self)

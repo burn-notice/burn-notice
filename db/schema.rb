@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614213323) do
+ActiveRecord::Schema.define(version: 20140615235709) do
+
+  create_table "notices", force: true do |t|
+    t.text     "message"
+    t.string   "shared_secret"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "openings", force: true do |t|
+    t.boolean  "authorized"
+    t.string   "ip"
+    t.text     "info"
+    t.integer  "notice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "policies", force: true do |t|
+    t.string   "name"
+    t.text     "setting"
+    t.integer  "notice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
