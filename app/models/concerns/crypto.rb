@@ -60,6 +60,6 @@ module Crypto
   end
 
   def password
-    TEST_PASSWORD || ENV['PASSWORD']
+    ENV['PASSWORD'] || TEST_PASSWORD
   end
 end
