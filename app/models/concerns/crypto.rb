@@ -15,9 +15,6 @@ module Crypto
     encrypted_data = cipher.update(plain_data)
     encrypted_data << cipher.final
 
-    public_key_file = Rails.root.join("config/keys/public_#{Rails.env}.pem")
-    public_key      = OpenSSL::PKey::RSA.new(File.read(public_key_file))
-
     encrypted_key = public_key.public_encrypt(random_key)
     encrypted_iv  = public_key.public_encrypt(random_iv)
 
@@ -28,10 +25,7 @@ module Crypto
     }
   end
 
-  def decrypt(data, password = runtime_password)
-    private_key_file  = Rails.root.join("config/keys/private_#{Rails.env}.pem")
-    private_key       = OpenSSL::PKey::RSA.new(File.read(private_key_file), password)
-
+  def decrypt(data)
     cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.decrypt
     cipher.key  = private_key.private_decrypt(decode(data[:encrypted_key]))
@@ -43,6 +37,20 @@ module Crypto
 
   private
 
+  def public_key
+    @public_key ||= begin
+      content = ENV['PUBLIC_KEY'] || File.read(Rails.root.join("config/keys/public_#{Rails.env}.pem"))
+      OpenSSL::PKey::RSA.new(content)
+    end
+  end
+
+  def private_key
+    @private_key ||= begin
+      content = ENV['PRIVATE_KEY'] || File.read(Rails.root.join("config/keys/private_#{Rails.env}.pem"))
+      OpenSSL::PKey::RSA.new(content, password)
+    end
+  end
+
   def encode(text)
     Base64.encode64(text)
   end
@@ -51,7 +59,7 @@ module Crypto
     Base64.decode64(text)
   end
 
-  def runtime_password
+  def password
     TEST_PASSWORD || ENV['TEST_PASSWORD']
   end
 end
