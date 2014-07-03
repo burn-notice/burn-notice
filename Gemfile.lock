@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/github/gemoji.git
+  revision: 06c5d0993b509b9583cddd6ef4b3b15dd8017470
+  specs:
+    gemoji (1.5.0)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 4f445b51c22b12af2cdde57fe2ce9835c32ef88e
   specs:
@@ -304,6 +310,7 @@ DEPENDENCIES
   decent_exposure
   fabrication
   faker
+  gemoji!
   jbuilder
   jquery-rails
   letter_opener

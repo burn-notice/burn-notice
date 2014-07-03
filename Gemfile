@@ -23,6 +23,7 @@ gem "omniauth-facebook"
 gem "decent_exposure"
 gem 'slim-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'gemoji', github: 'github/gemoji'
 
 group :production do
   gem 'pg'
