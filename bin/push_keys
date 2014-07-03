@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PUBLIC_KEY=$(cat config/keys/public_production.pem)
+PRIVATE_KEY=$(cat config/keys/private_production.pem)
+
+heroku config:add PUBLIC_KEY="$PUBLIC_KEY"
+heroku config:add PRIVATE_KEY="$PRIVATE_KEY"
