@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validation" do
+    it "is valid" do
+      user = Fabricate.build(:user)
+      expect(user).to be_valid
+    end
+  end
 end

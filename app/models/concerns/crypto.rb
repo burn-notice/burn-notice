@@ -1,4 +1,5 @@
 require 'openssl'
+require "base64"
 
 # stolen from http://stuff-things.net/2008/02/05/encrypting-lots-of-sensitive-data-with-ruby-on-rails/
 module Crypto
@@ -20,19 +21,37 @@ module Crypto
     encrypted_key = public_key.public_encrypt(random_key)
     encrypted_iv  = public_key.public_encrypt(random_iv)
 
-    [encrypted_data, encrypted_key, encrypted_iv]
+    {
+      encrypted_data: encode(encrypted_data),
+      encrypted_key: encode(encrypted_key),
+      encrypted_iv: encode(encrypted_iv)
+    }
   end
 
-  def decrypt(encrypted_data, encrypted_key, encrypted_iv, password)
+  def decrypt(data, password = runtime_password)
     private_key_file  = Rails.root.join("config/keys/private_#{Rails.env}.pem")
     private_key       = OpenSSL::PKey::RSA.new(File.read(private_key_file), password)
 
     cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.decrypt
-    cipher.key  = private_key.private_decrypt(encrypted_key)
-    cipher.iv   = private_key.private_decrypt(encrypted_iv)
+    cipher.key  = private_key.private_decrypt(decode(data[:encrypted_key]))
+    cipher.iv   = private_key.private_decrypt(decode(data[:encrypted_iv]))
 
-    decrypted_data = cipher.update(encrypted_data)
+    decrypted_data = cipher.update(decode(data[:encrypted_data]))
     decrypted_data << cipher.final
+  end
+
+  private
+
+  def encode(text)
+    Base64.encode64(text)
+  end
+
+  def decode(text)
+    Base64.decode64(text)
+  end
+
+  def runtime_password
+    TEST_PASSWORD || ENV['TEST_PASSWORD']
   end
 end

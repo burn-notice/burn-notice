@@ -13,8 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20140615235709) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "notices", force: true do |t|
-    t.text     "message"
+    t.json     "data"
     t.string   "shared_secret"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140615235709) do
 
   create_table "policies", force: true do |t|
     t.string   "name"
-    t.text     "setting"
+    t.json     "setting"
     t.integer  "notice_id"
     t.datetime "created_at"
     t.datetime "updated_at"

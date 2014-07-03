@@ -29,22 +29,18 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development do
+group :development, :test do
+  gem 'pry-rails'
   gem 'spring'
   gem "spring-commands-rspec"
   gem 'sqlite3'
   gem "letter_opener"
   gem "faker"
-  gem "pry-rails"
-  gem "rspec-rails"
-  gem 'fabrication'
   gem "meta_request"
   gem "better_errors"
   gem "binding_of_caller"
   gem "quiet_assets"
   gem "codeclimate-test-reporter", require: false
-end
-
-group :test do
-  gem 'brakeman'
+  gem 'fabrication'
+  gem "rspec-rails"
 end

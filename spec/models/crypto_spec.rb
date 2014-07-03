@@ -10,12 +10,11 @@ describe Crypto do
   end
 
   it "encrypts a given string" do
-    expect(@secure.encrypt("nupsi")).to have(3).elements
+    expect(@secure.encrypt("nupsi").keys).to have(3).elements
   end
 
   it "decrypts a given encrypted string" do
     data = @secure.encrypt("nupsi")
-    data << Crypto::TEST_PASSWORD
-    expect(@secure.decrypt(*data)).to eql("nupsi")
+    expect(@secure.decrypt(data)).to eql("nupsi")
   end
 end
