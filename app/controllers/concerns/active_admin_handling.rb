@@ -18,6 +18,6 @@ module ActiveAdminHandling
   end
 
   def destroy_admin_user_session_path
-    logout
+    logout_path
   end
 end

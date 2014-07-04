@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     authorizations.first.uid
   end
 
+  def admin?
+    email == 'phoetmail@googlemail.com'
+  end
+
   private
 
   def defaults

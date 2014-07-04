@@ -8,7 +8,11 @@ class Notice < ActiveRecord::Base
   validates :user, :policy, :data, presence: :true
 
   def data
-    decrypt read_attribute(:data).symbolize_keys
+    if hash = read_attribute(:data)
+      decrypt hash.symbolize_keys
+    else
+      nil
+    end
   end
 
   def data=(text)
