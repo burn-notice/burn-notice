@@ -1,5 +1,6 @@
 class Notice < ActiveRecord::Base
   include Crypto
+  before_create :defaults
 
   belongs_to :user
   has_one :policy
@@ -24,5 +25,21 @@ class Notice < ActiveRecord::Base
   def write_data(text, secret)
     hash = encrypt(text, secret)
     write_attribute(:data, hash)
+  end
+
+  def to_param
+    token
+  end
+
+  private
+
+  def defaults
+    self.token = SecureRandom.hex(16)
+  end
+
+  class << self
+    def from_param(token)
+      find_by_token(token)
+    end
   end
 end

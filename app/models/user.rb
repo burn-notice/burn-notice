@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_validation :defaults
+  before_create :defaults
 
   has_many :notices
   has_many :authorizations
