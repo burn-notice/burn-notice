@@ -44,4 +44,5 @@ group :development, :test do
   gem "codeclimate-test-reporter", require: false
   gem 'fabrication'
   gem "rspec-rails"
+  gem 'brakeman'
 end
