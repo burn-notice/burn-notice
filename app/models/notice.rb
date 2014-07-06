@@ -7,15 +7,16 @@ class Notice < ActiveRecord::Base
 
   validates :user, :policy, :data, presence: :true
 
-  def data
+  def read_data(pasword)
     if hash = read_attribute(:data)
-      decrypt hash.symbolize_keys
+      decrypt(hash.symbolize_keys, password)
     else
       nil
     end
   end
 
-  def data=(text)
-    write_attribute :data, encrypt(text)
+  def write_data(text, password)
+    hash = encrypt(text, password)
+    write_attribute(:data, hash)
   end
 end

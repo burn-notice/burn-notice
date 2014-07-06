@@ -11,10 +11,10 @@ describe Notice do
 
   context "encryption" do
     it "stores and reads data encryped" do
-      notice.update_attributes! data: 'moin'
+      notice.write_data 'moin', Crypto::TEST_PASSWORD
+      notice.save
 
-      expect(notice[:data]).to have(3).keys
-      expect(notice.reload.data).to eql('moin')
+      expect(notice.reload.read_data(Crypto::TEST_PASSWORD)).to eql('moin')
     end
   end
 end

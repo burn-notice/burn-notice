@@ -10,11 +10,11 @@ describe Crypto do
   end
 
   it "encrypts a given string" do
-    expect(@secure.encrypt("nupsi").keys).to have(3).elements
+    expect(@secure.encrypt("nupsi", "some-secret").keys).to have(2).elements
   end
 
   it "decrypts a given encrypted string" do
-    data = @secure.encrypt("nupsi")
-    expect(@secure.decrypt(data)).to eql("nupsi")
+    data = @secure.encrypt("nupsi", "some-secret")
+    expect(@secure.decrypt(data, "some-secret")).to eql("nupsi")
   end
 end
