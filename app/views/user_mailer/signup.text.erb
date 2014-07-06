@@ -2,7 +2,7 @@ Hi <%= @user.nickname %>,
 
 Your action is required, please click the link below to validate your identity:
 
-<%= validate_user_url(@user) %>
+<%= validation_url(@user.token) %>
 
 If you have any issues, please reply to this E-Mail!
 

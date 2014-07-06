@@ -5,18 +5,16 @@ Rails.application.routes.draw do
   resources :policies
   resources :openings
   resources :notices
-  resources :users do
-    get :validate, on: :member
-  end
+  resources :users
 
   root 'welcome#index'
 
   scope '/auth' do
+    get '/offline_login/:nickname',  to: 'sessions#offline_login' if Rails.env.development?
     get '/:provider/callback',       to: 'sessions#create'
     get '/failure',                  to: 'sessions#failure'
     get '/destroy_session',          to: 'sessions#destroy',  as: :logout
-    # get '/login/:provider',          to: 'sessions#auth',     as: :auth
-    get '/offline_login/:nickname',  to: 'sessions#offline_login' if Rails.env.development?
+    get '/validation/:token',        to: 'sessions#validation', as: :validation
   end
 
   match 'styleguide', via: :get, to: "styleguide#index"

@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     email == 'phoetmail@googlemail.com'
   end
 
+  def valid!
+    update_attributes! validation_date: Time.now
+  end
+
   private
 
   def defaults
