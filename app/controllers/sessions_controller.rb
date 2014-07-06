@@ -11,8 +11,6 @@ class SessionsController < ApplicationController
     user = User.find_by_token(params[:token])
     user.valid!
 
-    sign_in(user)
-
     redirect_to root_path, notice: "Thank's, your validation was successful!"
   end
 
