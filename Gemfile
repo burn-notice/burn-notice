@@ -31,7 +31,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'pry-rails'
+  gem 'byebug'
   gem 'spring'
   gem "spring-commands-rspec"
   gem 'sqlite3'
