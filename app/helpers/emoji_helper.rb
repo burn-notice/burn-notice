@@ -9,7 +9,7 @@ module EmojiHelper
     end.html_safe if content.present?
   end
 
-  def emoji(name, size: 20)
+  def emoji(name, size: 32)
     emoji = Emoji.find_by_alias(name.to_s)
     image_tag asset_path("emoji/#{emoji.image_filename}"), alt: name, width: size, height: size
   end

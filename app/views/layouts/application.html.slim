@@ -7,6 +7,8 @@ html lang="en"
     title Burn-Notice
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
+    = tag :link, rel: 'shortcut icon', href: image_path("favicon.ico")
+    = tag :link, rel: 'apple-touch-icon-precomposed', href: image_path("favicon.ico")
   body
     = render 'navigation'
     .container
