@@ -1,0 +1,7 @@
+= form_tag read_path do |f|
+  = hidden_field_tag :token, params[:token]
+  .input
+    = label_tag :password
+    = text_field_tag :password
+  .submit
+    = submit_tag
