@@ -17,4 +17,9 @@ describe Crypto do
     data = @secure.encrypt("nupsi", "some-secret")
     expect(@secure.decrypt(data, "some-secret")).to eql("nupsi")
   end
+
+  it "normalizes the secret" do
+    data = @secure.encrypt("nupsi", "soMe-   se$$$cret")
+    expect(@secure.decrypt(data, "some-secret")).to eql("nupsi")
+  end
 end

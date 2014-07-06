@@ -6,11 +6,11 @@ module Crypto
   CRYPT_256_BIT_AES_CBC = 'aes-256-cbc'
   TEST_PASSWORD = 'xxxxxx'
 
-  def encrypt(data, password)
+  def encrypt(data, secret)
     cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.encrypt
     cipher.key  = key = cipher.random_key
-    cipher.iv   = digest(password)
+    cipher.iv   = digest(secret)
 
     encrypted_data = cipher.update(data)
     encrypted_data << cipher.final
@@ -23,11 +23,11 @@ module Crypto
     }
   end
 
-  def decrypt(data, password)
+  def decrypt(data, secret)
     cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.decrypt
     cipher.key  = private_key.private_decrypt(decode(data[:encrypted_key]))
-    cipher.iv   = digest(password)
+    cipher.iv   = digest(secret)
 
     decrypted_data = cipher.update(decode(data[:encrypted_data]))
     decrypted_data << cipher.final
@@ -45,12 +45,12 @@ module Crypto
   def private_key
     @private_key ||= begin
       content = ENV['PRIVATE_KEY'] || File.read(Rails.root.join("config/keys/private_#{Rails.env}.pem"))
-      OpenSSL::PKey::RSA.new(content, password)
+      OpenSSL::PKey::RSA.new(content, key_password)
     end
   end
 
   def digest(text)
-    Digest::MD5.hexdigest(text)
+    Digest::MD5.hexdigest(text.gsub(/\W/, '').downcase)
   end
 
   def encode(text)
@@ -61,7 +61,7 @@ module Crypto
     Base64.decode64(text)
   end
 
-  def password
+  def key_password
     ENV['PASSWORD'] || TEST_PASSWORD
   end
 end

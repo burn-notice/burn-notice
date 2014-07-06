@@ -7,16 +7,22 @@ class Notice < ActiveRecord::Base
 
   validates :user, :policy, :data, presence: :true
 
-  def read_data(pasword)
+  def valid_secret?(secret)
+    !!read_data(secret)
+  rescue OpenSSL::Cipher::CipherError
+    false
+  end
+
+  def read_data(secret)
     if hash = read_attribute(:data)
-      decrypt(hash.symbolize_keys, password)
+      decrypt(hash.symbolize_keys, secret)
     else
       nil
     end
   end
 
-  def write_data(text, password)
-    hash = encrypt(text, password)
+  def write_data(text, secret)
+    hash = encrypt(text, secret)
     write_attribute(:data, hash)
   end
 end

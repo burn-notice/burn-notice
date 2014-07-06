@@ -11,10 +11,15 @@ describe Notice do
 
   context "encryption" do
     it "stores and reads data encryped" do
-      notice.write_data 'moin', Crypto::TEST_PASSWORD
+      notice.write_data('moin', 'some-password')
+      expect(notice.read_data('some-password')).to eql('moin')
       notice.save
+      expect(notice.reload.read_data('some-password')).to eql('moin')
+    end
 
-      expect(notice.reload.read_data(Crypto::TEST_PASSWORD)).to eql('moin')
+    it "checks if a secret is valid" do
+      expect(notice.valid_secret?('xxxxxx')).to be_true
+      expect(notice.valid_secret?('invalid')).to be_false
     end
   end
 end
