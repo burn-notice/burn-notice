@@ -22,5 +22,11 @@ module BurnNotice
 
     config.assets.paths << Emoji.images_path
     config.assets.precompile << "emoji/**/*.png"
+
+    config.generators do |g|
+      g.test_framework  :rspec, fixture: false
+      # g.view_specs      false
+      # g.helper_specs    false
+    end
   end
 end

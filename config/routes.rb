@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :policies
   resources :openings
   resources :notices
-  resources :users
+  resources :users do
+    get :validate, on: :member
+  end
 
   root 'welcome#index'
 
