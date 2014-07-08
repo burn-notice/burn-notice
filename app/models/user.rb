@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    email == 'phoetmail@googlemail.com'
+    email.in? ['phoetmail@googlemail.com', 'me@kurtfunai.com']
   end
 
   def valid!

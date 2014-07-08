@@ -8,9 +8,7 @@ module ActiveAdminHandling
   protected
 
   def authenticate_admin_user!
-    if current_user.present?
-      current_user.admin?
-    end
+    redirect_to(root_path, alert: 'You are not supposed to see that!') unless current_user && current_user.admin?
   end
 
   def current_admin_user
