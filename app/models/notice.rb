@@ -1,12 +1,12 @@
 class Notice < ActiveRecord::Base
   include Crypto
-  before_create :defaults
+  before_validation :defaults
 
   belongs_to :user
   has_one :policy
   has_many :openings
 
-  validates :user, :policy, :data, presence: :true
+  validates :user, :policy, :data, :token, presence: :true
 
   def valid_secret?(secret)
     !!read_data(secret)
@@ -34,7 +34,9 @@ class Notice < ActiveRecord::Base
   private
 
   def defaults
-    self.token = SecureRandom.hex(16)
+    if new_record?
+      self.token = SecureRandom.hex(16)
+    end
   end
 
   class << self
