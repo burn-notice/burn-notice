@@ -1,5 +1,5 @@
 require 'openssl'
-require "base64"
+require 'base64'
 
 # stolen from http://stuff-things.net/2008/02/05/encrypting-lots-of-sensitive-data-with-ruby-on-rails/
 module Crypto

@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-  before_create :defaults
+  before_validation :defaults
 
   has_many :notices
   has_many :authorizations
 
-  validates :email, :nickname, :token, presence: true, uniqueness: true
+  validates :email, :nickname, presence: true, uniqueness: true
+  validates :token, presence: true
 
   def salt
     authorizations.first.uid
@@ -21,7 +22,9 @@ class User < ActiveRecord::Base
   private
 
   def defaults
-    self.token = SecureRandom.hex(16)
+    if new_record?
+      self.token = SecureRandom.hex(16)
+    end
   end
 
   class << self
