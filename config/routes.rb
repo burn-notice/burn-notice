@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  mount Sidekiq::Web => "/sidekiq"
 
   resources :notices do
     resources :openings
   end
-  resources :users
+  resources :users do
+    get :mailing, on: :member
+  end
   resources :policies
 
   scope '/p' do
