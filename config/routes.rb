@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
+  get 'admin/login', to: 'admin#login', as: :admin
+  mount Bhf::Engine, at: 'admin'
 
   resources :notices do
     resources :openings
