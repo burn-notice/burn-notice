@@ -31,6 +31,11 @@ class Notice < ActiveRecord::Base
     token
   end
 
+  def authorized
+    return unless openings.present?
+    openings.any?(&:authorized?)
+  end
+
   private
 
   def defaults

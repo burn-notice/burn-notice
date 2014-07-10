@@ -1,0 +1,33 @@
+- if @notices.present?
+  = button_to "Send new Notice", new_notice_path, class: "btn btn-success"
+
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th
+        th Date
+        th Policy
+        th Opened
+        th
+    tbody
+    - @notices.each do |notice|
+      tr
+        td
+          - if notice.openings
+            - if notice.authorized
+              span class="label label-success" Read
+            - else
+              span class="label label-warning" Failed
+          - else
+            span class="label label-default" Unread
+        td= notice.created_at.to_s(:short)
+        td= notice.created_at.to_s(:short)
+        td= link_to "#{notice.openings.size} times", notice_openings_path(notice)
+        td
+          ul
+            li= link_to 'Share'
+            li= link_to 'Delete'
+- else
+  h1 You did not write a notice yet
+  p
+    = link_to 'Click here send out a notice!', new_notice_path
