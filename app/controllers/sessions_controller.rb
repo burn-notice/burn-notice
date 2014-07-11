@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
   def create
-    user = User.handle_authorization(request.env['omniauth.auth'])
-    sign_in(user)
-
     path = request.env['omniauth.origin'] || root_path
-    redirect_to path, notice: "Hi #{user.nickname}, welcome back!"
+    auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
+    if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
+      sign_in(authorization.user)
+      redirect_to path, notice: "Hi #{authorization.user.nickname}, welcome back!"
+    else
+      session[:auth_path] = path
+      session[:auth_data] = auth
+      redirect_to signup_path
+    end
   end
 
   def validation
@@ -31,17 +36,5 @@ class SessionsController < ApplicationController
     sign_in(user)
 
     redirect_to root_path, notice: "Offline Login!"
-  end
-
-  private
-
-  def sign_in(user)
-    self.current_user = user
-    cookies.permanent.signed[:remember_me] = [user.id, user.salt]
-  end
-
-  def sign_out
-    session[:user_id] = nil
-    cookies.permanent.signed[:remember_me] = ['', '']
   end
 end

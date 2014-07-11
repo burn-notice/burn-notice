@@ -2,9 +2,14 @@ class Notice < ActiveRecord::Base
   include Crypto
   before_validation :defaults
 
+  attr_accessor :password, :content
+
   belongs_to :user
-  has_one :policy
-  has_many :openings
+  has_one :policy, dependent: :destroy
+  has_many :openings, dependent: :destroy
+
+  accepts_nested_attributes_for :openings
+
 
   validates :user, :policy, :data, :token, presence: :true
 

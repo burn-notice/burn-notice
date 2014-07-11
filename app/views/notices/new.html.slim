@@ -1,0 +1,12 @@
+= form_for @notice do |f|
+  div
+    = f.label :password
+    = f.text_field :password
+  div
+    = f.label :content
+    = f.text_field :content
+  = f.fields_for :openings do |builder|
+    fieldset
+      = builder.label :ip
+      = builder.text_area :ip
+  = f.submit

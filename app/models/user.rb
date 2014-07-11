@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
   before_validation :defaults
 
-  has_many :notices
-  has_many :authorizations
+  has_many :notices, dependent: :destroy
+  has_many :authorizations, dependent: :destroy
 
-  validates :email, :nickname, presence: true, uniqueness: true
-  validates :token, presence: true
+  accepts_nested_attributes_for :authorizations
+
+  validates :email, :nickname, :token, presence: true, uniqueness: true
 
   def salt
     authorizations.first.uid

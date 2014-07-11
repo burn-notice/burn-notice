@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   resources :policies
 
   scope '/p' do
-    get  '/open/:token',  to: 'public#open', as: :open
-    post '/read',         to: 'public#read', as: :read
+    get  '/open/:token',  to: 'public#open',      as: :open
+    post '/read',         to: 'public#read',      as: :read
+    get  '/signup',       to: 'public#signup',    as: :signup
+    post '/complete',     to: 'public#complete',  as: :complete
   end
 
   scope '/auth' do

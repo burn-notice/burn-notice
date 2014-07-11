@@ -9,7 +9,9 @@
         - if signed_in?
           = link_to current_user.nickname, current_user
         - else
-          = link_to 'Github', '/auth/github'
+          ul
+            li= link_to 'Github', '/auth/github'
+            li= link_to 'Twitter', '/auth/twitter'
       </div>
     </div>
   </div>

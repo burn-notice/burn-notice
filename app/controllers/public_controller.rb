@@ -24,4 +24,20 @@ class PublicController < ApplicationController
       redirect_to notice_path(@notice, alert: 'The shared secret was invalid!')
     end
   end
+
+  def signup
+    @auth = session.delete(:auth_data)
+    @user = User.new(nickname: @auth['info']['nickname'], email: @auth['info']['email'])
+    @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
+  end
+
+  def complete
+    @user = User.new(params.require(:user).permit!)
+    if @user.save
+      sign_in(@user)
+      redirect_to session.delete(:auth_path), notice: "Hi #{@user.nickname}, welcome to Burn-Notice!"
+    else
+      render :signup
+    end
+  end
 end

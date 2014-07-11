@@ -1,0 +1,22 @@
+= debug session[:auth_path]
+= debug session[:auth_data]
+
+- if @user.errors.present?
+  ul
+    - @user.errors.full_messages.each do |message|
+      li= message
+
+
+= form_for @user, url: complete_path do |form|
+  = form.fields_for :authorizations do |builder|
+    = builder.hidden_field :provider
+    = builder.hidden_field :uid
+
+  div
+    = form.label :nickname
+    = form.text_field :nickname
+  div
+    = form.label :email
+    = form.text_field :email
+  div
+    = form.submit

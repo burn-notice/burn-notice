@@ -30,5 +30,12 @@ module UserHandling
   def current_user=(user)
     @current_user = user
     session[:user_id] = user.id
+    cookies.permanent.signed[:remember_me] = [user.id, user.salt]
+  end
+  alias_method :sign_in, :current_user=
+
+  def sign_out
+    session[:user_id] = nil
+    cookies.permanent.signed[:remember_me] = ['', '']
   end
 end
