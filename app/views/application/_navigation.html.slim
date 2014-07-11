@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-header">
       <a href="http://bootswatch.com/" class="navbar-brand navbar-logo">
-        <%= emoji(:fire) %>
+        = emoji(:fire)
       </a>
       <a href="/" class="navbar-brand">
         Burn-Notice
@@ -56,8 +56,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
-        <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+        li= link_to 'Logout', logout_path
       </ul>
 
     </div>
