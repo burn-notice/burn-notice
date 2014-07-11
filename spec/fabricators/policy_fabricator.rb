@@ -1,4 +1,4 @@
 Fabricator(:policy) do
-  name { Faker::Lorem.characters(20) }
-  setting { {'some' => 'setting'} }
+  name { 'burn_after_time' }
+  setting { {'duration' => 7.days} }
 end

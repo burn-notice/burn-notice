@@ -22,4 +22,11 @@ describe Notice do
       expect(notice.valid_secret?('invalid')).to be_false
     end
   end
+
+  context "policy" do
+    it "has a default policy" do
+      notice = Notice.new
+      expect(notice.policy.name).to eql('burn_after_reading')
+    end
+  end
 end

@@ -8,10 +8,9 @@ class Notice < ActiveRecord::Base
   has_one :policy, dependent: :destroy
   has_many :openings, dependent: :destroy
 
-  accepts_nested_attributes_for :openings
+  accepts_nested_attributes_for :openings, :policy
 
-
-  validates :user, :policy, :data, :token, presence: :true
+  validates :user, :data, :token, presence: :true
 
   def valid_secret?(secret)
     !!read_data(secret)
@@ -39,6 +38,10 @@ class Notice < ActiveRecord::Base
   def authorized
     return unless openings.present?
     openings.any?(&:authorized?)
+  end
+
+  def policy
+    read_attribute(:policy) || Policy.from_type('burn_after_reading')
   end
 
   private
