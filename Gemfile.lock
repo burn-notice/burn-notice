@@ -283,6 +283,7 @@ DEPENDENCIES
   gemoji!
   jbuilder
   jquery-rails
+  kaminari
   letter_opener
   meta_request
   newrelic_rpm

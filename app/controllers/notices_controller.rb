@@ -2,7 +2,7 @@ class NoticesController < ApplicationController
   before_action :authenticate!
 
   def index
-    @notices = current_user.notices
+    @notices = current_user.notices.page(params[:page])
   end
 
   def new

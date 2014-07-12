@@ -20,6 +20,7 @@ gem "omniauth-github"
 gem "omniauth-facebook"
 gem "decent_exposure"
 gem 'slim-rails'
+gem 'kaminari'
 gem 'bhf'
 gem 'gemoji', github: 'github/gemoji'
 
