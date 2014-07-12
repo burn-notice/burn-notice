@@ -3,3 +3,15 @@
 .navbar-logo {
   padding: 6px;
 }
+
+.navbar-user {
+  a {
+    padding: 10px !important;
+  }
+  img {
+    width: 32px;
+    height: 32px;
+    border: 1px;
+    @include border-radius(0.5em, 0.5em);
+  }
+}

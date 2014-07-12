@@ -1,15 +1,11 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 describe UsersHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { Fabricate.build(:user, nickname: 'lora', email: 'lora@burn-notice.me') }
+
+  context "gravatar" do
+    it "can calculate proper gravatar hashes" do
+      expect(helper.gravatar(user)).to eql("<img alt=\"lora\" src=\"//www.gravatar.com/avatar/2b2add070f207cf95bbd160dd13224ae\" />")
+    end
+  end
 end

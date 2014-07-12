@@ -55,9 +55,12 @@
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        li= link_to 'Logout', logout_path
-      </ul>
+      - if signed_in?
+        ul.nav.navbar-nav.navbar-right
+          li.navbar-user= link_to gravatar(current_user), user_path(current_user)
+          li= link_to 'Logout', logout_path
+      - else
+          li other logins in dropdown here
 
     </div>
   </div>
