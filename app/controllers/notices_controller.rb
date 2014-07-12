@@ -6,13 +6,21 @@ class NoticesController < ApplicationController
   end
 
   def new
-    @notice = Notice.new
-    @notice.openings.build
+    @notice = current_user.notices.build
   end
 
   def create
-    notice = Notice.new params.require(:notice).permit!
-    notice.save
-    raise ''
+    @notice = current_user.notices.build(create_notice_params)
+    if @notice.save
+      redirect_to notices_path, notice: 'You created a new notice'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def create_notice_params
+    params.require(:notice).permit(:password, :content, :policy)
   end
 end

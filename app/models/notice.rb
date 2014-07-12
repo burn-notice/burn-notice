@@ -1,6 +1,6 @@
 class Notice < ActiveRecord::Base
   include Crypto
-  before_validation :defaults
+  before_validation :defaults, :store_encrypted
 
   attr_accessor :password, :content
 
@@ -8,14 +8,13 @@ class Notice < ActiveRecord::Base
   has_one :policy, dependent: :destroy
   has_many :openings, dependent: :destroy
 
-  accepts_nested_attributes_for :openings, :policy
+  accepts_nested_attributes_for :policy
 
-  validates :user, :data, :token, presence: :true
+  validates :token, presence: :true
+  validates :password, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? }
 
   def valid_secret?(secret)
-    !!read_data(secret)
-  rescue OpenSSL::Cipher::CipherError
-    false
+    read_data(secret).present?
   end
 
   def read_data(secret)
@@ -47,9 +46,11 @@ class Notice < ActiveRecord::Base
   private
 
   def defaults
-    if new_record?
-      self.token = SecureRandom.hex(16)
-    end
+    self.token = SecureRandom.hex(16) if new_record?
+  end
+
+  def store_encrypted
+    write_data(content, password) if content.present? && password.present?
   end
 
   class << self

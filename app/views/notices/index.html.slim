@@ -1,5 +1,5 @@
 - if @notices.present?
-  = button_to "Send new Notice", new_notice_path, class: "btn btn-success"
+  = link_to "Send new Notice", new_notice_path, class: "btn btn-success"
 
   table.table.table-striped.table-hover
     thead
@@ -13,7 +13,7 @@
     - @notices.each do |notice|
       tr
         td
-          - if notice.openings
+          - if notice.openings.present?
             - if notice.authorized
               span class="label label-success" Read
             - else
@@ -25,6 +25,7 @@
         td= link_to "#{notice.openings.size} times", notice_openings_path(notice)
         td
           ul
+            li= link_to 'Open', open_path(notice)
             li= link_to 'Share'
             li= link_to 'Delete'
   = paginate @notices

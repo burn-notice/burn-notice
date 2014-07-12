@@ -1,12 +1,15 @@
+= form_errors @notice
 = form_for @notice do |f|
   div
     = f.label :password
-    = f.text_field :password
+    = f.password_field :password
   div
     = f.label :content
-    = f.text_field :content
-  = f.fields_for :openings do |builder|
-    fieldset
-      = builder.label :ip
-      = builder.text_area :ip
+    = f.text_area :content
+  div
+    = f.fields_for :policy do |builder|
+      fieldset
+        p= builder.object.name
+        = builder.label :setting
+        = builder.text_field :setting
   = f.submit

@@ -21,7 +21,7 @@ class PublicController < ApplicationController
     else
       @opening.authorized = false
       @opening.save
-      redirect_to notice_path(@notice, alert: 'The shared secret was invalid!')
+      redirect_to(open_path(@notice), alert: 'The shared secret was invalid!')
     end
   end
 
