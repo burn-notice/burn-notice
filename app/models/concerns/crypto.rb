@@ -10,7 +10,7 @@ module Crypto
     cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.encrypt
     cipher.key  = key = cipher.random_key
-    cipher.iv   = digest(secret)
+    cipher.iv   = simple_digest(secret)
 
     encrypted_data = cipher.update(data)
     encrypted_data << cipher.final
@@ -20,6 +20,7 @@ module Crypto
     {
       encrypted_data: encode(encrypted_data),
       encrypted_key: encode(encrypted_key),
+      fingerprint: digest(data)
     }
   end
 
@@ -27,10 +28,17 @@ module Crypto
     cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.decrypt
     cipher.key  = private_key.private_decrypt(decode(data[:encrypted_key]))
-    cipher.iv   = digest(secret)
+    cipher.iv   = simple_digest(secret)
 
     decrypted_data = cipher.update(decode(data[:encrypted_data]))
     decrypted_data << cipher.final
+    if data[:fingerprint] == digest(decrypted_data)
+      decrypted_data
+    else
+      nil
+    end
+  rescue OpenSSL::Cipher::CipherError
+    nil
   end
 
   private
@@ -49,8 +57,12 @@ module Crypto
     end
   end
 
+  def simple_digest(text)
+    digest(text.gsub(/\W/, '').downcase)
+  end
+
   def digest(text)
-    Digest::MD5.hexdigest(text.gsub(/\W/, '').downcase)
+    Digest::SHA256.new.hexdigest(text)
   end
 
   def encode(text)

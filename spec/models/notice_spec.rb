@@ -18,7 +18,7 @@ describe Notice do
     end
 
     it "checks if a secret is valid" do
-      expect(notice.valid_secret?('xxxxxx')).to be_true
+      expect(notice.valid_secret?('some-secret')).to be_true
       expect(notice.valid_secret?('invalid')).to be_false
     end
   end

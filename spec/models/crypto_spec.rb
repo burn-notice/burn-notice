@@ -10,7 +10,7 @@ describe Crypto do
   end
 
   it "encrypts a given string" do
-    expect(@secure.encrypt("nupsi", "some-secret").keys).to have(2).elements
+    expect(@secure.encrypt("nupsi", "some-secret").keys).to have(3).elements
   end
 
   it "decrypts a given encrypted string" do
