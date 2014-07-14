@@ -1,19 +1,14 @@
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a href="http://bootswatch.com/" class="navbar-brand navbar-logo">
-        = emoji(:fire)
-      </a>
-      <a href="/" class="navbar-brand">
-        Burn-Notice
-      </a>
+.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      = link_to emoji(:fire), root_path, class: "navbar-brand navbar-logo"
+      = link_to 'Burn-Notice', root_path, class: "navbar-brand"
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar-main">
+    .navbar-collapse.collapse id="navbar-main"
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="http://bootswatch.com/slate/#" id="themes">Themes <span class="caret"></span></a>
@@ -37,11 +32,8 @@
             <li><a href="http://bootswatch.com/yeti/">Yeti</a></li>
           </ul>
         </li>
-        <li>
-          <a href="http://bootswatch.com/help/">Help</a>
-        </li>
-        <li>
-          <a href="http://news.bootswatch.com/">Blog</a>
+        li
+          =link_to 'Styleguide', styleguide_path
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="http://bootswatch.com/slate/#" id="download">Download <span class="caret"></span></a>
@@ -55,13 +47,14 @@
         </li>
       </ul>
 
-      - if signed_in?
-        ul.nav.navbar-nav.navbar-right
+      ul.nav.navbar-nav.navbar-right(data-no-turbolink)
+        - if signed_in?
           li.navbar-user= link_to gravatar(current_user), user_path(current_user)
           li= link_to 'Logout', logout_path
-      - else
-          li other logins in dropdown here
-
-    </div>
-  </div>
-</div>
+        - else
+          li.dropdown
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Login <span class="caret"></span></a>
+            ul.dropdown-menu aria-labelledby="login"
+              li= link_to 'Github', '/auth/github'
+              li= link_to 'Twitter', '/auth/twitter'
+              li= link_to 'Facebook', '/auth/facebook'
