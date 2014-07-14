@@ -6,6 +6,7 @@ html lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1"
     title Burn-Notice
     = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
     = tag :link, rel: 'shortcut icon', href: image_path("favicon.ico")
     = tag :link, rel: 'apple-touch-icon-precomposed', href: image_path("favicon.ico")
@@ -16,5 +17,4 @@ html lang="en"
       = render 'flash'
       = yield
       = render 'footer'
-    = javascript_include_tag "application"
     = render "ga"
