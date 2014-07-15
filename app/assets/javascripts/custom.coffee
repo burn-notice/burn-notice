@@ -1,6 +1,6 @@
 $(document).on 'ready page:load page:change', ->
-  $('.bs-component [data-toggle="popover"]').popover()
-  $('.bs-component [data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
+  $('[data-toggle="tooltip"]').tooltip()
 
   cleanSource = (html) ->
     lines = html.split(/\n/)
