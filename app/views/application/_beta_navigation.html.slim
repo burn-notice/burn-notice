@@ -3,8 +3,7 @@
     .navbar-header
       = link_to emoji(:fire), root_path, class: "navbar-brand navbar-logo"
       = link_to 'Burn-Notice', root_path, class: "navbar-brand"
-
-    ul.nav.navbar-nav.navbar-right(data-no-turbolink)
-      li
+    .navbar-collapse.collapse
+      .nav.navbar-nav.navbar-right(data-no-turbolink)
         = link_to "#", class: "navbar-brand", 'data-html' => 'true', 'data-container' => "body", 'data-toggle' => "popover", 'data-placement' => "auto", 'data-content' => "During our Beta-Phase, we are trying to iron out issues in the <strong>user experience</strong> and improve the <strong>quality</strong> of our product by working with <strong>your feedback</strong>!", title: "Why private Beta?" do
           <span class="label label-primary">&beta;</span>
