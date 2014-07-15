@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   resources :notices do
     resources :openings
+    resources :policies
   end
   resources :users do
     get :mailing, on: :member
   end
-  resources :policies
+  resources :beta_users do
+    get :thank_you, on: :member
+  end
 
   scope '/p' do
     get  '/open/:token',  to: 'public#open',      as: :open
@@ -25,7 +28,7 @@ Rails.application.routes.draw do
     get '/validation/:token',        to: 'sessions#validation', as: :validation
   end
 
-  root 'welcome#index'
+  root 'beta_users#index'
 
   match 'styleguide', via: :get, to: "styleguide#index"
   match 'ping', via: :get, to: -> (env) { [418, {"Content-Type" => "text/html"}, ["pong"]] }

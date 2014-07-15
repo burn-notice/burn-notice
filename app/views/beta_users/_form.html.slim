@@ -1,0 +1,10 @@
+= form_for @beta_user, html: {class: "form-inline"} do |form|
+  fieldset
+    .form-group
+      = form.label :email, class: "sr-only"
+      .input-group
+        .input-group-addon @
+        = form.email_field :email, class: "form-control input-lg", placeholder: "anonymous@nsa.com"
+
+    = form.submit "subscribe me now!", class: "btn btn-success btn-lg"
+

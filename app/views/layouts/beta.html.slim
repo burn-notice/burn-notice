@@ -4,16 +4,15 @@ html lang="en"
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    title Burn-Notice
+    title Burn-Notice (Beta)
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = tag :link, rel: 'shortcut icon', href: image_path("favicon.ico")
     = tag :link, rel: 'apple-touch-icon-precomposed', href: image_path("favicon.ico")
   body
-    = render 'navigation'
+    = render 'beta_navigation'
     .container
-      = render 'header'
       = render 'flash'
       = yield
       = render 'footer'
