@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get :mailing, on: :member
   end
   resources :beta_users do
-    get :thank_you, on: :member
+    get :thank_you, on: :collection
   end
 
   scope '/p' do

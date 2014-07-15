@@ -1,17 +1,18 @@
 .alert.alert-success
-  p All is good, we added your E-Mail address <em>#{@beta_user.email}</em> to our database!
+  p Thank you, we added <em>#{@beta_user.email}</em> to our database, stay tuned!
 
 .col-lg-6
-  h1 Thank you for signing up to our private <span class="label label-success">Beta-Phase</span>
+  h1 You are signed-up to our <span class="label label-success">Beta</span>
 
   p.text-muted
     small
-      | You should receive a confirmation E-Mail within the next minutes, in case that does not happen, send an E-Mail to #{mail_to 'peter@burn-notice.me'}
+      | You should be receiving a confirmation E-Mail within the next minutes.
+      | In case that this does not happen, don't hesitate to send an E-Mail to #{mail_to 'peter@burn-notice.me'}!
 
 .col-lg-6
   h3 What happens next?
 
-  p As soon as we are able to add new users to our Beta-Program, we will get in touch with you via E-Mail and send you an invitation link!
+  p As soon as we are able to add new users to our Beta-Phase, we will get in touch with you via E-Mail and send you an invitation-link!
 
   h3 What can i do in the meantime?
 

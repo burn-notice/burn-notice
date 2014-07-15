@@ -4,4 +4,9 @@ class UserMailerPreview < ActionMailer::Preview
     user = User.first
     UserMailer.signup(user)
   end
+
+  def beta
+    user = User.first
+    UserMailer.beta(user)
+  end
 end

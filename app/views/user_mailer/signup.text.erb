@@ -1,9 +1,7 @@
 Hi <%= @user.nickname %>,
 
-Your action is required, please click the link below to validate your identity:
+your action is required, please click the link below to validate your identity:
 
 <%= validation_url(@user.token) %>
 
-If you have any issues, please reply to this E-Mail!
-
-Cheers, Peter
+<%= render 'mailer/footer' %>
