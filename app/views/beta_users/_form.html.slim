@@ -1,10 +1,12 @@
-= form_for @beta_user, html: {class: "form-inline"} do |form|
+= form_for @beta_user do |form|
   fieldset
-    .form-group
-      = form.label :email, class: "sr-only"
-      .input-group
-        .input-group-addon @
-        = form.email_field :email, class: "form-control input-lg", placeholder: "anonymous@nsa.com"
-
-    = form.submit "subscribe me now!", class: "btn btn-success btn-lg"
-
+    .form-group(class="#{'has-warning' if @beta_user.errors.present?}")
+      .row
+        .col-xs-8
+          = form.label :email, class: "sr-only"
+          = form.email_field :email, class: "form-control", placeholder: "your@email.com"
+        .col-xs-4
+          .hidden-xs
+            = form.submit "sign up to the beta!", class: "btn btn-success"
+          .visible-xs
+            = form.submit "go!", class: "btn btn-success"
