@@ -1,3 +1,13 @@
-.page-header
-  h1= title
-
+.page-header(id="banner")
+  ul.breadcrumb
+    - if @crumbs.blank?
+      li.active Home
+    - else
+      li
+        a= link_to 'Home', user_path(current_user)
+      - @crumbs.each do |name, path|
+        - if path == url_for
+          li.active= name
+        - else
+          li
+            a= link_to name, path

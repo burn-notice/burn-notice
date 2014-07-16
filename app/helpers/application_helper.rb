@@ -9,7 +9,17 @@ module ApplicationHelper
     end
   end
 
+  def set_title(title)
+    content_for(:title, title)
+  end
+
+  def set_crumbs(crumbs = {})
+    @crumbs = crumbs
+  end
+
   def title
-    content_for(:title) || 'Burn-Notice'
+    parts = ['Burn-Notice']
+    parts << content_for(:title) if content_for?(:title)
+    parts.join(' / ')
   end
 end
