@@ -8,4 +8,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def title
+    content_for(:title) || 'Burn-Notice'
+  end
 end

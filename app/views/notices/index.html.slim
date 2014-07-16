@@ -1,3 +1,5 @@
+- content_for(:title, "All Notices")
+
 - if @notices.present?
   = link_to "Send new Notice", new_notice_path, class: "btn btn-success"
 
