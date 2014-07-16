@@ -29,7 +29,7 @@
           ul
             li= link_to 'Open', open_path(notice)
             li= link_to 'Share'
-            li= link_to 'Delete'
+            li= button_to 'Delete', notice_path(notice), method: :delete
   = paginate @notices
 - else
   h1 You did not write a notice yet

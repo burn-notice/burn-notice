@@ -12,10 +12,16 @@ class NoticesController < ApplicationController
   def create
     @notice = current_user.notices.build(create_notice_params)
     if @notice.save
-      redirect_to notices_path, notice: 'You created a new notice'
+      redirect_to notices_path, notice: 'You created a new notice!'
     else
       render :new
     end
+  end
+
+  def destroy
+    @notice = current_user.notices.from_param(params[:id])
+    @notice.destroy!
+    redirect_to notices_path, notice: 'The notice is deleted!'
   end
 
   private
