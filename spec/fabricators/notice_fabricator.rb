@@ -5,6 +5,7 @@ HELLO_ENCODED = {
 }
 
 Fabricator(:notice) do
+  question { Faker::Lorem.sentence }
   data { HELLO_ENCODED }
   user
   policy

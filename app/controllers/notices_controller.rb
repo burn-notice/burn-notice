@@ -21,6 +21,6 @@ class NoticesController < ApplicationController
   private
 
   def create_notice_params
-    params.require(:notice).permit(:password, :content, :policy)
+    params.require(:notice).permit(:question, :answer, :content, :policy)
   end
 end

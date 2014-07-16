@@ -1,15 +1,25 @@
+.well.callout
+  span.text-warning Pick a secret that only you and the receiver know about!
+
+
+
 = form_errors @notice
-= form_for @notice do |f|
-  div
-    = f.label :password
-    = f.password_field :password
-  div
-    = f.label :content
-    = f.text_area :content
-  div
-    = f.fields_for :policy do |builder|
-      fieldset
-        p= builder.object.name
-        = builder.label :setting
-        = builder.text_field :setting
-  = f.submit
+= form_for @notice, html: {class: "form-horizontal"} do |f|
+  fieldset
+    legend Create a new Notice
+    .form-group
+      = f.label :question, 'Secret Question', class: "col-lg-2 control-label"
+      .col-lg-10
+        = f.text_field :question, placeholder: 'What does the gravure on our wedding ring say?', class: "form-control"
+    .form-group
+      = f.label :answer, 'Secret Answer', class: "col-lg-2 control-label"
+      .col-lg-10
+        = f.password_field :answer, class: "form-control"
+    .form-group
+      = f.label :content, 'Secret Notice', class: "col-lg-2 control-label"
+      .col-lg-10
+        = f.text_area :content, rows: 3, placeholder: "Our new key-code at home is 4711, remember to tell the kids as well!", class: 'form-control'
+        span.help-block The notice can only be opened with knowledge of the secret and will get destroyed afterwards!
+    .form-group
+      .col-lg-10.col-lg-offset-2
+        = f.submit 'create!', class: "btn btn-success"

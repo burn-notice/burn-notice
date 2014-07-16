@@ -2,7 +2,7 @@ class Notice < ActiveRecord::Base
   include Crypto
   before_validation :defaults, :store_encrypted
 
-  attr_accessor :password, :content
+  attr_accessor :question, :answer, :content
 
   belongs_to :user
   has_one :policy, dependent: :destroy
@@ -10,8 +10,8 @@ class Notice < ActiveRecord::Base
 
   accepts_nested_attributes_for :policy
 
-  validates :token, presence: :true
-  validates :password, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? }
+  validates :token, :question, presence: :true
+  validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? }
 
   def valid_secret?(secret)
     read_data(secret).present?
@@ -50,7 +50,7 @@ class Notice < ActiveRecord::Base
   end
 
   def store_encrypted
-    write_data(content, password) if content.present? && password.present?
+    write_data(content, answer) if content.present? && answer.present?
   end
 
   class << self
