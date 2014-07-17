@@ -1,4 +1,3 @@
-# Burn-Notice
+# :fire: Burn-Notice
 
-Simple, Secure, Encrypted __one time__ Information
-
+Simple, Secure, Encrypted one-time Information
