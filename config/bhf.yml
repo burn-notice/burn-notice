@@ -1,43 +1,8 @@
 pages:
-
-- users:
-  - users:
-      table:
-        # default_scope hides some posts so we need a different scope
-        source: all
-
-# - statics: # Page Statics
-#   - statics: # bhf can work from this point on because there is a model named Static
-#       table:
-#         per_page: 2
-
-# - posts: # Page Posts
-#   - posts:
-#       table:
-#         # default_scope hides some posts so we need a different scope
-#         source: all_posts
-
-#         # columns to display
-#         display: [id, headline, subheadline, content, category, published, published_at]
-#       form:
-#         # fields to display
-#         display: [id, category, author, headline, subheadline, content, published, published_at]
-#         types:
-#           # change content field from a textarea to a markdown wysiwyg
-#           content: markdown
-#           author: radio
-#         links:
-#           category: false
-
-# - settings: # Page Settings
-#   - category: # bhf can work from this point on because there is a model named Static
-
-#   - author:
-#       table:
-#         # allow to sort the entries via drag and drop (make sure the default_scope order by position)
-#         sortable: position
-#         # hide the delete button
-#         # hide_delete: true
-#       form:
-#         # fields to display
-#         display: [id, name, job_title, email, posts]
+  - dashboard:
+    - beta_users:
+  - admin:
+    - users:
+    - notices:
+    - openings:
+    - policies:

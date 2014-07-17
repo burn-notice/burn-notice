@@ -3,51 +3,18 @@
     .navbar-header
       = link_to emoji(:fire), root_path, class: "navbar-brand navbar-logo"
       = link_to 'Burn-Notice', root_path, class: "navbar-brand"
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    .navbar-collapse.collapse id="navbar-main"
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="http://bootswatch.com/slate/#" id="themes">Themes <span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="themes">
-            <li><a href="http://bootswatch.com/default/">Default</a></li>
-            <li class="divider"></li>
-            <li><a href="http://bootswatch.com/amelia/">Amelia</a></li>
-            <li><a href="http://bootswatch.com/cerulean/">Cerulean</a></li>
-            <li><a href="http://bootswatch.com/cosmo/">Cosmo</a></li>
-            <li><a href="http://bootswatch.com/cyborg/">Cyborg</a></li>
-            <li><a href="http://bootswatch.com/darkly/">Darkly</a></li>
-            <li><a href="http://bootswatch.com/flatly/">Flatly</a></li>
-            <li><a href="http://bootswatch.com/journal/">Journal</a></li>
-            <li><a href="http://bootswatch.com/lumen/">Lumen</a></li>
-            <li><a href="http://bootswatch.com/readable/">Readable</a></li>
-            <li><a href="http://bootswatch.com/simplex/">Simplex</a></li>
-            <li><a href="./Bootswatch  Slate_files/Bootswatch  Slate.html">Slate</a></li>
-            <li><a href="http://bootswatch.com/spacelab/">Spacelab</a></li>
-            <li><a href="http://bootswatch.com/superhero/">Superhero</a></li>
-            <li><a href="http://bootswatch.com/united/">United</a></li>
-            <li><a href="http://bootswatch.com/yeti/">Yeti</a></li>
-          </ul>
-        </li>
+      button.navbar-toggle  type="button" data-toggle="collapse" data-target="#navbar-main"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav
         li
           =link_to 'Styleguide', styleguide_path
         li
           =link_to 'Beta', beta_users_path
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="http://bootswatch.com/slate/#" id="download">Download <span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="download">
-            <li><a href="http://bootswatch.com/slate/bootstrap.min.css">bootstrap.min.css</a></li>
-            <li><a href="http://bootswatch.com/slate/bootstrap.css">bootstrap.css</a></li>
-            <li class="divider"></li>
-            <li><a href="http://bootswatch.com/slate/variables.less">variables.less</a></li>
-            <li><a href="http://bootswatch.com/slate/bootswatch.less">bootswatch.less</a></li>
-          </ul>
-        </li>
-      </ul>
+        li
+          =link_to 'Admin', admin_path
 
       ul.nav.navbar-nav.navbar-right(data-no-turbolink)
         - if signed_in?
