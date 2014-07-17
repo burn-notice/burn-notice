@@ -9,8 +9,55 @@
         em.text-warning one-time Information
     .col-lg-7 style="padding: 15px 15px 0 15px;"
       .well.sponsor
-        h2.spacer-small.hidden-xs Add your e-mail address to join our <span class="label label-success">Beta</span>
+        h2.spacer-small.hidden-xs Add your E-Mail address to join our <span class="label label-success">Beta</span>
         h2.visible-xs Join private <span class="label label-success">Beta</span>
         p.spacer-large.text-muted
           small We know that data-privacy is a very important topic and we will never share any of your information.
         = render 'form'
+
+.page-header
+  h2 FAQ
+
+.panel-group  id="accordion"
+  .panel.panel-default
+    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-1"
+      h4.list-group-item-heading Who can access my notice?
+    panel-collapse.collapse.in id="collapse-1"
+      .panel-body
+        |
+          Your message is encrypted with a security question that you set up while sending a Burn-Notice.
+          Only people knowing the answer to this question can decrypt the message.
+          So you have full controll over the security of your data by choosing an arbitrary hard to crack question.
+  .panel.panel-default
+    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-2"
+      h4.list-group-item-heading What happens to my data?
+    .panel-collapse.collapse id="collapse-2"
+      .panel-body
+        p
+          |
+            Our product is designed to hold minimal user information, only a valid E-Mail is required to use the service.
+            We are not going to share any of your information with a 3rd party!
+            You will get full control over what happens to your data:
+        ul
+          li <em>burn after reading</em>, delete the Notice immediately after reading
+          li <em>burn after time</em>, delete the Notice when a selected period of time has elapsed
+          li <em>burn after openings</em>, delete the Notice after a selected amount people read your message
+  .panel.panel-default
+    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-3"
+      h4.list-group-item-heading Does a security question provide enough protection?
+    .panel-collapse.collapse id="collapse-3"
+      .panel-body
+        |
+          The answer to a security question should be secret information.
+          Only you and the receiver of the Burn-Notice should know how to answer this.
+          In Canada, this process is used to send Bank-Transactions via E-Mail.
+  .panel.panel-default
+    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-4"
+      h4.list-group-item-heading How much does it cost?
+    .panel-collapse.collapse id="collapse-4"
+      .panel-body
+        |
+          The private Beta will be free of charge.
+          After releasing the product to the public, a <em>30-day trial period</em> will be introduced for all customers.
+          At the end of your trial period you will have to upgrade to a paid plan.
+
