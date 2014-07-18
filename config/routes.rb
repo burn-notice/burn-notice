@@ -32,5 +32,5 @@ Rails.application.routes.draw do
 
   match 'blog', via: :get, to: "blog#index"
   match 'styleguide', via: :get, to: "styleguide#index"
-  match 'ping', via: :get, to: -> (env) { [418, {"Content-Type" => "text/html"}, ["pong"]] }
+  match 'ping', via: :get, to: -> (env) { [200, {"Content-Type" => "text/html"}, ["pong"]] }
 end
