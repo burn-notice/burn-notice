@@ -24,25 +24,30 @@ gem 'slim-rails'
 gem 'kaminari'
 gem 'bhf'
 gem 'gemoji', github: 'github/gemoji'
+gem "rack-cache"
+gem 'pg'
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
+  gem "heroku-deflater"
+end
+
+group :development do
+  gem "letter_opener"
+  gem "partially_useful"
+  gem "meta_request"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "quiet_assets"
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'spring'
   gem "spring-commands-rspec"
-  gem 'sqlite3'
-  gem "letter_opener"
-  gem "faker"
-  gem "meta_request"
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "quiet_assets"
-  gem "codeclimate-test-reporter", require: false
   gem 'fabrication'
   gem "rspec-rails"
-  gem 'brakeman'
+  gem "faker"
+  gem 'brakeman', require: false
+  gem "codeclimate-test-reporter", require: false
 end
