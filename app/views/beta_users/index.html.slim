@@ -9,82 +9,10 @@
         em.text-warning one-time Information
     .col-lg-7 style="padding: 15px 15px 0 15px;"
       .well.sponsor
-        h2.spacer-small.hidden-xs Add your E-Mail address to join our <span class="label label-success">Beta</span>
-        h2.visible-xs Join private <span class="label label-success">Beta</span>
+        h2.spacer-small.hidden-xs Add your e-mail address to join our <span class="label label-success">&beta;eta</span>
+        h2.visible-xs Join private <span class="label label-success">&beta;eta</span>
         p.spacer-large.text-muted
           small We know that data-privacy is a very important topic and we will never share any of your information.
         = render 'form'
 
-.page-header.hidden-xs
-  h2 <span class="glyphicon glyphicon-info-sign smaller"></span> FAQ
-
-.panel-group  id="accordion"
-  .panel.panel-info
-    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-11"
-      h4.list-group-item-heading What is it good for?
-    panel-collapse.collapse.in id="collapse-11"
-      .panel-body
-        p Passwords, Credit-Card-Numbers, Key-Codes, Voucher-Codes etc etc...
-        p
-          |
-            All those things should <em>never be sent directly via E-Mail or SMS</em>!
-            These communication channels are insecure because messages are not encrypted by default.
-            A malicious user can easily gain access to your messages and steal secret or valuable information.
-        p
-         |
-           There are ways to secure those communication channels
-           like #{link_to 'PGP', 'http://en.wikipedia.org/wiki/Pretty_Good_Privacy'} for email, but most of them
-           far from trivial to use.
-        p
-          |
-            Burn-Notice relies on the simple principle of a shared secret, a security question that only sender and recipient know about.
-            Following the "burn after reading" approach, known from every spy movie, a Burn-Notice will get deleted immidiately,
-            making it impossible to gain access to the information after the fact.
-    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-1"
-      h4.list-group-item-heading Who can access my notice?
-    panel-collapse.collapse id="collapse-1"
-      .panel-body
-        |
-          Your message is encrypted with a security question that you set up while sending a Burn-Notice.
-          Only people knowing the answer to this question can decrypt the message.
-          So you have full controll over the security of your data by choosing an arbitrary hard to crack question.
-    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-2"
-      h4.list-group-item-heading What happens to my data?
-    .panel-collapse.collapse id="collapse-2"
-      .panel-body
-        p
-          |
-            Our product is designed to hold minimal user information, only a valid E-Mail is required to use the service.
-            We are not going to share any of your information with a 3rd party!
-        p You will get full control over what happens to your data:
-        ul
-          li <em>burn after reading</em>, delete the Notice immediately after reading
-          li <em>burn after time</em>, delete the Notice when a selected period of time has elapsed
-          li <em>burn after openings</em>, delete the Notice after a selected amount people read your message
-    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-3"
-      h4.list-group-item-heading What encryption technology is used?
-    .panel-collapse.collapse id="collapse-3"
-      .panel-body
-        p
-          ' Burn-Notice uses the
-          =' link_to "Advanced-Encryption-Standard", "http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"
-          | to symmetrically encrypt your message with a 256-bit key-pair.
-        p
-          ' All requests to the Burn-Notice website are secured via
-          =' link_to 'Secure Socets Layer', 'http://en.wikipedia.org/wiki/Secure_Sockets_Layer'
-          | 128-bit TLS 1.2 encrypted connection.
-    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-4"
-      h4.list-group-item-heading Does a security question provide enough protection?
-    .panel-collapse.collapse id="collapse-4"
-      .panel-body
-        p The answer to your security question should be secret information that only you and the receiver of the Burn-Notice know about.
-        p Make sure to pick a security question that is simple to answer for the recipient, yet hard to guess for everyone else.
-        p Canadian Banks considder this process safe enough to be used to send bank transactions via E-Mail.
-    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-5"
-      h4.list-group-item-heading How much does it cost?
-    .panel-collapse.collapse id="collapse-5"
-      .panel-body
-        p The private Beta will be <em>free of charge</em>.
-        p After releasing the product to the public, a <em>30-day trial period</em> will be introduced for all customers.
-        p At the end of your trial period you will be asked to pay a monthly fee to keep using the service.
-
+= render 'faq'

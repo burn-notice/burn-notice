@@ -2,11 +2,11 @@
   fieldset
     .form-group(class="#{'has-warning' if @beta_user.errors.present?}")
       .row
-        .col-xs-8
+        .col-lg-7.col-xs-8
           = form.label :email, class: "sr-only"
           = form.email_field :email, class: "form-control", placeholder: "me@example.com"
-        .col-xs-4
+        .col-lg-3.col-xs-4
           .hidden-xs
-            = form.submit "sign up to the beta!", class: "btn btn-success"
+            = form.submit "add me to the private &beta;eta!".html_safe, class: "btn btn-success"
           .visible-xs
-            = form.submit "doit!", class: "btn btn-success"
+            = form.submit "join!", class: "btn btn-success"

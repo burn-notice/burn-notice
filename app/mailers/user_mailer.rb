@@ -4,12 +4,12 @@ class UserMailer < ActionMailer::Base
   def signup(user)
     @user = user
 
-    mail to: @user.email, subject: 'Validate your E-Mail!'
+    mail to: @user.email, subject: 'Validate your e-mail!'
   end
 
   def beta(beta_user)
     @beta_user = beta_user
 
-    mail to: @beta_user.email, subject: 'Welcome to our private Beta!'
+    mail to: @beta_user.email, subject: 'Welcome to our private ßeta!'
   end
 end

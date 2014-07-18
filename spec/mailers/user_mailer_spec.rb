@@ -26,7 +26,7 @@ describe UserMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("private Beta")
+      mail.body.encoded.should match("private βeta")
     end
   end
 end
