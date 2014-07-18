@@ -1,8 +1,20 @@
 footer
+  .page-header
   .row
-    .col-lg-12
+    .col-lg-6.col-xs-6
       ul.list-unstyled
-        li=link_to 'Blog', "TODO"
-        li=link_to 'RSS', "TODO"
-        li=link_to 'Twitter', 'https://twitter.com/BurnNoticeMe'
-        li=link_to 'GitHub', 'https://github.com/burn-notice'
+        li
+          = link_to blog_url do
+            <span class="glyphicon glyphicon-book"></span> Blog
+        li
+          = mail_to 'peter@burn-notice.me' do
+            <span class="glyphicon glyphicon-send"></span> E-Mail
+        li= link_to 'https://twitter.com/BurnNoticeMe' do
+            <span class="glyphicon glyphicon-retweet"></span> Twitter
+        li= link_to 'https://github.com/burn-notice' do
+            <span class="glyphicon glyphicon-heart-empty"></span> GitHub
+    .col-lg-6.col-xs-6
+      ul.list-unstyled
+        li
+          <span class="glyphicon glyphicon-copyright-mark"></span> <span class="glyphicon glyphicon-registration-mark"></span> Burn-Notice
+        li Peter Schröder, 340 Chapel Street, K1N7Z3 Ottawa
