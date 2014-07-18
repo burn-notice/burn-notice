@@ -20,9 +20,29 @@
 
 .panel-group  id="accordion"
   .panel.panel-info
+    a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-11"
+      h4.list-group-item-heading What is it good for?
+    panel-collapse.collapse.in id="collapse-11"
+      .panel-body
+        p Passwords, Credit-Card-Numbers, Key-Codes, Voucher-Codes etc etc...
+        p
+          |
+            All those things should <em>never be sent directly via E-Mail or SMS</em>!
+            These communication channels are insecure because messages are not encrypted by default.
+            A malicious user can easily gain access to your messages and steal secret or valuable information.
+        p
+         |
+           There are ways to secure those communication channels
+           like #{link_to 'PGP', 'http://en.wikipedia.org/wiki/Pretty_Good_Privacy'} for email, but most of them
+           far from trivial to use.
+        p
+          |
+            Burn-Notice relies on the simple principle of a shared secret, a security question that only sender and recipient know about.
+            Following the "burn after reading" approach, known from every spy movie, a Burn-Notice will get deleted immidiately,
+            making it impossible to gain access to the information after the fact.
     a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-1"
       h4.list-group-item-heading Who can access my notice?
-    panel-collapse.collapse.in id="collapse-1"
+    panel-collapse.collapse id="collapse-1"
       .panel-body
         |
           Your message is encrypted with a security question that you set up while sending a Burn-Notice.
