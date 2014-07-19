@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 PUBLIC_KEY=$(cat config/keys/public_production.pem)
 PRIVATE_KEY=$(cat config/keys/private_production.pem)

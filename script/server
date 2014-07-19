@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # these keys are dev-only!
 export GITHUB_CONSUMER_KEY=06d26c5f61f9e95293b4
