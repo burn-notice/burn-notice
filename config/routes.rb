@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :beta_users do
     get :thank_you, on: :collection
   end
+  resources :articles
 
   scope '/p' do
     get  '/open/:token',  to: 'public#open',      as: :open
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
 
   root 'beta_users#index'
 
-  match 'blog', via: :get, to: "blog#index"
+  match 'blog', via: :get, to: "articles#index"
   match 'styleguide', via: :get, to: "styleguide#index"
   match 'ping', via: :get, to: -> (env) { [200, {"Content-Type" => "text/html"}, ["pong"]] }
 end
