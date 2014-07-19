@@ -21,8 +21,12 @@
         p
           |
             Burn-Notice relies on the simple principle of a shared secret, a security question that only sender and recipient know about.
-            Following the "burn after reading" approach, known from every spy movie, a Burn-Notice will get deleted immidiately,
-            making it impossible to gain access to the information after the fact.
+            We do not store the answer in our database, it's just used as a password during the encryption process.
+            This makes it impossible to access the Burn-Notice unless you know the correct password to decrypt it.
+        p
+          |
+            Following the <em>burn after reading</em> approach, a Burn-Notice will get deleted immidiately after it has been read,
+            making it impossible for a 3rd party to gain access to the information after the fact.
     a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-1"
       h4.text-warning Who can access my notice?
     panel-collapse.collapse id="collapse-1"
@@ -48,11 +52,20 @@
         p
           ' Burn-Notice uses the
           =' link_to "Advanced-Encryption-Standard", "http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"
-          | to symmetrically encrypt your message with a 256-bit key-pair.
+          |
+            to symmetrically encrypt your message with a
+            <span data-toggle="tooltip" data-placement="bottom" data-original-title="256-bit encryption offers a very high level of security. Encrypting such a message is very safe and can only be decrypted with the correct password.">
+              <span class="glyphicon glyphicon-lock"></span>
+              256-bit key-pair.
+            </span>
         p
           ' All requests to the Burn-Notice website are secured via
           =' link_to 'Secure Socets Layer', 'http://en.wikipedia.org/wiki/Secure_Sockets_Layer'
-          | 128-bit TLS 1.2 encrypted connection.
+          |
+            <span data-toggle="tooltip" data-placement="bottom" data-original-title="SSL connections allow for secure ways of using the world wide web. Your data can not be read by a 3rd party, even when using the coffeshop WIFI or other untrusted communication channels.">
+              <span class="glyphicon glyphicon-lock"></span>
+               128-bit TLS 1.2 encrypted connection.
+            </span>
     a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-4"
       h4.text-warning Does a security question provide enough protection?
     .panel-collapse.collapse id="collapse-4"
@@ -65,4 +78,7 @@
     .panel-collapse.collapse id="collapse-5"
       .panel-body
         p The private &beta;eta will be <em>free of charge</em>!
-        p After releasing the product to the public, a <em>30-day trial period</em> will be introduced.<br> At the end of your trial you will have to sign-up for a monthly subscription in order to keep using the service.
+        p
+          |
+            After releasing the product to the public, a <em>30-day trial period</em> will be introduced.<br>
+            At the end of your trial you will have to sign-up for a monthly subscription in order to keep using the service.
