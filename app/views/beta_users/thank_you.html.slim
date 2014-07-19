@@ -1,20 +1,25 @@
-.alert.alert-success
-  p Thank you, we added <em>#{@beta_user.email}</em> to our database, stay tuned!
+.page-header
+  p.alert.alert-success Thank you, we added <em>#{@beta_user.email}</em> to our database, stay tuned!
 
-.col-lg-6
-  h1 You are signed-up to our <span class="label label-success">&beta;eta</span>
+.row
+  .col-lg-6
+    h1.spacer You are signed-up to our <span class="label label-success">&beta;eta</span>
 
-  p.text-muted
-    small
-      | You should be receiving a confirmation e-mail within the next minutes.
-      | In case that this does not happen, don't hesitate to send an e-mail to #{mail_to 'peter@burn-notice.me'}!
+    p.text-muted
+      small
+        |
+          You should be receiving a confirmation e-mail within the next minutes.
+          In case that this does not happen, don't hesitate to send an e-mail to #{mail_to 'peter@burn-notice.me'}!
 
-.col-lg-6
-  h3 What happens next?
+  .col-lg-6
+    h3.spacer What happens next?
+    p
+      |
+        As soon as we are adding new users to our private &beta;eta,
+        we will get in touch and send you an invitation link via e-mail!
+    p
+      |
+        If you have feedback or questions, please reach out to us via twitter
+        #{link_to '@BurnNoticeMe', 'https://twitter.com/BurnNoticeMe'} or send an e-mail to #{mail_to 'peter@burn-notice.me'}.
 
-  p As soon as we are able to add new users to our private &beta;eta, we will get in touch with you via e-mail and send you an invitation-link!
-
-  h3 What can i do in the meantime?
-
-  p In case you did not already read our ABOUT PAGE, fucking go there!
-
+= render 'faq'
