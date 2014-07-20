@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Article do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:article) { Fabricate.build(:article) }
+
+  context "validation" do
+    it "is valid" do
+      expect(article).to be_valid
+    end
+  end
 end

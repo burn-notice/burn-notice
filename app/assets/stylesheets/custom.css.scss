@@ -12,7 +12,17 @@
     width: 32px;
     height: 32px;
     border: 1px;
-    @include border-radius(0.5em, 0.5em);
+    @include border-radius(0.2em, 0.2em);
+  }
+}
+
+.blog-user {
+  img {
+    margin: 0.5em;
+    width: 16px;
+    height: 16px;
+    border: 1px;
+    @include border-radius(0.2em, 0.2em);
   }
 }
 
@@ -30,7 +40,7 @@
   padding-bottom: 1em;
 }
 .spacer-small {
-  padding-bottom: 0.5em;
+  padding-bottom: 0.2em;
 }
 .spacer-large {
   padding-bottom: 2em;

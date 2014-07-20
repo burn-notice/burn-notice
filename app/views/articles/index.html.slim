@@ -1,2 +1,11 @@
-.page-title
-  h1 Blog
+.page-header
+  h2.text-primary Burn after reading - the Burn-Notice Blog!
+
+- @articles.each do |article|
+  article
+    h2.text-warning= article.title
+    .blog-user.text-muted.spacer
+      = gravatar(article.user)
+      small= "published at #{article.published_at.to_s(:long)} - tagged with #{article.tags.to_sentence}"
+    .content
+      = article.body
