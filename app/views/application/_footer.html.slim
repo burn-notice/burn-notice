@@ -4,6 +4,9 @@ footer
     .col-lg-6.col-xs-6
       ul.list-unstyled
         li
+          = link_to root_url do
+           <span class="glyphicon glyphicon-copyright-mark"></span> Burn-Notice
+        li
           = link_to blog_url do
             <span class="glyphicon glyphicon-book"></span> Blog
         li
@@ -14,7 +17,10 @@ footer
         li= link_to 'https://github.com/burn-notice' do
             <span class="glyphicon glyphicon-heart-empty"></span> GitHub
     .col-lg-6.col-xs-6
-      ul.list-unstyled
-        li
-          <span class="glyphicon glyphicon-copyright-mark"></span> <span class="glyphicon glyphicon-registration-mark"></span> Burn-Notice
-        li Peter Schröder, 340 Chapel Street, K1N7Z3 Ottawa
+      address
+        strong Peter Schröder<br>
+        |
+          340 Chapel Street<br>
+          K1N 7Z3 Ottawa, Ontario Canada<br>
+        <abbr title="Phone">P:</abbr> #{link_to '+1 (613) 315 6153', 'phone:+1 (613) 315 6153'}<br>
+        <abbr title="E-Mail">E:</abbr> #{mail_to 'peter@burn-notice.me'}
