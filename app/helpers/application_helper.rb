@@ -22,4 +22,9 @@ module ApplicationHelper
     parts << content_for(:title) if content_for?(:title)
     parts.join(' / ')
   end
+
+  def markdown(text)
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    @markdown.render(text)
+  end
 end

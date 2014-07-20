@@ -26,6 +26,7 @@ gem 'bhf'
 gem 'gemoji', github: 'github/gemoji'
 gem "rack-cache"
 gem 'pg'
+gem 'redcarpet'
 
 group :production do
   gem 'rails_12factor'

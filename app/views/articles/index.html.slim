@@ -4,8 +4,11 @@
 - @articles.each do |article|
   article
     h2.text-warning= article.title
-    .blog-user.text-muted.spacer
+    .blog-user.spacer
       = gravatar(article.user)
-      small= "published at #{article.published_at.to_s(:long)} - tagged with #{article.tags.to_sentence}"
+      small.text-muted
+        ' wrote on <em>#{article.published_at.to_s(:long)}</em>
+      - article.tags.each do |tag|
+        span.label.label-warning=' link_to tag, articles_path(tag: tag)
     .content
-      = article.body
+      == markdown(emojify(article.body))
