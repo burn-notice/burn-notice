@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "peter@burn-notice.me"
+  default from: "peter@burn-notice.me", bcc: "peter@burn-notice.me"
 
   def signup(user)
     @user = user
