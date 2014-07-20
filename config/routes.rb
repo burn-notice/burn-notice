@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   scope '/p' do
     get  '/open/:token',  to: 'public#open',      as: :open
     post '/read',         to: 'public#read',      as: :read
-    get  '/signup',       to: 'public#signup',    as: :signup
-    post '/complete',     to: 'public#complete',  as: :complete
   end
 
   scope '/auth' do
@@ -31,7 +29,14 @@ Rails.application.routes.draw do
 
   root 'beta_users#index'
 
-  match 'blog', via: :get, to: "articles#index"
-  match 'styleguide', via: :get, to: "styleguide#index"
-  match 'ping', via: :get, to: -> (env) { [200, {"Content-Type" => "text/html"}, ["pong"]] }
+  get  '/signup',       to: 'public#signup',    as: :signup
+  post '/complete',     to: 'public#complete',  as: :complete
+
+  get 'blog', to: "articles#index"
+  get 'beta', to: "beta_users#index"
+  get 'faq',  to: "home#faq"
+
+  get 'styleguide', to: "styleguide#index"
+
+  get 'ping', to: -> (env) { [200, {"Content-Type" => "text/html"}, ["pong"]] }
 end

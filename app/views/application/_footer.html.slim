@@ -1,7 +1,7 @@
 footer
   .page-header
   .row
-    .col-lg-6.col-xs-6
+    .col-lg-8.col-xs-8
       ul.list-unstyled
         li
           = link_to root_url do
@@ -10,13 +10,16 @@ footer
           = link_to blog_url do
             <span class="glyphicon glyphicon-book"></span> Blog
         li
+          = link_to faq_url do
+            <span class="glyphicon glyphicon-info-sign"></span> FAQ
+        li
           = mail_to 'peter@burn-notice.me' do
             <span class="glyphicon glyphicon-send"></span> E-mail
         li= link_to 'https://twitter.com/BurnNoticeMe' do
             <span class="glyphicon glyphicon-retweet"></span> Twitter
         li= link_to 'https://github.com/burn-notice' do
             <span class="glyphicon glyphicon-heart-empty"></span> GitHub
-    .col-lg-6.col-xs-6
+    .col-lg-4.col-xs-4
       address
         strong Peter Schröder<br>
         |

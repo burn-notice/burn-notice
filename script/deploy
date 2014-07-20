@@ -4,3 +4,4 @@ git tag $(date +"deploy_%Y-%m-%d_%H-%M-%S")
 git push --tags origin master
 git push heroku master
 heroku run rake db:migrate
+open 'https://www.burn-notice.me'
