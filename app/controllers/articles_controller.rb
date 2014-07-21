@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
       'this month'  => 1.month.ago,
       'this week'   => 1.week.ago,
     }
-    @dates_count = ranges.each_with_object(Hash.new(0)) { |(name, start), counts| counts[name] += Article.active.where('published_at < ?', start).count }
+    @dates_count = ranges.each_with_object(Hash.new(0)) { |(name, start), counts| counts[name] += Article.where(published_at: (start..Time.now)).count }
   end
 
   private
