@@ -1,14 +1,35 @@
 .page-header
   h2.text-primary Burn after reading - the Burn-Notice Blog!
 
-- @articles.each do |article|
-  article
-    h2.text-warning= article.title
-    .blog-user.spacer
-      = gravatar(article.user)
-      small
-        span.text-muted wrote on <em>#{article.published_at.to_s(:long)}</em>
-        - article.tags.each do |tag|
-          span.margin-left.label.label-warning=' link_to tag, articles_path(tag: tag)
-    .content
-      == markdown(emojify(article.body.html_safe))
+.row
+  .col-lg-8
+    - if @articles.present?
+      - @articles.each do |article|
+        article
+          h2.text-warning= article.title
+          .blog-user.spacer
+            = gravatar(article.user)
+            small
+              span.text-muted wrote on <em>#{article.published_at.to_s(:long)}</em>
+              - article.tags.each do |tag|
+                span.margin-left.label.label-warning=' link_to tag, articles_path(tag: tag)
+          .content
+            == markdown(emojify(article.body.html_safe))
+      = paginate @articles
+    - else
+      h4.well Sorry, we could not find anything for <em>#{request.query_parameters.values.to_sentence}</em>, please try again later!
+  .col-lg-4
+    h3 Chronic
+    ul.nav.nav-pills
+      - @dates_count.each do |tag, count|
+        li
+          = link_to articles_path(tag: tag) do
+            = tag
+            span.badge= count
+    h3 Tagged
+    ul.nav.nav-pills
+      - @tags_count.each do |tag, count|
+        li
+          = link_to articles_path(tag: tag) do
+            = tag
+            span.badge= count
