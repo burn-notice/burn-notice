@@ -6,4 +6,5 @@ export GITHUB_CONSUMER_SECRET=b727907caea4243d586004347b62523540074749
 export TWITTER_CONSUMER_KEY=oJ2y2wLAcoQdIMyWGJxusA
 export TWITTER_CONSUMER_SECRET=kscsfZrdkqqv8KZQ0HFiDOiTDFGJbqerb5i9oIVa6s
 
+(sleep 5 ; open http://localhost:3000) &
 bundle exec rails server
