@@ -63,3 +63,22 @@
 .gray-ish {
   background-color: #32383e;
 }
+
+.success-step1 {
+  background-color: darken(#62c462, 30%);
+}
+.success-step2 {
+  background-color: darken(#62c462, 15%);
+}
+.success-step3 {
+  background-color: #62c462;
+}
+
+.step {
+  @include border-radius(1em, 1em);
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  padding-top: 0px;
+  text-shadow: none;
+}
