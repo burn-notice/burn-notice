@@ -1,7 +1,7 @@
+.page-header
 footer
-  .page-header
   .row
-    .col-lg-8.col-xs-8
+    .col-lg-8.col-xs-12
       ul.list-unstyled
         li
           = link_to root_url do
@@ -19,11 +19,13 @@ footer
             <span class="glyphicon glyphicon-retweet"></span> Twitter
         li= link_to 'https://github.com/burn-notice' do
             <span class="glyphicon glyphicon-heart-empty"></span> GitHub
-    .col-lg-4.col-xs-4
-      address
-        strong Peter Schröder<br>
-        |
-          340 Chapel Street<br>
-          K1N 7Z3 Ottawa, Ontario Canada<br>
-        <abbr title="Phone">P:</abbr> #{link_to '+1 (613) 315 6153', 'phone:+1 (613) 315 6153'}<br>
-        <abbr title="E-Mail">E:</abbr> #{mail_to 'peter@burn-notice.me'}
+    .col-lg-4.col-xs-12
+      address.well.gray-ish
+        .margin-left
+          strong Peter Schröder<br>
+          |
+            340 Chapel Street<br>
+            K1N 7Z3 Ottawa<br>
+            Ontario Canada<br>
+          <abbr title="Phone">P:</abbr> #{link_to '+1 (613) 315 6153', 'phone:+1 (613) 315 6153'}<br>
+          <abbr title="E-Mail">E:</abbr> #{mail_to 'peter@burn-notice.me'}
