@@ -33,6 +33,31 @@
             li= button_to 'Delete', notice_path(notice), method: :delete
   = paginate @notices
 - else
-  h1 You did not write a notice yet
-  p
-    = link_to 'Click here send out a notice!', new_notice_path
+  .page-header
+    h2 You are just <span class="text-success">3 simple steps</span> away from your first Burn-Notice!
+
+  .row
+    .col-lg-4.col-xs-4
+      h3.text-center draft it
+    .col-lg-4.col-xs-4
+      h3.text-center secure it
+    .col-lg-4.col-xs-4
+      h3.text-center share it
+
+  .row.spacer-large
+    .col-lg-12
+      .progress.progress-striped
+        .progress-bar.progress-bar-warning style="width: 33.33%"
+        .progress-bar.progress-bar-info style="width: 33.33%"
+        .progress-bar.progress-bar-success style="width: 33.33%"
+
+  .row
+    .col-lg-12
+      .well
+        .pull-right= link_to 'create a new Burn-Notice', new_notice_path, class: 'btn btn-success btn-lg'
+        p
+          |
+            Just follow the steps to create a new Burn-Notice.
+            Every step has a couple of explanations, so you will know exactly what the step is for.
+            Make sure to read the instructions, so your data is stored in our database with a strong password.
+            This will make unauthorized access to your nearly impossible.
