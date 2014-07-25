@@ -3,21 +3,20 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = search_scope
-    tags = Article.active.pluck(:tags)
-    @tags_count = tags.flatten.each_with_object(Hash.new(0)) { |tag, counts| counts[tag] += 1 }
-    ranges = {
-      'this year'   => 1.year.ago,
-      'this month'  => 1.month.ago,
-      'this week'   => 1.week.ago,
-    }
-    @dates_count = ranges.each_with_object(Hash.new(0)) { |(name, start), counts| counts[name] += Article.where(published_at: (start..Time.now)).count }
+    @facets   = Article.facets
+  end
+
+  def show
+    @article = Article.from_param(params[:id])
+    @facets  = Article.facets
   end
 
   private
 
   def search_scope
     scope = Article.active.page(params[:page])
-    scope = scope.where('? = ANY (tags)', params[:tag]) if params[:tag]
+    scope = scope.tagged_with(params[:tag]) if params[:tag]
+    scope = scope.in_period(params[:period]) if params[:period]
     scope
   end
 end

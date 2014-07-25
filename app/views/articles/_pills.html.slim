@@ -1,0 +1,14 @@
+h3 Chronic
+ul.nav.nav-pills
+  - facets[:dates].each do |period, count|
+    li
+      = link_to articles_path(period: period), title: "Burn-Notice blog posts for #{period}" do
+        = period
+        span.badge= count
+h3 Tagged
+ul.nav.nav-pills
+  - facets[:tags].each do |tag, count|
+    li
+      = link_to articles_path(tag: tag), title: "Burn-Notice blog posts for #{tag}" do
+        = tag
+        span.badge= count

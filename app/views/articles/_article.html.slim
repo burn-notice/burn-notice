@@ -1,0 +1,12 @@
+article
+  = link_to article, title: article.title do
+    h2.text-warning= article.title
+  .blog-user.spacer
+    = gravatar(article.user)
+    small
+      = link_to article, title: article.title do
+        span.text-muted wrote on <em>#{article.published_at.to_s(:long)}</em>
+      - article.tags.each do |tag|
+        span.margin-left.label.label-warning=' link_to tag, articles_path(tag: tag)
+  .content
+    == markdown(emojify(article.body.html_safe))
