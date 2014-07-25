@@ -13,7 +13,7 @@ class Article < ActiveRecord::Base
   scope :active, -> { where('published_at <= ?', Time.now).order('published_at DESC') }
 
   def to_param
-    "#{id}-#{title.parameterize}"
+    "#{title.parameterize}-#{id}"
   end
 
   def self.facets
@@ -27,7 +27,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.from_param(param)
-    self.find(param[/\A(\d*)-/, 1])
+    self.find(param[/-(\d*)\z/, 1])
   end
 
   def self.tagged_with(tag)
