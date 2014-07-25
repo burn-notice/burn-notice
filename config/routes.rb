@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
   resources :articles
 
+  resource :sitemap, only: :show
+
   scope '/p' do
     get  '/open/:token',  to: 'public#open',      as: :open
     post '/read',         to: 'public#read',      as: :read
