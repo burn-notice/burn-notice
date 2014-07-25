@@ -27,6 +27,7 @@ gem 'gemoji', github: 'github/gemoji'
 gem "rack-cache"
 gem 'pg'
 gem 'redcarpet'
+gem "exception_notification"
 
 group :production do
   gem 'rails_12factor'
