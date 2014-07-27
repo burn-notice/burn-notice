@@ -36,24 +36,14 @@
   .page-header
     h2 You are just <span class="text-success">3 simple steps</span> away from your first Burn-Notice!
 
-  .row
-    .col-lg-4.col-xs-4
-      h3.text-center <span class="step smaller success-step1">1</span> draft it
-    .col-lg-4.col-xs-4
-      h3.text-center <span class="step smaller success-step2">2</span> secure it
-    .col-lg-4.col-xs-4
-      h3.text-center <span class="step smaller success-step3">3</span> share it
-  .row.spacer-large
-    .col-lg-12
-      .progress
-        .progress-bar.success-step1 style="width: 33.33%"
-        .progress-bar.success-step2 style="width: 33.33%"
-        .progress-bar.success-step3 style="width: 33.33%"
-
+  = render '3_step'
   .row
     .col-lg-12
       .well
-        .pull-right= link_to 'create a new Burn-Notice', new_notice_path, class: 'btn btn-success btn-lg'
+        .pull-right
+          = link_to new_notice_path, class: 'btn btn-success btn-lg' do
+            strong.step.success-step-button> 1
+            span.text-error draft it
         p
           |
             Just follow the steps to create a new Burn-Notice.

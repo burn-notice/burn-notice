@@ -26,13 +26,19 @@
   }
 }
 
+.info {
+  text-decoration: none;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+
+}
+
 .caps {
   font-variant: small-caps;
 }
 
 .callout {
-  margin: 20px 0;
-  padding: 15px 30px 15px 15px;
   border-left: 5px solid #f89406;
 }
 
@@ -64,6 +70,10 @@
   background-color: #32383e;
 }
 
+.success-step {
+  background-color: #32383e;
+  border: 2px solid #62c462;
+}
 .success-step1 {
   background-color: darken(#62c462, 30%);
 }
@@ -72,6 +82,14 @@
 }
 .success-step3 {
   background-color: #62c462;
+}
+.success-step-muted {
+  background-color: #32383e;
+}
+.success-step-button {
+  background-color: white;
+  color: darken(#62c462, 15%);
+  border: 2px solid darken(#62c462, 15%);
 }
 
 .step {
