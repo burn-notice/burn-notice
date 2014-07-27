@@ -9,6 +9,14 @@ describe Notice do
     end
   end
 
+  context "defaults" do
+    it "is valid" do
+      notice = Fabricate(:notice)
+      expect(notice).to be_draft
+      expect(notice.token).to be_present
+    end
+  end
+
   context "encryption" do
     it "stores and reads data encryped" do
       notice.write_data('moin', 'some-password')

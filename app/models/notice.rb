@@ -13,6 +13,8 @@ class Notice < ActiveRecord::Base
   validates :token, :question, presence: :true
   validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? }
 
+  enum status: {draft: 0, open: 1, read: 2, closed: 3}
+
   def valid_secret?(secret)
     read_data(secret).present?
   end
