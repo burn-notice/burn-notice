@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     get :first_step, on: :collection
     post :first_step, on: :collection
     get :second_step, on: :member
-    post :second_step, on: :member
+    patch :second_step, on: :member
     get :third_step, on: :member
-    post :third_step, on: :member
+    patch :third_step, on: :member
     resources :openings
     resources :policies
   end

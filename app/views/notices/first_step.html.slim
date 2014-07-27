@@ -1,5 +1,4 @@
-- set_title(@title)
-- set_crumbs('Notices' => notices_path, @title => url_for)
+- set_step_info(@step)
 
 = render 'three_step', step: :first
-= render 'notice_form', notice: @notice
+= render 'notice_form', notice: @notice, url: first_step_notices_path

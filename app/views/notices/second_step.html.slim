@@ -1,0 +1,4 @@
+- set_step_info(@step)
+
+= render 'three_step', step: @step
+= render 'policy_form', notice: @notice, url: second_step_notice_path(@notice)

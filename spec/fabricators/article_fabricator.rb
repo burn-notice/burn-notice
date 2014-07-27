@@ -4,4 +4,5 @@ Fabricator(:article) do
   tags  { Faker::Lorem.words }
   published_at { Time.now }
   user
+  policy
 end

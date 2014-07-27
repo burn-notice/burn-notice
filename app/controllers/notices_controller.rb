@@ -10,15 +10,31 @@ class NoticesController < ApplicationController
   end
 
   def first_step
-    @notice = current_user.notices.build
+    if request.get?
+      @step = :first
+      @notice = current_user.notices.build
+    else
+      @notice = current_user.notices.build(create_notice_params)
+      if @notice.save
+        redirect_to second_step_notice_path(@notice)
+      end
+    end
   end
 
   def second_step
-    @notice = current_user.notices.find(params[:id])
+    @notice = current_user.notices.from_param(params[:id])
+    if request.get?
+      @step = :second
+    else
+      if @notice.update_attributes(update_notice_params)
+        redirect_to third_step_notice_path(@notice)
+      end
+    end
   end
 
   def third_step
-    @notice = current_user.notices.find(params[:id])
+    @step = :third
+    @notice = current_user.notices.from_param(params[:id])
   end
 
   def create
@@ -39,6 +55,10 @@ class NoticesController < ApplicationController
   private
 
   def create_notice_params
-    params.require(:notice).permit(:question, :answer, :content, :policy)
+    params.require(:notice).permit(:question, :answer, :content, policy_attributes: [:name])
+  end
+
+  def update_notice_params
+    params.require(:notice).permit(:question, :answer, :content, policy_attributes: [:name])
   end
 end

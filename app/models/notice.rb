@@ -2,7 +2,7 @@ class Notice < ActiveRecord::Base
   include Crypto
   before_validation :defaults, :store_encrypted
 
-  attr_accessor :question, :answer, :content
+  attr_accessor :answer, :content
 
   belongs_to :user
   has_one :policy, dependent: :destroy
@@ -39,10 +39,6 @@ class Notice < ActiveRecord::Base
   def authorized
     return unless openings.present?
     openings.any?(&:authorized?)
-  end
-
-  def policy
-    read_attribute(:policy) || Policy.from_type('burn_after_reading')
   end
 
   private

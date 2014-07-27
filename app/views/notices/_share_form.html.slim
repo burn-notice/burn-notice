@@ -1,0 +1,46 @@
+- url ||= url_for(notice)
+= form_errors notice
+= form_for notice, url: url, html: {class: "form-horizontal"} do |form|
+  = form.fields_for :policy do |policy_fields|
+    .row
+      .col-lg-12
+        fieldset
+          legend Share your Burn-Notice
+    .row
+      .col-lg-6
+        .form-group
+          .col-lg-10.col-lg-offset-2
+            = policy_fields.label :name, value: :burn_after_reading do
+              =' policy_fields.radio_button :name, :burn_after_reading
+              | Burn after reading
+      .col-lg-6
+        .well.well-sm.callout
+          a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This option offers the highest security as it will be destroyed ASAP." title="Simple and secure!"
+          span< Destroy the Burn-Notice immediately after it has been read by the recipient.
+    .row
+      .col-lg-6
+        .form-group
+          .col-lg-10.col-lg-offset-2
+            = policy_fields.label :name, value: :burn_after_time do
+              =' policy_fields.radio_button :name, :burn_after_time
+              | Burn after time
+      .col-lg-6
+        .well.well-sm.callout
+          a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="When you need to make sure that a message can be read until a specific date." title="Valid until!"
+          span< This will keep the Burn-Notice alife for a defined period of time.
+    .row
+      .col-lg-6
+        .form-group
+          .col-lg-10.col-lg-offset-2
+            = policy_fields.label :name, value: :burn_after_openings do
+              =' policy_fields.radio_button :name, :burn_after_openings
+              | Burn after openings
+      .col-lg-6
+        .well.well-sm.callout
+          a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This might be handy for situations where you want to share a Burn-Notice with multiple recipients." title="Secrets for your friends!"
+          span< The Burn-Notice will get destroyed after a fixed number of decryptions.
+    .row
+      .col-lg-6
+        .form-group
+          .col-lg-10.col-lg-offset-2
+            = policy_fields.submit "i'm done, continue", class: "btn btn-success"
