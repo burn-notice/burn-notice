@@ -36,12 +36,12 @@
   .page-header
     h2 You are just <span class="text-success">3 simple steps</span> away from your first Burn-Notice!
 
-  = render '3_step'
+  = render 'three_step'
   .row
     .col-lg-12
       .well
         .pull-right
-          = link_to new_notice_path, class: 'btn btn-success btn-lg' do
+          = link_to first_step_notices_path, class: 'btn btn-success btn-lg' do
             strong.step.success-step-button> 1
             span.text-error draft it
         p

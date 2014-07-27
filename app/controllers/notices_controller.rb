@@ -9,6 +9,18 @@ class NoticesController < ApplicationController
     @notice = current_user.notices.build
   end
 
+  def first_step
+    @notice = current_user.notices.build
+  end
+
+  def second_step
+    @notice = current_user.notices.find(params[:id])
+  end
+
+  def third_step
+    @notice = current_user.notices.find(params[:id])
+  end
+
   def create
     @notice = current_user.notices.build(create_notice_params)
     if @notice.save
