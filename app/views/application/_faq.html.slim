@@ -1,5 +1,5 @@
 .page-header.hidden-xs
-  h2 <span class="glyphicon glyphicon-info-sign smaller"></span> FAQ
+  h2#faq <span class="glyphicon glyphicon-info-sign smaller"></span> FAQ
 
 .panel-group  id="accordion"
   .panel.panel-info
@@ -16,7 +16,7 @@
         p
          |
            There are ways to secure those communication channels
-           like #{link_to 'PGP', 'https://en.wikipedia.org/wiki/Pretty_Good_Privacy'} for email,
+           like #{link_to 'PGP', 'https://en.wikipedia.org/wiki/Pretty_Good_Privacy', title: 'PGP - Pretty Good Privacy is used to encrypt e-mail messages by using public and private key-pairs.'} for e-mail,
            but most of them are far from trivial to use and understand.
         p
           |
@@ -51,7 +51,7 @@
       .panel-body
         p
           ' Burn-Notice uses the
-          =' link_to "Advanced-Encryption-Standard", "http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"
+          =' link_to "Advanced-Encryption-Standard", "http://en.wikipedia.org/wiki/Advanced_Encryption_Standard", title: 'AES - Advanced Encryption Standard is a set of encryption technologies that uses symmetric algorithms to encrypt data.'
           |
             to symmetrically encrypt your message with a
             <span data-toggle="tooltip" data-placement="bottom" data-original-title="256-bit encryption offers a very high level of security. Encrypting such a message is very safe and can only be decrypted with the correct password.">
@@ -60,7 +60,7 @@
             </span>
         p
           ' All requests to the Burn-Notice website are secured via
-          =' link_to 'Secure Socets Layer', 'http://en.wikipedia.org/wiki/Secure_Sockets_Layer'
+          =' link_to 'Secure Socets Layer', 'http://en.wikipedia.org/wiki/Secure_Sockets_Layer', title: 'SSL - Secure Socket Layer is the standard for encrypted communication in the WWW.'
           |
             <span data-toggle="tooltip" data-placement="bottom" data-original-title="SSL connections allow for secure ways of using the world wide web. Your data can not be read by a 3rd party, even when using the coffeshop WIFI or other untrusted communication channels.">
               <span class="glyphicon glyphicon-lock"></span>

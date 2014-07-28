@@ -17,8 +17,8 @@ module ApplicationHelper
     @crumbs = crumbs
   end
 
-  def title
-    parts = ['Burn-Notice']
+  def title(default = 'Burn-Notice')
+    parts = [default]
     parts << content_for(:title) if content_for?(:title)
     parts.join(' / ')
   end
