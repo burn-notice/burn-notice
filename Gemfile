@@ -10,6 +10,7 @@ gem "compass-rails"
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'zeroclipboard-rails'
 gem 'jbuilder'
 gem 'sucker_punch'
 gem 'premailer-rails'

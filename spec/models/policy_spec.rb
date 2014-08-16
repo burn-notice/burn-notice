@@ -14,11 +14,11 @@ describe Policy do
       policy = Policy.from_type('burn_after_reading')
       expect(policy).to be_valid
 
-      policy = Policy.from_type('burn_after_time', duration: 5.minutes)
+      policy = Policy.from_type('burn_after_time', interval: 5)
       expect(policy).to be_valid
-      expect(policy.setting).to eql({"duration"=>300})
+      expect(policy.setting).to eql({"duration"=>5})
 
-      policy = Policy.from_type('burn_after_openings', count: 7)
+      policy = Policy.from_type('burn_after_openings', interval: 7)
       expect(policy).to be_valid
       expect(policy.setting).to eql({"count"=>7})
     end
