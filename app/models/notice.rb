@@ -53,7 +53,7 @@ class Notice < ActiveRecord::Base
 
   class << self
     def from_param(token)
-      find_by_token(token)
+      find_by_token!(token)
     end
   end
 end

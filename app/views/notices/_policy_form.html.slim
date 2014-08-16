@@ -1,50 +1,42 @@
-- url ||= url_for(notice)
-= form_errors notice
-= form_for notice, url: url, html: {class: "form-horizontal"} do |form|
-  = form.fields_for Policy.from_type('burn_after_reading') do |policy_fields|
-    .row
-      .col-lg-12
-        fieldset
-          legend Select a security policy
-    .row
-      .col-lg-11.col-lg-offset-1
-        .hidden=' policy_fields.radio_button :name, :burn_after_reading
-        .well.callout
-          span< By default
-          ='< policy_fields.radio_button :name, :burn_after_reading
-          = policy_fields.label :name, "we burn after reading", value: :burn_after_reading, class: 'text-warning'
-          span, this offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!
-    .row
-      .col-lg-6
-        .form-group
-          .col-lg-10.col-lg-offset-2
-            .input-group
-              span.input-group-addon
-                =' policy_fields.radio_button :name, :burn_after_time
-                = policy_fields.label :name, "Burn after", value: :burn_after_time
-              = policy_fields.number_field :interval, placeholder: 'minimum 1 day', min: 1, class: "form-control text-right"
-              span.input-group-addon days
-      .col-lg-6
-        .well.well-sm.callout
-          a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="When you need to make sure that a message can be read until a specific date." title="Valid until!"
-          span< This will keep the Burn-Notice alive for a defined period of time.
-    .row
-      .col-lg-6
-        .form-group
-          .col-lg-10.col-lg-offset-2
-           .input-group
-              span.input-group-addon
-                = policy_fields.label :name, value: :burn_after_openings do
-                  =' policy_fields.radio_button :name, :burn_after_openings
-                  | Burn after
-              = policy_fields.number_field :interval, placeholder: 'minimum 1 reads', min: 1, class: "form-control text-right"
-              span.input-group-addon reads
-      .col-lg-6
-        .well.well-sm.callout
-          a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This might be handy for situations where you want to share a Burn-Notice with multiple recipients." title="Secrets for your friends!"
-          span< The Burn-Notice will get destroyed after a fixed number of decryptions.
+= form.fields_for Policy.from_name do |policy_fields|
+  .row
+    .col-lg-12
+      fieldset
+        legend Select a security policy
+  .row
+    .col-lg-11.col-lg-offset-1
+      .hidden=' policy_fields.radio_button :name, :burn_after_reading
+      .well.callout
+        span< By default
+        ='< policy_fields.radio_button :name, :burn_after_reading
+        = policy_fields.label :name, "we burn after reading", value: :burn_after_reading, class: 'text-warning'
+        span, this offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!
   .row
     .col-lg-6
       .form-group
         .col-lg-10.col-lg-offset-2
-          = form.submit 'next step, share it!', class: "btn btn-success"
+          .input-group
+            span.input-group-addon
+              =' policy_fields.radio_button :name, :burn_after_time
+              = policy_fields.label :name, "Burn after", value: :burn_after_time
+            = policy_fields.number_field :interval, placeholder: 'minimum 1 day', min: 1, class: "form-control text-right"
+            span.input-group-addon days
+    .col-lg-6
+      .well.well-sm.callout
+        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="When you need to make sure that a message can be read until a specific date." title="Valid until!"
+        span< This will keep the Burn-Notice alive for a defined period of time.
+  .row
+    .col-lg-6
+      .form-group
+        .col-lg-10.col-lg-offset-2
+         .input-group
+            span.input-group-addon
+              = policy_fields.label :name, value: :burn_after_openings do
+                =' policy_fields.radio_button :name, :burn_after_openings
+                | Burn after
+            = policy_fields.number_field :interval, placeholder: 'minimum 1 reads', min: 1, class: "form-control text-right"
+            span.input-group-addon reads
+    .col-lg-6
+      .well.well-sm.callout
+        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This might be handy for situations where you want to share a Burn-Notice with multiple recipients." title="Secrets for your friends!"
+        span< The Burn-Notice will get destroyed after a fixed number of decryptions.

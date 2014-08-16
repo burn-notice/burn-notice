@@ -14,7 +14,7 @@ class NoticesController < ApplicationController
       @step = :first
       @notice = current_user.notices.build
     else
-      @notice = current_user.notices.build(create_notice_params)
+      @notice = current_user.notices.build(notice_params)
       if @notice.save
         redirect_to second_step_notice_path(@notice)
       end
@@ -26,7 +26,8 @@ class NoticesController < ApplicationController
     if request.get?
       @step = :second
     else
-      if @notice.update_attributes(update_notice_params)
+      @notice.policy = Policy.from_name(policy_params.symbolize_keys)
+      if @notice.save
         redirect_to third_step_notice_path(@notice)
       end
     end
@@ -38,7 +39,8 @@ class NoticesController < ApplicationController
   end
 
   def create
-    @notice = current_user.notices.build(create_notice_params)
+    @notice = current_user.notices.build(notice_params)
+    @notice.policy = Policy.from_name(policy_params.symbolize_keys)
     if @notice.save
       redirect_to notices_path, notice: 'You created a new notice!'
     else
@@ -54,11 +56,11 @@ class NoticesController < ApplicationController
 
   private
 
-  def create_notice_params
-    params.require(:notice).permit(:question, :answer, :content, policy_attributes: [:name])
+  def notice_params
+    params.require(:notice).permit(:question, :answer, :content)
   end
 
-  def update_notice_params
-    params.require(:notice).permit(:question, :answer, :content, policy_attributes: [:name])
+  def policy_params
+    params.require(:notice).require(:policy).permit(:name, :interval)
   end
 end

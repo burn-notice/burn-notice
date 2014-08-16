@@ -1,4 +1,12 @@
 - set_step_info(@step)
 
 = render 'three_step', step: @step
-= render 'policy_form', notice: @notice, url: second_step_notice_path(@notice)
+
+= form_errors @notice
+= form_for @notice, url: second_step_notice_path(@notice), html: {class: "form-horizontal"} do |form|
+  = render 'policy_form', notice: @notice, form: form
+  .row
+    .col-lg-6
+      .form-group
+        .col-lg-10.col-lg-offset-2
+          = form.submit 'next step, share it!', class: "btn btn-success"
