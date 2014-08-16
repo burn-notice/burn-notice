@@ -25,7 +25,15 @@
             span class="label label-primary" Unread
         td= notice.created_at.to_s(:short)
         td= notice.policy.name.humanize
-        td= link_to "#{notice.openings.size} times", notice_openings_path(notice)
+        td.openings
+          - if notice.openings.present?
+            = render 'opening_modal', notice: notice
+            = link_to notice_openings_path(notice), "data-toggle" => "modal", "data-target" => "#opening_modal_#{notice.id}" do
+              span.glyphicon.glyphicon-question-sign'
+              span #{notice.openings.size} times
+          - else
+            span -
+
         td
           .btn-group
             button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
@@ -41,7 +49,7 @@
   hr.spacer
   .row
     .col-lg-12
-      .pull-right= link_to "Send a new Burn-Notice", new_notice_path, class: 'btn btn-default btn-lg'
+      .pull-right= link_to "Send a new Burn-Notice", new_notice_path, class: 'btn btn-success btn-lg'
 - else
   .page-header
     h2 You are just <span class="text-success">3 simple steps</span> away from your first Burn-Notice!

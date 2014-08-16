@@ -1,1 +1,19 @@
-p= @data
+.panel.panel-success
+  .panel-heading
+    h3.panel-title Your answer was correct, encryption was successful!
+  .panel-body
+    p.lead= @data
+  .panel-footer
+    a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="We will log all read attempts for messages and notify the sender for successful decryptions. The Notice will get destroyed immediately afterwards." title="Burn after reading"
+    small< This message will self-destruct in five seconds!
+
+hr.spacer
+
+- if signed_in?
+  = link_to 'answer with Burn-Notice', new_notice_path, class: "btn btn-success btn-lg"
+- else
+  .row
+    .col-lg-3
+      .pull-right= link_to 'sign-up to our private &beta;eta'.html_safe, beta_path, class: "btn btn-lg btn-primary"
+    .col-lg-9
+      .well.callout If you want to participate in our private &beta;eta just sign up with your e-mail address!

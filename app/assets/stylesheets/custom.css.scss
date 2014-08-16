@@ -26,12 +26,18 @@
   }
 }
 
+td.openings a {
+  text-decoration: none;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
 .info {
   text-decoration: none;
   &:hover, &:active, &:focus {
     text-decoration: none;
   }
-
 }
 
 .caps {

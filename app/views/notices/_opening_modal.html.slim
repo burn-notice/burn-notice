@@ -1,0 +1,30 @@
+- grouped_openings = notice.openings.group_by(&:authorized)
+div id="opening_modal_#{notice.id}" class="modal"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
+        h4.modal-title Openings for Burn-Notice from #{notice.created_at.to_s(:short)}
+      .modal-body
+        - if unauthorized = grouped_openings[false]
+          .panel.panel-danger
+            .panel-heading
+              h3.panel-title Unauthorized requests
+            .panel-body
+              ul.list-group
+                - unauthorized.group_by(&:ip).each do |ip, openings|
+                  li.list-group-item
+                    span.badge= openings.size
+                    = ip
+        - if authorized = grouped_openings[true]
+          .panel.panel-success
+            .panel-heading
+              h3.panel-title Authorized requests
+            .panel-body
+              ul.list-group
+                - unauthorized.group_by(&:ip).each do |ip, openings|
+                  li.list-group-item
+                    span.badge= openings.size
+                    = ip
+      .modal-footer
+        button type="button" class="btn btn-default" data-dismiss="modal" Close
