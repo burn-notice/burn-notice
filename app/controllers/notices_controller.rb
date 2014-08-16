@@ -46,6 +46,7 @@ class NoticesController < ApplicationController
         mail = UserMailer.notify(current_user, recepient, @notice)
         MailerJob.new.async.deliver(mail)
       end
+
       redirect_to :back, success: "Your Burn-Notice was sent to #{recepients.to_sentence}"
     end
   end
@@ -60,9 +61,31 @@ class NoticesController < ApplicationController
     end
   end
 
-  def destroy
+  def enable
     @notice = current_user.notices.from_param(params[:id])
-    @notice.destroy!
+    @notice.update! status: :open
+
+    redirect_to notices_path, notice: 'The notice is enabled!'
+  end
+
+  def disable
+    @notice = current_user.notices.from_param(params[:id])
+    @notice.update! status: :disabled
+
+    redirect_to notices_path, notice: 'The notice is disabled!'
+  end
+
+  def burn
+    @notice = current_user.notices.from_param(params[:id])
+    @notice.burn!
+
+    redirect_to notices_path, notice: 'The notice was burned!'
+  end
+
+  def destroy
+    @notice = current_user.notices.unscoped.from_param(params[:id])
+    @notice.update! status: :deleted
+
     redirect_to notices_path, notice: 'The notice is deleted!'
   end
 

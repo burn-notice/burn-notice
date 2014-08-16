@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     get :third_step, on: :member
     get :share, on: :member
     patch :share, on: :member
+    patch :enable, on: :member
+    patch :disable, on: :member
+    patch :burn, on: :member
     resources :openings
     resources :policies
   end

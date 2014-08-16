@@ -1,4 +1,6 @@
 class Notice < ActiveRecord::Base
+  DEFAULT_NUMBER_OF_UNAUTHORIZED_ATTEMPTS = 3
+
   include Crypto
   before_validation :defaults, :store_encrypted
 
@@ -13,7 +15,9 @@ class Notice < ActiveRecord::Base
   validates :token, :question, presence: :true
   validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? }
 
-  enum status: {draft: 0, open: 1, read: 2, closed: 3}
+  enum status: {open: 0, disabled: 1, closed: 2, deleted: 3}
+
+  scope :active, -> { where("status <> ?", Notice.statuses[:deleted]) }
 
   def valid_secret?(secret)
     read_data(secret).present?
@@ -36,6 +40,31 @@ class Notice < ActiveRecord::Base
     token
   end
 
+  def apply_policy(authorized:)
+    if authorized
+      case policy.name
+      when "burn_after_reading"
+        burn!
+      when "burn_after_time"
+        if created_at + policy.setting[:duration].to_i.days < Time.now
+          burn!
+        end
+      when "burn_after_openings"
+        if openings.authorized.count >= policy.setting[:duration].to_i
+          burn!
+        end
+      end
+    else
+      if openings.reject { |opening| opening.authorized? }.size % DEFAULT_NUMBER_OF_UNAUTHORIZED_ATTEMPTS == 0
+        update! status: :disabled
+      end
+    end
+  end
+
+  def burn!
+    update! status: :closed, data: {all: 'redaced'}
+  end
+
   def authorized
     return unless openings.present?
     openings.any?(&:authorized?)
@@ -53,7 +82,7 @@ class Notice < ActiveRecord::Base
 
   class << self
     def from_param(token)
-      find_by_token!(token)
+      active.find_by_token!(token)
     end
   end
 end

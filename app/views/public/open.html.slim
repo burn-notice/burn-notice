@@ -1,6 +1,8 @@
 = form_errors @notice
+
 = form_tag read_path, class: "form-horizontal" do |form|
-  = hidden_field_tag :token, params[:token]
+  = hidden_field_tag :token, @notice.token
+  = hidden_field_tag :opening_id, @opening.id
   .row
     .col-lg-12
       fieldset

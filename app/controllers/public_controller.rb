@@ -2,26 +2,31 @@ class PublicController < ApplicationController
   respond_to :html
 
   def open
-    @notice = Notice.find_by_token!(params[:token])
-  end
-
-  def read
-    @notice = Notice.find_by_token!(params[:token])
-    @opening = @notice.openings.build do |it|
+    @notice = Notice.open.find_by_token!(params[:token])
+    @opening = @notice.openings.create do |it|
+      it.authorized = false
       it.ip = request.ip
       it.meta = {
         user_agent: request.user_agent,
         referer: request.referer,
       }
     end
+  end
+
+  def read
+    @notice = Notice.open.find_by_token!(params[:token])
     if @notice.valid_secret?(params[:answer])
-      @opening.authorized = true
-      @opening.save
+      @opening = @notice.openings.find(params[:opening_id])
+      @opening.update authorized: true
+      @notice.apply_policy(authorized: true)
       @data = @notice.read_data(params[:answer])
     else
-      @opening.authorized = false
-      @opening.save
-      redirect_to(open_path(@notice), alert: 'The shared secret was invalid!')
+      @notice.apply_policy(authorized: false)
+      if @notice.disabled?
+        redirect_to(root_path, alert: 'The notice has been disabled due to too many invalid attempts!')
+      else
+        redirect_to(open_path(@notice), alert: 'The shared secret was invalid!')
+      end
     end
   end
 
