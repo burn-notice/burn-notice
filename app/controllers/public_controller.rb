@@ -14,10 +14,10 @@ class PublicController < ApplicationController
         referer: request.referer,
       }
     end
-    if @notice.valid_secret?(params[:password])
+    if @notice.valid_secret?(params[:answer])
       @opening.authorized = true
       @opening.save
-      @data = @notice.read_data(params[:password])
+      @data = @notice.read_data(params[:answer])
     else
       @opening.authorized = false
       @opening.save
