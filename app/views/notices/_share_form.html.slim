@@ -1,52 +1,51 @@
-- url ||= url_for(notice)
-= form_errors notice
-= form_for notice, url: url, html: {class: "form-horizontal"} do |form|
-  .row
-    .col-lg-12
-      fieldset
-        legend Share your Burn-Notice
-  .row
-    .col-lg-12
-      .well.well-sm
-        .pull-right
-          javascript:
-            $(document).ready(function() {
-              var clip = new ZeroClipboard($("#d_clip_button"))
-            });
-          = button_tag title: 'Copy to clipboard', class: "btn btn-primary btn-xs", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
-            a.glyphicon.glyphicon-list-alt'
-            span Copy to clipboard
-        em> Secret share URL for your Burn-Notice:
-        => link_to open_url(notice), open_url(notice)
+= form_errors @notice
 
+.row
+  .col-lg-12
+    fieldset
+      legend Share your Burn-Notice
 
-  hr.spacer
+.row
+  .col-lg-12
+    .well.well-sm
+      .pull-right
+        javascript:
+          $(document).ready(function() {
+            var clip = new ZeroClipboard($("#d_clip_button"))
+          });
+        = button_tag title: 'Copy to clipboard', class: "btn btn-primary btn-xs", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
+          a.glyphicon.glyphicon-list-alt'
+          span Copy to clipboard
+      em> Secret share URL for your Burn-Notice:
+      => link_to open_url(notice), open_url(notice)
 
-  .row
-    .col-lg-4
-      .form-group
-        .col-lg-3
-          = form.label :share_recipients, 'Recipients', class: "control-label"
-        .col-lg-9
-          = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control'
-    .col-lg-2
-      = form.submit "send E-Mail", class: "btn btn-success"
-    .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!" title="Anonymity and data privacy"
-        span< One or many e-mail addresses spearated by <code>,</code> or whitespace.
+hr.spacer
 
-  hr.spacer
+.row
+  = form.label :share_recipients, 'Recipients', class: "col-lg-2 control-label"
+  .col-lg-4
+    .input-group
+      = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control'
+      span.input-group-btn
+        = form.submit "notify by E-Mail", class: "btn btn-success"
+  .col-lg-6
+    .well.well-sm.callout
+      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!" title="Anonymity and data privacy"
+      span< Separate e-mails addresses with <code class="text-muted">,</code> or whitespace.
 
-  .row
-    .col-lg-2.col-lg-offset-4
-      = link_to "send Tweet", "https://twitter.com/share?text=@user there is a Burn-Notice for you at &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success'
-    .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private." title="Twitter and privacy"
-        span< Tweet the Burn-Notice using the Twitter <em>@mention</em> or direct message.
+hr.spacer
 
-  hr.spacer
+.row
+  .col-lg-6
+    .pull-right= link_to "https://twitter.com/share?text=@user there is a Burn-Notice for you at &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success' do
+      span.glyphicon.glyphicon-comment
+      span< send notification by Twitter
+  .col-lg-6
+    .well.well-sm.callout
+      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private." title="Twitter and privacy"
+      span< Tweet the Burn-Notice using the Twitter <em>@mention</em> or direct message.
 
-  .row
-    .pull-right= link_to "I'm done sharing", notices_path, class: 'btn btn-default btn-lg'
+hr.spacer
+
+.row
+  .pull-right= link_to "I'm done sharing", notices_path, class: 'btn btn-default btn-lg'

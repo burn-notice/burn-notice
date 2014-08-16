@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     get :second_step, on: :member
     patch :second_step, on: :member
     get :third_step, on: :member
-    patch :third_step, on: :member
+    get :share, on: :member
+    patch :share, on: :member
     resources :openings
     resources :policies
   end

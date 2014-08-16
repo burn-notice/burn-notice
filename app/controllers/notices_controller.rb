@@ -38,6 +38,18 @@ class NoticesController < ApplicationController
     @notice = current_user.notices.from_param(params[:id])
   end
 
+  def share
+    @notice = current_user.notices.from_param(params[:id])
+    if params[:notice] && recepients = params.require(:notice)[:share_recipients]
+      recepients = recepients.strip.split(/[\s,;]+/)
+      recepients.each do |recepient|
+        mail = UserMailer.notify(current_user, recepient, @notice)
+        MailerJob.new.async.deliver(mail)
+      end
+      redirect_to :back, success: "Your Burn-Notice was sent to #{recepients.to_sentence}"
+    end
+  end
+
   def create
     @notice = current_user.notices.build(notice_params)
     @notice.policy = Policy.from_name(policy_params.symbolize_keys)

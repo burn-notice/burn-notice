@@ -12,4 +12,11 @@ class UserMailer < ActionMailer::Base
 
     mail to: @beta_user.email, subject: 'Welcome to our private ßeta!'
   end
+
+  def notify(user, email, notice)
+    @user = user
+    @notice = notice
+
+    mail to: email, subject: "You've got a new Burn-Notice!", reply_to: user.email
+  end
 end
