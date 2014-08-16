@@ -32,7 +32,6 @@
               span #{notice.openings.size} times
           - else
             span -
-
         td
           .btn-group
             button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
@@ -40,12 +39,12 @@
             ul.dropdown-menu role="menu"
               - if notice.disabled?
                 li= link_to 'Enable', enable_notice_path(notice), method: :patch
-                li= link_to 'Burn', burn_notice_path(notice), method: :patch
+                li= link_to 'Burn', burn_notice_path(notice), method: :patch, data: {confirm: "This can't be undone!"}
               - elsif notice.open?
                 li= link_to 'Share', share_notice_path(notice)
                 li= link_to 'Disable', disable_notice_path(notice), method: :patch
-                li= link_to 'Burn', burn_notice_path(notice), method: :patch
-              li= link_to 'Delete', notice_path(notice), method: :delete
+                li= link_to 'Burn', burn_notice_path(notice), method: :patch, data: {confirm: "This can't be undone!"}
+              li= link_to 'Delete', notice_path(notice), method: :delete, data: {confirm: "This can't be undone!"}
 
   = paginate @notices
 

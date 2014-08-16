@@ -1,3 +1,5 @@
-h2= link_to 'Notices', notices_path
+- set_title('Profile')
+- set_crumbs('Profile' => url_for)
+
 h2= link_to 'Settings', edit_user_path(current_user)
 h2= link_to 'Payment', '#'

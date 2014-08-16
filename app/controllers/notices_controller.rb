@@ -7,6 +7,7 @@ class NoticesController < ApplicationController
 
   def new
     @notice = current_user.notices.build
+    @notice.policy = Policy.from_name
   end
 
   def first_step
@@ -15,6 +16,7 @@ class NoticesController < ApplicationController
       @notice = current_user.notices.build
     else
       @notice = current_user.notices.build(notice_params)
+      @notice.policy = Policy.from_name
       if @notice.save
         redirect_to second_step_notice_path(@notice)
       end
@@ -36,19 +38,12 @@ class NoticesController < ApplicationController
   def third_step
     @step = :third
     @notice = current_user.notices.from_param(params[:id])
+    share_via_email(@notice)
   end
 
   def share
     @notice = current_user.notices.from_param(params[:id])
-    if params[:notice] && recepients = params.require(:notice)[:share_recipients]
-      recepients = recepients.strip.split(/[\s,;]+/)
-      recepients.each do |recepient|
-        mail = UserMailer.notify(current_user, recepient, @notice)
-        MailerJob.new.async.deliver(mail)
-      end
-
-      redirect_to :back, success: "Your Burn-Notice was sent to #{recepients.to_sentence}"
-    end
+    share_via_email(@notice)
   end
 
   def create
@@ -91,11 +86,27 @@ class NoticesController < ApplicationController
 
   private
 
+  def share_via_email(notice)
+    if params[:notice]
+      if recepients = params.require(:notice)[:share_recipients].presence
+        recepients = recepients.strip.split(/[\s,;]+/)
+        recepients.each do |recepient|
+          mail = UserMailer.notify(current_user, recepient, notice)
+          MailerJob.new.async.deliver(mail)
+        end
+
+        redirect_to :back, notice: "Your Burn-Notice was sent to #{recepients.to_sentence}"
+      else
+        notice.errors.add(:share_recipients, :blank)
+      end
+    end
+  end
+
   def notice_params
     params.require(:notice).permit(:question, :answer, :content)
   end
 
   def policy_params
-    params.require(:notice).require(:policy).permit(:name, :interval)
+    params.require(:notice).require(:policy_attributes).permit(:name, :interval)
   end
 end

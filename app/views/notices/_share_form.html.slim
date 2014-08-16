@@ -1,51 +1,41 @@
-= form_errors @notice
-
 .row
   .col-lg-12
     fieldset
       legend Share your Burn-Notice
-
 .row
-  .col-lg-12
-    .well.well-sm
-      .pull-right
-        javascript:
-          $(document).ready(function() {
-            var clip = new ZeroClipboard($("#d_clip_button"))
-          });
-        = button_tag title: 'Copy to clipboard', class: "btn btn-primary btn-xs", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
-          a.glyphicon.glyphicon-list-alt'
-          span Copy to clipboard
-      em> Secret share URL for your Burn-Notice:
-      => link_to open_url(notice), open_url(notice)
-
-hr.spacer
-
-.row
-  = form.label :share_recipients, 'Recipients', class: "col-lg-2 control-label"
-  .col-lg-4
+  .col-lg-5.col-lg-offset-1
     .input-group
       = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control'
       span.input-group-btn
-        = form.submit "notify by E-Mail", class: "btn btn-success"
+        = form.submit "send link by e-mail", class: "btn btn-success"
   .col-lg-6
     .well.well-sm.callout
       a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!" title="Anonymity and data privacy"
       span< Separate e-mails addresses with <code class="text-muted">,</code> or whitespace.
-
-hr.spacer
-
 .row
   .col-lg-6
     .pull-right= link_to "https://twitter.com/share?text=@user there is a Burn-Notice for you at &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success' do
       span.glyphicon.glyphicon-comment
-      span< send notification by Twitter
+      span< send link by Twitter
   .col-lg-6
     .well.well-sm.callout
       a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private." title="Twitter and privacy"
       span< Tweet the Burn-Notice using the Twitter <em>@mention</em> or direct message.
+.row
+  .col-lg-6
+    javascript:
+      $(document).ready(function() {
+        var clip = new ZeroClipboard($("#d_clip_button"))
+      });
+    .pull-right= button_tag title: 'Copy link to clipboard', class: "btn btn-success", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
+      a.glyphicon.glyphicon-list-alt'
+      span Copy link to clipboard
+  .col-lg-6
+    .well.well-sm.callout
+      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Paste the contents of your clipoard with <code>CMD+V</code> on Mac or <code>CTRL+V</code> on Windows." title="Copy &amp; Paste"
+      span< Use copy &amp; paste to send the link over any communication channel.
 
 hr.spacer
 
 .row
-  .pull-right= link_to "I'm done sharing", notices_path, class: 'btn btn-default btn-lg'
+  .pull-right= link_to "I'm done sharing, take me back to the dasboard", notices_path, class: 'btn btn-default'

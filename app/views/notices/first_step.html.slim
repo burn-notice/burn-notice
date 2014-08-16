@@ -6,7 +6,5 @@
 = form_for @notice, url: first_step_notices_path, html: {class: "form-horizontal"} do |form|
   = render 'notice_form', notice: @notice, form: form
   .row
-    .col-lg-6
-      .form-group
-        .col-lg-10.col-lg-offset-2
-          = form.submit 'next step, secure it!', class: "btn btn-success"
+    .col-lg-6.col-lg-offset-2
+      = form.submit 'next step, secure it!', class: "btn btn-success"
