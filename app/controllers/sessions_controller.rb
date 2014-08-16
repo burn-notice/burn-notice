@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    path = request.env['omniauth.origin'] || root_path
+    path = request.env['omniauth.origin'] || notices_path
     auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
     if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
       sign_in(authorization.user)

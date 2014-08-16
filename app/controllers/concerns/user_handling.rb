@@ -5,13 +5,13 @@ module UserHandling
 
   def authenticate!
     unless signed_in?
-      redirect_to root_path, alert: t("flash.not_authenticated")
+      redirect_to root_path, alert: "You are not logged in!"
     end
   end
 
   def authenticate_current_user!
     unless signed_in? && current_user?
-      redirect_to root_path, alert: t("flash.not_authenticated")
+      redirect_to root_path, alert: "You are not logged in with the proper account!"
     end
   end
 

@@ -22,7 +22,7 @@ div id="opening_modal_#{notice.id}" class="modal"
               h3.panel-title Authorized requests
             .panel-body
               ul.list-group
-                - unauthorized.group_by(&:ip).each do |ip, openings|
+                - authorized.group_by(&:ip).each do |ip, openings|
                   li.list-group-item
                     span.badge= openings.size
                     = ip

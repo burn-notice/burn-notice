@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :authorizations
 
-  validates :email, :nickname, :token, presence: true, uniqueness: true
+  validates :email, :token, presence: true, uniqueness: true
 
   def salt
     authorizations.first.uid
