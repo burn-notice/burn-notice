@@ -9,9 +9,9 @@ describe User do
     end
   end
 
-  context "authorization" do
-    it "creates new users when they are unkown" do
-      expect { User.handle_authorization(GITHUB_AUTH_HASH) }.to change { User.count + Authorization.count }.by(2)
-    end
-  end
+  # context "authorization" do
+  #   it "creates new users when they are unkown" do
+  #     expect { User.handle_authorization(GITHUB_AUTH_HASH) }.to change { User.count + Authorization.count }.by(2)
+  #   end
+  # end
 end

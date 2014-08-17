@@ -1,5 +1,9 @@
 - set_title('Profile')
 - set_crumbs('Profile' => url_for)
 
-h2= link_to 'Settings', edit_user_path(current_user)
-h2= link_to 'Payment', '#'
+h2 Authorizations
+
+ul
+  - existing_providers = current_user.authorizations.map(&:provider)
+  - %w(twitter github facebook).each do |provider|
+    li= link_to_unless existing_providers.include?(provider), provider.humanize, "/auth/#{provider}"

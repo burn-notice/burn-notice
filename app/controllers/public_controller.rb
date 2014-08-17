@@ -18,8 +18,8 @@ class PublicController < ApplicationController
     if @notice.valid_secret?(params[:answer])
       @opening = @notice.openings.find(params[:opening_id])
       @opening.update authorized: true
-      @notice.apply_policy(authorized: true)
       @data = @notice.read_data(params[:answer])
+      @notice.apply_policy(authorized: true)
     else
       @notice.apply_policy(authorized: false)
       if @notice.disabled?

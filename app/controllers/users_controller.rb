@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_current_user!
 
-  def mailing
-    mail = UserMailer.signup(user)
-    MailerJob.new.async.deliver(mail)
+  def show
+  end
 
-    render text: 'ok'
+  def update
   end
 
   private

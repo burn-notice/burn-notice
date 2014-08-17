@@ -1,8 +1,9 @@
 .page-header(id="banner")
-  ul.breadcrumb
-    - @crumbs.each do |name, path|
-      - if path == url_for
-        li.active= name
-      - else
-        li
-          a= link_to name, path
+  - if @crumbs.present?
+    ul.breadcrumb
+      - @crumbs.each do |name, path|
+        - if path == url_for
+          li.active= name
+        - else
+          li
+            a= link_to name, path

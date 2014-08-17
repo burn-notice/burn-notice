@@ -1,12 +1,15 @@
 class SessionsController < ApplicationController
   def create
-    path = request.env['omniauth.origin'] || notices_path
+    # path = request.env['omniauth.origin']
     auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
     if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
       sign_in(authorization.user)
-      redirect_to path, notice: "Hi #{authorization.user.nickname}, welcome back!"
+      redirect_to notices_path, notice: "Hi #{authorization.user.nickname}, welcome back!"
+    elsif signed_in?
+      current_user.authorizations.create! provider: auth['provider'], uid: auth['uid']
+      redirect_to user_path(current_user), notice: "Connected your account to #{auth['provider']}!"
     else
-      session[:auth_path] = path
+      session[:auth_path] = notices_path
       session[:auth_data] = auth
       redirect_to signup_path
     end
