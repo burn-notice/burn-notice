@@ -12,7 +12,7 @@ describe Notice do
   context "defaults" do
     it "is valid" do
       notice = Fabricate(:notice)
-      expect(notice).to be_draft
+      expect(notice).to be_open
       expect(notice.token).to be_present
     end
   end
