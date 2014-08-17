@@ -58,7 +58,7 @@ module Crypto
   end
 
   def simple_digest(text)
-    digest(text.gsub(/\W/, '').downcase)
+    digest(text.gsub(/\s/, '').downcase)
   end
 
   def digest(text)
