@@ -84,6 +84,18 @@ class NoticesController < ApplicationController
     redirect_to notices_path, notice: 'The notice is deleted!'
   end
 
+  def bulk
+    action = params[:bulk_action] || 'destroy'
+    notices = Notice.active.find(params[:selected])
+    case action
+    when 'destroy'
+      flash[:notice] = 'Notices have been destroyed!'
+      notices.each { |notice| notice.update! status: :deleted }
+    end
+
+    redirect_to notices_path
+  end
+
   private
 
   def share_via_email(notice)

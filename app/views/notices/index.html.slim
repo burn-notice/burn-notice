@@ -2,70 +2,84 @@
 - set_crumbs('Notices' => url_for)
 
 - if @notices.present?
-  .panel.panel-default
-    .panel-heading
-      .row
-        .col-lg-6
-          h2.panel-title
-            | Manage your Burn-Noice history
-        .col-lg-6
-          .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
-            span.glyphicon.glyphicon-pencil.smaller'
-            | create Burn-Notice
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
-          th Status
-          th Sent
-          th Policy
-          th Opened
-          th
-      tbody
-      - @notices.each do |notice|
-        tr
-          td= check_box_tag "selected[]", notice.id, false, class: 'select-all'
-          td
-            - if notice.closed?
-              span class="label label-primary" Burned
-            - elsif notice.disabled?
-              span class="label label-warning" Disabled
-            - else
-              span class="label label-success" Readable
-          td= notice.created_at.to_s(:short)
-          td= notice.policy.name.humanize
-          td.openings
-            - if notice.openings.present?
-              = render 'opening_modal', notice: notice
-              = link_to notice_openings_path(notice), "data-toggle" => "modal", "data-target" => "#opening_modal_#{notice.id}" do
-                span.glyphicon.glyphicon-question-sign'
-                span #{notice.openings.size} times
-            - else
-              span -
-          td
+  = form_tag bulk_notices_path, method: :post do
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-lg-6
+            h2.panel-title
+              | Manage your Burn-Noice history
+          .col-lg-6
+            .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
+              span.glyphicon.glyphicon-pencil.smaller'
+              | Draft
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
+            th Status
+            th Sent
+            th Policy
+            th Opened
+            th
+        tbody
+        - @notices.each do |notice|
+          tr
+            td= check_box_tag "selected[]", notice.id, false, class: 'select-all'
+            td
+              - if notice.closed?
+                span class="label label-primary" Burned
+              - elsif notice.disabled?
+                span class="label label-warning" Disabled
+              - else
+                span class="label label-success" Readable
+            td= notice.created_at.to_s(:short)
+            td= notice.policy.name.humanize
+            td.openings
+              - if notice.openings.present?
+                = render 'opening_modal', notice: notice
+                = link_to notice_openings_path(notice), "data-toggle" => "modal", "data-target" => "#opening_modal_#{notice.id}" do
+                  span.glyphicon.glyphicon-question-sign'
+                  span #{notice.openings.size} times
+              - else
+                span -
+            td
+              .btn-group
+                button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+                  | Actions <span class="caret"></span>
+                ul.dropdown-menu role="menu"
+                  - if notice.disabled?
+                    li
+                      = link_to enable_notice_path(notice), method: :patch, style: 'text-decoration: none'
+                        span.glyphicon.glyphicon-plus-sign.smaller'
+                        span.margin-left-small enable
+                  - elsif notice.open?
+                    li
+                      = link_to share_notice_path(notice), style: 'text-decoration: none'
+                        span.glyphicon.glyphicon-share.smaller'
+                        span.margin-left-small share
+                    li
+                      = link_to disable_notice_path(notice), method: :patch, style: 'text-decoration: none'
+                        span.glyphicon.glyphicon-minus-sign.smaller'
+                        span.margin-left-small disable
+                  li
+                    = link_to notice_path(notice), method: :delete, data: {confirm: "This can't be undone!"}, style: 'text-decoration: none'
+                      span.glyphicon.glyphicon-trash.smaller'
+                      span.margin-left-small delete
+      .panel-footer
+        .row
+          .col-lg-12
             .btn-group
               button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                | Actions <span class="caret"></span>
+                | Bulk <span class="caret"></span>
               ul.dropdown-menu role="menu"
-                - if notice.disabled?
-                  li= link_to 'Enable', enable_notice_path(notice), method: :patch
-                  li= link_to 'Burn', burn_notice_path(notice), method: :patch, data: {confirm: "This can't be undone!"}
-                - elsif notice.open?
-                  li= link_to 'Share', share_notice_path(notice)
-                  li= link_to 'Disable', disable_notice_path(notice), method: :patch
-                  li= link_to 'Burn', burn_notice_path(notice), method: :patch, data: {confirm: "This can't be undone!"}
-                li= link_to 'Delete', notice_path(notice), method: :delete, data: {confirm: "This can't be undone!"}
-    .panel-footer
-      .row
-        .col-lg-12
-          .btn-group
-            button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-              | Bulk <span class="caret"></span>
-            ul.dropdown-menu role="menu"
-              li= link_to 'Enable', "", method: :patch
-          .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
-            span.glyphicon.glyphicon-pencil.smaller'
-            | create Burn-Notice
+                li
+                  = link_to '#', onclick: "event.preventDefault(); $(this).closest('form').submit()" do
+                    span.glyphicon.glyphicon-trash.smaller'
+                    span delete
+            .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
+              span.glyphicon.glyphicon-pencil.smaller'
+              | Draft
   .text-center
     = paginate @notices
 

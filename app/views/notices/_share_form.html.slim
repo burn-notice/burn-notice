@@ -3,31 +3,31 @@
     fieldset
       legend Share your Burn-Notice
 .row
-  .col-lg-5.col-lg-offset-1
+  .col-lg-4.col-lg-offset-2
     .input-group
-      = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control'
+      = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control', pattern: ".+@.+", required: true
       span.input-group-btn
-        = form.submit "send link by e-mail", class: "btn btn-success"
+        = form.submit "Send e-mail", class: "btn btn-success"
   .col-lg-6
     .well.well-sm.callout
       a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!" title="Anonymity and data privacy"
-      span< Separate e-mails addresses with <code class="text-muted">,</code> or whitespace.
+      span< Send a Link to this Burn-Notice via E-Mail, separate e-mails addresses with <code class="text-muted">,</code>
 .row
-  .col-lg-6
-    .pull-right= link_to "https://twitter.com/share?text=@user there is a Burn-Notice for you at &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success' do
+  .col-lg-4.col-lg-offset-2
+    = link_to "https://twitter.com/share?text=@user there is a Burn-Notice for you at &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success btn-block' do
       span.glyphicon.glyphicon-comment
-      span< send link by Twitter
+      span< Share by Twitter
   .col-lg-6
     .well.well-sm.callout
       a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private." title="Twitter and privacy"
-      span< Tweet the Burn-Notice using the Twitter <em>@mention</em> or direct message.
+      span< Tweet a Link to this Burn-Notice using the Twitter <em>@mention</em>.
 .row
-  .col-lg-6
+  .col-lg-4.col-lg-offset-2
     javascript:
       $(document).ready(function() {
         var clip = new ZeroClipboard($("#d_clip_button"))
       });
-    .pull-right= button_tag title: 'Copy link to clipboard', class: "btn btn-success", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
+    = button_tag title: 'Copy link to clipboard', class: "btn btn-success btn-block", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
       a.glyphicon.glyphicon-list-alt'
       span Copy link to clipboard
   .col-lg-6
@@ -38,4 +38,5 @@
 hr.spacer
 
 .row
-  .pull-right= link_to "I'm done sharing, take me back to the dasboard", notices_path, class: 'btn btn-default'
+  .col-lg-12
+    .pull-right= link_to "back to dasboard", notices_path, class: 'btn btn-default'

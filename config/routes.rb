@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     patch :enable, on: :member
     patch :disable, on: :member
     patch :burn, on: :member
+    post :bulk, on: :collection
     resources :openings
     resources :policies
   end

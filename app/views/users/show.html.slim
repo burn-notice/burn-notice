@@ -1,9 +1,17 @@
 - set_title('Profile')
 - set_crumbs('Profile' => url_for)
 
-h2 Authorizations
-
-ul
-  - existing_providers = current_user.authorizations.map(&:provider)
-  - %w(twitter github facebook).each do |provider|
-    li= link_to_unless existing_providers.include?(provider), provider.humanize, "/auth/#{provider}"
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading Authorizations
+      .panel-body
+        - existing_providers = current_user.authorizations.map(&:provider)
+        - %w(twitter github facebook).each do |provider|
+          p
+            - if existing_providers.include?(provider)
+              = link_to "#", class: "btn btn-default btn-block disabled"
+                span'= provider.humanize
+                span.glyphicon.glyphicon-ok(style="color: green;")
+            - else
+              = link_to "connect via #{provider.humanize}", "/auth/#{provider}", class: "btn btn-default btn-block"

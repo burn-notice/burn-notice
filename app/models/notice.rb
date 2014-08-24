@@ -4,7 +4,7 @@ class Notice < ActiveRecord::Base
   include Crypto
   before_validation :defaults, :store_encrypted
 
-  attr_accessor :answer, :content, :share_type, :share_recipients
+  attr_accessor :answer, :content, :share_recipients
 
   belongs_to :user
   has_one :policy, dependent: :destroy

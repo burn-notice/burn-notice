@@ -4,14 +4,13 @@
       fieldset
         legend Select a security policy
   .row
-    .col-lg-12
+    .col-lg-10.col-lg-offset-2
       .well.callout
-        span< By default
-        ='< policy_fields.radio_button :name, :burn_after_reading
-        = policy_fields.label :name, "we burn after reading", value: :burn_after_reading, class: 'text-warning'
-        span, this offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!
+        =' policy_fields.radio_button :name, :burn_after_reading
+        =' policy_fields.label :name, "burn after reading", value: :burn_after_reading, class: 'text-warning'
+        span offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!
   .row
-    .col-lg-6
+    .col-lg-4.col-lg-offset-2
       .input-group
         span.input-group-addon
           =' policy_fields.radio_button :name, :burn_after_time
@@ -23,7 +22,7 @@
         a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="When you need to make sure that a message can be read until a specific date." title="Valid until!"
         span< This will keep the Burn-Notice alive for a defined period of time.
   .row
-    .col-lg-6
+    .col-lg-4.col-lg-offset-2
      .input-group
         span.input-group-addon
           = policy_fields.label :name, value: :burn_after_openings do
@@ -33,5 +32,5 @@
         span.input-group-addon reads
     .col-lg-6
       .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This might be handy for situations where you want to share a Burn-Notice with multiple recipients." title="Secrets for your friends!"
+        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This might be handy for situations where you want to share a Burn-Notice with multiple recipients." title="Notice for many!"
         span< The Burn-Notice will get destroyed after a fixed number of decryptions.
