@@ -21,7 +21,11 @@
 .row
   = form.label :answer, 'Secret Answer', class: "col-lg-2 control-label"
   .col-lg-4
-    = form.password_field :answer, class: "form-control"
+    .input-group
+      = form.password_field :answer, class: "form-control"
+      span.input-group-addon
+        input' type="checkbox" id="show_password" onchange="$('#notice_answer').prop('type', $(this).prop('checked') ? 'text' : 'password')"
+        label for="show_password" show
   .col-lg-6
     .well.well-sm.callout
       a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="We are trying to make it simpler for the recipient of the message by stripping all whitespace and making the text case insensitive so it is straight forward to match the answer properly." title="Allow fuzzy matches"
