@@ -46,11 +46,11 @@ class Notice < ActiveRecord::Base
       when "burn_after_reading"
         burn!
       when "burn_after_time"
-        if created_at + policy.setting[:duration].to_i.days < Time.now
+        if policy.expired?
           burn!
         end
       when "burn_after_openings"
-        if openings.authorized.count >= policy.setting[:duration].to_i
+        if openings.authorized.count >= policy.setting['amount'].to_i
           burn!
         end
       end

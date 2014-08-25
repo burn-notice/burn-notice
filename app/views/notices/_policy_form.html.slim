@@ -15,7 +15,7 @@
         span.input-group-addon
           =' policy_fields.radio_button :name, :burn_after_time
           = policy_fields.label :name, "Burn after", value: :burn_after_time
-        = policy_fields.number_field :interval, placeholder: 'minimum 1 day', min: 1, class: "form-control text-right"
+        = policy_fields.number_field :duration, placeholder: 'minimum 1 day', min: 1, class: "form-control text-right"
         span.input-group-addon days
     .col-lg-6
       .well.well-sm.callout
@@ -28,7 +28,7 @@
           = policy_fields.label :name, value: :burn_after_openings do
             =' policy_fields.radio_button :name, :burn_after_openings
             | Burn after
-        = policy_fields.number_field :interval, placeholder: 'minimum 1 reads', min: 1, class: "form-control text-right"
+        = policy_fields.number_field :amount, placeholder: 'minimum 1 reads', min: 1, class: "form-control text-right"
         span.input-group-addon reads
     .col-lg-6
       .well.well-sm.callout

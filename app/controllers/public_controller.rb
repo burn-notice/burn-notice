@@ -2,7 +2,8 @@ class PublicController < ApplicationController
   respond_to :html
 
   def open
-    @notice = Notice.open.find_by_token!(params[:token])
+    @notice = Notice.find_by_token!(params[:token])
+    flash.now[:alert] = "The Burn-Notice is not available any longer!" unless @notice.open?
     @opening = @notice.openings.create do |it|
       it.authorized = false
       it.ip = request.ip

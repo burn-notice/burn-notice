@@ -119,6 +119,6 @@ class NoticesController < ApplicationController
   end
 
   def policy_params
-    params.require(:notice).require(:policy_attributes).permit(:name, :interval)
+    params.require(:notice).require(:policy_attributes).permit(:name, :duration, :amount)
   end
 end
