@@ -50,7 +50,7 @@ class NoticesController < ApplicationController
     @notice = current_user.notices.build(notice_params)
     @notice.policy = Policy.from_name(policy_params.symbolize_keys)
     if @notice.save
-      redirect_to notices_path, notice: 'You created a new notice!'
+      redirect_to share_notice_path(@notice), notice: 'You created a new notice!'
     else
       render :new
     end
