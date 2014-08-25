@@ -1,7 +1,7 @@
 HELLO_ENCODED = {
-  :encrypted_data=>"3atDpYVoESI3PrNoe0bovg==\n",
-  :encrypted_key=>"j0xROOxeEE99W6mneWWU8OABmsPRuawMUQ9C3+g5GRB9K3A49SGSoM8GTpUT\n72XoQzWue7GwYtI0OTjShQhl8HCM7fhz63QQIwIgDBIE1J6pd9poqlEnRyGX\ncx/NMcpYxCAlC0H8t8KF4SEyMpcaZnReI2QGbYx2vqaGtiMxqH/18hsmTa7F\nuCizYrLQBGsNXiCbXCb61aCCTQTgdv7pJVRuVHcfFO5R6Lo4mNocai+dlKvV\nw/rqhyg7kD0i1AVbFX9C9krhtIjg7wZKE0d2N2+47q9IA8BguNWBEvRW/Lmz\n/9EkT4X7rk/bYr1N1Fk6hoJn6ZQAe802ZUh9Myq9MA==\n",
-  :fingerprint=>"a7adb0ae534f69c77c1bc184b37c4480f5994bf75f5e449695d3e4e13c86209f"
+  "encrypted_data"=>"R7PO9h304mw7XtTH/CntIg==\n",
+  "encrypted_key"=>"m5Sbe8XxQvBR0enlXFugFSEOyQ3rmHvaFQaz4ePuV/TuADV1AOUdcb7D1peo\nseWsiXjlNUs/w2JA8eprkWUWJkjdeAtVCXlaarkNGajGOqCCiVUJpV//hDFS\nKNzn0uugTBTP+u7r3g5C/fbwZI3G3XZs91yDJlzAH80+jTCjSAiJvFB3mQIq\n7pPHMztjSSpjN2Y06hZvZJnjjCnRUbF71k0nUHLoxeErsBtiJ0l7u1A4M4Av\n3ewCr+/FgBLwLfT7vdNtF19kqnxsZdu7Q5JWubMXVyo7gbYspbKyVCbzxfD3\n9khwVkBY/A2D5KF6WliAniEXUTdUQMpn3iGjuR6wjg==\n",
+  "fingerprint"=>"2500d0ed4d0ea1b3ea9f7f57a5f16c2fba8ad15d05d3c057d42f9796f1250169"
 }
 
 Fabricator(:notice) do

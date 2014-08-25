@@ -14,13 +14,13 @@ describe Policy do
       policy = Policy.from_name
       expect(policy).to be_valid
 
-      policy = Policy.from_name(name: 'burn_after_time', interval: 5)
+      policy = Policy.from_name(name: 'burn_after_time', duration: 5)
       expect(policy).to be_valid
       expect(policy.setting).to eql({"duration"=>5})
 
-      policy = Policy.from_name(name: 'burn_after_openings', interval: 7)
+      policy = Policy.from_name(name: 'burn_after_openings', amount: 7)
       expect(policy).to be_valid
-      expect(policy.setting).to eql({"count"=>7})
+      expect(policy.setting).to eql({"amount"=>7})
     end
   end
 end

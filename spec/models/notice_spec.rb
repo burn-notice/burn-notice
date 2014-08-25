@@ -19,10 +19,10 @@ describe Notice do
 
   context "encryption" do
     it "stores and reads data encryped" do
-      notice.write_data('moin', 'some-password')
-      expect(notice.read_data('some-password')).to eql('moin')
+      notice.write_data('moin', 'SoSecret666')
+      expect(notice.read_data('SoSecret666')).to eql('moin')
       notice.save
-      expect(notice.reload.read_data('some-password')).to eql('moin')
+      expect(notice.reload.read_data('SoSecret666')).to eql('moin')
     end
 
     it "checks if a secret is valid" do
