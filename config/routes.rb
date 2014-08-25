@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     post :bulk, on: :collection
   end
   resources :users do
-    get :mailing, on: :member
+    get :confirmation_mail, on: :member
   end
   resources :beta_users do
     get :thank_you, on: :collection

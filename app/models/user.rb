@@ -17,8 +17,12 @@ class User < ActiveRecord::Base
     email.in? ['phoetmail@googlemail.com', 'me@kurtfunai.com']
   end
 
-  def valid!
+  def validate!
     update_attributes! validation_date: Time.now
+  end
+
+  def validated?
+    validation_date.present?
   end
 
   private

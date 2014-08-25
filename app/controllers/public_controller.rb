@@ -47,6 +47,8 @@ class PublicController < ApplicationController
     @user = User.new(params.require(:user).permit!)
     if @user.save
       session.delete(:auth_data)
+      mail = UserMailer.signup(@user)
+      MailerJob.new.async.deliver(mail)
       sign_in(@user)
       redirect_to session.delete(:auth_path), notice: "Hi #{@user.nickname}, welcome to Burn-Notice!"
     else

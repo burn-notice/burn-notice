@@ -15,3 +15,14 @@
                 span.glyphicon.glyphicon-ok(style="color: green;")
             - else
               = link_to "connect via #{provider.humanize}", "/auth/#{provider}", class: "btn btn-default btn-block"
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading Actions
+      .panel-body
+        p
+          - if current_user.validated?
+            = link_to "#", class: "btn btn-default btn-block disabled"
+              span' E-mail address confirmed
+              span.glyphicon.glyphicon-ok(style="color: green;")
+          - else
+            = link_to "Confirm e-mail address", confirmation_mail_user_path(current_user), class: "btn btn-default btn-block"
