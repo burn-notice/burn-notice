@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_validation :defaults
 
-  has_many :notices, -> { active }, dependent: :destroy
+  has_many :notices, -> { active.order('created_at DESC') }, dependent: :destroy
   has_many :authorizations, dependent: :destroy
   has_many :articles, dependent: :destroy
 
