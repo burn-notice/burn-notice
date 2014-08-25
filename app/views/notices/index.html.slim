@@ -48,6 +48,8 @@
                 button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                   | Actions <span class="caret"></span>
                 ul.dropdown-menu role="menu"
+                  - if current_user.admin?
+                    li= link_to 'read', open_path(notice)
                   - if notice.disabled?
                     li
                       = link_to enable_notice_path(notice), method: :patch, style: 'text-decoration: none'
