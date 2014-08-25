@@ -3,6 +3,5 @@ class Opening < ActiveRecord::Base
 
   validate :notice, :meta, :ip, presence: true
 
-  scope :authorized,    -> { where(authorized: true) }
-  scope :unauthorized,  -> { where(authorized: false) }
+  enum authorization: {requested: 0, authorized: 1, unauthorized: 2}
 end

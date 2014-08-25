@@ -39,7 +39,7 @@
               - if notice.openings.present?
                 = render 'opening_modal', notice: notice
                 = link_to notice_openings_path(notice), "data-toggle" => "modal", "data-target" => "#opening_modal_#{notice.id}" do
-                  span.glyphicon.glyphicon-question-sign'
+                  span.glyphicon.glyphicon-th-list'
                   span #{notice.openings.size} times
               - else
                 span -

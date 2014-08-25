@@ -1,4 +1,4 @@
-- grouped_openings = notice.openings.group_by(&:authorized)
+- grouped_openings = notice.openings.group_by(&:authorization)
 div id="opening_modal_#{notice.id}" class="modal"
   .modal-dialog
     .modal-content
@@ -6,20 +6,36 @@ div id="opening_modal_#{notice.id}" class="modal"
         button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
         h4.modal-title Openings for Burn-Notice from #{notice.created_at.to_s(:short)}
       .modal-body
-        - if unauthorized = grouped_openings[false]
+        - if requested = grouped_openings["requested"]
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Every access to the secret Burn-Notice page gets logged, even if there is no attempt to submit the form. Access may be issued by automatic robots from an email-program, twitter-client or socialmedia-provider." title="Logging all access"
+                span Opening requests
+            .panel-body
+              ul.list-group
+                - requested.group_by(&:ip).each do |ip, openings|
+                  li.list-group-item
+                    span.badge= openings.size
+                    = ip
+        - if unauthorized = grouped_openings["unauthorized"]
           .panel.panel-danger
             .panel-heading
-              h3.panel-title Unauthorized requests
+              h3.panel-title
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This could be a simple typo in the secret answer, or a malicious user trying to access your data. You might consider deactivating/deleting this Burn-Notice." title="Malicious attempt?"
+                span Unauthorized requests
             .panel-body
               ul.list-group
                 - unauthorized.group_by(&:ip).each do |ip, openings|
                   li.list-group-item
                     span.badge= openings.size
                     = ip
-        - if authorized = grouped_openings[true]
+        - if authorized = grouped_openings["authorized"]
           .panel.panel-success
             .panel-heading
-              h3.panel-title Authorized requests
+              h3.panel-title
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Someone was able to decrypt your Burn-Notice with the right secret answer." title="Decrypted successfully"
+                span Authorized requests
             .panel-body
               ul.list-group
                 - authorized.group_by(&:ip).each do |ip, openings|

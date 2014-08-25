@@ -5,7 +5,6 @@ class PublicController < ApplicationController
     @notice = Notice.find_by_token!(params[:token])
     flash.now[:alert] = "The Burn-Notice is not available any longer!" unless @notice.open?
     @opening = @notice.openings.create do |it|
-      it.authorized = false
       it.ip = request.ip
       it.meta = {
         user_agent: request.user_agent,
@@ -15,13 +14,19 @@ class PublicController < ApplicationController
   end
 
   def read
-    @notice = Notice.open.find_by_token!(params[:token])
+    @notice = Notice.find_by_token!(params[:token])
+
+    @opening = @notice.openings.find(params[:opening_id])
     if @notice.valid_secret?(params[:answer])
-      @opening = @notice.openings.find(params[:opening_id])
-      @opening.update authorized: true
-      @data = @notice.read_data(params[:answer])
-      @notice.apply_policy(authorized: true)
+      if @notice.open?
+        @opening.update! authorization: :authorized
+        @data = @notice.read_data(params[:answer])
+        @notice.apply_policy(authorized: true)
+      else
+        redirect_to(root_path, alert: 'The Burn-Notice is no longer available!')
+      end
     else
+      @opening.update! authorization: :unauthorized
       @notice.apply_policy(authorized: false)
       if @notice.disabled?
         redirect_to(root_path, alert: 'The notice has been disabled due to too many invalid attempts!')
