@@ -3,13 +3,17 @@ class PublicController < ApplicationController
 
   def open
     @notice = Notice.find_by_token!(params[:token])
-    flash.now[:alert] = "The Burn-Notice is not available any longer!" unless @notice.open?
     @opening = @notice.openings.create do |it|
       it.ip = request.ip
       it.meta = {
         user_agent: request.user_agent,
         referer: request.referer,
       }
+    end
+    if !@notice.open?
+      flash.now[:alert] = "The Burn-Notice is not available any longer!"
+    elsif @notice.user == current_user
+      flash.now[:alert] = "Your read will be treated as any other user!"
     end
   end
 
