@@ -7,7 +7,7 @@
       .panel-heading
         .row
           .col-lg-6
-            h2.panel-title
+            h2.panel-title.hidden-xs
               | Manage your Burn-Noice history
           .col-lg-6
             .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
@@ -16,26 +16,39 @@
       table.table.table-striped.table-hover
         thead
           tr
-            th= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
+            th.hidden-xs= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
             th Status
             th Sent
             th Policy
-            th Opened
+            th.hidden-xs Opened
             th
         tbody
         - @notices.each do |notice|
           tr
-            td= check_box_tag "selected[]", notice.id, false, class: 'select-all'
+            td.hidden-xs= check_box_tag "selected[]", notice.id, false, class: 'select-all'
             td
               - if notice.closed?
-                span class="label label-primary" Burned
+                span.visible-xs.label.label-primary.glyphicon.glyphicon-fire
+                span.hidden-xs.label.label-primary Burned
               - elsif notice.disabled?
-                span class="label label-warning" Disabled
+                span.visible-xs.label.label-warning.glyphicon.glyphicon-minus-sign
+                span.hidden-xs.label.label-warning Disabled
               - else
-                span class="label label-success" Readable
+                span.visible-xs.label.label-success.glyphicon.glyphicon-eye-open
+                span.hidden-xs.label.label-success Readable
             td= notice.created_at.to_s(:short)
-            td= notice.policy.name.humanize
-            td.openings
+            td
+              - case notice.policy.name
+              - when 'burn_after_reading'
+                span.glyphicon.glyphicon-fire.smaller
+                span.hidden-xs< after reading
+              - when 'burn_after_time'
+                span.glyphicon.glyphicon-time.smaller
+                span.hidden-xs<= "#{notice.policy.duration} #{'day'.pluralize(notice.policy.duration)}"
+              - when 'burn_after_openings'
+                span.glyphicon.glyphicon-asterisk.smaller
+                span.hidden-xs<= "#{notice.policy.amount} reads"
+            td.hidden-xs.openings
               - if notice.openings.present?
                 = render 'opening_modal', notice: notice
                 = link_to '#', "data-toggle" => "modal", "data-target" => "#opening_modal_#{notice.id}" do
@@ -48,8 +61,10 @@
                 button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                   | Actions <span class="caret"></span>
                 ul.dropdown-menu role="menu"
-                  - if current_user.admin?
-                    li= link_to 'read', open_path(notice)
+                  li
+                    = link_to open_path(notice), style: 'text-decoration: none'
+                      span.glyphicon.glyphicon-eye-open.smaller'
+                      span.margin-left-small read
                   - if notice.disabled?
                     li
                       = link_to enable_notice_path(notice), method: :patch, style: 'text-decoration: none'
@@ -71,7 +86,7 @@
       .panel-footer
         .row
           .col-lg-12
-            .btn-group
+            .btn-group.hidden-xs
               button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                 | Bulk <span class="caret"></span>
               ul.dropdown-menu role="menu"
