@@ -1,23 +1,37 @@
 class Policy < ActiveRecord::Base
   BURN_NAMES = %w(burn_after_reading burn_after_time burn_after_openings)
 
-  attr_accessor :duration, :amount
-
   belongs_to :notice
 
   validates :name, presence: true, inclusion: { in: BURN_NAMES }
 
   def expired?
-    created_at + setting['duration'].to_i.days < Time.now
+    created_at + setting.duration.days < Time.now
+  end
+
+  def duration
+    setting['duration'].to_i
+  end
+
+  def duration=(duration)
+    setting['duration'] = duration.to_i
+  end
+
+  def amount
+    setting['amount'].to_i
+  end
+
+  def amount=(amount)
+    setting['amount'] = amount.to_i
   end
 
   def self.from_name(name: 'burn_after_reading', duration: 1, amount: 1)
-    policy = new(name: name)
+    policy = new(name: name, setting: {})
     case name
     when 'burn_after_time'
-      policy.setting = {duration: duration}
+      policy.duration = duration
     when 'burn_after_openings'
-      policy.setting = {amount: amount}
+      policy.amount = amount
     end
     policy
   end
