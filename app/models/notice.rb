@@ -50,7 +50,7 @@ class Notice < ActiveRecord::Base
           burn!
         end
       when "burn_after_openings"
-        if openings.authorized.count >= policy.amount
+        if openings.authorized.count >= policy.amount.to_i
           burn!
         end
       end
