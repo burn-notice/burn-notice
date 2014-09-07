@@ -19,6 +19,7 @@
             th.hidden-xs= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
             th Status
             th Sent
+            th.hidden-xs Question
             th Policy
             th.hidden-xs Opened
             th
@@ -37,6 +38,7 @@
                 span.visible-xs.label.label-success.glyphicon.glyphicon-eye-open
                 span.hidden-xs.label.label-success Readable
             td= notice.created_at.to_s(:short)
+            td= notice.question
             td
               - case notice.policy.name
               - when 'burn_after_reading'
