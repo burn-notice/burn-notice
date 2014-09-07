@@ -1,3 +1,6 @@
+document.copyToClipboard = (text) ->
+  window.prompt("Copy to clipboard: Ctrl+C, Enter or Tap and Copy on Touch", text)
+
 $(document).on 'ready page:load page:change', ->
   $('[data-toggle="popover"]').popover()
   $('[data-toggle="tooltip"]').tooltip()

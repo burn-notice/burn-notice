@@ -23,11 +23,7 @@
       span< Tweet a Link to this Burn-Notice using the Twitter <em>@mention</em>.
 .row
   .col-lg-4.col-lg-offset-2
-    javascript:
-      $(document).ready(function() {
-        var clip = new ZeroClipboard($("#d_clip_button"))
-      });
-    = button_tag title: 'Copy link to clipboard', class: "btn btn-success btn-block", 'data-clipboard-text' => open_url(notice), id: 'd_clip_button', onclick: 'event.preventDefault();' do
+    = button_tag title: 'Copy link to clipboard', class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{open_url(notice)}')" do
       a.glyphicon.glyphicon-list-alt'
       span Copy link to clipboard
   .col-lg-6
