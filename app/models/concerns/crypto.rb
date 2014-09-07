@@ -33,7 +33,7 @@ module Crypto
     decrypted_data = cipher.update(decode(data[:encrypted_data]))
     decrypted_data << cipher.final
     if data[:fingerprint] == digest(decrypted_data)
-      decrypted_data
+      decrypted_data.force_encoding('UTF-8')
     else
       nil
     end
