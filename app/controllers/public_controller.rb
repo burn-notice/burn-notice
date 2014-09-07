@@ -10,11 +10,6 @@ class PublicController < ApplicationController
         referer: request.referer,
       }
     end
-    if !@notice.open?
-      flash.now[:alert] = "The Burn-Notice is not available any longer!"
-    elsif @notice.user == current_user
-      flash.now[:alert] = "Your read will be treated as any other user!"
-    end
   end
 
   def read
