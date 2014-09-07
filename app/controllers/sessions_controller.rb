@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     user = User.find_by_token(params[:token])
     user.validate!
 
-    redirect_to root_path, notice: "Thank's, your validation was successful!"
+    redirect_to notices_path, notice: "Thank's, your validation was successful!"
   end
 
   def destroy

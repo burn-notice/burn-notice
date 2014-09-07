@@ -13,6 +13,12 @@ class UserMailer < ActionMailer::Base
     mail to: @beta_user.email, subject: 'Welcome to our private ßeta!'
   end
 
+  def invite(beta_user)
+    @beta_user = beta_user
+
+    mail to: @beta_user.email, subject: 'Try the private ßeta now!'
+  end
+
   def notify(user, email, notice)
     @user = user
     @notice = notice

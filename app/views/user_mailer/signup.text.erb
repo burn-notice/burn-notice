@@ -2,6 +2,14 @@ Hi <%= @user.nickname %>,
 
 your action is required, please click the link below to validate your identity:
 
-<%= validation_url(@user.token) %>
+<%= validation_url(@user.token, protocol: :https) %>
+
+After you have validated yourself, write a new Burn-Notice in 3 simple steps:
+
+<%= notices_url(protocol: :https) %>
+
+Or change your private profile:
+
+<%= user_url(@user, protocol: :https) %>
 
 <%= render 'mailer/footer' %>
