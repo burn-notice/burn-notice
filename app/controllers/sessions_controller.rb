@@ -43,8 +43,9 @@ class SessionsController < ApplicationController
 
   def signup
     @auth = session[:auth_data]
-    check_existing_user(@auth['info']['email'])
-    @user = User.new(nickname: @auth['info']['nickname'], email: @auth['info']['email'])
+    email = @auth['info']['email'].blank? ? session[:beta_user_email] : @auth['info']['email']
+    check_existing_user(email)
+    @user = User.new(nickname: @auth['info']['nickname'], email: email)
     @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
   end
 

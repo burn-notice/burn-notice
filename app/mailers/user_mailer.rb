@@ -7,6 +7,13 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: 'Validate your e-mail!'
   end
 
+  def notify(user, email, notice)
+    @user = user
+    @notice = notice
+
+    mail to: email, subject: "You've got a new Burn-Notice!", reply_to: user.email
+  end
+
   def beta(beta_user)
     @beta_user = beta_user
 
@@ -17,12 +24,5 @@ class UserMailer < ActionMailer::Base
     @beta_user = beta_user
 
     mail to: @beta_user.email, subject: 'Try the private ßeta now!'
-  end
-
-  def notify(user, email, notice)
-    @user = user
-    @notice = notice
-
-    mail to: email, subject: "You've got a new Burn-Notice!", reply_to: user.email
   end
 end

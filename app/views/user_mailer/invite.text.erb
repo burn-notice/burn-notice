@@ -1,11 +1,9 @@
-Hi,
+Hello βeta-user,
 
-thank you very much for signing up to our private βeta!
+thank you very much for your patience, the private βeta is accessible now!
 
-You can login through one of the following links:
+In order to participate, please click the link below and follow the simple sign-up process:
 
-* <%= "#{root_url(protocol: :https)}auth/twitter" %>
-* <%= "#{root_url(protocol: :https)}auth/github" %>
-* <%= "#{root_url(protocol: :https)}auth/facebook" %>
+<%= invite_beta_user_url(@beta_user, protocol: :https) %>
 
 <%= render 'mailer/footer' %>

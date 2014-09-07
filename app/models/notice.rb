@@ -36,10 +36,6 @@ class Notice < ActiveRecord::Base
     write_attribute(:data, hash)
   end
 
-  def to_param
-    token
-  end
-
   def apply_policy(authorized:)
     if authorized
       case policy.name
@@ -70,6 +66,10 @@ class Notice < ActiveRecord::Base
   def authorized
     return unless openings.present?
     openings.any?(&:authorized?)
+  end
+
+  def to_param
+    token
   end
 
   private

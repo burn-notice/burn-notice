@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     get :confirmation_mail, on: :member
   end
   resources :beta_users do
-    get :thank_you, on: :collection
+    get :thank_you, on: :member
+    get :invite, on: :member
   end
   resources :articles
 

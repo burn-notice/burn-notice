@@ -3,7 +3,7 @@ require "spec_helper"
 describe UserMailer do
 
   describe "signup" do
-    let(:user) { Fabricate.build(:user) }
+    let(:user) { Fabricate(:user) }
     let(:mail) { UserMailer.signup(user) }
 
     it "renders the headers" do
@@ -17,12 +17,13 @@ describe UserMailer do
   end
 
   describe "notify" do
-    let(:user) { Fabricate.build(:user) }
-    let(:mail) { UserMailer.notify(user) }
+    let(:user)    { Fabricate(:user) }
+    let(:notice)  { Fabricate(:notice) }
+    let(:mail)    { UserMailer.notify(user, 'uschi@muschi.de', notice) }
 
     it "renders the headers" do
       mail.subject.should_not be_nil
-      mail.to.should eq([user.email])
+      mail.to.should eq(['uschi@muschi.de'])
     end
 
     it "renders the body" do
@@ -31,7 +32,7 @@ describe UserMailer do
   end
 
   describe "beta" do
-    let(:beta_user) { Fabricate.build(:beta_user) }
+    let(:beta_user) { Fabricate(:beta_user) }
     let(:mail) { UserMailer.beta(beta_user) }
 
     it "renders the headers" do
@@ -45,7 +46,7 @@ describe UserMailer do
   end
 
   describe "invite" do
-    let(:beta_user) { Fabricate.build(:beta_user) }
+    let(:beta_user) { Fabricate(:beta_user) }
     let(:mail) { UserMailer.invite(beta_user) }
 
     it "renders the headers" do
@@ -54,7 +55,7 @@ describe UserMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("login through one of the following links")
+      mail.body.encoded.should match("click the link below")
     end
   end
 end

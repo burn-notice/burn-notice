@@ -10,8 +10,7 @@ class BetaUsersController < ApplicationController
     if @beta_user.save
       mail = UserMailer.beta(@beta_user)
       MailerJob.new.async.deliver(mail)
-      session[:beta_user_id] = @beta_user.id
-      redirect_to thank_you_beta_users_path
+      redirect_to thank_you_beta_user_path(@beta_user)
     else
       flash.now[:alert] = "Ugh, something went wrong: #{@beta_user.errors.full_messages.to_sentence}"
       render :index
@@ -19,7 +18,12 @@ class BetaUsersController < ApplicationController
   end
 
   def thank_you
-    @beta_user = BetaUser.find(session[:beta_user_id])
+    @beta_user = BetaUser.from_param(params[:id])
+  end
+
+  def invite
+    @beta_user = BetaUser.from_param(params[:id])
+    session[:beta_user_email] = @beta_user.email
   end
 
   private
