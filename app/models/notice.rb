@@ -62,8 +62,9 @@ class Notice < ActiveRecord::Base
   end
 
   def burn!
-    # TODO (ps) also destroy the message data later on
-    update! status: :closed
+    self.status = :closed
+    self.data = {}
+    save(validate: false)
   end
 
   def authorized

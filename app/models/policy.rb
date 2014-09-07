@@ -6,7 +6,7 @@ class Policy < ActiveRecord::Base
   validates :name, presence: true, inclusion: { in: BURN_NAMES }
 
   def expired?
-    created_at + setting.duration.to_i.days < Time.now
+    created_at + setting['duration'].to_i.days < Time.now
   end
 
   def duration
