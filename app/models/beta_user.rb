@@ -17,5 +17,12 @@ class BetaUser < ActiveRecord::Base
     def from_param(token)
       find_by_token!(token)
     end
+
+    def send_invite
+      where('invited IS NULL AND created_at < ?', 1.day.ago).each do |beta_user|
+        UserMailer.invite(beta_user).deliver!
+        beta_user.update! invited: Time.now
+      end
+    end
   end
 end
