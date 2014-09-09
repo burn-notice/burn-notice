@@ -1,4 +1,4 @@
-.page-header id="banner"
+.page-header.spacer-large id="banner"
   .row
     .col-lg-5
       .hidden-xs.spacer-large
@@ -8,11 +8,23 @@
         span.caps> Simple, Secure, Encrypted
         em.text-warning one-time Information
     .col-lg-7 style="padding: 15px 15px 0 15px;"
-      .well.sponsor
+      .well
         h2.spacer-small.hidden-xs Add your e-mail address to join our <span class="label label-primary">&beta;eta</span>
         h2.visible-xs Join private <span class="label label-primary">&beta;eta</span>
         p.spacer-large.text-muted
           small We know that data-privacy is a very important topic and we will never share any of your information.
         = render 'form'
+
+.row
+  .col-lg-4
+    h2.text-center <span class="step smaller success-step-muted">1</span> draft it
+  .col-lg-4
+    h2.text-center <span class="step smaller success-step-muted">2</span> secure it
+  .col-lg-4
+    h2.text-center <span class="step smaller success-step-muted">3</span> share it
+.row
+  .col-lg-12
+    h2.text-center
+      img src="http://f.cl.ly/items/1Q1r0k3n2r1E2i1a0g3z/three_step.gif" class="img-thumbnail img-responsive" alt='draft it, secure it, share it - 3 simple steps to a Burn-Notce' title='draft it, secure it, share it - 3 simple steps to a Burn-Notce'
 
 = render 'faq'
