@@ -5,19 +5,14 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.signup(user)
   end
 
+  def validate
+    user = User.first
+    UserMailer.validate(user)
+  end
+
   def notify
     user = User.first
     notice = Notice.first
     UserMailer.notify(user, 'recipient@mail.de', notice)
-  end
-
-  def beta
-    user = BetaUser.first
-    UserMailer.beta(user)
-  end
-
-  def invite
-    user = BetaUser.first
-    UserMailer.invite(user)
   end
 end

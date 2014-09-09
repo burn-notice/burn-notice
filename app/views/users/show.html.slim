@@ -26,3 +26,8 @@
               span.glyphicon.glyphicon-ok(style="color: green;")
           - else
             = link_to "Confirm e-mail address", confirmation_mail_user_path(current_user), class: "btn btn-default btn-block"
+        = form_for current_user do |form|
+          .input-group
+            = form.email_field :email, class: 'form-control', required: true
+            span.input-group-btn
+              = form.submit "Change e-mail", class: "btn btn-default"

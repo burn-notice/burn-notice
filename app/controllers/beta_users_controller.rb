@@ -8,7 +8,7 @@ class BetaUsersController < ApplicationController
   def create
     @beta_user = BetaUser.new(beta_user_params)
     if @beta_user.save
-      mail = UserMailer.beta(@beta_user)
+      mail = BetaUserMailer.beta(@beta_user)
       MailerJob.new.async.deliver(mail)
       redirect_to thank_you_beta_user_path(@beta_user)
     else

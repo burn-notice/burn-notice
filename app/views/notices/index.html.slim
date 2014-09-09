@@ -1,6 +1,8 @@
 - set_title('Notices')
 - set_crumbs('Notices' => url_for)
 
+= render 'activation_popup'
+
 - if @notices.present?
   = form_tag bulk_notices_path, method: :post do
     .panel.panel-default

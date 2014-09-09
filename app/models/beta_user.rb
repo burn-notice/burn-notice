@@ -20,7 +20,7 @@ class BetaUser < ActiveRecord::Base
 
     def send_invite
       where('invited IS NULL AND created_at < ?', 1.day.ago).each do |beta_user|
-        UserMailer.invite(beta_user).deliver!
+        BetaUserMailer.invite(beta_user).deliver!
         beta_user.update! invited: Time.now
       end
     end

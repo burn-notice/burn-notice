@@ -1,6 +1,5 @@
 class NoticesController < ApplicationController
   before_action :authenticate!
-  before_action :confirmation_mail
 
   def index
     @notices = current_user.notices.page(params[:page])
@@ -98,12 +97,6 @@ class NoticesController < ApplicationController
   end
 
   private
-
-  def confirmation_mail
-    unless current_user.validated?
-      redirect_to current_user, alert: "Your action is required, please validate your e-mail address!"
-    end
-  end
 
   def share_via_email(notice)
     if params[:notice]
