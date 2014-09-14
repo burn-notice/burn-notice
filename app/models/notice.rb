@@ -13,7 +13,7 @@ class Notice < ActiveRecord::Base
   accepts_nested_attributes_for :policy
 
   validates :token, :question, :policy, presence: :true
-  validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? }
+  validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? && notice.open? }
 
   enum status: {open: 0, disabled: 1, closed: 2, deleted: 3}
 
