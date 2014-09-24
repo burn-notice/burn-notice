@@ -3,4 +3,5 @@ class Authorization < ActiveRecord::Base
 
   validates :uid, :provider, presence: true
   validates :uid, uniqueness: {scope: :provider}
+  validates :provider, uniqueness: {scope: :user}
 end

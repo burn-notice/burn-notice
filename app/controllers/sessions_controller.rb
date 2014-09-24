@@ -46,11 +46,12 @@ class SessionsController < ApplicationController
     email = @auth['info']['email'].blank? ? session[:beta_user_email] : @auth['info']['email']
     check_existing_user(email)
     @user = User.new(nickname: @auth['info']['nickname'], email: email)
-    @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
   end
 
   def complete
+    @auth = session[:auth_data]
     @user = User.new(params.require(:user).permit!)
+    @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
     if @user.save
       session.delete(:auth_data)
       mail = UserMailer.signup(@user)

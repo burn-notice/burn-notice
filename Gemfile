@@ -19,6 +19,7 @@ gem "omniauth"
 gem "omniauth-twitter"
 gem "omniauth-github"
 gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 gem "decent_exposure"
 gem 'slim-rails'
 gem 'kaminari'

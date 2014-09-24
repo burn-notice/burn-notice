@@ -7,7 +7,7 @@
       .panel-heading Authorizations
       .panel-body
         - existing_providers = current_user.authorizations.map(&:provider)
-        - %w(twitter github facebook).each do |provider|
+        - %w(google_oauth2 twitter github facebook).each do |provider|
           p
             - if existing_providers.include?(provider)
               = link_to "#", class: "btn btn-default btn-block disabled"

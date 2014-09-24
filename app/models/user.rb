@@ -34,19 +34,6 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    def handle_authorization(auth)
-      provider = auth['provider']
-      uid      = auth['uid']
-
-      authorization = Authorization.find_or_initialize_by(provider: provider, uid: uid)
-
-      return authorization.user if authorization.user
-
-      user = User.create!(nickname: auth['info']['nickname'], email: auth['info']['email'])
-      Authorization.create!(user: user, provider: provider, uid: uid)
-      user
-    end
-
     def authenticated_with_token(id, stored_salt)
       user = find_by_id(id)
       user && user.salt == stored_salt ? user : nil

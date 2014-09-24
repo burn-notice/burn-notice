@@ -1,8 +1,5 @@
 = form_errors @user
 = form_for @user, url: complete_path, html: {class: "form-horizontal"} do |form|
-  = form.fields_for :authorizations do |builder|
-    = builder.hidden_field :provider
-    = builder.hidden_field :uid
   .row
     .col-lg-12
       fieldset
