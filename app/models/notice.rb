@@ -4,20 +4,22 @@ class Notice < ActiveRecord::Base
   include Crypto
   before_validation :defaults, :store_encrypted
 
-  attr_accessor :answer, :content, :share_recipients
+  attr_accessor :answer, :content, :connection_recipients, :share_recipients
 
   belongs_to :user
+  belongs_to :google_auth_connection
   has_one :policy, dependent: :destroy
   has_many :openings, dependent: :destroy
 
   accepts_nested_attributes_for :policy
 
-  validates :token, :question, :policy, presence: :true
-  validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? && notice.open? }
+  validates :token, :policy, presence: :true
+  # validates :question, presence: :true
+  # validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? && notice.open? }
 
   enum status: {open: 0, disabled: 1, closed: 2, deleted: 3}
 
-  scope :active, -> { where("status <> ?", Notice.statuses[:deleted]) }
+  scope :active, -> { where("status <> ?", statuses[:deleted]) }
 
   def valid_secret?(secret)
     read_data(secret).present?

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'admin/login', to: 'admin#login', as: :admin
   mount Bhf::Engine, at: 'admin'
 
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
   end
   resources :users do
     get :confirmation_mail, on: :member
+  end
+  resources :google_auth_connections do
+    patch :connect, on: :member
   end
   resources :beta_users do
     get :thank_you, on: :member
@@ -40,6 +44,7 @@ Rails.application.routes.draw do
     get  '/validation/:token',       to: 'sessions#validation', as: :validation
     get  '/signup',                  to: 'sessions#signup',     as: :signup
     get  '/login',                   to: 'sessions#login',      as: :login
+    get  '/connection',              to: 'sessions#connection', as: :connection
     post '/complete',                to: 'sessions#complete',   as: :complete
   end
 

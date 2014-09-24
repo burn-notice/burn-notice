@@ -115,7 +115,7 @@ class NoticesController < ApplicationController
   end
 
   def notice_params
-    params.require(:notice).permit(:question, :answer, :content)
+    params.require(:notice).permit(:question, :answer, :content, :google_auth_connection_id)
   end
 
   def policy_params

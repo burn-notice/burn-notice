@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :notices, -> { active.order('created_at DESC') }, dependent: :destroy
   has_many :authorizations, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_many :sender_connections, dependent: :destroy, class_name: "GoogleAuthConnection", foreign_key: 'sender_id', inverse_of: :sender
+  has_many :recipient_connections, dependent: :destroy, class_name: "GoogleAuthConnection", foreign_key: 'recipient_id', inverse_of: :recipient
 
   accepts_nested_attributes_for :authorizations
 
@@ -23,6 +25,22 @@ class User < ActiveRecord::Base
 
   def validated?
     validation_date.present?
+  end
+
+  def accepted_connections
+    if validated?
+      recipient_connections.active
+    else
+      []
+    end
+  end
+
+  def pending_connections
+    if validated?
+      GoogleAuthConnection.active.where(email: email, recipient: nil)
+    else
+      []
+    end
   end
 
   private

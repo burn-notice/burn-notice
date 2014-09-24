@@ -31,3 +31,54 @@
             = form.email_field :email, class: 'form-control', required: true
             span.input-group-btn
               = form.submit "Change e-mail", class: "btn btn-default"
+
+#google-authenticator.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading Google-Authenticator invitations
+      .panel-body
+        .well.well-sm.callout
+          a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Google-Authenticator is an application that a user can install on their mobile device. There are implementations for plattforms including iOS, Android, Blackbarry and <a href='http://en.wikipedia.org/wiki/Google_Authenticator#Implementations'>many more</a>. The Google-Authenticator generates one-time passwords that will be used to grant access to the Burn-Notice based on your permissions." title="How does it work?"
+          span< Allow access to your notices via the #{link_to 'Google Authenticator', 'http://en.wikipedia.org/wiki/Google_Authenticator'} app.
+        p= form_for GoogleAuthConnection.new do |form|
+          .input-group
+            = form.email_field :email, class: 'form-control', required: true, placeholder: 'you@example.com'
+            span.input-group-btn
+              = form.submit "Send invitation", class: "btn btn-default"
+        ul.list-group
+          - current_user.sender_connections.active.each do |connection|
+            li.list-group-item
+              - if connection.active?
+                span.label.label-success> active
+              - elsif connection.disabled?
+                span.label.label-warning> disabled
+              = connection.email
+              .pull-right
+                - if connection.active?
+                  => link_to 'disable', google_auth_connection_path(connection, status: :disabled), method: :put, class: 'btn btn-xs'
+                - if connection.disabled?
+                  => link_to 'enable', google_auth_connection_path(connection, status: :active), method: :put, class: 'btn btn-xs'
+                = link_to 'delete', google_auth_connection_path(connection, status: :deleted), method: :put, class: 'btn btn-xs'
+
+  .col-lg-6
+    - if current_user.pending_connections.present?
+      .panel.panel-default
+        .panel-heading Pending connections
+        .panel-body
+          ul.list-group
+            - current_user.pending_connections.each do |connection|
+              li.list-group-item
+                = connection.sender.nickname
+                .pull-right= button_to 'accept', connect_google_auth_connection_path(connection), method: :patch, class: 'btn btn-xs'
+    - if current_user.accepted_connections.present?
+      .panel.panel-default
+        .panel-heading Accepted connections
+        .panel-body
+          ul.list-group
+            - current_user.accepted_connections.each do |connection|
+              li.list-group-item
+                = render('qrcode_modal', connection: connection)
+                = link_to '#', "data-toggle" => "modal", "data-target" => "#qrcode_modal_#{connection.id}" do
+                  span.glyphicon.glyphicon-qrcode'
+                  span scan QR-Code to setup connection to #{connection.sender.nickname}
+

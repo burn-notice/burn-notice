@@ -31,7 +31,7 @@
 
       ul.nav.navbar-nav.navbar-right(data-no-turbolink)
         - if signed_in?
-          li.navbar-user= link_to gravatar(current_user), user_path(current_user)
+          li.navbar-user= link_to gravatar(current_user), user_path(current_user), title: current_user.nickname
           li= link_to 'Logout', logout_path
         - else
           li.dropdown

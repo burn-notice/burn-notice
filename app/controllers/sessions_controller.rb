@@ -35,15 +35,16 @@ class SessionsController < ApplicationController
   end
 
   def offline_login
+    session.destroy
     user = User.find_by_nickname(params[:nickname])
     sign_in(user)
 
-    redirect_to root_path, notice: "Offline Login!"
+    redirect_to user_path(user), notice: "Offline Login for #{user.nickname}!"
   end
 
   def signup
     @auth = session[:auth_data]
-    email = @auth['info']['email'].blank? ? session[:beta_user_email] : @auth['info']['email']
+    email = @auth['info']['email'].blank? ? session.delete(:beta_user_email) : @auth['info']['email']
     check_existing_user(email)
     @user = User.new(nickname: @auth['info']['nickname'], email: email)
     @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']

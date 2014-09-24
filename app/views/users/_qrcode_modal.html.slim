@@ -1,0 +1,8 @@
+div id="qrcode_modal_#{connection.id}" class="modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
+        h4.modal-title Google-Authenticor QR-Code
+      .modal-body
+        = image_tag Authenticator.new(connection.token).qrcode_image_url("Burn-Notice #{current_user.nickname}-#{connection.sender.nickname}"), class: 'img-rounded'
