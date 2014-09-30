@@ -27,4 +27,18 @@ module ApplicationHelper
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
     @markdown.render(text)
   end
+
+  PROVIDERS = {
+    twitter: 'Twitter',
+    github: 'GitHub',
+    facebook: 'Facebook',
+    google_oauth2: 'Google',
+  }
+
+  def login_links
+    PROVIDERS.each do |provider, name|
+      path = "/auth/#{provider}"
+      yield(name, path, provider)
+    end
+  end
 end

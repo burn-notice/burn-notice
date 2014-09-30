@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     post '/complete',                to: 'sessions#complete',   as: :complete
   end
 
-  root 'beta_users#index'
+  root 'home#index'
 
   get 'blog', to: "articles#index"
   get 'beta', to: "beta_users#index"

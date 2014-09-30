@@ -5,8 +5,8 @@
 .row
   .col-lg-6
     .btn-group.btn-group-justified
-      - %w(twitter github facebook).each do |provider|
-        = link_to "via #{provider.humanize}", "/auth/#{provider}", class: "btn btn-success"
+      - login_links do |name, path, key|
+        = link_to "via #{name}", path, class: "btn btn-success"
   .col-lg-6
     .well.well-sm.callout
       a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="OAuth is an open standard for authentication that allows you to revoke access-rights at any time!" title="Why OAuth?"

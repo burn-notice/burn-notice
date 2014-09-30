@@ -7,14 +7,14 @@
       .panel-heading Authorizations
       .panel-body
         - existing_providers = current_user.authorizations.map(&:provider)
-        - %w(google_oauth2 twitter github facebook).each do |provider|
+        - login_links do |name, path, key|
           p
-            - if existing_providers.include?(provider)
+            - if existing_providers.include?(key)
               = link_to "#", class: "btn btn-default btn-block disabled"
-                span'= provider.humanize
+                span'= name
                 span.glyphicon.glyphicon-ok(style="color: green;")
             - else
-              = link_to "connect via #{provider.humanize}", "/auth/#{provider}", class: "btn btn-default btn-block"
+              = link_to "connect via #{name}", path, class: "btn btn-default btn-block"
   .col-lg-6
     .panel.panel-default
       .panel-heading Actions

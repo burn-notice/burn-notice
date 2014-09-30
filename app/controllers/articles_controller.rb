@@ -1,6 +1,4 @@
 class ArticlesController < ApplicationController
-  layout 'blog'
-
   def index
     @articles = search_scope
     @facets   = Article.facets

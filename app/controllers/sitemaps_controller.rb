@@ -4,7 +4,6 @@ class SitemapsController < ApplicationController
   def show
     @urls = [
       root_url,
-      beta_url,
       faq_url,
       blog_url,
     ] + Article.active.map { |article| article_url(article) }

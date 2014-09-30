@@ -10,16 +10,17 @@
     #navbar-main.navbar-collapse.collapse
       ul.nav.navbar-nav
         li.dropdown
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Notices <span class="caret"></span></a>
-          ul.dropdown-menu aria-labelledby="login"
-            li
-              = link_to notices_path do
-                span.glyphicon.glyphicon-th-list.smaller'
-                span.margin-left-small Dashboard
-            li
-              = link_to new_notice_path do
-                span.glyphicon.glyphicon-pencil.smaller'
-                span.margin-left-small Draft
+          - if signed_in?
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Notices <span class="caret"></span></a>
+            ul.dropdown-menu aria-labelledby="login"
+              li
+                = link_to new_notice_path do
+                  span.glyphicon.glyphicon-pencil.smaller'
+                  span.margin-left-small Draft
+              li
+                = link_to notices_path do
+                  span.glyphicon.glyphicon-th-list.smaller'
+                  span.margin-left-small Dashboard
 
         - if signed_in? && current_user.admin?
           li
@@ -30,6 +31,9 @@
             = link_to 'Admin', admin_path
 
       ul.nav.navbar-nav.navbar-right(data-no-turbolink)
+        li
+          = link_to "#", class: "navbar-brand", 'data-html' => 'true', 'data-container' => "body", 'data-toggle' => "popover", 'data-placement' => "auto", 'data-content' => "During our &beta;eta, we are trying to iron out issues in the <strong>user experience</strong> and improve the <strong>quality</strong> of our product by working with <strong><a href='mailto:peter@burn-notice.me?subject=Feedback'>your feedback</a></strong>!", title: "Why &beta;eta?" do
+            .label.label-primary &beta;
         - if signed_in?
           li.navbar-user= link_to gravatar(current_user), user_path(current_user)
           li= link_to 'Logout', logout_path
@@ -37,6 +41,5 @@
           li.dropdown
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Login <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"
-              li= link_to 'Github', '/auth/github'
-              li= link_to 'Twitter', '/auth/twitter'
-              li= link_to 'Facebook', '/auth/facebook'
+              - login_links do |name, path, key|
+                li= link_to "via #{name}", path

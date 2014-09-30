@@ -4,12 +4,12 @@ class BetaUserMailer < ActionMailer::Base
   def beta(beta_user)
     @beta_user = beta_user
 
-    mail to: @beta_user.email, subject: 'Welcome to our private ßeta!'
+    mail to: @beta_user.email, subject: 'Welcome to our ßeta!'
   end
 
   def invite(beta_user)
     @beta_user = beta_user
 
-    mail to: @beta_user.email, subject: 'Try the private ßeta now!'
+    mail to: @beta_user.email, subject: 'Try the ßeta now!'
   end
 end
