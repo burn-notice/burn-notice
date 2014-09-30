@@ -18,6 +18,7 @@ class Notice < ActiveRecord::Base
   enum status: {open: 0, disabled: 1, closed: 2, deleted: 3}
 
   scope :active, -> { where("status <> ?", Notice.statuses[:deleted]) }
+  scope :expired, -> { active.where('notices.updated_at < ?', 1.day.ago).joins(:policy).where('policies.name = ?', 'burn_after_time') }
 
   def valid_secret?(secret)
     read_data(secret).present?
@@ -85,6 +86,17 @@ class Notice < ActiveRecord::Base
   class << self
     def from_param(token)
       active.find_by_token!(token)
+    end
+
+    def burn_expired
+      expired.each do |notice|
+        if notice.policy.expired?
+          Rails.logger.info("notice #{notice.id} is expired, burning")
+          notice.burn!
+        else
+          Rails.logger.info("notice #{notice.id} is not yet expired")
+        end
+      end
     end
   end
 end

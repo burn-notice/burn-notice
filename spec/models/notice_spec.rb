@@ -79,4 +79,26 @@ describe Notice do
       expect(notice.valid_secret?('invalid')).to be_false
     end
   end
+
+  context "scheduling" do
+    it "finds expired burn_after_time notices" do
+      notice = Fabricate(:notice, policy: Fabricate(:policy_time))
+      expect(Notice.expired).to have(0).elements
+
+      notice.update updated_at: 2.days.ago
+      expect(Notice.expired).to have(1).elements
+    end
+
+    it "burns expired notices" do
+      notice = Fabricate(:notice, policy: Fabricate(:policy_time), updated_at: 2.days.ago)
+
+      expect{ Notice.burn_expired }.to_not change { notice.reload }
+
+      travel_to 10.days.from_now do
+        expect{
+          Notice.burn_expired
+        }.to change { notice.reload.status }.from('open').to('closed')
+      end
+    end
+  end
 end

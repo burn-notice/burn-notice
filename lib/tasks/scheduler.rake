@@ -1,4 +1,4 @@
-desc "send email to beta-users automatically"
-task send_beta_invite: :environment do
-  BetaUser.send_invite
+desc "delete expired burn-notices"
+task burn_expired: :environment do
+  Notice.burn_expired
 end
