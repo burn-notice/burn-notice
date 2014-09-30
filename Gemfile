@@ -45,9 +45,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'byebug'
-  gem 'spring'
-  gem "spring-commands-rspec"
+  gem 'pry-rails'
   gem 'fabrication'
   gem "rspec-rails"
   gem "faker"
