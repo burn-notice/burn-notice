@@ -2,6 +2,6 @@ Hi <%= @user.nickname %>,
 
 your action is required, please click the link below to validate your identity:
 
-<%= validation_url(token: @user.token, protocol: :https) %>
+<%= validation_url(token: @user.token) %>
 
 <%= render 'mailer/footer' %>

@@ -6,12 +6,9 @@ describe UserMailer do
     let(:user) { Fabricate(:user) }
     let(:mail) { UserMailer.signup(user) }
 
-    it "renders the headers" do
+    it "renders the mail" do
       mail.subject.should_not be_nil
       mail.to.should eq([user.email])
-    end
-
-    it "renders the body" do
       mail.body.encoded.should match("validate")
     end
   end
