@@ -14,11 +14,13 @@ class UsersController < ApplicationController
       flash[:notice] = 'Your profile was updated!'
     end
     user.save!
+
     redirect_to user_path(current_user)
   end
 
   def confirmation_mail
     send_validation(current_user)
+
     redirect_to current_user, notice: "A confirmation e-mail was sent to #{current_user.email}!"
   end
 
