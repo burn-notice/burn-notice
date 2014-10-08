@@ -38,7 +38,7 @@ module ApplicationHelper
   def login_links
     PROVIDERS.each do |provider, name|
       path = "/auth/#{provider}"
-      yield(name, path, provider)
+      yield(name, path, provider.to_s)
     end
   end
 end
