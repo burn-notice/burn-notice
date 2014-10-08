@@ -1,10 +1,13 @@
-= render 'header'
 .row
   .col-lg-8
     - if @articles.present?
       = render @articles
       = paginate @articles
     - else
-      h4.well Sorry, we could not find anything for <em>#{request.query_parameters.values.to_sentence}</em>, please try again later!
+      h4.well
+        - if request.query_parameters.blank?
+          | Sorry, there is nothing to see at the moment!
+        - else
+          | Sorry, we could not find anything for <em>#{request.query_parameters.values.to_sentence}</em>, please try again later!
   .col-lg-4
     = render 'pills', facets: @facets
