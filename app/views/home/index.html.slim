@@ -15,10 +15,10 @@
           small We know that data-privacy is a very important topic and we will never share any of your information.
         p.btn-group.btn-group-justified.hidden-xs
           - login_links do |name, path, key|
-            = link_to "via #{name}", path, class: "btn btn-success"
+            = link_to name, path, class: "btn btn-success"
         .btn-group.visible-xs
           - login_links do |name, path, key|
-            p= link_to "via #{name}", path, class: "btn btn-success btn-block"
+            p= link_to name, path, class: "btn btn-success btn-block"
 
 .row
   .col-lg-4

@@ -34,13 +34,18 @@ Rails.application.routes.draw do
 
   scope '/auth' do
     get  '/offline_login/:nickname', to: 'sessions#offline_login' if Rails.env.development?
-    get  '/:provider/callback',      to: 'sessions#create'
+    get  '/:provider/callback',      to: 'sessions#create',     as: :provider_callback
     get  '/failure',                 to: 'sessions#failure'
     get  '/destroy_session',         to: 'sessions#destroy',    as: :logout
     get  '/validation/:token',       to: 'sessions#validation', as: :validation
     get  '/signup',                  to: 'sessions#signup',     as: :signup
     get  '/login',                   to: 'sessions#login',      as: :login
+    get  '/email',                   to: 'sessions#email',      as: :email_login
     post '/complete',                to: 'sessions#complete',   as: :complete
+  end
+
+  scope '/sessions' do
+    match '/email', to: 'sessions#email', via: [:get, :post]
   end
 
   root 'home#index'

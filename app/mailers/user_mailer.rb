@@ -19,4 +19,10 @@ class UserMailer < ActionMailer::Base
 
     mail to: email, subject: "You've got a new Burn-Notice!", reply_to: user.email
   end
+
+  def email_auth(email, token)
+    @token = token
+
+    mail to: email, subject: 'Login to Burn-Notice'
+  end
 end

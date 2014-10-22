@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def create
-    # path = request.env['omniauth.origin']
     auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
     if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
       sign_in(authorization.user)
@@ -42,6 +41,15 @@ class SessionsController < ApplicationController
     redirect_to user_path(user), notice: "Offline Login for #{user.nickname}!"
   end
 
+  def email
+    if params[:email].present?
+      session[:email_auth_address] = params[:email]
+      session[:email_auth_token] = SecureRandom.uuid
+      mail = UserMailer.email_auth(params[:email], session[:email_auth_token])
+      MailerJob.new.async.deliver(mail)
+    end
+  end
+
   def signup
     @auth = session[:auth_data]
     email = @auth['info']['email'].blank? ? session.delete(:beta_user_email) : @auth['info']['email']
@@ -51,12 +59,19 @@ class SessionsController < ApplicationController
 
   def complete
     @auth = session[:auth_data]
-    @user = User.new(params.require(:user).permit!)
+    user_params = params.require(:user).permit!
+    if session[:email_auth_address]
+      user_params[:email] = session[:email_auth_address]
+      user_params[:validation_date] = Time.now
+    end
+    @user = User.new(user_params)
     @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
     if @user.save
       session.delete(:auth_data)
-      mail = UserMailer.signup(@user)
-      MailerJob.new.async.deliver(mail)
+      unless @user.validated?
+        mail = UserMailer.signup(@user)
+        MailerJob.new.async.deliver(mail)
+      end
       sign_in(@user)
       redirect_to session.delete(:auth_path), notice: "Hi #{@user.nickname}, welcome to Burn-Notice!"
     else
