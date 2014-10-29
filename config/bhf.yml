@@ -1,6 +1,4 @@
 pages:
-  - dashboard:
-    - beta_users:
   - admin:
     - users:
     - notices:

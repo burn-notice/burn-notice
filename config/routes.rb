@@ -19,10 +19,6 @@ Rails.application.routes.draw do
   resources :users do
     get :confirmation_mail, on: :member
   end
-  resources :beta_users do
-    get :thank_you, on: :member
-    get :invite, on: :member
-  end
   resources :articles
 
   resource :sitemap, only: :show
@@ -51,7 +47,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'blog', to: "articles#index"
-  get 'beta', to: "beta_users#index"
   get 'faq',  to: "home#faq"
 
   get 'styleguide', to: "styleguide#index"
