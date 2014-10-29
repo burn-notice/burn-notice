@@ -19,6 +19,7 @@ gem "omniauth"
 gem "omniauth-twitter"
 gem "omniauth-github"
 gem "omniauth-facebook"
+gem "omniauth-email", path: "~/Documents/rails/omniauth-email"
 gem "omniauth-google-oauth2"
 gem "decent_exposure"
 gem 'slim-rails'
@@ -46,6 +47,7 @@ end
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'fabrication'
   gem "rspec-rails"
   gem "faker"

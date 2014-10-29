@@ -41,15 +41,6 @@ class SessionsController < ApplicationController
     redirect_to user_path(user), notice: "Offline Login for #{user.nickname}!"
   end
 
-  def email
-    if params[:email].present?
-      session[:email_auth_address] = params[:email]
-      session[:email_auth_token] = SecureRandom.uuid
-      mail = UserMailer.email_auth(params[:email], session[:email_auth_token])
-      MailerJob.new.async.deliver(mail)
-    end
-  end
-
   def signup
     @auth = session[:auth_data]
     email = @auth['info']['email'].blank? ? session.delete(:beta_user_email) : @auth['info']['email']
@@ -60,8 +51,8 @@ class SessionsController < ApplicationController
   def complete
     @auth = session[:auth_data]
     user_params = params.require(:user).permit!
-    if session[:email_auth_address]
-      user_params[:email] = session[:email_auth_address]
+    if session[:omniauth_email].present?
+      user_params[:email] = session[:omniauth_email]['email']
       user_params[:validation_date] = Time.now
     end
     @user = User.new(user_params)

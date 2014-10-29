@@ -44,10 +44,6 @@ Rails.application.routes.draw do
     post '/complete',                to: 'sessions#complete',   as: :complete
   end
 
-  scope '/sessions' do
-    match '/email', to: 'sessions#email', via: [:get, :post]
-  end
-
   root 'home#index'
 
   get 'blog', to: "articles#index"
