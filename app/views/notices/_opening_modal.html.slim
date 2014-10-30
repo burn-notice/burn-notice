@@ -4,14 +4,14 @@ div id="opening_modal_#{notice.id}" class="modal"
     .modal-content
       .modal-header
         button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
-        h4.modal-title Openings for Burn-Notice from #{notice.created_at.to_s(:short)}
+        h4.modal-title= t('.openings_since', date: notice.created_at.to_s(:short))
       .modal-body
         - if requested = grouped_openings["requested"]
           .panel.panel-info
             .panel-heading
               h3.panel-title
-                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Every access to the secret Burn-Notice page gets logged, even if there is no attempt to submit the form. Access may be issued by automatic robots from an email-program, twitter-client or socialmedia-provider." title="Logging all access"
-                span Opening requests
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.opening_requests_content') title=t('.opening_requests_hint')
+                span= t('.opening_requests')
             .panel-body
               ul.list-group
                 - requested.group_by(&:ip).each do |ip, openings|
@@ -22,8 +22,8 @@ div id="opening_modal_#{notice.id}" class="modal"
           .panel.panel-danger
             .panel-heading
               h3.panel-title
-                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This could be a simple typo in the secret answer, or a malicious user trying to access your data. You might consider deactivating/deleting this Burn-Notice." title="Malicious attempt?"
-                span Unauthorized requests
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.unauthorized_requests_content') title=t('.unauthorized_requests_hint')
+                span= t('.unauthorized_requests')
             .panel-body
               ul.list-group
                 - unauthorized.group_by(&:ip).each do |ip, openings|
@@ -34,8 +34,8 @@ div id="opening_modal_#{notice.id}" class="modal"
           .panel.panel-success
             .panel-heading
               h3.panel-title
-                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Someone was able to decrypt your Burn-Notice with the right secret answer." title="Decrypted successfully"
-                span Authorized requests
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.authorized_requests_content') title=t('.authorized_requests_hint')
+                span= t('.authorized_requests')
             .panel-body
               ul.list-group
                 - authorized.group_by(&:ip).each do |ip, openings|
@@ -43,4 +43,4 @@ div id="opening_modal_#{notice.id}" class="modal"
                     span.badge= openings.size
                     = ip
       .modal-footer
-        button type="button" class="btn btn-default" data-dismiss="modal" Close
+        button type="button" class="btn btn-default" data-dismiss="modal"= t('.close')

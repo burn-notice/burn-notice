@@ -4,17 +4,17 @@
       .hidden-xs
         .spacer-large
           .page-header
-            h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: 'Burn-Notice: simple, secure, encrypted one-time information'
+            h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('slogan')
       p.lead
-        span.caps> Simple, Secure, Encrypted
-        em.text-warning one-time Information
+        span.caps> Einfach, Sicher, Verschlüsselt
+        em.text-warning Einweg-Nachrichten
     .col-lg-7 style="padding: 15px 15px 0 15px;"
       .well
-        h2.spacer-small.hidden-xs Sign-in with your e-mail and join the <span class="label label-primary">&beta;eta</span>
-        h2.visible-xs Join the <span class="label label-primary">&beta;eta</span>
+        h2.spacer-small.hidden-xs Melde dich einfach mit deiner E-Mail-Adresse bei der <span class="label label-primary">&beta;eta</span> an
+        h2.visible-xs Jetzt Anmelden für die <span class="label label-primary">&beta;eta</span>
         p.spacer-large.text-muted
-          small.hidden-xs We know that data-privacy is a very important topic and we will never share any of your information.
-          small.visible-xs We will keep all your data private!
+          small.hidden-xs Datenschutz wird bei uns ernst genommen, wir werden niemals Daten an dritte weitergeben.
+          small.visible-xs Datenschutz großgeschrieben!
         p.btn-group.btn-group-justified.hidden-xs
           - login_links do |name, path, key|
             = link_to name, path, class: "btn btn-success"
@@ -24,19 +24,19 @@
 
 .row
   .col-lg-4
-    h2.text-center <span class="step smaller success-step-muted">1</span> draft it
+    h2.text-center <span class="step smaller success-step-muted">1</span> verfassen
   .col-lg-4
-    h2.text-center <span class="step smaller success-step-muted">2</span> secure it
+    h2.text-center <span class="step smaller success-step-muted">2</span> verschlüsseln
   .col-lg-4
-    h2.text-center <span class="step smaller success-step-muted">3</span> share it
+    h2.text-center <span class="step smaller success-step-muted">3</span> verschicken
 .row
   .col-lg-12
     .visible-xs
       h2.text-center
-        button type="button" class="btn btn-info btn-lg" data-container="body" data-toggle="popover" data-placement="auto" data-html="true" data-content=html_escape_once(image_tag('three_step.gif', class: 'img-thumbnail')) data-original-title="draft it, secure it, share it" open Preview
+        button type="button" class="btn btn-info btn-lg" data-container="body" data-toggle="popover" data-placement="auto" data-html="true" data-content=html_escape_once(image_tag('three_step.gif', class: 'img-thumbnail')) data-original-title="verfassen, verschlüsseln, verschicken" Vorschau öffnen
     .hidden-xs
       h2.text-center
-        = image_tag 'three_step.gif', class: "img-thumbnail", alt: 'draft it, secure it, share it - 3 simple steps to a Burn-Notce'
+        = image_tag 'three_step.gif', class: "img-thumbnail", alt: 'verfassen, verschlüsseln, verschicken - 3 einfache Schritte zur Burn-Notice'
 
 .hidden-xs
   = render 'faq'

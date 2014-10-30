@@ -1,38 +1,32 @@
 .row
   .col-lg-12
     fieldset
-      legend Share your Burn-Notice
+      legend= t('.share_message')
 .row
   .col-lg-4.col-lg-offset-2
     .input-group
       = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control', pattern: ".+@.+", required: true
       span.input-group-btn
-        = form.submit "Send e-mail", class: "btn btn-success"
+        = form.submit t('.send_email'), class: "btn btn-success"
   .col-lg-6
-    .well.well-sm.callout
-      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!" title="Anonymity and data privacy"
-      span< Send a Link to this Burn-Notice via E-Mail, separate e-mails addresses with <code class="text-muted">,</code>
+    = render 'callout', section: 'notices', key: 'send_email'
 .row
   .col-lg-4.col-lg-offset-2
-    = link_to "https://twitter.com/share?text=@user there is a Burn-Notice for you at &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success btn-block' do
+    = link_to "https://twitter.com/share?text=@user #{t('.burn_notice_tweet')} &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success btn-block' do
       span.glyphicon.glyphicon-comment
-      span< Share by Twitter
+      span=< t('.share_by_twitter')
   .col-lg-6
-    .well.well-sm.callout
-      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private." title="Twitter and privacy"
-      span< Tweet a Link to this Burn-Notice using the Twitter <em>@mention</em>.
+    = render 'callout', section: 'notices', key: 'send_tweet'
 .row
   .col-lg-4.col-lg-offset-2
-    = button_tag title: 'Copy link to clipboard', class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{open_url(notice)}')" do
+    = button_tag title: t('.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{open_url(notice)}')" do
       a.glyphicon.glyphicon-list-alt'
-      span Copy link to clipboard
+      span= t('.copy_to_clipboard')
   .col-lg-6
-    .well.well-sm.callout
-      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="Paste the contents of your clipoard with <code>CMD+V</code> on Mac or <code>CTRL+V</code> on Windows." title="Copy &amp; Paste"
-      span< Use copy &amp; paste to send the link over any communication channel.
+    = render 'callout', section: 'notices', key: 'copy_link'
 
 hr.spacer
 
 .row
   .col-lg-12
-    .pull-right= link_to "back to dasboard", notices_path, class: 'btn btn-default'
+    .pull-right= link_to t('.back_to_dashboard'), notices_path, class: 'btn btn-default'

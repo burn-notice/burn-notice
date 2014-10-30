@@ -1,32 +1,26 @@
 .row
   .col-lg-12
     fieldset
-      legend Draft your Burn-Notice
+      legend= t('.draft_your_message')
 .row.spacer
-  = form.label :content, 'Secret Notice', class: "col-lg-2 control-label"
+  = form.label :content, t('.content'), class: "col-lg-2 control-label"
   .col-lg-4
-    = form.text_area :content, rows: 3, placeholder: "Our new key-code at home is 4711, remember to tell the kids as well!", class: 'form-control'
+    = form.text_area :content, rows: 3, placeholder: t('.content_placeholder'), class: 'form-control'
   .col-lg-6
-    .well.well-sm.callout
-      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="We will log all read attempts for your message and will not accept more than 3 false answers to the security question. You can configure when the message will get destroyed." title="Burn after reading"
-      span< The notice can only be read with knowledge of the secret.
+    = render 'callout', section: 'notices', key: 'content'
 .row
-  = form.label :question, 'Secret Question', class: "col-lg-2 control-label"
+  = form.label :question, t('.question'), class: "col-lg-2 control-label"
   .col-lg-4
-    = form.text_field :question, placeholder: 'What does the engraving on our wedding ring say?', class: "form-control"
+    = form.text_field :question, placeholder: t('.question_placeholder'), class: "form-control"
   .col-lg-6
-    .well.well-sm.callout
-      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="The idea of a shared secret is a very effictive security mechanism. Chose a question that is impossible to guess for a 3rd party and easy to answer for the recipient of the message." title="Use a shared secret"
-      span< Pick a question that only you and the recipient know about.
+    = render 'callout', section: 'notices', key: 'question'
 .row
-  = form.label :answer, 'Secret Answer', class: "col-lg-2 control-label"
+  = form.label :answer, t('.answer'), class: "col-lg-2 control-label"
   .col-lg-4
     .input-group
       = form.password_field :answer, class: "form-control"
       span.input-group-addon
         input' type="checkbox" id="show_password" onchange="$('#notice_answer').prop('type', $(this).prop('checked') ? 'text' : 'password')"
-        label for="show_password" show
+        label(for="show_password")= t('.show')
   .col-lg-6
-    .well.well-sm.callout
-      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="We are trying to make it simpler for the recipient of the message by stripping all whitespace and making the text case insensitive so it is straight forward to match the answer properly." title="Allow fuzzy matches"
-      span< Whitespace will be ignored and it is not case sensitive.
+    = render 'callout', section: 'notices', key: 'answer'

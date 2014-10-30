@@ -2,25 +2,25 @@
   .row
     .col-lg-12
       fieldset
-        legend Select a security policy
+        legend= t('.select_a_policy')
   .row
     .col-lg-10.col-lg-offset-2
       .well.callout
         =' policy_fields.radio_button :name, :burn_after_reading, onchange: "$('#notice_policy_attributes_duration').val(''); $('#notice_policy_attributes_amount').val('');"
         =' policy_fields.label :name, "burn after reading", value: :burn_after_reading, class: 'text-warning'
-        span offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!
+        span= t('.burn_after_reading_hint')
   .row
     .col-lg-4.col-lg-offset-2
       .input-group
         span.input-group-addon
           =' policy_fields.radio_button :name, :burn_after_time
-          = policy_fields.label :name, "Burn after", value: :burn_after_time
+          = policy_fields.label :name, "burn after", value: :burn_after_time
         = policy_fields.number_field :duration, placeholder: 'minimum 1', min: 1, class: "form-control text-right", onfocus: "$('#notice_policy_attributes_name_burn_after_time').prop('checked', true); $('#notice_policy_attributes_amount').val('');"
-        span.input-group-addon days
+        span.input-group-addon= t('.days')
     .col-lg-6
       .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="When you need to make sure that a message can be read until a specific date." title="Valid until!"
-        span< This will keep the Burn-Notice alive for a defined period of time.
+        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.burn_after_time_content') title=t('.burn_after_time_title')
+        span=< t('.burn_after_time_hint')
   .row
     .col-lg-4.col-lg-offset-2
      .input-group
@@ -29,8 +29,8 @@
             =' policy_fields.radio_button :name, :burn_after_openings
             | Burn after
         = policy_fields.number_field :amount, placeholder: 'minimum 1', min: 1, class: "form-control text-right", onfocus: "$('#notice_policy_attributes_name_burn_after_openings').prop('checked', true); $('#notice_policy_attributes_duration').val('');"
-        span.input-group-addon reads
+        span.input-group-addon= t('.reads')
     .col-lg-6
       .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="This might be handy for situations where you want to share a Burn-Notice with multiple recipients." title="Notice for many!"
-        span< The Burn-Notice will get destroyed after a fixed number of decryptions.
+        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.burn_after_openings_content') title=t('.burn_after_openings_title')
+        span=< t('.burn_after_openings_hint')
