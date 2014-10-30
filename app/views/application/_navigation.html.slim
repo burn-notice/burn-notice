@@ -1,8 +1,8 @@
 .navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      = link_to image_tag('logo.png', size: '32x32'), root_path, class: "navbar-brand navbar-logo", title: 'Burn-Notice / simple, secure, encrypted one time information'
-      = link_to 'Burn-Notice', root_path, class: "navbar-brand", title: 'Burn-Notice / simple, secure, encrypted one time information'
+      = link_to image_tag('logo.png', size: '32x32'), root_path, class: "navbar-brand navbar-logo", title: "Burn-Notice: #{t('slogan')}"
+      = link_to 'Burn-Notice', root_path, class: "navbar-brand", title: "Burn-Notice: #{t('slogan')}"
       button.navbar-toggle  type="button" data-toggle="collapse" data-target="#navbar-main"
         span.icon-bar
         span.icon-bar
@@ -11,16 +11,16 @@
       ul.nav.navbar-nav
         li.dropdown
           - if signed_in?
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Notices <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">#{t('notices')} <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"
               li
                 = link_to new_notice_path do
                   span.glyphicon.glyphicon-pencil.smaller'
-                  span.margin-left-small Draft
+                  span.margin-left-small= t('draft')
               li
                 = link_to notices_path do
                   span.glyphicon.glyphicon-th-list.smaller'
-                  span.margin-left-small Dashboard
+                  span.margin-left-small= t('dashboard')
 
         - if signed_in? && current_user.admin?
           li
@@ -36,8 +36,7 @@
           li= link_to 'Logout', logout_path
         - else
           li.hidden-xs
-            = link_to "#", class: "navbar-brand", 'data-html' => 'true', 'data-container' => "body", 'data-toggle' => "popover", 'data-placement' => "auto", 'data-content' => "During our &beta;eta, we are trying to iron out issues in the <strong>user experience</strong> and improve the <strong>quality</strong> of our product by working with <strong><a href='mailto:peter@burn-notice.me?subject=Feedback'>your feedback</a></strong>!", title: "Why &beta;eta?" do
-              .label.label-primary &beta;
+            = render 'beta_label'
           li.dropdown
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Login <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"
