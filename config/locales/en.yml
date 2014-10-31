@@ -47,6 +47,10 @@ en:
     share_via_twitter: 'share via Twitter'
     copy_to_clipboard: 'copy link to clipboard'
     back_to_dashboard: 'back to dasboard'
+    draft_it: 'draft it'
+    secure_it: 'secure it'
+    share_it: 'share it'
+    next_step_secure_it: 'next step, secure it!'
     callouts:
       content:
         hint: 'The notice can only be read with knowledge of the secret.'
