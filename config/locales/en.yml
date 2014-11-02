@@ -4,6 +4,10 @@ en:
     notices: 'Messages'
     draft: 'Draft'
     dashboard: 'Dashboard'
+    locale: 'Language'
+  locale:
+    en: 'English'
+    de: 'German'
   articles:
     title: 'Burn after reading - the Burn-Notice blog!'
     wrote_on: 'wrote on <em>%{date}</em>'
