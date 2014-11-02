@@ -1,8 +1,9 @@
 de:
   slogan: "Burn-Notice: Einfach, Sicher, Verschlüsselt - Einweg-Nachrichten"
-  notices: 'Nachrichten'
-  draft: 'Schreiben'
-  dashboard: 'Übersicht'
+  navigation:
+    notices: 'Nachrichten'
+    draft: 'Schreiben'
+    dashboard: 'Übersicht'
   articles:
     title: 'Burn after reading - das Burn-Notice Blog!'
     wrote_on: 'hat am <em>%{date}</em> geschrieben'
@@ -13,4 +14,68 @@ de:
     nothing_to_see: 'Leider gibt es hier im Moment nichts zu sehen!'
     nothing_found: 'Leider konnten wir für <em>%{phrase}</em> keine Artikel finden, versuche es später noch einmal!'
   notices:
-    
+    draft_your_message: 'Draft your Burn-Notice'
+    content: 'Secret Notice'
+    content_placeholder: 'Our new key-code at home is 4711, remember to tell the kids as well!'
+    question: 'Secret Question'
+    question_placeholder: 'What does the engraving on our wedding ring say?'
+    answer: 'Secret Answer'
+    show: 'show'
+    close: 'close'
+    days: 'days'
+    reads: 'reads'
+    openings_since: 'Openings for Burn-Notice since %{date}'
+    opening_requests: 'Opening requests'
+    opening_requests_hint: 'Logging all access'
+    opening_requests_content: 'Every access to the secret Burn-Notice page gets logged, even if there is no attempt to submit the form. Access may be issued by automatic robots from an email-program, twitter-client or socialmedia-provider.'
+    unauthorized_requests: 'Unauthorized requests'
+    unauthorized_requests_hint: 'Malicious attempt?'
+    unauthorized_requests_content: 'This could be a simple typo in the secret answer, or a malicious user trying to access your data. You might consider deactivating/deleting this Burn-Notice.'
+    authorized_requests: 'Authorized requests'
+    authorized_requests_hint: 'Decrypted successfully'
+    authorized_requests_content: 'Someone decrypted your Burn-Notice using the proper shared secret.'
+    select_a_policy: 'Select a security policy'
+    burn_after_reading_hint: 'offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!'
+    share_message: 'Share your Burn-Notice'
+    send_email: 'send e-mail'
+    burn_notice_tweet: 'there is a Burn-Notice for you at'
+    share_via_twitter: 'share via Twitter'
+    copy_to_clipboard: 'copy link to clipboard'
+    back_to_dashboard: 'back to dasboard'
+    draft_it: 'draft it'
+    secure_it: 'secure it'
+    share_it: 'share it'
+    next_step_secure_it: 'next step, secure it!'
+    callouts:
+      content:
+        hint: 'The notice can only be read with knowledge of the secret.'
+        title: 'Burn after reading'
+        text: 'We will log all read attempts for your message and will not accept more than 3 false answers to the security question. You can configure when the message will get destroyed.'
+      question:
+        hint: 'Pick a question that only you and the recipient know about.'
+        title: 'Use a shared secret'
+        text: 'The idea of a shared secret is a very effictive security mechanism. Chose a question that is impossible to guess for a 3rd party and easy to answer for the recipient of the message.'
+      answer:
+        hint: 'Whitespace will be ignored and it is not case sensitive.'
+        title: 'Easy for the recipient'
+        text: 'We are trying to make it simpler for the recipient of the message by stripping all whitespace and making the text case insensitive so it is straight forward to match the answer properly.'
+      burn_after_time:
+        hint: 'This will keep the Burn-Notice alive for a defined period of time.'
+        title: 'Best until'
+        text: 'When you need to make sure that a message can be read until a specific date.'
+      burn_after_openings:
+        hint: 'The Burn-Notice will get destroyed after a fixed number of decryptions.'
+        title: 'Burn-Notice for the people'
+        text: 'This might be handy for situations where you want to share a Burn-Notice with multiple recipients like members of a team.'
+      send_email:
+        hint: 'Send a link to this Burn-Notice via e-mail, separate e-mail addresses with <code class="text-muted">,</code>.'
+        title: 'Anonymity and data privacy'
+        text: "The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!"
+      send_tweet:
+        hint: 'Tweet a Link to this Burn-Notice using the Twitter <em>@mention</em>.'
+        title: 'Twitter and privacy'
+        text: 'Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private.'
+      copy_link:
+        hint: 'Use copy &amp; paste to send the link over any communication channel.'
+        title: 'Copy &amp; Paste'
+        text: 'Paste the contents of your clipoard with <code>CMD+V</code> on Mac or <code>CTRL+V</code> on Windows.'

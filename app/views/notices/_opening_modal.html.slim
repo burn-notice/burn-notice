@@ -4,14 +4,14 @@ div id="opening_modal_#{notice.id}" class="modal"
     .modal-content
       .modal-header
         button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
-        h4.modal-title= t('.openings_since', date: notice.created_at.to_s(:short))
+        h4.modal-title= t('notices.openings_since', date: notice.created_at.to_s(:short))
       .modal-body
         - if requested = grouped_openings["requested"]
           .panel.panel-info
             .panel-heading
               h3.panel-title
-                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.opening_requests_content') title=t('.opening_requests_hint')
-                span= t('.opening_requests')
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.opening_requests_content') title=t('notices.opening_requests_hint')
+                span= t('notices.opening_requests')
             .panel-body
               ul.list-group
                 - requested.group_by(&:ip).each do |ip, openings|
@@ -22,8 +22,8 @@ div id="opening_modal_#{notice.id}" class="modal"
           .panel.panel-danger
             .panel-heading
               h3.panel-title
-                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.unauthorized_requests_content') title=t('.unauthorized_requests_hint')
-                span= t('.unauthorized_requests')
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.unauthorized_requests_content') title=t('notices.unauthorized_requests_hint')
+                span= t('notices.unauthorized_requests')
             .panel-body
               ul.list-group
                 - unauthorized.group_by(&:ip).each do |ip, openings|
@@ -34,8 +34,8 @@ div id="opening_modal_#{notice.id}" class="modal"
           .panel.panel-success
             .panel-heading
               h3.panel-title
-                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.authorized_requests_content') title=t('.authorized_requests_hint')
-                span= t('.authorized_requests')
+                span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.authorized_requests_content') title=t('notices.authorized_requests_hint')
+                span= t('notices.authorized_requests')
             .panel-body
               ul.list-group
                 - authorized.group_by(&:ip).each do |ip, openings|
@@ -43,4 +43,4 @@ div id="opening_modal_#{notice.id}" class="modal"
                     span.badge= openings.size
                     = ip
       .modal-footer
-        button type="button" class="btn btn-default" data-dismiss="modal"= t('.close')
+        button type="button" class="btn btn-default" data-dismiss="modal"= t('notices.close')

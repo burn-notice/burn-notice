@@ -1,14 +1,14 @@
-h3= t('.chronic')
+h3= t('articles.chronic')
 ul.nav.nav-pills
   - facets[:dates].each do |period, count|
     li
-      = link_to articles_path(period: period), title: t('.posts_per', period: period) do
+      = link_to articles_path(period: period), title: t('articles.posts_per', period: period) do
         = period
         span.badge= count
-h3= t('.tagged')
+h3= t('articles.tagged')
 ul.nav.nav-pills
   - facets[:tags].each do |tag, count|
     li
-      = link_to articles_path(tag: tag), title: t('.posts_for', tag: tag) do
+      = link_to articles_path(tag: tag), title: t('articles.posts_for', tag: tag) do
         = tag
         span.badge= count

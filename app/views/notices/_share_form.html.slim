@@ -1,27 +1,27 @@
 .row
   .col-lg-12
     fieldset
-      legend= t('.share_message')
+      legend= t('notices.share_message')
 .row
   .col-lg-4.col-lg-offset-2
     .input-group
       = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control', pattern: ".+@.+", required: true
       span.input-group-btn
-        = form.submit t('.send_email'), class: "btn btn-success"
+        = form.submit t('notices.send_email'), class: "btn btn-success"
   .col-lg-6
     = render 'callout', section: 'notices', key: 'send_email'
 .row
   .col-lg-4.col-lg-offset-2
-    = link_to "https://twitter.com/share?text=@user #{t('.burn_notice_tweet')} &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success btn-block' do
+    = link_to "https://twitter.com/share?text=@user #{t('notices.burn_notice_tweet')} &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success btn-block' do
       span.glyphicon.glyphicon-comment
-      span=< t('.share_by_twitter')
+      span<= t('notices.share_by_twitter')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'send_tweet'
 .row
   .col-lg-4.col-lg-offset-2
-    = button_tag title: t('.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{open_url(notice)}')" do
+    = button_tag title: t('notices.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{open_url(notice)}')" do
       a.glyphicon.glyphicon-list-alt'
-      span= t('.copy_to_clipboard')
+      span= t('notices.copy_to_clipboard')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'copy_link'
 
@@ -29,4 +29,4 @@ hr.spacer
 
 .row
   .col-lg-12
-    .pull-right= link_to t('.back_to_dashboard'), notices_path, class: 'btn btn-default'
+    .pull-right= link_to t('notices.back_to_dashboard'), notices_path, class: 'btn btn-default'

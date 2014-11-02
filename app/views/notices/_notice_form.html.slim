@@ -1,26 +1,26 @@
 .row
   .col-lg-12
     fieldset
-      legend= t('.draft_your_message')
+      legend= t('notices.draft_your_message')
 .row.spacer
-  = form.label :content, t('.content'), class: "col-lg-2 control-label"
+  = form.label :content, t('notices.content'), class: "col-lg-2 control-label"
   .col-lg-4
-    = form.text_area :content, rows: 3, placeholder: t('.content_placeholder'), class: 'form-control'
+    = form.text_area :content, rows: 3, placeholder: t('notices.content_placeholder'), class: 'form-control'
   .col-lg-6
     = render 'callout', section: 'notices', key: 'content'
 .row
-  = form.label :question, t('.question'), class: "col-lg-2 control-label"
+  = form.label :question, t('notices.question'), class: "col-lg-2 control-label"
   .col-lg-4
-    = form.text_field :question, placeholder: t('.question_placeholder'), class: "form-control"
+    = form.text_field :question, placeholder: t('notices.question_placeholder'), class: "form-control"
   .col-lg-6
     = render 'callout', section: 'notices', key: 'question'
 .row
-  = form.label :answer, t('.answer'), class: "col-lg-2 control-label"
+  = form.label :answer, t('notices.answer'), class: "col-lg-2 control-label"
   .col-lg-4
     .input-group
       = form.password_field :answer, class: "form-control"
       span.input-group-addon
         input' type="checkbox" id="show_password" onchange="$('#notice_answer').prop('type', $(this).prop('checked') ? 'text' : 'password')"
-        label(for="show_password")= t('.show')
+        label(for="show_password")= t('notices.show')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'answer'

@@ -2,13 +2,13 @@
   .row
     .col-lg-12
       fieldset
-        legend= t('.select_a_policy')
+        legend= t('notices.select_a_policy')
   .row
     .col-lg-10.col-lg-offset-2
       .well.callout
         =' policy_fields.radio_button :name, :burn_after_reading, onchange: "$('#notice_policy_attributes_duration').val(''); $('#notice_policy_attributes_amount').val('');"
         =' policy_fields.label :name, "burn after reading", value: :burn_after_reading, class: 'text-warning'
-        span= t('.burn_after_reading_hint')
+        span= t('notices.burn_after_reading_hint')
   .row
     .col-lg-4.col-lg-offset-2
       .input-group
@@ -16,11 +16,9 @@
           =' policy_fields.radio_button :name, :burn_after_time
           = policy_fields.label :name, "burn after", value: :burn_after_time
         = policy_fields.number_field :duration, placeholder: 'minimum 1', min: 1, class: "form-control text-right", onfocus: "$('#notice_policy_attributes_name_burn_after_time').prop('checked', true); $('#notice_policy_attributes_amount').val('');"
-        span.input-group-addon= t('.days')
+        span.input-group-addon= t('notices.days')
     .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.burn_after_time_content') title=t('.burn_after_time_title')
-        span=< t('.burn_after_time_hint')
+      = render 'callout', section: 'notices', key: 'burn_after_time'
   .row
     .col-lg-4.col-lg-offset-2
      .input-group
@@ -29,8 +27,6 @@
             =' policy_fields.radio_button :name, :burn_after_openings
             | Burn after
         = policy_fields.number_field :amount, placeholder: 'minimum 1', min: 1, class: "form-control text-right", onfocus: "$('#notice_policy_attributes_name_burn_after_openings').prop('checked', true); $('#notice_policy_attributes_duration').val('');"
-        span.input-group-addon= t('.reads')
+        span.input-group-addon= t('notices.reads')
     .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('.burn_after_openings_content') title=t('.burn_after_openings_title')
-        span=< t('.burn_after_openings_hint')
+      = render 'callout', section: 'notices', key: 'burn_after_openings'

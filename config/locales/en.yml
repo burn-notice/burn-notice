@@ -1,8 +1,9 @@
 en:
   slogan: 'Burn-Notice: simple, secure, encrypted - one-time messages'
-  notices: 'Messages'
-  draft: 'Draft'
-  dashboard: 'Dashboard'
+  navigation:
+    notices: 'Messages'
+    draft: 'Draft'
+    dashboard: 'Dashboard'
   articles:
     title: 'Burn after reading - the Burn-Notice blog!'
     wrote_on: 'wrote on <em>%{date}</em>'
@@ -17,7 +18,7 @@ en:
     content: 'Secret Notice'
     content_placeholder: 'Our new key-code at home is 4711, remember to tell the kids as well!'
     question: 'Secret Question'
-    content_placeholder: 'What does the engraving on our wedding ring say?'
+    question_placeholder: 'What does the engraving on our wedding ring say?'
     answer: 'Secret Answer'
     show: 'show'
     close: 'close'
@@ -35,12 +36,6 @@ en:
     authorized_requests_content: 'Someone decrypted your Burn-Notice using the proper shared secret.'
     select_a_policy: 'Select a security policy'
     burn_after_reading_hint: 'offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!'
-    burn_after_time_hint: 'This will keep the Burn-Notice alive for a defined period of time.'
-    burn_after_time_title: 'Best until'
-    burn_after_time_content: 'When you need to make sure that a message can be read until a specific date.'
-    burn_after_openings_hint: 'The Burn-Notice will get destroyed after a fixed number of decryptions.'
-    burn_after_openings_title: 'Burn-Notice for the people'
-    burn_after_openings_content: 'This might be handy for situations where you want to share a Burn-Notice with multiple recipients like members of a team.'
     share_message: 'Share your Burn-Notice'
     send_email: 'send e-mail'
     burn_notice_tweet: 'there is a Burn-Notice for you at'
@@ -64,6 +59,14 @@ en:
         hint: 'Whitespace will be ignored and it is not case sensitive.'
         title: 'Easy for the recipient'
         text: 'We are trying to make it simpler for the recipient of the message by stripping all whitespace and making the text case insensitive so it is straight forward to match the answer properly.'
+      burn_after_time:
+        hint: 'This will keep the Burn-Notice alive for a defined period of time.'
+        title: 'Best until'
+        text: 'When you need to make sure that a message can be read until a specific date.'
+      burn_after_openings:
+        hint: 'The Burn-Notice will get destroyed after a fixed number of decryptions.'
+        title: 'Burn-Notice for the people'
+        text: 'This might be handy for situations where you want to share a Burn-Notice with multiple recipients like members of a team.'
       send_email:
         hint: 'Send a link to this Burn-Notice via e-mail, separate e-mail addresses with <code class="text-muted">,</code>.'
         title: 'Anonymity and data privacy'

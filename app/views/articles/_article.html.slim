@@ -5,8 +5,8 @@ article
     = gravatar(article.user)
     small
       = link_to article, title: article.title do
-        span.text-muted== t('.wrote_on', date: article.published_at.to_s(:long))
+        span.text-muted== t('articles.wrote_on', date: article.published_at.to_s(:long))
       - article.tags.each do |tag|
-        span.margin-left.label.label-warning=' link_to tag, articles_path(tag: tag), title: t('.posts_for', tag: tag)
+        span.margin-left.label.label-warning=' link_to tag, articles_path(tag: tag), title: t('articles.posts_for', tag: tag)
   .content
     == markdown(emojify(article.body.html_safe))

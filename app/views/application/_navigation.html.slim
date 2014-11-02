@@ -11,22 +11,20 @@
       ul.nav.navbar-nav
         li.dropdown
           - if signed_in?
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">#{t('notices')} <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">#{t('navigation.notices')} <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"
               li
                 = link_to new_notice_path do
                   span.glyphicon.glyphicon-pencil.smaller'
-                  span.margin-left-small= t('draft')
+                  span.margin-left-small= t('navigation.draft')
               li
                 = link_to notices_path do
                   span.glyphicon.glyphicon-th-list.smaller'
-                  span.margin-left-small= t('dashboard')
+                  span.margin-left-small= t('navigation.dashboard')
 
         - if signed_in? && current_user.admin?
           li
             = link_to 'Styleguide', styleguide_path
-          li
-            = link_to '&beta;eta'.html_safe, root_path
           li
             = link_to 'Admin', admin_path
 
