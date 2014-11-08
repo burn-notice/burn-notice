@@ -22,11 +22,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    message = flash[:notice] || "Bye #{current_user.nickname}, come back soon!"
+    sign_out if signed_in?
 
-    sign_out
-
-    redirect_to root_path, notice: message
+    redirect_to root_path, notice: flash[:notice] || "Bye, come back soon!"
   end
 
   def failure
