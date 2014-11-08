@@ -26,7 +26,7 @@ class Notice < ActiveRecord::Base
 
   def read_data(secret)
     if hash = read_attribute(:data)
-      decrypt(hash.symbolize_keys, secret)
+      decrypt(hash.symbolize_keys, secret) unless hash.blank?
     else
       nil
     end

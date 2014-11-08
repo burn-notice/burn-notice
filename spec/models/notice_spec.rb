@@ -78,6 +78,12 @@ describe Notice do
       expect(notice.valid_secret?('some-secret')).to be_true
       expect(notice.valid_secret?('invalid')).to be_false
     end
+
+    it "handles burned notices" do
+      notice.burn!
+
+      expect(notice.valid_secret?('some-secret')).to be_false
+    end
   end
 
   context "scheduling" do
