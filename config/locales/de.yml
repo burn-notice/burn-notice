@@ -8,6 +8,14 @@ de:
   locale:
     en: 'Englisch'
     de: 'Deutsch'
+  session:
+    welcome_back: "Hallo %{nickname}, willkommen zurück!"
+    connected: "Erfolgreich verbunden mit %{provider}!"
+    validation_successful: "Du hast dich erfolgreich registriert!"
+    bye: "Tschüss und bis bald!"
+    ups_something_went_wrong: "Mist, da ist was schief gelaufen."
+    welcome: "Hallo %{nickname}, herzlich willkommen bei Burn-Notice!"
+    existing_user: "Die E-Mail Adresse %{email} ist bereits registriert, bitte nutze %{providers} zum einloggen!"
   articles:
     title: 'Burn after reading - das Burn-Notice Blog!'
     wrote_on: 'hat am <em>%{date}</em> geschrieben'

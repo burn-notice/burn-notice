@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
     if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
       sign_in(authorization.user)
-      redirect_to notices_path, notice: "Hi #{authorization.user.nickname}, welcome back!"
+      redirect_to notices_path, notice: t('session.welcome_back', nickname: authorization.user.nickname)
     elsif signed_in?
       current_user.authorizations.create! provider: auth['provider'], uid: auth['uid']
-      redirect_to user_path(current_user), notice: "Connected your account to #{auth['provider']}!"
+      redirect_to user_path(current_user), notice: t('session.connected', provider: auth['provider'].humanize)
     else
       session[:auth_path] = notices_path
       session[:auth_data] = auth
@@ -18,17 +18,17 @@ class SessionsController < ApplicationController
     user = User.find_by_token(params[:token])
     user.validate!
 
-    redirect_to notices_path, notice: "Your validation was successful!"
+    redirect_to notices_path, notice: t('session.validation_successful')
   end
 
   def destroy
     sign_out if signed_in?
 
-    redirect_to root_path, notice: flash[:notice] || "Bye, come back soon!"
+    redirect_to root_path, notice: flash[:notice] || t('session.bye')
   end
 
   def failure
-    redirect_to root_path, alert: "Ups, we have an issue with your login!"
+    redirect_to root_path, alert: t('session.ups_something_went_wrong')
   end
 
   def offline_login
@@ -71,7 +71,7 @@ class SessionsController < ApplicationController
         MailerJob.new.async.deliver(mail)
       end
       sign_in(@user)
-      redirect_to session.delete(:auth_path), notice: "Hi #{@user.nickname}, welcome to Burn-Notice!"
+      redirect_to session.delete(:auth_path), notice: t('session.welcome', nickname: @user.nickname)
     else
       check_existing_user(params[:user][:email])
       render :signup
@@ -83,7 +83,7 @@ class SessionsController < ApplicationController
   def check_existing_user(email)
     if existing_user = User.find_by_email(email)
       providers = existing_user.authorizations.map(&:provider)
-      flash.now[:alert] = "An existing user was found for #{email}, please sign in through #{providers.to_sentence}!"
+      flash.now[:alert] = t('session.existing_user', email: email, providers: providers.to_sentence)
     end
   end
 end
