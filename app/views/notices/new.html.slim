@@ -1,5 +1,5 @@
-- set_title('New Notice')
-- set_crumbs('Notices' => notices_path, 'New Notice' => url_for)
+- set_title t('notices.new_notice')
+- set_crumbs t('navigation.notices') => notices_path, t('notices.new_notice') => url_for
 
 = form_errors @notice
 = form_for @notice, html: {class: "form-horizontal", autocomplete: :off} do |form|
@@ -10,4 +10,4 @@
   .row
     .col-lg-12
       .pull-right
-        = form.submit 'create Burn-Notice', class: "btn btn-success"
+        = form.submit t('notices.create_button'), class: "btn btn-success"

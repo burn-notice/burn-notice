@@ -19,7 +19,7 @@
     = render 'callout', section: 'notices', key: 'send_tweet'
 .row
   .col-lg-4.col-lg-offset-2
-    = button_tag title: t('notices.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{open_url(notice)}')" do
+    = button_tag title: t('notices.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{t('notices.copy_hint')}', '#{open_url(notice)}')" do
       a.glyphicon.glyphicon-list-alt'
       span= t('notices.copy_to_clipboard')
   .col-lg-6

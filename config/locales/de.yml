@@ -1,4 +1,10 @@
 de:
+  activerecord:
+    attributes:
+      notice:
+        question: 'Frage'
+        answer: 'Antwort'
+        content: 'Inhalt'
   slogan: "Burn-Notice: Einfach, Sicher, Verschlüsselt - Einweg-Nachrichten"
   navigation:
     notices: 'Nachrichten'
@@ -26,6 +32,10 @@ de:
     nothing_to_see: 'Leider gibt es hier im Moment nichts zu sehen!'
     nothing_found: 'Leider konnten wir für <em>%{phrase}</em> keine Artikel finden, versuche es später noch einmal!'
   notices:
+    new_notice: 'Neue Nachricht'
+    create_button: 'Burn-Notice erstellen'
+    secure_button: 'nächster Schritt, verschicken!'
+    share_notice: 'Verschicken'
     manage_your_history: 'Verwalte deine Nachrichten'
     table_header:
       status: 'Status'
@@ -82,6 +92,7 @@ de:
     burn_notice_tweet: 'eine Burn-Notice für dich'
     share_via_twitter: 'als Tweet'
     copy_to_clipboard: 'in die Zwischenablage'
+    copy_hint: 'Kopieren in die Zwischenablage: CMD+C / Ctrl+C, Antippen für Touch-Devices'
     back_to_dashboard: 'zurück zur Übersicht'
     draft_it: 'verfassen'
     secure_it: 'verschlüsseln'
@@ -93,7 +104,7 @@ de:
         title: 'Burn after reading'
         text: 'Jeder Zugriff wird protokolliert und nach dreimaliger Eingabe eines falschen Passworts wird die Nachricht gesperrt. Du kannst selber festlegen wann die Nachricht gelöscht wird.'
       question:
-        hint: 'Wähle eine geheime Frage aus, die nur du und der Empfänger beantworten können.'
+        hint: 'Wähle eine geheime Frage aus deren Antwort nur der Empfänger wissen kann.'
         title: 'Benutze eine geheime Frage'
         text: 'Die Idee des geteilten Geheimnisses ist ein probates Mittel für kurzfristige Sicherheit. Wähle ein Geheimnis das nicht offensichtlich von einer dritten Partei erraten werden kann, allerdings ohne Mühe vom Empfänger beantwortet werden kann.'
       answer:
@@ -101,7 +112,7 @@ de:
         title: 'Einfach für den Empfänger'
         text: 'Um mögliche Probleme beim Entschlüsseln zu vermeiden, werden Leerzeichen sowie die Groß- und Kleinschreibung des Textes ignoriert.'
       burn_after_time:
-        hint: 'Die Nachricht ist nur für den definierten Zeitraum lesbar, danach wird sie sofort zerstört.'
+        hint: 'Die Nachricht ist nur für diesen Zeitraum lesbar, danach wird sie sofort zerstört.'
         title: 'Mit Ablaufdatum'
         text: 'Diese Einstellung bietet die Möglichkeit eine Nachricht unbegrenzt zu entschlüsseln, bis der vorgegebene Zeitraum abgelaufen ist.'
       burn_after_openings:
@@ -109,14 +120,14 @@ de:
         title: 'Burn-Notice für die Masse'
         text: 'Diese Einstellung ist nützlich wenn eine Nachricht beispielsweise an eine Gruppe gesendet werden soll.'
       send_email:
-        hint: 'Verschicke einen Link zur Burn-Notice per E-Mail (mehrere E-Mail Addressen per <code class="text-muted">,</code> trennen).'
+        hint: 'Verschicke einen Link per E-Mail (mehrere E-Mail Addressen per <code class="text-muted">,</code> trennen).'
         title: 'Datenschutz'
         text: 'Zum Schutz deiner Daten werden die eingegebenen E-Mail Addressen nicht in unserem System gespeichert.'
       send_tweet:
-        hint: 'Diese Nachricht per Twitter teilen <em>@mention</em>.'
+        hint: 'Diese Nachricht mit Twitter per <em>@mention</em> teilen.'
         title: 'Twitter und Datenschutz'
         text: 'Solange deine Twitter-Timeline nicht geschützt ist sind deine Tweets öffentlich, in diesem Fall solltest du eine besonders sichere Frage verwenden.'
       copy_link:
-        hint: 'Per copy &amp; paste die Nachricht anderweitig nutzen.'
+        hint: 'Per <em>copy &amp; paste</em> die Nachricht anderweitig nutzen.'
         title: 'Copy &amp; Paste'
         text: 'Die Nachricht wird in deine Zwischenablage kopiert. Einfügen mit <code>CMD+V</code> auf Mac oder <code>CTRL+V</code> auf Windows.'
