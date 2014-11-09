@@ -1,5 +1,5 @@
-- set_title('Notices')
-- set_crumbs('Notices' => url_for)
+- set_title t('navigation.notices')
+- set_crumbs t('navigation.notices') => url_for
 
 = render 'activation_popup'
 
@@ -9,21 +9,19 @@
       .panel-heading
         .row
           .col-lg-6
-            h2.panel-title.hidden-xs
-              | Manage your Burn-Noice history
+            h2.panel-title.hidden-xs= t('notices.manage_your_history')
           .col-lg-6
-            .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
-              span.glyphicon.glyphicon-pencil.smaller'
-              | Draft
+            .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default', title: t('notices.draft_it') do
+              span.glyphicon.glyphicon-pencil.smaller
       table.table.table-striped.table-hover
         thead
           tr
             th.hidden-xs= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
-            th Status
-            th Sent
-            th.hidden-xs Question
-            th Policy
-            th.hidden-xs Opened
+            th= t('notices.table_header.status')
+            th= t('notices.table_header.sent')
+            th.hidden-xs= t('notices.table_header.question')
+            th= t('notices.table_header.policy')
+            th.hidden-xs= t('notices.table_header.opened')
             th
         tbody
         - @notices.each do |notice|
@@ -32,13 +30,13 @@
             td
               - if notice.closed?
                 span.visible-xs.label.label-primary.glyphicon.glyphicon-fire
-                span.hidden-xs.label.label-primary Burned
+                span.hidden-xs.label.label-primary= t('notices.burned')
               - elsif notice.disabled?
                 span.visible-xs.label.label-warning.glyphicon.glyphicon-minus-sign
-                span.hidden-xs.label.label-warning Disabled
+                span.hidden-xs.label.label-warning= t('notices.disabled')
               - else
                 span.visible-xs.label.label-success.glyphicon.glyphicon-eye-open
-                span.hidden-xs.label.label-success Readable
+                span.hidden-xs.label.label-success= t('notices.open')
             td= notice.created_at.to_s(:short)
             td= notice.question
             td
@@ -48,78 +46,61 @@
                 span.hidden-xs< after reading
               - when 'burn_after_time'
                 span.glyphicon.glyphicon-time.smaller
-                span.hidden-xs<= "#{notice.policy.duration} #{'day'.pluralize(notice.policy.duration)}"
+                span.hidden-xs<= "#{notice.policy.duration} #{t('notices.day').pluralize(notice.policy.duration)}"
               - when 'burn_after_openings'
                 span.glyphicon.glyphicon-asterisk.smaller
-                span.hidden-xs<= "#{notice.policy.amount} reads"
+                span.hidden-xs<= t('notices.reads', count: notice.policy.amount)
             td.hidden-xs.openings
               - if notice.openings.present?
                 = render 'opening_modal', notice: notice
                 = link_to '#', "data-toggle" => "modal", "data-target" => "#opening_modal_#{notice.id}" do
                   span.glyphicon.glyphicon-th-list'
-                  span #{notice.openings.size} times
+                  span= t('notices.times', count: notice.openings.size)
               - else
                 span -
             td
               .btn-group
                 button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                  | Actions <span class="caret"></span>
+                  | #{t('notices.actions')} <span class="caret"></span>
                 ul.dropdown-menu role="menu"
                   - unless notice.closed?
                     li
                       = link_to open_path(notice), style: 'text-decoration: none'
                         span.glyphicon.glyphicon-eye-open.smaller'
-                        span.margin-left-small read
+                        span.margin-left-small= t('notices.read')
                   - if notice.disabled?
                     li
                       = link_to enable_notice_path(notice), method: :patch, style: 'text-decoration: none'
                         span.glyphicon.glyphicon-plus-sign.smaller'
-                        span.margin-left-small enable
+                        span.margin-left-small= t('notices.enable')
                   - elsif notice.open?
                     li
                       = link_to share_notice_path(notice), style: 'text-decoration: none'
                         span.glyphicon.glyphicon-share.smaller'
-                        span.margin-left-small share
+                        span.margin-left-small= t('notices.share')
                     li
                       = link_to disable_notice_path(notice), method: :patch, style: 'text-decoration: none'
                         span.glyphicon.glyphicon-minus-sign.smaller'
-                        span.margin-left-small disable
+                        span.margin-left-small= t('notices.disable')
                   li
-                    = link_to notice_path(notice), method: :delete, data: {confirm: "This can't be undone!"}, style: 'text-decoration: none'
+                    = link_to notice_path(notice), method: :delete, data: {confirm: t('notices.confirm')}, style: 'text-decoration: none'
                       span.glyphicon.glyphicon-trash.smaller'
-                      span.margin-left-small delete
+                      span.margin-left-small= t('notices.destroy')
       .panel-footer
         .row
           .col-lg-12
             .btn-group.hidden-xs
               button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                | Bulk <span class="caret"></span>
+                | #{t('notices.bulk')} <span class="caret"></span>
               ul.dropdown-menu role="menu"
                 li
                   = link_to '#', onclick: "event.preventDefault(); $(this).closest('form').submit()" do
                     span.glyphicon.glyphicon-trash.smaller'
-                    span delete
-            .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default' do
-              span.glyphicon.glyphicon-pencil.smaller'
-              | Draft
+                    span= t('notices.bulk_destroy')
+            .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default', title: t('notices.draft_it') do
+              span.glyphicon.glyphicon-pencil.smaller
   .text-center
     = paginate @notices
 
 - else
-  .page-header
-    h2 You are just <span class="text-success">3 simple steps</span> away from your first Burn-Notice!
-
-  = render 'three_step'
-  .row
-    .col-lg-12
-      .well
-        .pull-right
-          = link_to first_step_notices_path, class: 'btn btn-success btn-lg' do
-            strong.step.success-step-button> 1
-            span.text-error draft it
-        p
-          |
-            Just follow the steps to create a new Burn-Notice.
-            Every step has a couple of explanations, so you will know exactly what the step is for.
-            Make sure to read the instructions, so your data is stored in our database with a strong password.
-            This will make unauthorized access to your data impossible.
+  = render 'blank_slate'

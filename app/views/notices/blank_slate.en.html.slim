@@ -1,0 +1,17 @@
+.page-header
+  h2 You are just <span class="text-success">3 simple steps</span> away from your first Burn-Notice!
+
+= render 'three_step'
+.row
+  .col-lg-12
+    .well
+      .pull-right
+        = link_to first_step_notices_path, class: 'btn btn-success btn-lg' do
+          strong.step.success-step-button> 1
+          span.text-error draft it
+      p
+        |
+          Just follow the steps to create a new Burn-Notice.
+          Every step has a couple of explanations, so you will know exactly what the step is for.
+          Make sure to read the instructions, so your data is stored in our database with a strong password.
+          This will make unauthorized access to your data impossible.
