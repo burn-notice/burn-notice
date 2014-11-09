@@ -3,6 +3,7 @@
     .navbar-header
       = link_to image_tag('logo.png', size: '32x32'), root_path, class: "navbar-brand navbar-logo", title: t('slogan')
       = link_to 'Burn-Notice', root_path, class: "navbar-brand", title: t('slogan')
+      = render 'beta_label'
       button.navbar-toggle  type="button" data-toggle="collapse" data-target="#navbar-main"
         span.icon-bar
         span.icon-bar
@@ -38,8 +39,6 @@
           li.navbar-user= link_to gravatar(current_user), user_path(current_user), title: current_user.nickname
           li= link_to 'Logout', logout_path
         - else
-          li.hidden-xs
-            = render 'beta_label'
           li.dropdown
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">Login <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"

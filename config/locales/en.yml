@@ -72,7 +72,7 @@ en:
         title: 'Burn-Notice for the people'
         text: 'This might be handy for situations where you want to share a Burn-Notice with multiple recipients like members of a team.'
       send_email:
-        hint: 'Send a link to this Burn-Notice via e-mail, separate e-mail addresses with <code class="text-muted">,</code>.'
+        hint: 'Send a link to this Burn-Notice via e-mail (separate e-mail addresses with <code class="text-muted">,</code>).'
         title: 'Anonymity and data privacy'
         text: "The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!"
       send_tweet:
