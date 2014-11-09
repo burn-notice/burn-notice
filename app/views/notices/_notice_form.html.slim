@@ -19,8 +19,6 @@
   .col-lg-4
     .input-group
       = form.password_field :answer, class: "form-control"
-      span.input-group-addon
-        input' type="checkbox" id="show_password" onchange="$('#notice_answer').prop('type', $(this).prop('checked') ? 'text' : 'password')"
-        label(for="show_password")= t('notices.show')
+      = render 'show_password', key: '#notice_answer'
   .col-lg-6
     = render 'callout', section: 'notices', key: 'answer'

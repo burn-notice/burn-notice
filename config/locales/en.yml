@@ -25,6 +25,19 @@ en:
     posts_for: 'Burn-Notice blog posts for %{tag}'
     nothing_to_see: 'Sorry, there is nothing to see at the moment!'
     nothing_found: 'Sorry, we could not find anything for <em>%{phrase}</em>, please try again later!'
+  public:
+    current_user_warning: 'Your read will be treated as any other user!'
+    please_enter_secret: 'Please enter your shared secret!'
+    no_longer_available: 'The Burn-Notice is not available any longer!'
+    answer_button: 'answer and read'
+    too_many_attempts: 'The notice has been disabled due to too many invalid attempts!'
+    invalid_answer: 'The secret answer was incorrect!'
+    correct_answer: 'Your answer was correct, encryption was successful!'
+    this_will_self_destruct: 'This message will self-destruct!'
+    policy_content: "We will log all read attempts for messages and notify the sender for successful decryptions. The Notice will get destroyed immediately afterwards."
+    answer: 'answer with Burn-Notice'
+    sign_up: 'sign-up to our &beta;eta'
+    participate: 'If you want to participate in our &beta;eta just sign up using your e-mail address!'
   notices:
     new_notice: 'New Notice'
     create_button: 'create Burn-Notice'
@@ -37,9 +50,10 @@ en:
       question: 'Question'
       policy: 'Policy'
       opened: 'Opened'
-    burned: 'burned'
-    disabled: 'disabled'
-    open: 'open'
+    status:
+      burned: 'burned'
+      disabled: 'disabled'
+      open: 'open'
     day: 'day'
     reads: '%{count} reads'
     times: '%{count} times'
@@ -58,7 +72,7 @@ en:
     burned: 'The notice was burned!'
     destroyed: 'The notice is deleted!'
     bulk_destroyed: 'Notices have been deleted!'
-    sent: "Your Burn-Notice was sent to %{recepients}."
+    sent_via_email: "Your Burn-Notice was sent to %{recepients}."
     draft_your_message: 'Draft your Burn-Notice'
     content: 'Secret Notice'
     content_placeholder: 'Our new key-code at home is 4711, remember to tell the kids as well!'

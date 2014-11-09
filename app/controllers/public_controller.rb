@@ -22,15 +22,15 @@ class PublicController < ApplicationController
         @data = @notice.read_data(params[:answer])
         @notice.apply_policy(authorized: true)
       else
-        redirect_to(root_path, alert: 'The Burn-Notice is no longer available!')
+        redirect_to(root_path, alert: t('public.no_longer_available'))
       end
     else
       @opening.update! authorization: :unauthorized
       @notice.apply_policy(authorized: false)
       if @notice.disabled?
-        redirect_to(root_path, alert: 'The notice has been disabled due to too many invalid attempts!')
+        redirect_to(root_path, alert: t('public.too_many_attempts'))
       else
-        redirect_to(open_path(@notice), alert: 'The shared secret was invalid!')
+        redirect_to(open_path(@notice), alert: t('public.invalid_answer'))
       end
     end
   end

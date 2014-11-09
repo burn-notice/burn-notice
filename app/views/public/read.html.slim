@@ -1,22 +1,22 @@
 .panel.panel-success
   .panel-heading
-    h3.panel-title Your answer was correct, encryption was successful!
+    h3.panel-title= t('public.correct_answer')
   .panel-body
     p.lead
       == markdown(emojify(@data))
   .panel-footer
-    a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="We will log all read attempts for messages and notify the sender for successful decryptions. The Notice will get destroyed immediately afterwards." title=@notice.policy.name.humanize
-    small< This message will self-destruct!
+    a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('public.policy_content') title=@notice.policy.name.humanize
+    small<= t('public.this_will_self_destruct')
 
 hr.spacer
 
 - if signed_in?
   .row
     .col-lg-12
-      .pull-right= link_to 'answer with Burn-Notice', new_notice_path, class: "btn btn-success"
+      .pull-right= link_to t('public.answer'), new_notice_path, class: "btn btn-success"
 - else
   .row
     .col-lg-3
-      .pull-right= link_to 'sign-up to our &beta;eta'.html_safe, root_path, class: "btn btn-lg btn-primary"
+      .pull-right== link_to t('public.sign_up'), root_path, class: "btn btn-lg btn-primary"
     .col-lg-9
-      .well.callout If you want to participate in our &beta;eta just sign up using your e-mail address!
+      .well.callout= t('public.participate') 

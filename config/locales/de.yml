@@ -31,6 +31,19 @@ de:
     posts_for: 'Burn-Notice Artikel für %{tag}'
     nothing_to_see: 'Leider gibt es hier im Moment nichts zu sehen!'
     nothing_found: 'Leider konnten wir für <em>%{phrase}</em> keine Artikel finden, versuche es später noch einmal!'
+  public:
+    current_user_warning: 'Dein Zugriff wird wie jeder andere behandelt!'
+    please_enter_secret: 'Bitte gib das Geheimnis zum Entschlüsseln ein!'
+    no_longer_available: 'Die Nachricht ist nicht länger verfügbar!'
+    answer_button: 'beantworten und lesen'
+    too_many_attempts: 'Die Nachricht wurde wegen zu vieler falscher Zugriffsversuche deaktiviert!'
+    invalid_answer: 'Die geheime Antwort war nicht korrekt!'
+    correct_answer: 'Die Antwort war korrekt, Entschlüsselung erfolgreich!'
+    this_will_self_destruct: 'Diese Nachricht zerstört sich selbst!'
+    policy_content: "Wir protokollieren alle Zugriffsversuche und benachrichtigen den Absender bei erfolgreichen Entschlüsselungen. Die Nachricht wird nach dem lesen sofort zerstört."
+    answer: 'answer with Burn-Notice'
+    sign_up: 'sign-up to our &beta;eta'
+    participate: 'If you want to participate in our &beta;eta just sign up using your e-mail address!'
   notices:
     new_notice: 'Neue Nachricht'
     create_button: 'Burn-Notice erstellen'
@@ -43,9 +56,10 @@ de:
       question: 'Frage'
       policy: 'Strategie'
       opened: 'Gelesen'
-    burned: 'zerstört'
-    disabled: 'deaktiviert'
-    open: 'ungelesen'
+    status:
+      burned: 'zerstört'
+      disabled: 'deaktiviert'
+      open: 'ungelesen'
     day: 'Tag'
     reads: '%{count} Zugriffe'
     times: '%{count} Zugriffe'
@@ -64,7 +78,7 @@ de:
     burned: 'Die Nachrichte wurde zerstört!'
     destroyed: 'Die Nachrichte wurde gelöscht!'
     bulk_destroyed: 'Die ausgewählten Nachrichten wurden gelöscht!'
-    sent: "Deine Burn-Notice wurde an %{recepients} versendet."
+    sent_via_email: "Deine Burn-Notice wurde an %{recepients} versendet."
     draft_your_message: 'Schreibe eine Burn-Notice'
     content: 'Geheime Nachricht'
     content_placeholder: 'Der neue Zugangs-Code für zu Hause ist 0815, denk dran es auch den Kindern zu sagen!'
