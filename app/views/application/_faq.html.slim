@@ -7,53 +7,53 @@
       h4.text-warning Anwendungszenarien
     panel-collapse.collapse.in id="collapse-11"
       .panel-body
-        p Passwörter, Kredit-Karten Nummern, PIN-Codes, Guschein-Codes und vieles mehr...
+        p Passwörter, Kreditkarten-Nummern, PIN-Codes, Gutschein-Codes und vieles mehr...
         p
           |
-            All diese Informationen sollte man als geheim erachten und man sollte sie <em>niemals unverschlüsselt pe E-Mail or SMS versenden</em>!
+            All diese Informationen sollte man als geheim erachten und man sollte sie <em>niemals unverschlüsselt per E-Mail oder SMS versenden</em>!
             Diese Kommunikations-Kanäle sind unsicher solange die Nachrichten nicht verschlüsselt übertragen werden.
             Ein betrügerischer Benutzer kann relativ einfach Zugang zu diesen Daten erlangen und die geheimen oder wertvollen Information stehlen.
         p
          |
-           Es gibt bereits einige sichere Möglichkeiten diese Kommunikations-Kanäle abzusichern, wie z.b.
+           Es gibt bereits einige sichere Möglichkeiten diese Kommunikations-Kanäle abzusichern, wie z.B.
            #{link_to 'PGP', 'https://en.wikipedia.org/wiki/Pretty_Good_Privacy', title: 'PGP - Pretty Good Privacy nutzt eine Public/Privte-Key Verschlüsselung um E-Mails sicher zu übertragen.'} für E-Mails,
-           allerdings sind die Meisten Lösungen alles andere als einfach in ihrer Benutzung.
+           allerdings sind die meisten Lösungen alles andere als einfach in ihrer Benutzung.
         p
           |
             Burn-Notice macht sich das Prinzip des "shared Secret" zu nütze, also eine geheime Information, die nur Sender und Empfänger der Nachricht kennen.
-            Diese geheime Information wird beim Senden einer Burn-Notice in Form einer Frage eingegeben und die Antwort wird zum verschlüsseln der Nachricht genutzt.
+            Diese geheime Information wird beim Senden einer Burn-Notice in Form einer Frage eingegeben und die Antwort wird zum Verschlüsseln der Nachricht genutzt.
             Die Antwort wird <strong>nicht</strong> in unserer Datenbank abgespeichert,
             hierdurch ist es nahezu unmöglich für einen Angreifer die hinterlegte Information zu entschlüsseln.
         p
           |
-            Zusätzlich wird eine Nachricht direkt nach dem lesen zerstört, so wie man es aus dem Fernsehen von Spionage-Filmen kennt.
+            Zusätzlich wird eine Nachricht direkt nach dem Lesen zerstört, so wie man es aus dem Fernsehen von Spionage-Filmen kennt.
             Nachdem die Information gelöscht wurde, ist es unmöglich im Nachhinein herauszufinden, was der Inhalt der Nachricht war.
     a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-1"
       h4.text-warning Wer kann meine Nachricht lesen?
     panel-collapse.collapse id="collapse-1"
       .panel-body
-        p Deine Nachricht is mit einer Sicherheitsfrage geschützt und verschlüsselt.
+        p Deine Nachricht ist mit einer Sicherheitsfrage geschützt und verschlüsselt.
         p Nur der Empfänger, der die Antwort auf diese Sicherheitsfrage kennt, kann die Nachricht entschlüsseln und lesen.
-        p Die Sicherheit der Informationen hängt also davon ab, wie schwierig es ist die Antwort auf die Sicherheitsfrage zu "erraten".
+        p Die Sicherheit der Informationen hängt also davon ab, wie schwierig es ist, die Antwort auf die Sicherheitsfrage zu "erraten".
     a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-2"
       h4.text-warning Was passiert mit meinen Informationen?
     .panel-collapse.collapse id="collapse-2"
       .panel-body
         p Burn-Notice wurde konzipiert möglichst wenig Benutzerinformationen speichern zu müssen, hierdurch kann größt mögliche Sicherheit gewährleistet werden.
-        p Aus diesem Grunde werden z.B. keine Passwörter für den Login gespeichert. Diese Information könnte einem Angreifer dazu dienen Informationen zu entschlüsseln.
-        p Wir werden niemals Benutzerinformationen mit einer dritten Partei oder Dienstleister teilen.
-        p Der Benutzer hat die absolute Hoheit darüber wie seine Informationen behandelt und gelöscht werden:
+        p Aus diesem Grund werden z.B. keine Passwörter für den Login gespeichert. Diese Information könnte einem Angreifer dazu dienen, Informationen zu entschlüsseln.
+        p Wir werden niemals Benutzerinformationen mit einer dritten Partei oder Dienstleistern teilen.
+        p Der Benutzer hat die absolute Hoheit darüber, wie seine Informationen behandelt und gelöscht werden:
         ul
           li <em>burn after reading</em>, löschen der Nachricht direkt nach dem Lesen/Entschlüsseln
           li <em>burn after time</em>, die Nachricht wird nach einer bestimmten Zeitspanne gelöscht
-          li <em>burn after openings</em>, die Nachricht wird nach einer Anzahl von Entschlüsselungen gelöscht
+          li <em>burn after openings</em>, die Nachricht wird nach einer bestimmten Anzahl von Entschlüsselungen gelöscht
     a.list-group-item data-toggle="collapse" data-parent="#accordion" href="#collapse-3"
       h4.text-warning Welche Technologie wird für die Verschlüsselung genutzt?
     .panel-collapse.collapse id="collapse-3"
       .panel-body
         p
           ' Burn-Notice nutzt den
-          =' link_to "Advanced-Encryption-Standard", "http://de.wikipedia.org/wiki/Advanced_Encryption_Standard", title: 'AES - Advanced Encryption Standard ist eine Verschlüsselungs-Technologie welche symmetrische Verschlüsselungs-Algorithmen verwendet um daten abzusichern.'
+          =' link_to "Advanced-Encryption-Standard", "http://de.wikipedia.org/wiki/Advanced_Encryption_Standard", title: 'AES - Advanced Encryption Standard ist eine Verschlüsselungs-Technologie welche symmetrische Verschlüsselungs-Algorithmen verwendet um Daten abzusichern.'
           |
             für die symmetrische Verschlüsselung der Nachricht mit einem
             <span data-toggle="tooltip" data-placement="bottom" data-original-title="256-bit Verschlüsselung bieten einen sehr hohen Sicherheits-Standard. Das Verfahren ist sehr sicher und eine Nachricht kann auch mit enormer Rechenleistung kaum entschlüsselt werden.">
