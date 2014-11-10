@@ -3,23 +3,19 @@
   .row
     .col-lg-12
       fieldset
-        legend Please enter your data!
+        legend= t('sessions.enter_data') 
   .row
     = form.label :nickname, class: "col-lg-2 control-label"
     .col-lg-4
       = form.text_field :nickname, class: "form-control"
     .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="You will be able to change your nickname at any time once you have signed up." title="Changing nickname"
-        span< Your nickname will be used to contact you later on.
+      
   .row
-    = form.label :email, 'E-mail', class: "col-lg-2 control-label"
+    = form.label :email, 'E-Mail', class: "col-lg-2 control-label"
     .col-lg-4
       = form.text_field :email, placeholder: 'me@example.com', class: "form-control"
     .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="You will need to validate your e-mail, so we can make sure to reach out to you." title="Valid e-mail address"
-        span< Your e-mail will be used for read-notifications etc.
+      = render 'callout', section: 'sessions', key: 'signup_nickname'
   .row
     .col-lg-12
-      .pull-right= form.submit 'finish signup', class: "btn btn-success"
+      .pull-right= form.submit t('sessions.signup_button'), class: "btn btn-success"

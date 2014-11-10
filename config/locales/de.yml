@@ -15,6 +15,7 @@ de:
     en: 'Englisch'
     de: 'Deutsch'
   sessions:
+    sign_in_provider: 'Einfach mit OAuth anmelden'
     not_logged_in: "Du bist nicht eingeloggt!"
     not_proper_account: "Du bist nicht mit dem richtigen Benutzerkonto eingeloggt!"
     welcome_back: "Hallo %{nickname}, willkommen zurück!"
@@ -26,7 +27,20 @@ de:
     existing_user: "Die E-Mail Adresse %{email} ist bereits registriert, bitte nutze %{providers} zum einloggen!"
     please_enter_email_for_login: 'Bitte gib deine E-Mail-Adresse zum Einloggen ein!'
     authorize_button: 'per E-Mail einloggen'
+    signup_button: 'Registrierung abschließen'
     callouts:
+      signup_nickname:
+        hint: 'Dein Spitzname wird später für deine Anrede verwendet.'
+        title: 'Spitznamen ändern'
+        text: 'Nachdem du registriert bist kannst du jederzeit deinen Spitznamen ändern.'
+      signup_email:
+        hint: 'Deine E-Mail-Adresse wird für deinen Login und zum benachrichtigen verwendet.'
+        title: 'Valide Adresse ist nötig'
+        text: 'Du musst deine E-Mail-Adresse bestätigen, damit wir dich später erreichen können.'
+      provider:
+        hint: 'Wähle einen <a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a> Anbieter aus und akzeptiere die benötigten Berechtigungen.'
+        title: 'Warum OAuth?'
+        text: 'OAuth ist ein offener Standard für Authentifizierung der es dem Nutzer erlaubt flexibel Berechtigungen zu erteilen oder zu entfernen.'
       email:
         hint: 'Du wirst zu <em>jedem</em> login eine neue E-Mail erhalten!'
         title: 'per E-Mail einloggen'
