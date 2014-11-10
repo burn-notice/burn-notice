@@ -11,11 +11,14 @@ de:
     draft: 'Schreiben'
     dashboard: 'Übersicht'
     locale: 'Sprache'
+    logout: 'Abmelden'
+    profile: 'Profil'
   locale:
     en: 'Englisch'
     de: 'Deutsch'
   sessions:
     sign_in_provider: 'Einfach mit OAuth anmelden'
+    enter_data: 'Bitte gib deine Daten ein'
     not_logged_in: "Du bist nicht eingeloggt!"
     not_proper_account: "Du bist nicht mit dem richtigen Benutzerkonto eingeloggt!"
     welcome_back: "Hallo %{nickname}, willkommen zurück!"
@@ -54,6 +57,12 @@ de:
     confirmation_mail: "Eine Bestätigungs-Mail wurde an %{email} versendet."
     profile_updated_and_confirmation_email: 'Dein Profil wurde aktualisiert und eine Bestätigungs-Mail wurde an deine E-Mail-Adresse versendet!'
     profile_updated: 'Dein Profil wurde aktualisiert.'
+    authorizations: 'Verknüpfungen'
+    connect_via: "per %{provider} verbinden"
+    actions: 'Aktionen'
+    email_confirmed: 'Adresse bestätigt'
+    confirm_email: "E-Mail-Adresse ändern"
+    change_email: "E-Mail ändern"
   articles:
     title: 'Burn after reading - das Burn-Notice Blog'
     wrote_on: 'hat am <em>%{date}</em> geschrieben'

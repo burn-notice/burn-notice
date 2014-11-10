@@ -1,10 +1,10 @@
-- set_title('Profile')
-- set_crumbs('Profile' => url_for)
+- set_title t('navigation.profile')
+- set_crumbs t('navigation.profile') => url_for
 
 .row
   .col-lg-6
     .panel.panel-default
-      .panel-heading Authorizations
+      .panel-heading= t('users.authorizations')
       .panel-body
         - existing_providers = current_user.authorizations.map(&:provider)
         - login_links do |name, path, key|
@@ -14,20 +14,20 @@
                 span'= name
                 span.glyphicon.glyphicon-ok(style="color: green;")
             - else
-              = link_to "connect via #{name}", path, class: "btn btn-default btn-block"
+              = link_to t('users.connect_via', provider: name), path, class: "btn btn-default btn-block"
   .col-lg-6
     .panel.panel-default
-      .panel-heading Actions
+      .panel-heading= t('users.actions')
       .panel-body
         p
           - if current_user.validated?
             = link_to "#", class: "btn btn-default btn-block disabled"
-              span' E-mail address confirmed
+              span'= t('users.email_confirmed')
               span.glyphicon.glyphicon-ok(style="color: green;")
           - else
-            = link_to "Confirm e-mail address", confirmation_mail_user_path(current_user), class: "btn btn-default btn-block"
+            = link_to t('users.confirm_email'), confirmation_mail_user_path(current_user), class: "btn btn-default btn-block"
         = form_for current_user do |form|
           .input-group
             = form.email_field :email, class: 'form-control', required: true
             span.input-group-btn
-              = form.submit "Change e-mail", class: "btn btn-default"
+              = form.submit t('users.change_email'), class: "btn btn-default"
