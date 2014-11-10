@@ -13,6 +13,8 @@ de:
     locale: 'Sprache'
     logout: 'Abmelden'
     profile: 'Profil'
+  footer:
+    references: 'Referenzen'
   locale:
     en: 'Englisch'
     de: 'Deutsch'

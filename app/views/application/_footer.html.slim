@@ -2,7 +2,7 @@
 footer
   .row
     .col-lg-8.col-xs-12
-      ul.list-unstyled
+      ul.clearfix.list-unstyled
         li
           = link_to root_url, title: t('slogan') do
            <span class="glyphicon glyphicon-copyright-mark"></span> Burn-Notice
@@ -14,11 +14,26 @@ footer
             <span class="glyphicon glyphicon-info-sign"></span> FAQ
         li
           = mail_to 'peter@burn-notice.me' do
-            <span class="glyphicon glyphicon-send"></span> E-mail
+            <span class="glyphicon glyphicon-send"></span> E-Mail
         li= link_to 'https://twitter.com/BurnNoticeMe', title: 'Burn-Notice on Twitter - @BurnNoticeMe' do
             <span class="glyphicon glyphicon-retweet"></span> Twitter
         li= link_to 'https://github.com/burn-notice', title: 'Burn-Notice on GitHub - We <3 Open-Source!' do
             <span class="glyphicon glyphicon-heart-empty"></span> GitHub
+      hr
+      ul.list-unstyled
+        li.lead #{t('footer.references')}:
+        li.references
+          = link_to 'http://www.bluewin.ch' do
+            = image_tag 'logo.png'
+            em Bluewin.ch
+        li.references
+          = link_to 'http://www.bluewin.ch' do
+            = image_tag 'logo.png'
+            em Bluewin.ch
+        li.references
+          = link_to 'http://www.bluewin.ch' do
+            = image_tag 'logo.png'
+            em Bluewin.ch
     .col-lg-4.col-xs-12
       address.well.gray-ish
         .margin-left

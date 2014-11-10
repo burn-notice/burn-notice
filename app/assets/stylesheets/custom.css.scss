@@ -4,15 +4,15 @@
   padding: 6px;
 }
 
-.navbar-user {
-  a {
-    padding: 10px !important;
-  }
+.references {
   img {
-    width: 32px;
-    height: 32px;
+    height: 25px;
     border: 1px;
+    vertical-align: sub;
     @include border-radius(0.2em, 0.2em);
+  }
+  em {
+    padding-left: 5px; 
   }
 }
 

@@ -15,13 +15,13 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">#{t('navigation.notices')} <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"
               li
-                = link_to new_notice_path do
-                  span.glyphicon.glyphicon-pencil.smaller'
-                  span.margin-left-small= t('navigation.draft')
-              li
                 = link_to notices_path do
                   span.glyphicon.glyphicon-th-list.smaller'
                   span.margin-left-small= t('navigation.dashboard')
+              li
+                = link_to new_notice_path do
+                  span.glyphicon.glyphicon-pencil.smaller'
+                  span.margin-left-small= t('navigation.draft')
 
         - if signed_in? && current_user.admin?
           li
