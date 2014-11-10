@@ -11,10 +11,6 @@ class User < ActiveRecord::Base
   validates :email, :token, uniqueness: true
   validates :nickname, uniqueness: {scope: [:email]}
 
-  def salt
-    authorizations.first.uid
-  end
-
   def admin?
     email.in? ['phoetmail@googlemail.com', 'me@kurtfunai.com']
   end
@@ -36,9 +32,9 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    def authenticated_with_token(id, stored_salt)
+    def authenticated_with_token(id, stored_token)
       user = find_by_id(id)
-      user && user.salt == stored_salt ? user : nil
+      user && user.token == stored_token ? user : nil
     end
 
     def find_by_session_or_cookies(session, cookies)
