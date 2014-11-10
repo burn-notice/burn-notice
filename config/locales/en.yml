@@ -1,4 +1,10 @@
 en:
+  activerecord:
+    attributes:
+      notice:
+        question: 'Question'
+        answer: 'Answer'
+        content: 'Content'
   slogan: 'Burn-Notice: simple, secure, encrypted - one-time messages'
   navigation:
     notices: 'Messages'
@@ -9,6 +15,8 @@ en:
     en: 'English'
     de: 'German'
   session:
+    not_logged_in: "You are not logged in!"
+    not_proper_account: "You are not logged in with the proper account!"
     welcome_back: "Hi %{nickname}, welcome back!"
     connected: "Connected your account to %{provider}!"
     validation_successful: "Your validation was successful!"
@@ -16,8 +24,12 @@ en:
     ups_something_went_wrong: "Ups, something went wrong during your login, please try again."
     welcome: "Hi %{nickname}, welcome to Burn-Notice!"
     existing_user: "An existing user was found for %{email}, please sign in through %{providers}!"
+  users:
+    confirmation_mail: "A confirmation e-mail was sent to %{email}."
+    profile_updated_and_confirmation_email: 'Your profile was updated and a confirmation e-mail was sent to your address!'
+    profile_updated: 'Your profile was updated.'
   articles:
-    title: 'Burn after reading - the Burn-Notice blog!'
+    title: 'Burn after reading - the Burn-Notice blog'
     wrote_on: 'wrote on <em>%{date}</em>'
     chronic: 'Chronic'
     posts_per: 'Burn-Notice blog posts per %{period}'

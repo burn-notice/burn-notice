@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     if user.email_changed?
       user.validation_date = nil
       send_validation(current_user)
-      flash[:notice] = 'Your profile was updated, and a confirmation e-mail was sent to your address!'
+      flash[:notice] = t('users.profile_updated_and_confirmation_email')
     else
-      flash[:notice] = 'Your profile was updated!'
+      flash[:notice] = t('users.profile_updated')
     end
     user.save!
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def confirmation_mail
     send_validation(current_user)
 
-    redirect_to current_user, notice: "A confirmation e-mail was sent to #{current_user.email}!"
+    redirect_to current_user, notice: t('users.confirmation_mail', email: current_user.email)
   end
 
   private
