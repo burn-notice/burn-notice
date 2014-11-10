@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
     if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
       sign_in(authorization.user)
-      redirect_to notices_path, notice: t('session.welcome_back', nickname: authorization.user.nickname)
+      redirect_to notices_path, notice: t('sessions.welcome_back', nickname: authorization.user.nickname)
     elsif signed_in?
       current_user.authorizations.create! provider: auth['provider'], uid: auth['uid']
-      redirect_to user_path(current_user), notice: t('session.connected', provider: auth['provider'].humanize)
+      redirect_to user_path(current_user), notice: t('sessions.connected', provider: auth['provider'].humanize)
     else
       session[:auth_path] = notices_path
       session[:auth_data] = auth
-      redirect_to signup_path
+      redirect_to auth['provider'] == 'email' ? ticket_path : signup_path
     end
   end
 
@@ -18,17 +18,17 @@ class SessionsController < ApplicationController
     user = User.find_by_token(params[:token])
     user.validate!
 
-    redirect_to notices_path, notice: t('session.validation_successful')
+    redirect_to notices_path, notice: t('sessions.validation_successful')
   end
 
   def destroy
     sign_out if signed_in?
 
-    redirect_to root_path, notice: flash[:notice] || t('session.bye')
+    redirect_to root_path, notice: flash[:notice] || t('sessions.bye')
   end
 
   def failure
-    redirect_to root_path, alert: t('session.ups_something_went_wrong')
+    redirect_to root_path, alert: t('sessions.ups_something_went_wrong')
   end
 
   def offline_login
@@ -50,9 +50,29 @@ class SessionsController < ApplicationController
 
   def signup
     @auth = session[:auth_data]
-    email = @auth['info']['email'].blank? ? session.delete(:beta_user_email) : @auth['info']['email']
     check_existing_user(email)
     @user = User.new(nickname: @auth['info']['nickname'], email: email)
+  end
+
+  def ticket
+    @auth = session[:auth_data]
+    if check_existing_user(@auth['info']['email'])
+      render :email
+    else
+      @user = User.new(
+        {
+          email:    @auth['info']['email'],
+          nickname: @auth['info']['email'].gsub(/@.*/, ''),
+          validation_date:  Time.now,
+        }
+      )
+      @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
+      @user.save
+      sign_in(@user)
+
+      session.delete(:auth_data)
+      redirect_to session.delete(:auth_path), notice: t('sessions.welcome', nickname: @user.nickname)
+    end
   end
 
   def complete
@@ -66,12 +86,10 @@ class SessionsController < ApplicationController
     @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
     if @user.save
       session.delete(:auth_data)
-      unless @user.validated?
-        mail = UserMailer.signup(@user)
-        MailerJob.new.async.deliver(mail)
-      end
+      mail = UserMailer.signup(@user)
+      MailerJob.new.async.deliver(mail)
       sign_in(@user)
-      redirect_to session.delete(:auth_path), notice: t('session.welcome', nickname: @user.nickname)
+      redirect_to session.delete(:auth_path), notice: t('sessions.welcome', nickname: @user.nickname)
     else
       check_existing_user(params[:user][:email])
       render :signup
@@ -83,7 +101,7 @@ class SessionsController < ApplicationController
   def check_existing_user(email)
     if existing_user = User.find_by_email(email)
       providers = existing_user.authorizations.map(&:provider)
-      flash.now[:alert] = t('session.existing_user', email: email, providers: providers.to_sentence)
+      flash.now[:alert] = t('sessions.existing_user', email: email, providers: providers.to_sentence)
     end
   end
 end

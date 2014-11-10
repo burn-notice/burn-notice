@@ -14,7 +14,7 @@ en:
   locale:
     en: 'English'
     de: 'German'
-  session:
+  sessions:
     not_logged_in: "You are not logged in!"
     not_proper_account: "You are not logged in with the proper account!"
     welcome_back: "Hi %{nickname}, welcome back!"
@@ -24,6 +24,13 @@ en:
     ups_something_went_wrong: "Ups, something went wrong during your login, please try again."
     welcome: "Hi %{nickname}, welcome to Burn-Notice!"
     existing_user: "An existing user was found for %{email}, please sign in through %{providers}!"
+    please_enter_email_for_login: 'Please enter the e-mail address for login!'
+    authorize_button: 'login via e-mail'
+    callouts:
+      email:
+        hint: 'You will receive an e-mail for <em>every</em> login!'
+        title: 'E-mail login/signup'
+        text: 'In order to login via e-mail, you will receive an authentication e-mail and login through the provided authentication link whenever your session has expired.'
   mailers:
     signup: 'You are signed-up, please validate your e-mail address!'
     validate: 'Please validate your e-mail address!'

@@ -14,7 +14,7 @@ de:
   locale:
     en: 'Englisch'
     de: 'Deutsch'
-  session:
+  sessions:
     not_logged_in: "Du bist nicht eingeloggt!"
     not_proper_account: "Du bist nicht mit dem richtigen Benutzerkonto eingeloggt!"
     welcome_back: "Hallo %{nickname}, willkommen zurück!"
@@ -24,6 +24,13 @@ de:
     ups_something_went_wrong: "Mist, da ist was schief gelaufen."
     welcome: "Hallo %{nickname}, herzlich willkommen bei Burn-Notice!"
     existing_user: "Die E-Mail Adresse %{email} ist bereits registriert, bitte nutze %{providers} zum einloggen!"
+    please_enter_email_for_login: 'Bitte gib deine E-Mail-Adresse zum Einloggen ein!'
+    authorize_button: 'per E-Mail einloggen'
+    callouts:
+      email:
+        hint: 'Du wirst zu <em>jedem</em> login eine neue E-Mail erhalten!'
+        title: 'per E-Mail einloggen'
+        text: 'Bei jedem Login erhältst du eine neue E-Mail in der ein Login-Link enthalten ist. Einfach auf den enthaltenen Link klicken und loslegen!'
   mailers:
     signup: 'Du hast dich erfolgreich registriert, bitte bestätige deine E-Mail-Adresse!'
     validate: 'Bitte bestätige deine E-Mail-Adresse!'

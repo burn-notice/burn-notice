@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get  '/destroy_session',         to: 'sessions#destroy',    as: :logout
     get  '/validation/:token',       to: 'sessions#validation', as: :validation
     get  '/signup',                  to: 'sessions#signup',     as: :signup
+    get  '/ticket',                  to: 'sessions#ticket',     as: :ticket
     get  '/login',                   to: 'sessions#login',      as: :login
     get  '/email',                   to: 'sessions#email',      as: :email_login
     post '/complete',                to: 'sessions#complete',   as: :complete

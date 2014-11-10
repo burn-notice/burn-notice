@@ -1,19 +1,17 @@
 - if params[:email]
-  p.alert.alert-success Thank you, an authorization e-mail was sent to <em>#{params[:email]}</em>!
+  p.alert.alert-success= t('users.confirmation_mail', email: params[:email])
 
 = form_tag email_path, class: "form-horizontal", autocomplete: :off do |form|
   .row
     .col-lg-12
       fieldset
-        legend Please enter the e-mail address for login
+        legend= t('session.please_enter_email_for_login')
   .row
-    = label_tag :email, 'E-mail', class: "col-lg-2 control-label"
+    = label_tag :email, 'E-Mail', class: "col-lg-2 control-label"
     .col-lg-4
       = email_field_tag :email, '', placeholder: 'me@example.com', required: true, class: "form-control"
     .col-lg-6
-      .well.well-sm.callout
-        a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content="In order to login via e-mail, you will receive an authentication e-mail and login through the provided authentication link whenever your session has expired." title="E-mail login/signup"
-        span< You will receive an e-mail for <em>every</em> login
+      = render 'callout', section: 'sessions', key: 'email'
   .row
     .col-lg-12
-      .pull-right= submit_tag 'Authorize my e-mail', class: "btn btn-success"
+      .pull-right= submit_tag t('sessions.authorize_button'), class: "btn btn-success"

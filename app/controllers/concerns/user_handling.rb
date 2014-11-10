@@ -5,13 +5,13 @@ module UserHandling
 
   def authenticate!
     unless signed_in?
-      redirect_to login_path, alert: t('session.not_logged_in')
+      redirect_to login_path, alert: t('sessions.not_logged_in')
     end
   end
 
   def authenticate_current_user!
     unless signed_in? && current_user?
-      redirect_to login_path, alert: t('session.not_proper_account')
+      redirect_to login_path, alert: t('sessions.not_proper_account')
     end
   end
 
