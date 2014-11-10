@@ -1,5 +1,5 @@
-.page-header(id="banner")
-  - if @crumbs.present?
+- if @crumbs.present?
+  .page-header(id="banner")
     ul.breadcrumb
       - @crumbs.each do |name, path|
         - if path == url_for

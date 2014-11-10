@@ -1,42 +1,67 @@
-.spacer-large
-  .row
-    .col-lg-5
-      .hidden-xs
-        .spacer-large
-          .page-header
-            h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('slogan')
-      p.lead
-        span.caps> Einfach, Sicher, Verschlüsselt
-        em.text-warning Einweg-Nachrichten
-    .col-lg-7 style="padding: 15px 15px 0 15px;"
-      .well
-        h2.spacer-small.hidden-xs Jetzt anmelden und die <span class="label label-primary">&beta;eta</span> ausprobieren!
-        h2.visible-xs Jetzt anmelden und die <span class="label label-primary">&beta;eta</span> testen!
-        p.spacer-large.text-muted
-          small.hidden-xs Datenschutz wird bei uns ernst genommen, wir werden niemals deine Daten an dritte weitergeben.
-          small.visible-xs Datenschutz wird bei uns großgeschrieben!
-        p.btn-group.btn-group-justified.hidden-xs
-          - login_links do |name, path, key|
-            = link_to name, path, class: "btn btn-success"
-        .btn-group.visible-xs
-          - login_links do |name, path, key|
-            p= link_to name, path, class: "btn btn-success btn-block btn-sm"
+.spacer-large.hidden-xs
 
 .row
-  .col-lg-4
-    h2.text-center <span class="step smaller success-step-muted">1</span> verfassen
-  .col-lg-4
-    h2.text-center <span class="step smaller success-step-muted">2</span> verschlüsseln
-  .col-lg-4
-    h2.text-center <span class="step smaller success-step-muted">3</span> verschicken
+  .col-lg-5    
+    .page-header.hidden-xs
+      h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('slogan')
+    .spacer-large
+    p.lead
+      span.caps> Einfach, Sicher, Verschlüsselt
+      em.text-warning.hidden-xs Einweg-Nachrichten
+  .col-lg-7 style="padding: 15px 15px 0 15px;"
+    .well
+      h2.spacer-small.hidden-xs Jetzt anmelden und die <span class="label label-primary">&beta;eta</span> ausprobieren!
+      h2.visible-xs Jetzt Anmelden!
+      p.spacer-large.text-muted
+        small.hidden-xs Datenschutz wird bei uns ernst genommen, wir werden niemals deine Daten an Dritte weitergeben.
+        small.visible-xs Datenschutz wird bei uns großgeschrieben!
+      p.btn-group.btn-group-justified.hidden-xs
+        - login_links do |name, path, key|
+          = link_to name, path, class: "btn btn-success"
+      .btn-group.visible-xs
+        - login_links do |name, path, key|
+          p= link_to name, path, class: "btn btn-success btn-block btn-sm"
+
+hr.spacer-large.hidden-xs
+
 .row
-  .col-lg-12
-    .visible-xs
-      h2.text-center
-        button type="button" class="btn btn-info btn-lg" data-container="body" data-toggle="popover" data-placement="auto" data-html="true" data-content=html_escape_once(image_tag('three_step.gif', class: 'img-thumbnail')) data-original-title="verfassen, verschlüsseln, verschicken" Vorschau öffnen
+  .col-lg-4.col-lg-push-8.text-center
     .hidden-xs
-      h2.text-center
-        = image_tag 'three_step.gif', class: "img-thumbnail", alt: 'verfassen, verschlüsseln, verschicken - 3 einfache Schritte zur Burn-Notice'
+      .spacer-large
+      .spacer-large
+      .spacer-large
+    <span class="step mega success-step-muted">1</span> 
+    h2.larger verfassen
+  .col-lg-8.col-lg-pull-4.text-center
+    = image_tag 'draft_it_de.png', class: 'img-thumbnail'
+
+hr.spacer-large.hidden-xs
+
+.row
+  .col-lg-4.text-center
+    .hidden-xs
+      .spacer-large
+      .spacer-large
+      .spacer-large
+    <span class="step mega success-step-muted">2</span> 
+    h2.larger verschlüsseln
+  .col-lg-8.text-center
+    = image_tag 'secure_it_de.png', class: 'img-thumbnail'
+
+
+hr.spacer-large.hidden-xs
+
+.row
+  .col-lg-4.col-lg-push-8.text-center
+    .hidden-xs
+      .spacer-large
+      .spacer-large
+      .spacer-large
+    <span class="step mega success-step-muted">3</span> 
+    h2.larger verschicken
+  .col-lg-8.col-lg-pull-4.text-center
+    = image_tag 'share_it_de.png', class: 'img-thumbnail'
 
 .hidden-xs
+  hr.spacer-large.hidden-xs
   = render 'faq'

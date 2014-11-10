@@ -1,26 +1,28 @@
-.spacer-large
-  .row
-    .col-lg-5
-      .hidden-xs
-        .spacer-large
-          .page-header
-            h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('slogan')
-      p.lead
-        span.caps> Simple, Secure, Encrypted
-        em.text-warning one-time Information
-    .col-lg-7 style="padding: 15px 15px 0 15px;"
-      .well
-        h2.spacer-small.hidden-xs Sign-in with your e-mail and join the <span class="label label-primary">&beta;eta</span>
-        h2.visible-xs Join the <span class="label label-primary">&beta;eta</span>
-        p.spacer-large.text-muted
-          small.hidden-xs We know that data-privacy is a very important topic and we will never share any of your information.
-          small.visible-xs We will keep all your data private!
-        p.btn-group.btn-group-justified.hidden-xs
-          - login_links do |name, path, key|
-            = link_to name, path, class: "btn btn-success"
-        .btn-group.visible-xs
-          - login_links do |name, path, key|
-            p= link_to name, path, class: "btn btn-success btn-block btn-sm"
+.spacer-large.hidden-xs
+
+.row
+  .col-lg-5
+    .page-header.hidden-xs
+      h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('slogan')
+    .spacer-large
+    p.lead
+      span.caps> Simple, Secure, Encrypted
+      em.text-warning.hidden-xs one-time Information
+  .col-lg-7 style="padding: 15px 15px 0 15px;"
+    .well
+      h2.spacer-small.hidden-xs Sign-in with your e-mail and join the <span class="label label-primary">&beta;eta</span>
+      h2.visible-xs Join the <span class="label label-primary">&beta;eta</span>
+      p.spacer-large.text-muted
+        small.hidden-xs We know that data-privacy is a very important topic and we will never share any of your information.
+        small.visible-xs We will keep all your data private!
+      p.btn-group.btn-group-justified.hidden-xs
+        - login_links do |name, path, key|
+          = link_to name, path, class: "btn btn-success"
+      .btn-group.visible-xs
+        - login_links do |name, path, key|
+          p= link_to name, path, class: "btn btn-success btn-block btn-sm"
+
+hr.spacer-large.hidden-xs
 
 .row
   .col-lg-4
@@ -39,4 +41,5 @@
         = image_tag 'three_step.gif', class: "img-thumbnail", alt: 'draft it, secure it, share it - 3 simple steps to a Burn-Notice'
 
 .hidden-xs
+  hr.spacer-large.hidden-xs
   = render 'faq'
