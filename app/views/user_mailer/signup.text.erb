@@ -1,15 +1,11 @@
-Hi <%= @user.nickname %>,
+Hallo <%= @user.nickname %>,
 
-your action is required, please click the link below to validate your identity:
+bitte bestätige deine E-Mail-Adresse indem du auf den nachfolgenden Link klickst:
 
 <%= validation_url(token: @user.token) %>
 
-After you have validated yourself, write a new Burn-Notice in 3 simple steps:
+Nach der Bestätigung kannst du sofort loslegen eine Burn-Notice zu verfassen:
 
 <%= notices_url %>
-
-Or change your private profile:
-
-<%= user_url(@user) %>
 
 <%= render 'mailer/footer' %>

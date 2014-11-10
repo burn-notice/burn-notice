@@ -4,25 +4,25 @@ class UserMailer < ActionMailer::Base
   def signup(user)
     @user = user
 
-    mail to: @user.email, subject: 'You are signed-up, please validate your e-mail address!'
+    mail to: @user.email, subject: t('mailers.signup')
   end
 
   def validate(user)
     @user = user
 
-    mail to: @user.email, subject: 'Please validate your e-mail address!'
+    mail to: @user.email, subject: t('mailers.validate')
   end
 
   def notify(user, email, notice)
     @user = user
     @notice = notice
 
-    mail to: email, subject: "You've got a new Burn-Notice!", reply_to: user.email
+    mail to: email, subject: t('mailers.notify'), reply_to: user.email
   end
 
   def email_auth(email, token)
     @token = token
 
-    mail to: email, subject: 'Login to Burn-Notice'
+    mail to: email, subject: t('mailers.email_auth')
   end
 end

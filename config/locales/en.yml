@@ -24,6 +24,11 @@ en:
     ups_something_went_wrong: "Ups, something went wrong during your login, please try again."
     welcome: "Hi %{nickname}, welcome to Burn-Notice!"
     existing_user: "An existing user was found for %{email}, please sign in through %{providers}!"
+  mailers:
+    signup: 'You are signed-up, please validate your e-mail address!'
+    validate: 'Please validate your e-mail address!'
+    notify: "You've got a new Burn-Notice!"
+    email_auth: 'Login to Burn-Notice'
   users:
     confirmation_mail: "A confirmation e-mail was sent to %{email}."
     profile_updated_and_confirmation_email: 'Your profile was updated and a confirmation e-mail was sent to your address!'

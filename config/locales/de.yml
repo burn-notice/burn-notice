@@ -19,11 +19,16 @@ de:
     not_proper_account: "Du bist nicht mit dem richtigen Benutzerkonto eingeloggt!"
     welcome_back: "Hallo %{nickname}, willkommen zurück!"
     connected: "Erfolgreich verbunden mit %{provider}!"
-    validation_successful: "Du hast dich erfolgreich registriert!"
+    validation_successful: 'Deine E-Mail-Adresse wurde erfolgreich bestätigt.'
     bye: "Tschüss und bis bald!"
     ups_something_went_wrong: "Mist, da ist was schief gelaufen."
     welcome: "Hallo %{nickname}, herzlich willkommen bei Burn-Notice!"
     existing_user: "Die E-Mail Adresse %{email} ist bereits registriert, bitte nutze %{providers} zum einloggen!"
+  mailers:
+    signup: 'Du hast dich erfolgreich registriert, bitte bestätige deine E-Mail-Adresse!'
+    validate: 'Bitte bestätige deine E-Mail-Adresse!'
+    notify: 'Du hast eine Burn-Notice erhalten!'
+    email_auth: 'Logge dich bei Burn-Notice ein.'
   users:
     confirmation_mail: "Eine Bestätigungs-Mail wurde an %{email} versendet."
     profile_updated_and_confirmation_email: 'Dein Profil wurde aktualisiert und eine Bestätigungs-Mail wurde an deine E-Mail-Adresse versendet!'

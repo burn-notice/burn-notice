@@ -1,0 +1,11 @@
+Hi <%= @user.nickname %>,
+
+your action is required, please click the link below to validate your identity:
+
+<%= validation_url(token: @user.token) %>
+
+After you have validated yourself, write a new Burn-Notice in 3 simple steps:
+
+<%= notices_url %>
+
+<%= render 'mailer/footer' %>

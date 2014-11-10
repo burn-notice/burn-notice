@@ -1,0 +1,7 @@
+Hi <%= @user.nickname %>,
+
+your action is required, please click the link below to validate your e-mail address:
+
+<%= validation_url(token: @user.token) %>
+
+<%= render 'mailer/footer' %>

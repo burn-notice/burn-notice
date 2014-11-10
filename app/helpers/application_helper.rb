@@ -33,7 +33,7 @@ module ApplicationHelper
     github: 'GitHub',
     facebook: 'Facebook',
     google_oauth2: 'Google',
-    email: 'E-mail',
+    email: 'E-Mail',
   }
 
   def login_links

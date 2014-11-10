@@ -1,6 +1,6 @@
-Hi <%= @user.nickname %>,
+Hallo <%= @user.nickname %>,
 
-your action is required, please click the link below to validate your identity:
+bitte bestätige deine E-Mail-Adresse indem du auf den nachfolgenden Link klickst:
 
 <%= validation_url(token: @user.token) %>
 
