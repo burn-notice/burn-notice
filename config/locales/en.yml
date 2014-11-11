@@ -14,7 +14,7 @@ en:
     logout: 'Logout'
     profile: 'Profile'
   footer:
-    references: 'References'
+    references: 'Mentioned on'
   locale:
     en: 'English'
     de: 'German'

@@ -14,7 +14,7 @@ de:
     logout: 'Abmelden'
     profile: 'Profil'
   footer:
-    references: 'Referenzen'
+    references: 'Erwähnt auf'
   locale:
     en: 'Englisch'
     de: 'Deutsch'
@@ -25,12 +25,12 @@ de:
     not_proper_account: "Du bist nicht mit dem richtigen Benutzerkonto eingeloggt!"
     welcome_back: "Hallo %{nickname}, willkommen zurück!"
     connected: "Erfolgreich verbunden mit %{provider}!"
-    validation_successful: 'Deine E-Mail-Adresse wurde erfolgreich bestätigt.'
+    validation_successful: 'Deine E-Mail Adresse wurde erfolgreich bestätigt.'
     bye: "Tschüss und bis bald!"
     ups_something_went_wrong: "Mist, da ist was schief gelaufen."
     welcome: "Hallo %{nickname}, herzlich willkommen bei Burn-Notice!"
-    existing_user: "Die E-Mail Adresse %{email} ist bereits registriert, bitte nutze %{providers} zum einloggen!"
-    please_enter_email_for_login: 'Bitte gib deine E-Mail-Adresse zum Einloggen ein!'
+    existing_user: "Die E-Mail Adresse %{email} ist bereits registriert, bitte nutze %{providers} zum Einloggen!"
+    please_enter_email_for_login: 'Bitte gib deine E-Mail Adresse zum Einloggen ein!'
     authorize_button: 'per E-Mail einloggen'
     signup_button: 'Registrierung abschließen'
     callouts:
@@ -39,31 +39,31 @@ de:
         title: 'Spitznamen ändern'
         text: 'Nachdem du registriert bist kannst du jederzeit deinen Spitznamen ändern.'
       signup_email:
-        hint: 'Deine E-Mail-Adresse wird für deinen Login und zum benachrichtigen verwendet.'
+        hint: 'Deine E-Mail Adresse wird für den Login und für Benachrichtigungen verwendet.'
         title: 'Valide Adresse ist nötig'
-        text: 'Du musst deine E-Mail-Adresse bestätigen, damit wir dich später erreichen können.'
+        text: 'Du musst deine E-Mail Adresse bestätigen, damit wir dich später erreichen können.'
       provider:
         hint: 'Wähle einen <a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a> Anbieter aus und akzeptiere die benötigten Berechtigungen.'
         title: 'Warum OAuth?'
-        text: 'OAuth ist ein offener Standard für Authentifizierung der es dem Nutzer erlaubt flexibel Berechtigungen zu erteilen oder zu entfernen.'
+        text: 'OAuth ist ein offener Standard für Authentifizierung, der es dem Nutzer erlaubt, flexibel Berechtigungen zu erteilen oder zu entfernen.'
       email:
         hint: 'Du wirst zu <em>jedem</em> login eine neue E-Mail erhalten!'
         title: 'per E-Mail einloggen'
         text: 'Bei jedem Login erhältst du eine neue E-Mail in der ein Login-Link enthalten ist. Einfach auf den enthaltenen Link klicken und loslegen!'
   mailers:
-    signup: 'Du hast dich erfolgreich registriert, bitte bestätige deine E-Mail-Adresse!'
-    validate: 'Bitte bestätige deine E-Mail-Adresse!'
+    signup: 'Du hast dich erfolgreich registriert, bitte bestätige deine E-Mail Adresse!'
+    validate: 'Bitte bestätige deine E-Mail Adresse!'
     notify: 'Du hast eine Burn-Notice erhalten!'
     email_auth: 'Logge dich bei Burn-Notice ein.'
   users:
     confirmation_mail: "Eine Bestätigungs-Mail wurde an %{email} versendet."
-    profile_updated_and_confirmation_email: 'Dein Profil wurde aktualisiert und eine Bestätigungs-Mail wurde an deine E-Mail-Adresse versendet!'
+    profile_updated_and_confirmation_email: 'Dein Profil wurde aktualisiert und eine Bestätigungs-Mail wurde an deine E-Mail Adresse versendet!'
     profile_updated: 'Dein Profil wurde aktualisiert.'
     authorizations: 'Verknüpfungen'
     connect_via: "per %{provider} verbinden"
     actions: 'Aktionen'
     email_confirmed: 'Adresse bestätigt'
-    confirm_email: "E-Mail-Adresse ändern"
+    confirm_email: "E-Mail Adresse ändern"
     change_email: "E-Mail ändern"
   articles:
     title: 'Burn after reading - das Burn-Notice Blog'
@@ -83,10 +83,10 @@ de:
     invalid_answer: 'Die geheime Antwort war nicht korrekt!'
     correct_answer: 'Die Antwort war korrekt, Entschlüsselung erfolgreich!'
     this_will_self_destruct: 'Diese Nachricht zerstört sich selbst!'
-    policy_content: "Wir protokollieren alle Zugriffsversuche und benachrichtigen den Absender bei erfolgreichen Entschlüsselungen. Die Nachricht wird nach dem lesen sofort zerstört."
+    policy_content: "Wir protokollieren alle Zugriffsversuche und benachrichtigen den Absender bei erfolgreichen Entschlüsselungen. Die Nachricht wird nach dem Lesen sofort zerstört."
     answer: 'answer with Burn-Notice'
     sign_up: 'sign-up to our &beta;eta'
-    participate: 'If you want to participate in our &beta;eta just sign up using your e-mail address!'
+    participate: 'Wenn du unsere &beta;eta nutzen möchtest, melde dich mit deiner E-Mail Adresse an!'
   notices:
     new_notice: 'Neue Nachricht'
     create_button: 'Burn-Notice erstellen'
@@ -116,10 +116,10 @@ de:
     disable: 'deaktivieren'
     destroy: 'löschen'
     created: 'Du hast eine neue Nachricht erstellt!'
-    enabled: 'Die Nachrichte wurde re-aktiviert!'
+    enabled: 'Die Nachrichte wurde reaktiviert!'
     disabled: 'Die Nachrichte wurde deaktiviert!'
     burned: 'Die Nachrichte wurde zerstört!'
-    destroyed: 'Die Nachrichte wurde gelöscht!'
+    destroyed: 'Die Nachricht wurde gelöscht!'
     bulk_destroyed: 'Die ausgewählten Nachrichten wurden gelöscht!'
     sent_via_email: "Deine Burn-Notice wurde an %{recepients} versendet."
     draft_your_message: 'Schreibe eine Burn-Notice'
@@ -138,7 +138,7 @@ de:
     opening_requests_content: 'Jeder Zugriff deiner Burn-Notice wird protokolliert, auch wenn kein Entschlüsselungsversuch stattfindet. Solche Zugriffe können beispielsweise von Internet-Bots oder Sozialen-Netzwerken stammen, in denen ein Link zu Burn-Notice geteilt wird.'
     unauthorized_requests: 'Unbefugter Zugriff'
     unauthorized_requests_hint: 'Böswilliger Zugriff?'
-    unauthorized_requests_content: 'Hierbei kann es sich um einen schreibfehler handeln, es kann aber auch ein unbefugter Zugriffsversuch auf deine Nachricht sein. Diese Nachricht sollte möglicher weise deaktiviert oder gelöscht werden.'
+    unauthorized_requests_content: 'Hierbei kann es sich um einen Schreibfehler handeln, es kann aber auch ein unbefugter Zugriffsversuch auf deine Nachricht sein. Diese Nachricht sollte möglicherweise deaktiviert oder gelöscht werden.'
     authorized_requests: 'Autorisierter Zugriff'
     authorized_requests_hint: 'Erfolgreich entschlüsselt'
     authorized_requests_content: 'Der Empfänger hat die Nachricht erfolgreich entschlüsselt.'
@@ -159,9 +159,9 @@ de:
       content:
         hint: 'Die Nachricht kann nur mit Wissen der geheimen Antwort gelesen werden.'
         title: 'Burn after reading'
-        text: 'Jeder Zugriff wird protokolliert und nach dreimaliger Eingabe eines falschen Passworts wird die Nachricht gesperrt. Du kannst selber festlegen wann die Nachricht gelöscht wird.'
+        text: 'Jeder Zugriff wird protokolliert und nach dreimaliger Eingabe eines falschen Passworts wird die Nachricht gesperrt. Du kannst selber festlegen, wann die Nachricht gelöscht wird.'
       question:
-        hint: 'Wähle eine geheime Frage aus deren Antwort nur der Empfänger wissen kann.'
+        hint: 'Wähle eine geheime Frage aus, deren Antwort nur der Empfänger wissen kann.'
         title: 'Benutze eine geheime Frage'
         text: 'Die Idee des geteilten Geheimnisses ist ein probates Mittel für kurzfristige Sicherheit. Wähle ein Geheimnis das nicht offensichtlich von einer dritten Partei erraten werden kann, allerdings ohne Mühe vom Empfänger beantwortet werden kann.'
       answer:
@@ -175,15 +175,15 @@ de:
       burn_after_openings:
         hint: 'Die Nachricht wird nach einer Anzahl von Entschlüsselungen gelöscht.'
         title: 'Burn-Notice für die Masse'
-        text: 'Diese Einstellung ist nützlich wenn eine Nachricht beispielsweise an eine Gruppe gesendet werden soll.'
+        text: 'Diese Einstellung ist nützlich, wenn eine Nachricht beispielsweise an eine Gruppe gesendet werden soll.'
       send_email:
         hint: 'Verschicke einen Link per E-Mail (mehrere E-Mail Addressen per <code class="text-muted">,</code> trennen).'
         title: 'Datenschutz'
-        text: 'Zum Schutz deiner Daten werden die eingegebenen E-Mail Addressen nicht in unserem System gespeichert.'
+        text: 'Zum Schutz deiner Daten werden die eingegebenen E-Mail Adressen nicht in unserem System gespeichert.'
       send_tweet:
         hint: 'Diese Nachricht mit Twitter per <em>@mention</em> teilen.'
         title: 'Twitter und Datenschutz'
-        text: 'Solange deine Twitter-Timeline nicht geschützt ist sind deine Tweets öffentlich, in diesem Fall solltest du eine besonders sichere Frage verwenden.'
+        text: 'Solange deine Twitter-Timeline nicht geschützt ist, sind deine Tweets öffentlich. In diesem Fall solltest du eine besonders sichere Frage verwenden.'
       copy_link:
         hint: 'Per <em>copy &amp; paste</em> die Nachricht anderweitig nutzen.'
         title: 'Copy &amp; Paste'
