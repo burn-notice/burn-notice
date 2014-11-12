@@ -1,0 +1,14 @@
+- set_title t('navigation.notices')
+- set_crumbs t('navigation.notices') => notices_path, t('navigation.show_notice') => url_for
+
+.panel.panel-default
+  .panel-heading= @notice.question
+  .panel-body
+    dl.dl-horizontal
+      dt= t('notices.table_header.status')
+      dd= render 'status', notice: @notice
+      dt= t('notices.table_header.sent')
+      dd= @notice.created_at.to_s(:short)
+      dt= t('notices.table_header.policy')
+      dd= render 'policy', notice: @notice
+  .panel-footer

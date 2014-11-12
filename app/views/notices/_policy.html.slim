@@ -1,0 +1,10 @@
+- case notice.policy.name
+- when 'burn_after_reading'
+  span.glyphicon.glyphicon-fire.smaller
+  span< after reading
+- when 'burn_after_time'
+  span.glyphicon.glyphicon-time.smaller
+  span<= "#{notice.policy.duration} #{t('notices.day').pluralize(notice.policy.duration)}"
+- when 'burn_after_openings'
+  span.glyphicon.glyphicon-asterisk.smaller
+  span<= t('notices.reads', count: notice.policy.amount)
