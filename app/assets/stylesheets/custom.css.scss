@@ -25,6 +25,7 @@
     background-color: white;
     padding: 1px; 
     border: 1px;
+    vertical-align: bottom;
     @include border-radius(0.2em, 0.2em);
   }
   em {

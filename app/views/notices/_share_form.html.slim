@@ -7,20 +7,15 @@
     .input-group
       = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control', pattern: ".+@.+", required: true
       span.input-group-btn
-        = form.submit t('notices.send_email'), class: "btn btn-success"
+        = button_tag class: "btn btn-success" do
+          span.glyphicon.glyphicon-send'
+          span= t('notices.send_email')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'send_email'
 .row
   .col-lg-4.col-lg-offset-2
-    = link_to "https://twitter.com/share?text=@user #{t('notices.burn_notice_tweet')} &url=#{open_url(notice)}&via=BurnNoticeMe", target: "_blank", class: 'btn btn-success btn-block' do
-      span.glyphicon.glyphicon-comment
-      span<= t('notices.share_by_twitter')
-  .col-lg-6
-    = render 'callout', section: 'notices', key: 'send_tweet'
-.row
-  .col-lg-4.col-lg-offset-2
     = button_tag title: t('notices.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{t('notices.copy_hint')}', '#{open_url(notice)}')" do
-      a.glyphicon.glyphicon-list-alt'
+      span.glyphicon.glyphicon-list-alt'
       span= t('notices.copy_to_clipboard')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'copy_link'

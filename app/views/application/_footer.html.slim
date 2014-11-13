@@ -20,8 +20,9 @@ footer
         li= link_to 'https://github.com/burn-notice', title: 'Burn-Notice on GitHub - We <3 Open-Source!' do
             <span class="glyphicon glyphicon-heart-empty"></span> GitHub
       hr
+      p.spacer.margin-left-small.hidden-xs
+        em.text-muted.smaller #{t('footer.references')}:
       ul.list-unstyled
-        li.text-muted.smaller #{t('footer.references')}:
         li.references
           = link_to 'http://www.bluewin.ch/de/digital/tipps/2014/10/27/verschluesselte-nachrichten-verschicken.html' do
             = image_tag 'swisscom-logo.png'

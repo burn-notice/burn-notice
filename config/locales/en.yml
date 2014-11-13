@@ -14,7 +14,7 @@ en:
     logout: 'Logout'
     profile: 'Profile'
   footer:
-    references: 'Mentioned on'
+    references: 'Mentioned on the web'
   locale:
     en: 'English'
     de: 'German'
@@ -82,7 +82,7 @@ en:
     too_many_attempts: 'The notice has been disabled due to too many invalid attempts!'
     invalid_answer: 'The secret answer was incorrect!'
     correct_answer: 'Your answer was correct, encryption was successful!'
-    this_will_self_destruct: 'This message will self-destruct!'
+    this_will_self_destruct: 'This message will self-destruct, the openings will stay.'
     policy_content: "We will log all read attempts for messages and notify the sender for successful decryptions. The Notice will get destroyed immediately afterwards."
     answer: 'answer with Burn-Notice'
     sign_up: 'sign-up to our &beta;eta'
@@ -145,11 +145,9 @@ en:
     select_a_policy: 'Select a security policy'
     burn_after_reading_hint: 'offers the highest level of security and will destroy the Burn-Notice immediately after it has been read!'
     share_message: 'Share your Burn-Notice'
-    send_email: 'send e-mail'
-    burn_notice_tweet: 'there is a Burn-Notice for you at'
-    share_via_twitter: 'share via Twitter'
+    send_email: 'send via e-mail'
     copy_to_clipboard: 'copy link to clipboard'
-    copy_hint: 'Copy to clipboard: CMD+C / Ctrl+C, Enter or Tap and Copy on Touch'
+    copy_hint: "Copy to clipboard: 'CMD+C' / 'Ctrl+C' + 'Enter' or tap and copy on touch"
     back_to_dashboard: 'back to dasboard'
     draft_it: 'draft it'
     secure_it: 'secure it'
@@ -180,11 +178,7 @@ en:
         hint: 'Send a link to this Burn-Notice via e-mail (separate e-mail addresses with <code class="text-muted">,</code>).'
         title: 'Anonymity and data privacy'
         text: "The e-mail addresses of the recipients will never be stored in our system to allow for maximum data privacy. Keep in mind that e-mail is not a secure channel, anonymity can't be ensured!"
-      send_tweet:
-        hint: 'Tweet a Link to this Burn-Notice using the Twitter <em>@mention</em>.'
-        title: 'Twitter and privacy'
-        text: 'Twitter messages are visible to the public by default. If you want to limit the reach of your message, make your Twitter stream private.'
       copy_link:
         hint: 'Use copy &amp; paste to send the link over any communication channel.'
         title: 'Copy &amp; Paste'
-        text: 'Paste the contents of your clipoard with <code>CMD+V</code> on Mac or <code>CTRL+V</code> on Windows.'
+        text: 'Paste the contents of your clipoard with <code>CMD+V</code> on Mac or <code>CTRL+V</code> on Windows, tap and copy for touch.'

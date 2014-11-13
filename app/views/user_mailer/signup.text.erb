@@ -1,10 +1,10 @@
 Hallo <%= @user.nickname %>,
 
-bitte bestätige deine E-Mail-Adresse indem du auf den nachfolgenden Link klickst:
+bitte bestätige deine E-Mail Adresse, in dem du auf den nachfolgenden Link klickst:
 
 <%= validation_url(token: @user.token) %>
 
-Nach der Bestätigung kannst du sofort loslegen eine Burn-Notice zu verfassen:
+Nach der Bestätigung kannst du sofort loslegen und eine Burn-Notice verfassen:
 
 <%= notices_url %>
 

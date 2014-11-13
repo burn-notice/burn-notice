@@ -14,7 +14,7 @@ de:
     logout: 'Abmelden'
     profile: 'Profil'
   footer:
-    references: 'Erwähnt auf'
+    references: 'In den Medien und im Netz'
   locale:
     en: 'Englisch'
     de: 'Deutsch'
@@ -76,13 +76,13 @@ de:
     nothing_found: 'Leider konnten wir für <em>%{phrase}</em> keine Artikel finden, versuche es später noch einmal!'
   public:
     current_user_warning: 'Dein Zugriff wird wie jeder andere behandelt!'
-    please_enter_secret: 'Bitte gib das Geheimnis zum Entschlüsseln ein!'
+    please_enter_secret: 'Gib die geheime Antwort zum Entschlüsseln ein!'
     no_longer_available: 'Die Nachricht ist nicht länger verfügbar!'
     answer_button: 'beantworten und lesen'
     too_many_attempts: 'Die Nachricht wurde wegen zu vieler falscher Zugriffsversuche deaktiviert!'
     invalid_answer: 'Die geheime Antwort war nicht korrekt!'
     correct_answer: 'Die Antwort war korrekt, Entschlüsselung erfolgreich!'
-    this_will_self_destruct: 'Diese Nachricht zerstört sich selbst!'
+    this_will_self_destruct: 'Diese Nachricht zerstört sich von selbst, die Zugriffe bleiben.'
     policy_content: "Wir protokollieren alle Zugriffsversuche und benachrichtigen den Absender bei erfolgreichen Entschlüsselungen. Die Nachricht wird nach dem Lesen sofort zerstört."
     answer: 'answer with Burn-Notice'
     sign_up: 'sign-up to our &beta;eta'
@@ -145,11 +145,9 @@ de:
     select_a_policy: 'Wähle eine Zugriffsstrategie'
     burn_after_reading_hint: 'bietet den höchst möglichen Schutz und zerstört die Burn-Notice sofort nachdem sie gelesen wurde!'
     share_message: 'Verschicke deine Burn-Notice'
-    send_email: 'als E-Mail'
-    burn_notice_tweet: 'eine Burn-Notice für dich'
-    share_via_twitter: 'als Tweet'
-    copy_to_clipboard: 'in die Zwischenablage'
-    copy_hint: 'Kopieren in die Zwischenablage: CMD+C / Ctrl+C, Antippen für Touch-Devices'
+    send_email: 'per E-Mail senden'
+    copy_to_clipboard: 'in die Zwischenablage kopieren'
+    copy_hint: 'Kopieren in die Zwischenablage: CMD+C / Ctrl+C, lange Antippen und kopieren für Touch'
     back_to_dashboard: 'zurück zur Übersicht'
     draft_it: 'verfassen'
     secure_it: 'verschlüsseln'
@@ -171,7 +169,7 @@ de:
       burn_after_time:
         hint: 'Die Nachricht ist nur für diesen Zeitraum lesbar, danach wird sie sofort zerstört.'
         title: 'Mit Ablaufdatum'
-        text: 'Diese Einstellung bietet die Möglichkeit eine Nachricht unbegrenzt zu entschlüsseln, bis der vorgegebene Zeitraum abgelaufen ist.'
+        text: 'Diese Einstellung bietet die Möglichkeit, eine Nachricht unbegrenzt zu entschlüsseln, bis der vorgegebene Zeitraum abgelaufen ist.'
       burn_after_openings:
         hint: 'Die Nachricht wird nach einer Anzahl von Entschlüsselungen gelöscht.'
         title: 'Burn-Notice für die Masse'
@@ -180,11 +178,7 @@ de:
         hint: 'Verschicke einen Link per E-Mail (mehrere E-Mail Addressen per <code class="text-muted">,</code> trennen).'
         title: 'Datenschutz'
         text: 'Zum Schutz deiner Daten werden die eingegebenen E-Mail Adressen nicht in unserem System gespeichert.'
-      send_tweet:
-        hint: 'Diese Nachricht mit Twitter per <em>@mention</em> teilen.'
-        title: 'Twitter und Datenschutz'
-        text: 'Solange deine Twitter-Timeline nicht geschützt ist, sind deine Tweets öffentlich. In diesem Fall solltest du eine besonders sichere Frage verwenden.'
       copy_link:
         hint: 'Per <em>copy &amp; paste</em> die Nachricht anderweitig nutzen.'
         title: 'Copy &amp; Paste'
-        text: 'Die Nachricht wird in deine Zwischenablage kopiert. Einfügen mit <code>CMD+V</code> auf Mac oder <code>CTRL+V</code> auf Windows.'
+        text: 'Die Nachricht wird in deine Zwischenablage kopiert. Einfügen mit <code>CMD+V</code> auf Mac oder <code>CTRL+V</code> auf Windows, lange Antippen und kopieren für Touch.'
