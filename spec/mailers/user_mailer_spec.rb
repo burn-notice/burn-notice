@@ -1,6 +1,9 @@
 require "spec_helper"
 
 describe UserMailer do
+  before do
+    I18n.locale = :en
+  end
 
   describe "signup" do
     let(:user) { Fabricate(:user) }
