@@ -163,7 +163,7 @@ de:
         title: 'Benutze eine geheime Frage'
         text: 'Die Idee des geteilten Geheimnisses ist ein probates Mittel für kurzfristige Sicherheit. Wähle ein Geheimnis das nicht offensichtlich von einer dritten Partei erraten werden kann, allerdings ohne Mühe vom Empfänger beantwortet werden kann.'
       answer:
-        hint: 'Leerzeichen in der Frage werden ignoriert, Groß- und Kleinschreibung ebenso.'
+        hint: 'Leerzeichen in der Antwort werden ignoriert, Groß- und Kleinschreibung ebenso.'
         title: 'Einfach für den Empfänger'
         text: 'Um mögliche Probleme beim Entschlüsseln zu vermeiden, werden Leerzeichen sowie die Groß- und Kleinschreibung des Textes ignoriert.'
       burn_after_time:
