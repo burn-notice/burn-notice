@@ -5,6 +5,10 @@ class NoticesController < ApplicationController
     @notices = current_user.notices.page(params[:page])
   end
 
+  def show
+    @notice = current_user.notices.from_param(params[:id])
+  end
+
   def new
     @notice = current_user.notices.build
     @notice.policy = Policy.from_name
