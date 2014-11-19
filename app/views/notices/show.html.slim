@@ -1,2 +1,65 @@
 - set_title [t('navigation.notices'), @notice.question].join(' / ')
 - set_crumbs t('navigation.notices') => notices_path, @notice.question => url_for
+
+.panel.panel-default
+  .panel-heading= @notice.question
+  .panel-body
+    .row
+      .col-lg-6
+        dl.dl-horizontal
+          dt= t('notices.table_header.status')
+          dd= render 'status', notice: @notice
+          dt= t('notices.table_header.sent')
+          dd= @notice.created_at.to_s(:short)
+          dt= t('notices.table_header.policy')
+          dd= render 'policy', notice: @notice
+      .col-lg-6
+        = render 'actions', notice: @notice, text: true
+
+- grouped_openings = @notice.openings.group_by(&:authorization)
+.row
+  .col-lg-4
+    .panel.panel-info
+      .panel-heading
+        h3.panel-title
+          span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.opening_requests_content') title=t('notices.opening_requests_hint')
+          span= t('notices.opening_requests')
+      .panel-body
+        - if requested = grouped_openings["requested"]
+          ul.list-group
+            - requested.group_by(&:ip).each do |ip, openings|
+              li.list-group-item
+                span.badge= openings.size
+                = ip
+        - else
+          p -
+  .col-lg-4
+    .panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.unauthorized_requests_content') title=t('notices.unauthorized_requests_hint')
+          span= t('notices.unauthorized_requests')
+      .panel-body
+        - if unauthorized = grouped_openings["unauthorized"]
+          ul.list-group
+            - unauthorized.group_by(&:ip).each do |ip, openings|
+              li.list-group-item
+                span.badge= openings.size
+                = ip
+        - else
+          p -
+  .col-lg-4
+    .panel.panel-success
+      .panel-heading
+        h3.panel-title
+          span.glyphicon.glyphicon-info-sign.smaller' data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.authorized_requests_content') title=t('notices.authorized_requests_hint')
+          span= t('notices.authorized_requests')
+      .panel-body
+        - if authorized = grouped_openings["authorized"]
+          ul.list-group
+            - authorized.group_by(&:ip).each do |ip, openings|
+              li.list-group-item
+                span.badge= openings.size
+                = ip
+        - else
+          p -
