@@ -1,5 +1,12 @@
 @import "compass";
 
+.flex-buttons {
+  display: flex;
+  a {
+    text-decoration: none;
+  }
+}
+
 .navbar-logo {
   padding: 6px;
 }
