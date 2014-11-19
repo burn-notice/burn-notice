@@ -1,7 +1,11 @@
 @import "compass";
 
 .flex-buttons {
-  display: flex;
+  white-space: nowrap;
+  .btn {
+    float: none;
+    display: inline-block;
+  }
   a {
     text-decoration: none;
   }

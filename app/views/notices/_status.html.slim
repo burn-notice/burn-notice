@@ -1,0 +1,6 @@
+- if notice.closed?
+  span.label.label-primary.glyphicon.glyphicon-fire'= t('notices.status.burned')
+- elsif notice.disabled?
+  span.label.label-warning.glyphicon.glyphicon-minus-sign'= t('notices.status.disabled')
+- else
+  span.label.label-success.glyphicon.glyphicon-eye-open'= t('notices.status.open')

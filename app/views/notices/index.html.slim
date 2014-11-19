@@ -28,26 +28,10 @@
           - @notices.each do |notice|
             tr
               td= check_box_tag "selected[]", notice.id, false, class: 'select-all'
-              td
-                - if notice.closed?
-                  span.label.label-primary.glyphicon.glyphicon-fire'= t('notices.status.burned')
-                - elsif notice.disabled?
-                  span.label.label-warning.glyphicon.glyphicon-minus-sign'= t('notices.status.disabled')
-                - else
-                  span.label.label-success.glyphicon.glyphicon-eye-open'= t('notices.status.open')
+              td= render 'status', notice: notice
               td= notice.created_at.to_s(:short)
               td= link_to notice.question, notice_path(notice, anchor: :openings) 
-              td
-                - case notice.policy.name
-                - when 'burn_after_reading'
-                  span.glyphicon.glyphicon-fire.smaller
-                  span< after reading
-                - when 'burn_after_time'
-                  span.glyphicon.glyphicon-time.smaller
-                  span<= "#{notice.policy.duration} #{t('notices.day').pluralize(notice.policy.duration)}"
-                - when 'burn_after_openings'
-                  span.glyphicon.glyphicon-asterisk.smaller
-                  span<= t('notices.reads', count: notice.policy.amount)
+              td= render 'policy', notice: notice
               td.openings
                 - if notice.openings.present?
                   = link_to notice_path(notice, anchor: :openings) do
@@ -74,13 +58,9 @@
         .row
           .col-lg-12
             .btn-group
-              button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                | #{t('notices.bulk_actions')} <span class="caret"></span>
-              ul.dropdown-menu role="menu"
-                li
-                  = link_to '#', onclick: "event.preventDefault(); $(this).closest('form').submit()", data: {confirm: t('notices.confirm')} do
-                    span.glyphicon.glyphicon-trash.smaller'
-                    span= t('notices.bulk_destroy')
+              = link_to '#', onclick: "event.preventDefault(); $(this).closest('form').submit()", data: {confirm: t('notices.confirm')}, class: 'btn btn-sm btn-default' do
+                span.glyphicon.glyphicon-trash.smaller'
+                span= t('notices.bulk_destroy')
             .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default', title: t('notices.draft_it') do
               span.glyphicon.glyphicon-pencil.smaller
   .text-center
