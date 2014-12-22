@@ -8,14 +8,18 @@ class UsersController < ApplicationController
     user.attributes = user_params
     if user.email_changed?
       user.validation_date = nil
-      send_validation(current_user)
-      flash[:notice] = t('users.profile_updated_and_confirmation_email')
+      if user.save
+        send_validation(current_user)
+        flash[:notice] = t('users.profile_updated_and_confirmation_email')
+        redirect_to user_path(current_user), notice: t('users.profile_updated')
+      else
+        redirect_to user_path(current_user), alert: user.errors.full_messages.to_sentence
+      end
     else
-      flash[:notice] = t('users.profile_updated')
+      user.save!
+      redirect_to user_path(current_user), notice: t('users.profile_updated')
     end
-    user.save!
 
-    redirect_to user_path(current_user)
   end
 
   def confirmation_mail
