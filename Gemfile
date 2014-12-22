@@ -6,7 +6,7 @@ gem 'rails', '4.1.5'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
-gem "compass-rails"
+gem 'compass-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -15,33 +15,33 @@ gem 'sucker_punch'
 gem 'premailer-rails'
 gem 'nokogiri'
 gem 'newrelic_rpm'
-gem "omniauth"
-gem "omniauth-twitter"
-gem "omniauth-github"
-gem "omniauth-facebook"
-gem "omniauth-google-oauth2"
-gem "decent_exposure"
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'decent_exposure'
 gem 'slim-rails'
 gem 'kaminari'
-gem 'typus', github: 'typus/typus'
+gem 'typus', github: 'burn-notice/typus', branch: 'fix_some_stuffs'
 gem 'gemoji', github: 'github/gemoji'
-gem "rack-cache"
+gem 'rack-cache'
 gem 'pg'
 gem 'redcarpet'
 gem "exception_notification"
 
 group :production do
   gem 'rails_12factor'
-  gem "heroku-deflater"
+  gem 'heroku-deflater'
 end
 
 group :development do
-  gem "letter_opener"
-  gem "partially_useful"
-  gem "meta_request"
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "quiet_assets"
+  gem 'letter_opener'
+  gem 'partially_useful'
+  gem 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

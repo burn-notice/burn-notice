@@ -2,7 +2,7 @@
 
 Article:
   fields:
-    default: title, body, user_id, published_at, tags, content
-    form: title, body, user_id, published_at, tags, content
-  relationships: 
+    default: title, body, user, published_at, tags, headline, content
+    form: title, body, user, published_at, tags, headline, content
+  relationships: user
   application: Application

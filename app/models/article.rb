@@ -16,6 +16,10 @@ class Article < ActiveRecord::Base
     "#{title.parameterize}-#{id}"
   end
 
+  def to_label
+    "#{title} (#{id})"
+  end
+
   def self.facets
     tags = self.active.pluck(:tags)
     tags_count  = tags.flatten.each_with_object(Hash.new(0)) { |tag, counts| counts[tag] += 1 }

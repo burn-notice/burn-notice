@@ -1,17 +1,18 @@
 GIT
-  remote: git://github.com/github/gemoji.git
-  revision: 06c5d0993b509b9583cddd6ef4b3b15dd8017470
-  specs:
-    gemoji (1.5.0)
-
-GIT
-  remote: git://github.com/typus/typus.git
-  revision: e6891147d2ba32c0832db142ef1122217a85928a
+  remote: git://github.com/burn-notice/typus.git
+  revision: ed97d9628d7f884ecfba1e201e068f02ba4883f9
+  branch: fix_some_stuffs
   specs:
     typus (4.0.0.beta1)
       bcrypt (~> 3.1.5)
       bootstrap-sass (~> 3.3.1)
       rails (~> 4.1)
+
+GIT
+  remote: git://github.com/github/gemoji.git
+  revision: 06c5d0993b509b9583cddd6ef4b3b15dd8017470
+  specs:
+    gemoji (1.5.0)
 
 GEM
   remote: https://rubygems.org/

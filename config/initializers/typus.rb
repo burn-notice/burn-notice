@@ -33,8 +33,10 @@ Typus.setup do |config|
 
 end
 
-Admin::BaseController.instance_eval do
-  include LocaleDetection
+ActionDispatch::Callbacks.to_prepare do
+  Admin::BaseController.instance_eval do
+    include LocaleDetection
 
-  before_filter :switch_locale
+    before_filter :switch_locale
+  end
 end

@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     validation_date.present?
   end
 
+  def to_label
+    "#{nickname} (#{email})"
+  end
+
   private
 
   def defaults
