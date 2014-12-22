@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908195431) do
+ActiveRecord::Schema.define(version: 20141222164002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,20 @@ ActiveRecord::Schema.define(version: 20140908195431) do
     t.integer  "user_id"
     t.datetime "published_at"
     t.string   "tags",         default: [], array: true
+    t.json     "content"
+    t.json     "headline"
   end
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "beta", force: true do |t|
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +50,16 @@ ActiveRecord::Schema.define(version: 20140908195431) do
     t.datetime "invited"
   end
 
+  create_table "google_auth_connections", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.integer  "status",       default: 0
+    t.string   "token"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notices", force: true do |t|
     t.json     "data"
     t.string   "token"
@@ -49,8 +67,11 @@ ActiveRecord::Schema.define(version: 20140908195431) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "question"
-    t.integer  "status",     default: 0
+    t.integer  "status",                    default: 0
+    t.integer  "google_auth_connection_id"
   end
+
+  add_index "notices", ["google_auth_connection_id"], name: "index_notices_on_google_auth_connection_id", using: :btree
 
   create_table "openings", force: true do |t|
     t.string   "ip"

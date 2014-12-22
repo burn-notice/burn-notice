@@ -5,12 +5,19 @@ class Article < ActiveRecord::Base
     'this week'   => 1.week.ago,
   }
 
-  validates :title, :body, presence: true
-  validates :title, uniqueness: true
+  validates :headline, :content, presence: true
 
   belongs_to :user
 
   scope :active, -> { where('published_at <= ?', Time.now).order('published_at DESC') }
+
+  def title
+    headline[I18n.locale.to_s]
+  end
+
+  def body
+    content[I18n.locale.to_s]
+  end
 
   def to_param
     "#{title.parameterize}-#{id}"
