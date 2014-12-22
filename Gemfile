@@ -45,7 +45,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'pry-rails'
+  gem 'byebug'
   gem 'fabrication'
   gem "rspec-rails"
   gem "faker"

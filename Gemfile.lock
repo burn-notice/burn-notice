@@ -4,6 +4,15 @@ GIT
   specs:
     gemoji (1.5.0)
 
+GIT
+  remote: git://github.com/typus/typus.git
+  revision: e6891147d2ba32c0832db142ef1122217a85928a
+  specs:
+    typus (4.0.0.beta1)
+      bcrypt (~> 3.1.5)
+      bootstrap-sass (~> 3.3.1)
+      rails (~> 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,17 +44,14 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.9)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    bhf (0.9.8)
-      haml-rails (~> 0.4)
-      kaminari (~> 0.16)
-      rails (~> 4)
-      sass-rails (~> 4.0)
-      turbolinks (~> 2.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.1.0)
+      sass (~> 3.2)
     brakeman (2.6.0)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
@@ -58,6 +64,10 @@ GEM
       slim (>= 1.3.6, < 3.0)
       terminal-table (~> 1.4)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     callsite (0.0.11)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -72,6 +82,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
+    columnize (0.9.0)
     compass (0.12.6)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -82,6 +93,7 @@ GEM
     css_parser (1.3.5)
       addressable
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     decent_exposure (2.3.1)
     diff-lcs (1.2.5)
     docile (1.1.3)
@@ -99,11 +111,6 @@ GEM
     fssm (0.2.10)
     haml (4.0.5)
       tilt
-    haml-rails (0.5.3)
-      actionpack (>= 4.0.1)
-      activesupport (>= 4.0.1)
-      haml (>= 3.1, < 5.0)
-      railties (>= 4.0.1)
     hashie (3.3.1)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
@@ -133,7 +140,6 @@ GEM
       callsite
       rack-contrib
       railties
-    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (5.4.1)
@@ -182,12 +188,6 @@ GEM
     premailer-rails (1.7.0)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
-    pry-rails (0.3.2)
-      pry (>= 0.9.10)
     puma (2.6.0)
       rack (>= 1.1, < 2.0)
     quiet_assets (1.0.2)
@@ -292,9 +292,9 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  bhf
   binding_of_caller
   brakeman
+  byebug
   codeclimate-test-reporter
   coffee-rails
   compass-rails
@@ -319,7 +319,6 @@ DEPENDENCIES
   partially_useful
   pg
   premailer-rails
-  pry-rails
   puma
   quiet_assets
   rack-cache
@@ -331,4 +330,5 @@ DEPENDENCIES
   slim-rails
   sucker_punch
   turbolinks
+  typus!
   uglifier
