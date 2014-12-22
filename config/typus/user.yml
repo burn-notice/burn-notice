@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+User:
+  fields:
+    default: email, nickname, token, validation_date
+    form: email, nickname, token, validation_date
+  relationships: notices, authorizations, articles
+  application: Application

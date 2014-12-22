@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Opening:
+  fields:
+    default: ip, info, notice_id, meta, authorization
+    form: ip, info, notice_id, meta, authorization
+  relationships: 
+  application: Application

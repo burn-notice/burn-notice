@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'admin/login', to: 'admin#login', as: :admin
-  mount Bhf::Engine, at: 'admin'
-
   resources :notices do
     get :first_step, on: :collection
     post :first_step, on: :collection

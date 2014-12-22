@@ -23,7 +23,7 @@ gem "omniauth-google-oauth2"
 gem "decent_exposure"
 gem 'slim-rails'
 gem 'kaminari'
-gem 'bhf'
+gem 'typus', github: 'typus/typus'
 gem 'gemoji', github: 'github/gemoji'
 gem "rack-cache"
 gem 'pg'
