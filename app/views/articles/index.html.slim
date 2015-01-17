@@ -6,8 +6,8 @@
     - else
       h4.well
         - if request.query_parameters.blank?
-          = t('notices.nothing_to_see')
+          = t('articles.nothing_to_see')
         - else
-          == t('notices.nothing_found', phrase: h(request.query_parameters.values.to_sentence))
+          == t('articles.nothing_found', phrase: h(request.query_parameters.values.to_sentence))
   .col-lg-4
     = render 'pills', facets: @facets
