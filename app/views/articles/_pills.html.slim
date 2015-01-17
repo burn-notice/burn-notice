@@ -2,8 +2,8 @@ h3= t('articles.chronic')
 ul.nav.nav-pills
   - facets[:dates].each do |period, count|
     li
-      = link_to articles_path(period: period), title: t('articles.posts_per', period: period) do
-        = period
+      = link_to articles_path(period: period), title: t('articles.posts_per', period: t("articles.period.#{period.parameterize}")) do
+        = t("articles.period.#{period.parameterize}")
         span.badge= count
 h3= t('articles.tagged')
 ul.nav.nav-pills

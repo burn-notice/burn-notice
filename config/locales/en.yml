@@ -69,11 +69,15 @@ en:
     title: 'Burn after reading - the Burn-Notice blog'
     wrote_on: 'wrote on <em>%{date}</em>'
     chronic: 'Chronic'
-    posts_per: 'Burn-Notice blog posts per %{period}'
+    posts_per: 'Burn-Notice blog posts per: %{period}'
     tagged: 'Tagged'
     posts_for: 'Burn-Notice blog posts for %{tag}'
     nothing_to_see: 'Sorry, there is nothing to see at the moment!'
     nothing_found: 'Sorry, we could not find anything for <em>%{phrase}</em>, please try again later!'
+    period:
+      this-year: 'this year'
+      this-month: 'this month'
+      this-week: 'this week'
   public:
     current_user_warning: 'Your read will be treated as any other user!'
     please_enter_secret: 'Please enter your shared secret!'

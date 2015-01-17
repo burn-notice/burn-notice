@@ -69,11 +69,15 @@ de:
     title: 'Burn after reading - das Burn-Notice Blog'
     wrote_on: 'hat am <em>%{date}</em> geschrieben'
     chronic: 'Chronologisch'
-    posts_per: 'Burn-Notice Artikel im Zeitraum %{period}'
-    tagged: 'Tagged'
+    posts_per: 'Burn-Notice Artikel im Zeitraum: %{period}'
+    tagged: 'Tags'
     posts_for: 'Burn-Notice Artikel für %{tag}'
     nothing_to_see: 'Leider gibt es hier im Moment nichts zu sehen!'
     nothing_found: 'Leider konnten wir für <em>%{phrase}</em> keine Artikel finden, versuche es später noch einmal!'
+    period:
+      this-year: 'Dieses Jahr'
+      this-month: 'Diesen Monat'
+      this-week: 'Diese Woche'
   public:
     current_user_warning: 'Dein Zugriff wird wie jeder andere behandelt!'
     please_enter_secret: 'Gib die geheime Antwort zum Entschlüsseln ein!'
