@@ -26,14 +26,16 @@ class Notice < ActiveRecord::Base
 
   def read_data(secret)
     if hash = read_attribute(:data)
-      decrypt(hash.symbolize_keys, secret) unless hash.blank?
+      hash.symbolize_keys!
+      decrypt(hash, secret_phrase(secret, version: hash[:version])) unless hash.blank?
     else
       nil
     end
   end
 
   def write_data(text, secret)
-    hash = encrypt(text, secret)
+    hash = encrypt(text, secret_phrase(secret))
+    hash[:version] = 1
     write_attribute(:data, hash)
   end
 
@@ -75,8 +77,22 @@ class Notice < ActiveRecord::Base
 
   private
 
+  def secret_phrase(secret, version: 1)
+    if version == 1
+      "#{secret_nonce}-#{secret}"
+    else
+      secret
+    end
+  end
+
+  def secret_nonce
+    raise "user must be present" if user.try(:id).blank?
+    raise "token is necessary" if token.blank?
+    "#{user.id}-#{token}"
+  end
+
   def defaults
-    self.token = SecureRandom.hex(16) if new_record?
+    self.token ||= SecureRandom.hex(16) if new_record?
   end
 
   def store_encrypted

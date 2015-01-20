@@ -68,18 +68,42 @@ describe Notice do
 
   context "encryption" do
     it "stores and reads data encryped" do
+      notice = Fabricate(:notice)
       notice.write_data('moin', 'SoSecret666')
       expect(notice.read_data('SoSecret666')).to eql('moin')
       notice.save
       expect(notice.reload.read_data('SoSecret666')).to eql('moin')
     end
 
+    it "checks decryption is fine" do
+      notice = Fabricate(:notice)
+      allow(notice).to receive(:secret_nonce) { "159-2db3bd1739a52117631b4c2d55a2344b" }
+      expect(notice.read_data('some-secret')).to eql('moin')
+    end
+
+    it "checks encryption-decryption is fine" do
+      user = Fabricate(:user)
+      notice = user.notices.create!(content: 'hiho', question: 'wat?', answer: 'beer!', policy: Policy.from_name)
+      expect(notice.valid_secret?('beer!')).to be_true
+      expect(notice.read_data('beer!')).to eql('hiho')
+    end
+
+    it "checks decryption is fine for legacy" do
+      notice = Fabricate(:legacy_notice)
+      expect(notice.read_data('some-secret')).to eql('moin')
+    end
+
     it "checks if a secret is valid" do
+      notice = Fabricate(:notice)
+      allow(notice).to receive(:secret_nonce) { "159-2db3bd1739a52117631b4c2d55a2344b" }
       expect(notice.valid_secret?('some-secret')).to be_true
       expect(notice.valid_secret?('invalid')).to be_false
     end
 
     it "handles burned notices" do
+      notice = Fabricate(:notice)
+      allow(notice).to receive(:secret_nonce) { "159-2db3bd1739a52117631b4c2d55a2344b" }
+      expect(notice.valid_secret?('some-secret')).to be_true
       notice.burn!
 
       expect(notice.valid_secret?('some-secret')).to be_false
