@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').chomp
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.1'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
@@ -25,6 +25,7 @@ gem 'slim-rails'
 gem 'kaminari'
 gem 'typus', github: 'burn-notice/typus', branch: 'fix_some_stuffs'
 # gem 'typus', github: 'typus/typus', branch: 'master'
+# gem 'typus', path: '/Users/peterschroder/Documents/rails/typus'
 gem 'gemoji'
 gem 'rack-cache'
 gem 'pg'
