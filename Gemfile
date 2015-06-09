@@ -29,7 +29,7 @@ gem 'gemoji'
 gem 'rack-cache'
 gem 'pg'
 gem 'redcarpet'
-gem "exception_notification"
+gem 'exception_notification'
 
 group :production do
   gem 'rails_12factor'
@@ -48,8 +48,8 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'fabrication'
-  gem "rspec-rails"
-  gem "faker"
+  gem 'rspec-rails'
+  gem 'faker'
   gem 'brakeman', require: false
-  gem "codeclimate-test-reporter", require: false
+  gem 'codeclimate-test-reporter', require: false
 end
