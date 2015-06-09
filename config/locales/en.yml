@@ -112,7 +112,7 @@ en:
     times: '%{count} times'
     bulk_actions: 'bulk actions'
     bulk_destroy: 'delete selected'
-    confirm: "This can't be undone!"
+    confirm: "This cant be undone!"
     actions: 'actions'
     read: 'read'
     share: 'share'
@@ -151,7 +151,7 @@ en:
     share_message: 'Share your Burn-Notice'
     send_email: 'send via e-mail'
     copy_to_clipboard: 'copy link to clipboard'
-    copy_hint: "Copy to clipboard: 'CMD+C' / 'Ctrl+C' + 'Enter' or tap and copy on touch"
+    copy_hint: "Copy to clipboard: CMD+C / Ctrl+C + Enter or tap and copy on touch"
     back_to_dashboard: 'back to dasboard'
     draft_it: 'draft it'
     secure_it: 'secure it'
