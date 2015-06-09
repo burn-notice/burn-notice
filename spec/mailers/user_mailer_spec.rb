@@ -10,9 +10,9 @@ describe UserMailer do
     let(:mail) { UserMailer.signup(user) }
 
     it "renders the mail" do
-      mail.subject.should_not be_nil
-      mail.to.should eq([user.email])
-      mail.body.encoded.should match("validate")
+      expect(mail.subject).to_not be_nil
+      expect(mail.to).to eq([user.email])
+      expect(mail.body.encoded).to match("validate")
     end
   end
 
@@ -22,12 +22,12 @@ describe UserMailer do
     let(:mail)    { UserMailer.notify(user, 'uschi@muschi.de', notice) }
 
     it "renders the headers" do
-      mail.subject.should_not be_nil
-      mail.to.should eq(['uschi@muschi.de'])
+      expect(mail.subject).to_not be_nil
+      expect(mail.to).to eq(['uschi@muschi.de'])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("new Burn-Notice")
+      expect(mail.body.encoded).to match("new Burn-Notice")
     end
   end
 end

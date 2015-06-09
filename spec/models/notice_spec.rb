@@ -84,7 +84,7 @@ describe Notice do
     it "checks encryption-decryption is fine" do
       user = Fabricate(:user)
       notice = user.notices.create!(content: 'hiho', question: 'wat?', answer: 'beer!', policy: Policy.from_name)
-      expect(notice.valid_secret?('beer!')).to be_true
+      expect(notice.valid_secret?('beer!')).to be_truthy
       expect(notice.read_data('beer!')).to eql('hiho')
     end
 
@@ -96,17 +96,17 @@ describe Notice do
     it "checks if a secret is valid" do
       notice = Fabricate(:notice)
       allow(notice).to receive(:secret_nonce) { "159-2db3bd1739a52117631b4c2d55a2344b" }
-      expect(notice.valid_secret?('some-secret')).to be_true
-      expect(notice.valid_secret?('invalid')).to be_false
+      expect(notice.valid_secret?('some-secret')).to be_truthy
+      expect(notice.valid_secret?('invalid')).to be_falsey
     end
 
     it "handles burned notices" do
       notice = Fabricate(:notice)
       allow(notice).to receive(:secret_nonce) { "159-2db3bd1739a52117631b4c2d55a2344b" }
-      expect(notice.valid_secret?('some-secret')).to be_true
+      expect(notice.valid_secret?('some-secret')).to be_truthy
       notice.burn!
 
-      expect(notice.valid_secret?('some-secret')).to be_false
+      expect(notice.valid_secret?('some-secret')).to be_falsey
     end
   end
 
