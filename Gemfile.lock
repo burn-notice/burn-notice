@@ -8,12 +8,6 @@ GIT
       bootstrap-sass (~> 3.3.1)
       rails (~> 4.1)
 
-GIT
-  remote: git://github.com/github/gemoji.git
-  revision: 06c5d0993b509b9583cddd6ef4b3b15dd8017470
-  specs:
-    gemoji (1.5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -114,6 +108,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     fssm (0.2.10)
+    gemoji (2.1.0)
     haml (4.0.5)
       tilt
     hashie (3.3.1)
@@ -307,7 +302,7 @@ DEPENDENCIES
   exception_notification
   fabrication
   faker
-  gemoji!
+  gemoji
   heroku-deflater
   jbuilder
   jquery-rails
