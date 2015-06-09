@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Opening do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:opening) { Fabricate.build(:opening) }
+
+  context "validation" do
+    it "is valid" do
+      expect(opening).to be_valid
+    end
+  end
 end
