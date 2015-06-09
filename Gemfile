@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby File.read('.ruby-version').chomp
 
 gem 'rails', '4.2.1'
+gem 'responders'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
