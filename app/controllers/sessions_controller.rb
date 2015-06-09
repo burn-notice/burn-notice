@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
 
   def offline_login
     session.destroy
-    user = User.find_by_nickname(params[:nickname])
+    user = User.find_by_nickname!(params[:nickname])
     sign_in(user)
 
     redirect_to user_path(user), notice: "Offline Login for #{user.nickname}!"
