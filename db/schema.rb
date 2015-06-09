@@ -50,16 +50,6 @@ ActiveRecord::Schema.define(version: 20141222164002) do
     t.datetime "invited"
   end
 
-  create_table "google_auth_connections", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.integer  "status",       default: 0
-    t.string   "token"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "notices", force: true do |t|
     t.json     "data"
     t.string   "token"
@@ -68,10 +58,7 @@ ActiveRecord::Schema.define(version: 20141222164002) do
     t.datetime "updated_at"
     t.string   "question"
     t.integer  "status",                    default: 0
-    t.integer  "google_auth_connection_id"
   end
-
-  add_index "notices", ["google_auth_connection_id"], name: "index_notices_on_google_auth_connection_id", using: :btree
 
   create_table "openings", force: true do |t|
     t.string   "ip"

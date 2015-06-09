@@ -2,7 +2,7 @@
 
 Notice:
   fields:
-    default: data, token, user_id, question, status, google_auth_connection_id
-    form: data, token, user_id, question, status, google_auth_connection_id
+    default: data, token, user_id, question, status
+    form: data, token, user_id, question, status
   relationships: openings, policy
   application: Application
