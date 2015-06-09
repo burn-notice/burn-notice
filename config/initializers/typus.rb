@@ -30,13 +30,4 @@ Typus.setup do |config|
 
   # Define subdomain to use instead of additional path.
   # config.subdomain = "admin"
-
-end
-
-ActionDispatch::Callbacks.to_prepare do
-  Admin::BaseController.instance_eval do
-    include LocaleDetection
-
-    before_filter :switch_locale
-  end
 end
