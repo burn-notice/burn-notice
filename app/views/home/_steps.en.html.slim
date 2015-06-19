@@ -1,0 +1,15 @@
+.row
+  .col-lg-4
+    h2.text-center <span class="step smaller success-step-muted">1</span> draft it
+  .col-lg-4
+    h2.text-center <span class="step smaller success-step-muted">2</span> secure it
+  .col-lg-4
+    h2.text-center <span class="step smaller success-step-muted">3</span> share it
+.row
+  .col-lg-12
+    .visible-xs
+      h2.text-center
+        button type="button" class="btn btn-info btn-lg" data-container="body" data-toggle="popover" data-placement="auto" data-html="true" data-content=html_escape_once(image_tag('three_step.gif', class: 'img-thumbnail')) data-original-title="draft it, secure it, share it" open Preview
+    .hidden-xs
+      h2.text-center
+        = image_tag 'three_step.gif', class: "img-thumbnail", alt: 'draft it, secure it, share it - 3 simple steps to a Burn-Notice'

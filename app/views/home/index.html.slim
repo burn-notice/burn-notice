@@ -1,64 +1,30 @@
+.spacer.hidden-xs
 .row
-  .col-lg-5    
+  .col-lg-5
     .page-header.hidden-xs
-      h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('slogan')
+      h1= link_to 'Burn-Notice', root_url, class: 'text-warning', title: t('title')
     .spacer-large
     p.lead
-      span.caps> Einfach, Sicher, Verschlüsselt
-      em.text-warning.hidden-xs Einweg-Nachrichten
-  .col-lg-7 style="padding: 15px 15px 0 15px;"
+      = link_to root_url, title: t('slogan') do
+        span.caps>= t('slogan_1')
+        em.text-warning.hidden-xs= t('slogan_2')
+  .col-lg-7
     .well
-      h2.spacer-small.hidden-xs Jetzt anmelden und die <span class="label label-primary">&beta;eta</span> ausprobieren!
-      h2.visible-xs Jetzt Anmelden!
-      p.spacer-large.text-muted
-        small.hidden-xs Datenschutz wird bei uns ernst genommen, wir werden niemals deine Daten an Dritte weitergeben.
-        small.visible-xs Datenschutz wird bei uns großgeschrieben!
-      p.btn-group.btn-group-justified.hidden-xs
-        - login_links do |name, path, key|
-          = link_to name, path, class: "btn btn-success"
-      .btn-group.visible-xs
-        - login_links do |name, path, key|
-          p= link_to name, path, class: "btn btn-success btn-block btn-sm"
+      h2.spacer.text-center
+        .hidden-xs== t('home.register_now')
+        .visible-xs== t('home.register_now_xs')
+      .spacer.text-center
+        .btn-group
+          button.btn.btn-lg.btn-success.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            == t('home.register_with_oauth')
+          ul.dropdown-menu.dropdown-menu-right
+            li.dropdown-header= t('home.select_oauth_provider')
+            - login_links do |name, path, key|
+              li= link_to name, path
 
 hr.spacer-large.hidden-xs
 
-.row
-  .col-lg-4.col-lg-push-8.text-center
-    .hidden-xs
-      .spacer-large
-      .spacer-large
-      .spacer-large
-    <span class="step mega success-step-muted">1</span> 
-    h2.larger verfassen
-  .col-lg-8.col-lg-pull-4.text-center
-    = image_tag 'draft_it_de.png', class: 'img-thumbnail'
-
-hr.spacer-large.hidden-xs
-
-.row
-  .col-lg-4.text-center
-    .hidden-xs
-      .spacer-large
-      .spacer-large
-      .spacer-large
-    <span class="step mega success-step-muted">2</span> 
-    h2.larger verschlüsseln
-  .col-lg-8.text-center
-    = image_tag 'secure_it_de.png', class: 'img-thumbnail'
-
-
-hr.spacer-large.hidden-xs
-
-.row
-  .col-lg-4.col-lg-push-8.text-center
-    .hidden-xs
-      .spacer-large
-      .spacer-large
-      .spacer-large
-    <span class="step mega success-step-muted">3</span> 
-    h2.larger verschicken
-  .col-lg-8.col-lg-pull-4.text-center
-    = image_tag 'share_it_de.png', class: 'img-thumbnail'
+= render 'steps'
 
 .hidden-xs
   hr.spacer-large.hidden-xs

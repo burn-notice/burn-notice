@@ -29,10 +29,10 @@ module ApplicationHelper
   end
 
   PROVIDERS = {
-    twitter: 'Twitter',
-    github: 'GitHub',
     facebook: 'Facebook',
+    twitter: 'Twitter',
     google_oauth2: 'Google',
+    github: 'GitHub',
     email: 'E-Mail',
   }
 

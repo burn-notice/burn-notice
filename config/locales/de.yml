@@ -5,7 +5,10 @@ de:
         question: 'Frage'
         answer: 'Antwort'
         content: 'Inhalt'
-  slogan: "Burn-Notice: Einfach, Sicher, Verschlüsselt - Einweg-Nachrichten"
+  title: "Burn-Notice: Einfach, Sicher, Verschlüsselt - Einweg-Nachrichten"
+  slogan: "Einfach, Sicher, Verschlüsselt - Einweg-Nachrichten"
+  slogan_1: "Einfach, Sicher, Verschlüsselt"
+  slogan_2: "Einweg-Nachrichten"
   navigation:
     notices: 'Nachrichten'
     draft: 'Schreiben'
@@ -18,6 +21,11 @@ de:
   locale:
     en: 'Englisch'
     de: 'Deutsch'
+  home:
+    register_now: 'Jetzt anmelden und die <span class="label label-primary">&beta;eta</span> ausprobieren!'
+    register_now_xs: 'Jetzt anmelden ausprobieren!'
+    register_with_oauth: 'Anmelden mit Facebook & Co <span class="caret"></span>'
+    select_oauth_provider: 'Wähle eine der Möglichkeiten zum Anmelden:'
   sessions:
     sign_in_provider: 'Einfach mit OAuth anmelden'
     enter_data: 'Bitte gib deine Daten ein'

@@ -5,7 +5,10 @@ en:
         question: 'Question'
         answer: 'Answer'
         content: 'Content'
-  slogan: 'Burn-Notice: simple, secure, encrypted - one-time messages'
+  title: "Burn-Notice: simple, secure, encrypted - one-time messages"
+  slogan: "simple, secure, encrypted - one-time messages"
+  slogan_1: "simple, secure, encrypted"
+  slogan_2: "one-time messages"
   navigation:
     notices: 'Messages'
     draft: 'Draft'
@@ -18,6 +21,11 @@ en:
   locale:
     en: 'English'
     de: 'German'
+  home:
+    register_now: 'Check out our <span class="label label-primary">&beta;eta</span>, signup now!'
+    register_now_xs: 'Try it now!'
+    register_with_oauth: 'Signup with Facebook etc <span class="caret"></span>'
+    select_oauth_provider: 'Select one of the identity-providers:'
   sessions:
     sign_in_provider: 'Sign-in through OAuth'
     enter_data: 'Please enter your data'
