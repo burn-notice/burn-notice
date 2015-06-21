@@ -1,12 +1,12 @@
 - if notice.closed?
   span.label.label-primary
-    span.glyphicon.glyphicon-fire'
+    span.glyphicon.glyphicon-fire>
     span= t('notices.status.burned')
 - elsif notice.disabled?
   span.label.label-warning
-    span.glyphicon.glyphicon-minus-sign'
+    span.glyphicon.glyphicon-minus-sign>
     span= t('notices.status.disabled')
 - else
   span.label.label-success
-    span.glyphicon.glyphicon-eye-open'
+    span.glyphicon.glyphicon-eye-open>
     span= t('notices.status.open')

@@ -8,14 +8,14 @@
       = form.text_field :share_recipients, placeholder: "john.doe@example.com", class: 'form-control', pattern: ".+@.+", required: true
       span.input-group-btn
         = button_tag class: "btn btn-success" do
-          span.glyphicon.glyphicon-send'
+          span.glyphicon.glyphicon-send>
           span= t('notices.send_email')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'send_email'
 .row
   .col-lg-4.col-lg-offset-2
     = button_tag title: t('notices.copy_to_clipboard'), class: "btn btn-success btn-block", onclick: "event.preventDefault(); copyToClipboard('#{t('notices.copy_hint')}', '#{open_url(notice)}')" do
-      span.glyphicon.glyphicon-list-alt'
+      span.glyphicon.glyphicon-list-alt>
       span= t('notices.copy_to_clipboard')
   .col-lg-6
     = render 'callout', section: 'notices', key: 'copy_link'

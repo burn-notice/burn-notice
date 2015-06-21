@@ -59,7 +59,7 @@
           .col-lg-12
             .btn-group
               = link_to '#', onclick: "event.preventDefault(); $(this).closest('form').submit()", data: {confirm: t('notices.confirm')}, class: 'btn btn-sm btn-default' do
-                span.glyphicon.glyphicon-trash.smaller'
+                span.glyphicon.glyphicon-trash.smaller>
                 span= t('notices.bulk_destroy')
             .pull-right= link_to new_notice_path, class: 'btn btn-sm btn-default', title: t('notices.draft_it') do
               span.glyphicon.glyphicon-pencil.smaller
