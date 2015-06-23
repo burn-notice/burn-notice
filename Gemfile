@@ -36,6 +36,7 @@ gem 'exception_notification'
 group :production do
   gem 'rails_12factor'
   gem 'heroku-deflater'
+  gem 'dalli'
 end
 
 group :development do
