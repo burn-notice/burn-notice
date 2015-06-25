@@ -9,6 +9,14 @@ module ApplicationHelper
     end
   end
 
+  def render_cached(*keys)
+    defaults  = [I18n.locale]
+    key       = defaults.concat(keys.present? ? keys.map { |key| key.respond_to?(:cache_key) ? key.cache_key : key } : [controller_name, action_name]).join("/")
+
+    Rails.logger.info "cache fragment '#{key}'"
+    cache(key, expires_in: 24.hours, skip_digest: true) { yield }
+  end
+
   def set_title(title)
     content_for(:title, title)
   end

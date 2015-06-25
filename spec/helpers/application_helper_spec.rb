@@ -10,4 +10,29 @@ describe ApplicationHelper do
       expect(helper.markdown("moin\nklaus")).to eql("<p>moin<br>\nklaus</p>\n")
     end
   end
+
+  context "render_cached" do
+    let(:article) { Fabricate.build(:article, id: 123, updated_at: Time.new(2015, 1, 1, 0, 0, 0)) }
+    before { allow(helper).to receive_messages(action_name: 'test') }
+
+    it "caches a scoped key" do
+      allow(helper).to receive(:cache).with("de/test/test", {expires_in: 86400, skip_digest: true})
+
+      helper.render_cached
+    end
+
+    it "caches passed keys" do
+      allow(helper).to receive(:cache).with("de/hallo/klaus", {expires_in: 86400, skip_digest: true})
+
+      helper.render_cached(:hallo, :klaus)
+    end
+
+    it "caches using cache_key" do
+      allow(article).to receive(:new_record?) { false }
+      allow(helper).to receive(:cache).with("de/articles/123-20141231230000000000000", {expires_in: 86400, skip_digest: true})
+
+      helper.render_cached(article)
+    end
+  end
+
 end
