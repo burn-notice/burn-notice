@@ -35,7 +35,7 @@
               td.openings
                 - if notice.openings.present?
                   = link_to notice_path(notice, anchor: :openings) do
-                    span.glyphicon.glyphicon-th-list'
+                    span.glyphicon.glyphicon-th-list>
                     span= t('notices.times', count: notice.openings.size)
                 - else
                   span -
