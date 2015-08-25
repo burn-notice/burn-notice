@@ -2,11 +2,11 @@ class NoticesController < ApplicationController
   before_action :authenticate!
 
   def index
-    @notices = current_user.notices.page(params[:page])
+    @notices = current_user.notices.includes(:policy, :openings).page(params[:page])
   end
 
   def show
-    @notice = current_user.notices.from_param(params[:id])
+    @notice = current_user.notices.includes(:policy, :openings).from_param(params[:id])
   end
 
   def new
