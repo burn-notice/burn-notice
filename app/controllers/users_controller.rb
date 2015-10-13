@@ -40,6 +40,6 @@ class UsersController < ApplicationController
 
   def send_validation(user)
     mail = UserMailer.validate(user)
-    MailerJob.new.async.deliver(mail)
+    MailerJob.new.async.deliver(mail, I18n.locale)
   end
 end

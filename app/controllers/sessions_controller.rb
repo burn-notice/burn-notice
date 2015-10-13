@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
       session[:email_auth_address] = params[:email]
       session[:email_auth_token] = SecureRandom.uuid
       mail = UserMailer.email_auth(params[:email], session[:email_auth_token])
-      MailerJob.new.async.deliver(mail)
+      MailerJob.new.async.deliver(mail, I18n.locale)
     end
   end
 
@@ -87,7 +87,7 @@ class SessionsController < ApplicationController
     if @user.save
       session.delete(:auth_data)
       mail = UserMailer.signup(@user)
-      MailerJob.new.async.deliver(mail)
+      MailerJob.new.async.deliver(mail, I18n.locale)
       sign_in(@user)
       redirect_to session.delete(:auth_path), notice: t('sessions.welcome', nickname: @user.nickname)
     else
