@@ -5,7 +5,7 @@
   .panel-heading= @notice.question
   .panel-body
     .row
-      .col-lg-6
+      .col-lg-4
         dl.dl-horizontal
           dt= t('notices.table_header.status')
           dd= render 'status', notice: @notice
@@ -13,8 +13,8 @@
           dd= @notice.created_at.to_s(:short)
           dt= t('notices.table_header.policy')
           dd= render 'policy', notice: @notice
-      .col-lg-6
-        = render 'actions', notice: @notice, text: true
+      .col-lg-8
+        = render 'actions', notice: @notice
 
 - grouped_openings = @notice.openings.group_by(&:authorization)
 .row
