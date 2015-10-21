@@ -2,6 +2,11 @@ class ArticlesController < ApplicationController
   def index
     @articles = search_scope
     @facets   = Article.facets
+
+    respond_to do |wants|
+      wants.html
+      wants.rss
+    end
   end
 
   def show
