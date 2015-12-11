@@ -41,8 +41,12 @@ footer
             em Westfälische Nachrichten
     .col-lg-4.col-xs-12
       address.well.gray-ish
-        .margin-left
-          strong Peter Schröder<br>
+        .pull-left
+          = link_to 'https://github.com/phoet/' do
+            = image_tag 'phoet.jpg', class: "img-circle me-thumb"
+        div
+          strong= link_to 'Peter Schröder', 'https://github.com/phoet/'
+          <br>
           |
             Schanzenstr. 85<br>
             20357 Hamburg, Germany<br>
