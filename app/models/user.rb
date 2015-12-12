@@ -11,9 +11,7 @@ class User < ActiveRecord::Base
   validates :email, :token, uniqueness: true
   validates :nickname, uniqueness: {scope: [:email]}
 
-  def admin?
-    email.in? ['phoetmail@googlemail.com', 'me@kurtfunai.com']
-  end
+  enum access: {user: 0, admin: 42}
 
   def validate!
     update_attributes! validation_date: Time.now

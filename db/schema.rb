@@ -11,80 +11,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222164002) do
+ActiveRecord::Schema.define(version: 20151212102716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "articles", force: true do |t|
+  create_table "articles", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
+    t.string   "title",        limit: 255
     t.text     "body"
     t.integer  "user_id"
     t.datetime "published_at"
-    t.string   "tags",         default: [], array: true
+    t.string   "tags",         limit: 255, default: [], array: true
     t.json     "content"
     t.json     "headline"
   end
 
-  create_table "authorizations", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
+  create_table "authorizations", force: :cascade do |t|
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "beta", force: true do |t|
-    t.string   "email"
+  create_table "beta_users", force: :cascade do |t|
+    t.string   "email",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "beta_users", force: true do |t|
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "token"
+    t.string   "token",      limit: 255
     t.datetime "invited"
   end
 
-  create_table "notices", force: true do |t|
+  create_table "notices", force: :cascade do |t|
     t.json     "data"
-    t.string   "token"
+    t.string   "token",      limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "question"
-    t.integer  "status",                    default: 0
+    t.string   "question",   limit: 255
+    t.integer  "status",                 default: 0
   end
 
-  create_table "openings", force: true do |t|
-    t.string   "ip"
+  create_table "openings", force: :cascade do |t|
+    t.string   "ip",            limit: 255
     t.text     "info"
     t.integer  "notice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.json     "meta"
-    t.integer  "authorization", default: 0
+    t.integer  "authorization",             default: 0
   end
 
-  create_table "policies", force: true do |t|
-    t.string   "name"
+  create_table "policies", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.json     "setting"
     t.integer  "notice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "nickname"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",           limit: 255
+    t.string   "nickname",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "token"
+    t.string   "token",           limit: 255
     t.datetime "validation_date"
+    t.integer  "access",                      default: 0
   end
 
 end

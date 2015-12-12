@@ -4,6 +4,10 @@ Fabricator(:user) do
   token     { SecureRandom.hex(16) }
 end
 
+Fabricator(:admin, from: :user) do
+  access { 42 }
+end
+
 GITHUB_AUTH_HASH = {
   "provider"=>"github",
   "uid"=>"48745",
