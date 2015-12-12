@@ -2,7 +2,7 @@
 
 Notice:
   fields:
-    default: data, token, user_id, question, status
+    default: token, user_id, question, status
     form: data, token, user_id, question, status
   relationships: openings, policy
   application: Application
