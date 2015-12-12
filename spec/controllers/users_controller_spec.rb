@@ -21,7 +21,7 @@ describe UsersController do
 
   context "POST :update" do
     it "resets validation and sends an email when address is changed" do
-      @user.update! validation_date: Time.now
+      @user.update! validation_date: Time.new(2015, 1, 1, 0, 0, 0).utc
       expect {
         post :update, id: @user, user: {email: 'different@email.com'}
       }.to change { @user.reload.validation_date }.from(@user.validation_date).to(nil)

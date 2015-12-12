@@ -12,7 +12,7 @@ describe ApplicationHelper do
   end
 
   context "render_cached" do
-    let(:article) { Fabricate.build(:article, id: 123, updated_at: Time.new(2015, 1, 1, 0, 0, 0)) }
+    let(:article) { Fabricate.build(:article, id: 123, updated_at: Time.utc(2015, 1, 1, 0, 0, 0)) }
     before { allow(helper).to receive_messages(action_name: 'test') }
 
     it "caches a scoped key" do
@@ -29,7 +29,7 @@ describe ApplicationHelper do
 
     it "caches using cache_key" do
       allow(article).to receive(:new_record?) { false }
-      allow(helper).to receive(:cache).with("de/articles/123-20141231230000000000000", {expires_in: 86400, skip_digest: true})
+      allow(helper).to receive(:cache).with("de/articles/123-20150101000000000000000", {expires_in: 86400, skip_digest: true})
 
       helper.render_cached(article)
     end
