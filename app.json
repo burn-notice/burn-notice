@@ -1,0 +1,62 @@
+{
+  "name": "burn-notice",
+  "scripts": {
+  },
+  "env": {
+    "FACEBOOK_CONSUMER_KEY": {
+      "required": true
+    },
+    "FACEBOOK_CONSUMER_SECRET": {
+      "required": true
+    },
+    "GITHUB_CONSUMER_KEY": {
+      "required": true
+    },
+    "GITHUB_CONSUMER_SECRET": {
+      "required": true
+    },
+    "GOOGLE_CONSUMER_KEY": {
+      "required": true
+    },
+    "GOOGLE_CONSUMER_SECRET": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "PASSWORD": {
+      "required": true
+    },
+    "PRIVATE_KEY": {
+      "required": true
+    },
+    "PUBLIC_KEY": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "TWITTER_CONSUMER_KEY": {
+      "required": true
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "required": true
+    }
+  },
+  "addons": [
+    "memcachier",
+    "redistogo",
+    "papertrail",
+    "sendgrid",
+    "newrelic",
+    "heroku-postgresql",
+    "scheduler",
+    "librato"
+  ]
+}
