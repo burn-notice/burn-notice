@@ -11,12 +11,6 @@ describe UsersController do
 
       expect(response).to be_success
     end
-
-    it "redirects when it's the wrong user" do
-      get :show, id: Fabricate(:user)
-
-      expect(response).to be_redirect
-    end
   end
 
   context "POST :update" do

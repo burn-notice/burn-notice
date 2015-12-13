@@ -1,25 +1,24 @@
 class UsersController < ApplicationController
-  before_action :authenticate_current_user!
+  before_action :authenticate!
 
   def show
   end
 
   def update
-    user.attributes = user_params
-    if user.email_changed?
-      user.validation_date = nil
-      if user.save
+    current_user.attributes = user_params
+    if current_user.email_changed?
+      current_user.validation_date = nil
+      if current_user.save
         send_validation(current_user)
         flash[:notice] = t('users.profile_updated_and_confirmation_email')
         redirect_to user_path(current_user), notice: t('users.profile_updated')
       else
-        redirect_to user_path(current_user), alert: user.errors.full_messages.to_sentence
+        redirect_to user_path(current_user), alert: current_user.errors.full_messages.to_sentence
       end
     else
-      user.save!
+      current_user.save!
       redirect_to user_path(current_user), notice: t('users.profile_updated')
     end
-
   end
 
   def confirmation_mail
@@ -32,10 +31,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :nickname, :time_zone)
-  end
-
-  def user
-    @user ||= User.find(params[:id])
   end
 
   def send_validation(user)
