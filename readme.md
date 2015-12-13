@@ -1,8 +1,8 @@
-# :fire: Burn-Notice
+## :fire: Burn-Notice
 
 Simple, Secure, Encrypted one-time Information
 
-# License
+## License
 
 "THE (extended) BEER-WARE LICENSE" (Revision 42.0815): [phoet](mailto:ps@nofail.de) contributed to this project.
 
