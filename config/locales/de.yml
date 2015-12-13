@@ -116,7 +116,9 @@ de:
       burned: 'zerstört'
       disabled: 'deaktiviert'
       open: 'ungelesen'
-    day: 'Tag'
+    day:
+      one: 'Tag'
+      other: 'Tage'
     reads: '%{count} Zugriffe'
     times: '%{count} Zugriffe'
     bulk_actions: 'Mehrfach Aktionen'

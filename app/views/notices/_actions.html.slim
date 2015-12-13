@@ -1,14 +1,14 @@
-.flex-buttons.btn-group
+.flex-buttons.btn-group.btn-group-sm
   - unless notice.closed?
     = link_to open_path(notice), class: 'btn btn-primary', title: t('notices.read')
-      span.glyphicon.glyphicon-eye-open.smaller
+      span.glyphicon.glyphicon-eye-open
   - if notice.disabled?
     = link_to enable_notice_path(notice), method: :patch, class: 'btn btn-primary', title: t('notices.enable')
-      span.glyphicon.glyphicon-plus-sign.smaller
+      span.glyphicon.glyphicon-plus-sign
   - elsif notice.open?
     = link_to share_notice_path(notice), class: 'btn btn-primary', title: t('notices.share')
-      span.glyphicon.glyphicon-share.smaller
+      span.glyphicon.glyphicon-share
     = link_to disable_notice_path(notice), method: :patch, class: 'btn btn-primary', title: t('notices.disable')
-      span.glyphicon.glyphicon-minus-sign.smaller
+      span.glyphicon.glyphicon-minus-sign
   = link_to notice_path(notice), method: :delete, data: {confirm: t('notices.confirm')}, class: 'btn btn-primary', title: t('notices.destroy')
-    span.glyphicon.glyphicon-trash.smaller
+    span.glyphicon.glyphicon-trash
