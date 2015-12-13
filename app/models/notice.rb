@@ -60,10 +60,14 @@ class Notice < ActiveRecord::Base
     end
   end
 
-  def burn!
-    self.status = :closed
+  def burn!(status = :closed)
+    self.status = status
     self.data = {}
     save(validate: false)
+  end
+
+  def cremate!
+    burn!(:deleted)
   end
 
   def authorized

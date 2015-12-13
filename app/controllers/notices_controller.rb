@@ -83,8 +83,8 @@ class NoticesController < ApplicationController
   end
 
   def destroy
-    @notice = current_user.notices.unscoped.from_param(params[:id])
-    @notice.update! status: :deleted
+    @notice = current_user.notices.from_param(params[:id])
+    @notice.cremate!
 
     redirect_to notices_path, notice: t('notices.destroyed')
   end
@@ -95,7 +95,7 @@ class NoticesController < ApplicationController
     case action
     when 'destroy'
       flash[:notice] = t('notices.bulk_destroyed')
-      notices.each { |notice| notice.update! status: :deleted }
+      notices.each { |notice| notice.cremate! }
     end
 
     redirect_to notices_path
