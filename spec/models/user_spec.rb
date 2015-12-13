@@ -8,6 +8,11 @@ describe User do
     it "is valid" do
       expect(user).to be_valid
     end
+
+    it "handles timezones" do
+      expect(Fabricate.build(:user, time_zone: 'bla')).to have(1).errors_on(:time_zone)
+      expect(Fabricate.build(:user, time_zone: 'Berlin')).to be_valid
+    end
   end
 
   context "admin" do

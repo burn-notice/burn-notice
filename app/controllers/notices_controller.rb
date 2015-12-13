@@ -1,5 +1,6 @@
 class NoticesController < ApplicationController
   before_action :authenticate!
+  around_action :user_time_zone, if: :change_time_zone?
 
   def index
     @notices = current_user.notices.includes(:policy, :openings).page(params[:page])

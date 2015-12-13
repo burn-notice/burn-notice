@@ -10,7 +10,7 @@
           dt= t('notices.table_header.status')
           dd= render 'status', notice: @notice
           dt= t('notices.table_header.sent')
-          dd= @notice.created_at.to_s(:short)
+          dd= d(@notice.created_at)
           dt= t('notices.table_header.policy')
           dd= render 'policy', notice: @notice
       .col-lg-8

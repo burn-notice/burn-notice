@@ -73,6 +73,7 @@ en:
     email_confirmed: 'E-mail address confirmed'
     confirm_email: "Confirm e-mail address"
     change_email: "Change e-mail"
+    change_email: "Change Time-Zone"
   articles:
     title: 'Burn after reading - the Burn-Notice blog'
     wrote_on: 'wrote on <em>%{date}</em>'

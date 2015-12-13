@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :nickname, :email, :token, presence: true
   validates :email, :token, uniqueness: true
   validates :nickname, uniqueness: {scope: [:email]}
+  validates :time_zone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}, allow_nil: true, allow_blank: true
 
   enum access: {user: 0, admin: 42}
 
