@@ -12,18 +12,24 @@
             - if existing_providers.include?(key)
               = link_to "#", class: "btn btn-default btn-block disabled"
                 span'= name
-                span.glyphicon.glyphicon-ok(style="color: green;")
+                span.glyphicon.glyphicon-ok
             - else
               = link_to t('users.connect_via', provider: name), path, class: "btn btn-default btn-block"
   .col-lg-6
     .panel.panel-default
       .panel-heading= t('users.actions')
       .panel-body
+        = form_for current_user do |form|
+          .input-group
+            = form.time_zone_select :time_zone, ActiveSupport::TimeZone.all.find_all { |z| z.name =~ /Pacific|Eastern|Central Time|London|Berlin/ }, {include_blank: true}, {class: 'form-control', placeholder: 'moin'}
+            span.input-group-btn
+              = form.submit t('users.change_time_zone'), class: "btn btn-default"
+      .panel-body
         p
           - if current_user.validated?
             = link_to "#", class: "btn btn-default btn-block disabled"
               span'= t('users.email_confirmed')
-              span.glyphicon.glyphicon-ok(style="color: green;")
+              span.glyphicon.glyphicon-ok
           - else
             = link_to t('users.confirm_email'), confirmation_mail_user_path(current_user), class: "btn btn-default btn-block"
         = form_for current_user do |form|
@@ -31,9 +37,3 @@
             = form.email_field :email, class: 'form-control', required: true
             span.input-group-btn
               = form.submit t('users.change_email'), class: "btn btn-default"
-      .panel-body
-        = form_for current_user do |form|
-          .input-group
-            = form.time_zone_select :time_zone, ActiveSupport::TimeZone.all.find_all { |z| z.name =~ /Pacific|Eastern|Central Time|London|Berlin/ }, {include_blank: true}, {class: 'form-control', placeholder: 'moin'}
-            span.input-group-btn
-              = form.submit t('users.change_time_zone'), class: "btn btn-default"
