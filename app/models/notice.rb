@@ -18,7 +18,7 @@ class Notice < ActiveRecord::Base
   enum status: {open: 0, disabled: 1, closed: 2, deleted: 3}
 
   scope :active, -> { where("status <> ?", Notice.statuses[:deleted]) }
-  scope :expired, -> { active.where('notices.updated_at < ?', 1.day.ago).joins(:policy).where('policies.name = ?', 'burn_after_time') }
+  scope :expired, -> { open.where('notices.updated_at < ?', 1.day.ago).joins(:policy).where('policies.name = ?', 'burn_after_time') }
 
   def valid_secret?(secret)
     read_data(secret).present?
