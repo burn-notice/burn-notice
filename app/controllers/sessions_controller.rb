@@ -56,13 +56,14 @@ class SessionsController < ApplicationController
 
   def ticket
     @auth = session[:auth_data]
-    if check_existing_user(@auth['info']['email'])
+    email = @auth['info']['email']
+    if check_existing_user(email)
       render :email
     else
       @user = User.new(
         {
-          email:    @auth['info']['email'],
-          nickname: @auth['info']['email'].gsub(/@.*/, ''),
+          email:            email,
+          nickname:         email.gsub(/@.*/, ''),
           validation_date:  Time.now,
         }
       )
