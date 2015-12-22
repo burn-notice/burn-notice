@@ -1,6 +1,10 @@
-## :fire: Burn-Notice
+[![Build Status](https://travis-ci.org/burn-notice/burn-notice.svg?branch=master)](https://travis-ci.org/burn-notice/burn-notice)
+
+## Burn-Notice
 
 Simple, Secure, Encrypted one-time Information
+
+[![Burn-Notice](https://www.burn-notice.me/assets/logo-ef53f5d0b26a3abaa34e0a6db67c9395.png)](https://www.burn-notice.me/)
 
 ## License
 
