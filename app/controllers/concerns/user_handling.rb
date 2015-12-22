@@ -43,7 +43,7 @@ module UserHandling
   alias_method :sign_in, :current_user=
 
   def sign_out
-    session[:user_id] = nil
+    session.destroy
     cookies.permanent.signed[:remember_me] = ['', '']
   end
 end

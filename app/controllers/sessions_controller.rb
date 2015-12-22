@@ -85,6 +85,7 @@ class SessionsController < ApplicationController
     end
     @user = User.new(user_params)
     @user.authorizations.build provider: @auth['provider'], uid: @auth['uid']
+
     if @user.save
       session.delete(:auth_data)
       mail = UserMailer.signup(@user)
