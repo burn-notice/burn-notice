@@ -31,7 +31,7 @@
               span'= t('users.email_confirmed')
               span.glyphicon.glyphicon-ok
           - else
-            = link_to t('users.confirm_email'), confirmation_mail_user_path(current_user), class: "btn btn-default btn-block"
+            = button_to t('users.confirm_email'), confirmation_mail_user_path(current_user), method: :patch, class: "btn btn-default btn-block"
         = form_for current_user do |form|
           .input-group
             = form.email_field :email, class: 'form-control', required: true

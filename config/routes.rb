@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post :bulk, on: :collection
   end
   resources :users do
-    get :confirmation_mail, on: :member
+    patch :confirmation_mail, on: :member
   end
   resources :articles
 
