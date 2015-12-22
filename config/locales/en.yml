@@ -74,7 +74,9 @@ en:
     confirm_email: "Confirm e-mail address"
     change_nickname: "Change name"
     change_email: "Change e-mail"
-    change_email: "Change Time-Zone"
+    change_time_zone: "Change timezone"
+    delete_account: "Delete account"
+    destroyed: "Your account and all the data have been destroyed!"
   articles:
     title: 'Burn after reading - the Burn-Notice blog'
     wrote_on: 'wrote on <em>%{date}</em>'

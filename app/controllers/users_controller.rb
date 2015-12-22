@@ -27,6 +27,13 @@ class UsersController < ApplicationController
     redirect_to current_user, notice: t('users.confirmation_mail', email: current_user.email)
   end
 
+  def destroy
+    current_user.destroy!
+    sign_out
+
+    redirect_to root_path, notice: t('users.destroyed')
+  end
+
   private
 
   def user_params

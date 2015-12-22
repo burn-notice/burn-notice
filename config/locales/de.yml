@@ -75,6 +75,8 @@ de:
     change_email: "Name ändern"
     change_email: "E-Mail ändern"
     change_time_zone: "Zeit-Zone ändern"
+    delete_account: "Konto löschen"
+    destroyed: "Dein Konto und alle Daten wurden gelöscht!"
   articles:
     title: 'Burn after reading - das Burn-Notice Blog'
     wrote_on: 'hat am <em>%{date}</em> geschrieben'
