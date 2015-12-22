@@ -23,6 +23,10 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def title
+    (headline || {})[I18n.locale.to_s]
+  end
+
   def to_param
     "#{title.parameterize}-#{id}"
   end
