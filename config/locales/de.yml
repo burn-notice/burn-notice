@@ -72,6 +72,7 @@ de:
     actions: 'Aktionen'
     email_confirmed: 'Adresse bestätigt'
     confirm_email: "E-Mail Adresse ändern"
+    change_email: "Name ändern"
     change_email: "E-Mail ändern"
     change_time_zone: "Zeit-Zone ändern"
   articles:

@@ -21,7 +21,13 @@
       .panel-body
         = form_for current_user do |form|
           .input-group
-            = form.time_zone_select :time_zone, ActiveSupport::TimeZone.all.find_all { |z| z.name =~ /Pacific|Eastern|Central Time|London|Berlin/ }, {include_blank: true}, {class: 'form-control', placeholder: 'moin'}
+            = form.text_field :nickname, class: 'form-control', placeholder: 'Peter', required: true
+            span.input-group-btn
+              = form.submit t('users.change_nickname'), class: "btn btn-default"
+      .panel-body
+        = form_for current_user do |form|
+          .input-group
+            = form.time_zone_select :time_zone, ActiveSupport::TimeZone.all.find_all { |z| z.name =~ /Pacific|Eastern|Central Time|London|Berlin/ }, {include_blank: true}, {class: 'form-control'}
             span.input-group-btn
               = form.submit t('users.change_time_zone'), class: "btn btn-default"
       .panel-body
