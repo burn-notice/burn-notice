@@ -27,6 +27,10 @@ class Article < ActiveRecord::Base
     (headline || {})[I18n.locale.to_s]
   end
 
+  def body
+    (content || {})[I18n.locale.to_s]
+  end
+
   def to_param
     "#{title.parameterize}-#{id}"
   end
