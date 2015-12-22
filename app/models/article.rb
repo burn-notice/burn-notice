@@ -11,12 +11,16 @@ class Article < ActiveRecord::Base
 
   scope :active, -> { where('published_at <= ?', Time.now).order('published_at DESC') }
 
-  def title
-    headline[I18n.locale.to_s]
-  end
-
-  def body
-    content[I18n.locale.to_s]
+  %w(de en).each do |locale|
+    %w(headline content).each do |field|
+      define_method "#{locale}_#{field}" do
+        (self[field] || {})[locale]
+      end
+      define_method "#{locale}_#{field}=" do |data|
+        self[field] ||= {}
+        self[field][locale] = data
+      end
+    end
   end
 
   def to_param
