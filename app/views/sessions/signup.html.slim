@@ -9,12 +9,13 @@
     .col-lg-4
       = form.text_field :nickname, class: "form-control"
     .col-lg-6
+      = render 'callout', section: 'sessions', key: 'signup_nickname'
   .row
     = form.label :email, 'E-Mail', class: "col-lg-2 control-label"
     .col-lg-4
       = form.text_field :email, placeholder: 'me@example.com', class: "form-control"
     .col-lg-6
-      = render 'callout', section: 'sessions', key: 'signup_nickname'
+      = render 'callout', section: 'sessions', key: 'signup_email'
   .row
     .col-lg-12
       .pull-right= form.submit t('sessions.signup_button'), class: "btn btn-success"
