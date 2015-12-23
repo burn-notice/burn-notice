@@ -1,5 +1,17 @@
 @import "compass";
 
+$default-color: #62c462;
+
+$nprogress-color: $default-color;
+$nprogress-height: 5px;
+
+@import 'nprogress';
+@import 'nprogress-bootstrap';
+
+#nprogress .spinner {
+  display: none;
+}
+
 .me-thumb {
   width: 100px;
   padding: 10px;
@@ -111,24 +123,24 @@ td.openings a {
 
 .success-step {
   background-color: #32383e;
-  border: 2px solid #62c462;
+  border: 2px solid $default-color;
 }
 .success-step1 {
-  background-color: darken(#62c462, 30%);
+  background-color: darken($default-color, 30%);
 }
 .success-step2 {
-  background-color: darken(#62c462, 15%);
+  background-color: darken($default-color, 15%);
 }
 .success-step3 {
-  background-color: #62c462;
+  background-color: $default-color;
 }
 .success-step-muted {
   background-color: #32383e;
 }
 .success-step-button {
   background-color: white;
-  color: darken(#62c462, 15%);
-  border: 2px solid darken(#62c462, 15%);
+  color: darken($default-color, 15%);
+  border: 2px solid darken($default-color, 15%);
 }
 
 .step {
