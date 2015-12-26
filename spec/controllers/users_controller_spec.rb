@@ -20,7 +20,7 @@ describe UsersController do
         post :update, id: @user, user: {email: 'different@email.com'}
       }.to change { @user.reload.validation_date }.from(@user.validation_date).to(nil)
 
-      expect(response).to be_redirect
+      expect(response).to be_success
     end
 
     it "updates the nickname" do
@@ -28,7 +28,7 @@ describe UsersController do
         post :update, id: @user, user: {nickname: 'new'}
       }.to change { @user.reload.nickname }.from(@user.nickname).to('new')
 
-      expect(response).to be_redirect
+      expect(response).to be_success
     end
   end
 end
