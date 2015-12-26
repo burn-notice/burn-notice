@@ -9,7 +9,7 @@
         p
           - if current_user.validated?
             = link_to "#", class: "btn btn-default btn-block disabled"
-              span'= t('users.email_confirmed')
+              span>= t('users.email_confirmed')
               span.glyphicon.glyphicon-ok
           - else
             = button_to t('users.confirm_email'), confirmation_mail_user_path(current_user), method: :patch, class: "btn btn-default btn-block"
