@@ -2,14 +2,9 @@
 
 $default-color: #62c462;
 
-$nprogress-color: $default-color;
-$nprogress-height: 5px;
-
-@import 'nprogress';
-@import 'nprogress-bootstrap';
-
-#nprogress .spinner {
-  display: none;
+html.turbolinks-progress-bar::before {
+  background-color: $default-color !important;
+  height: 5px !important;
 }
 
 .me-thumb {

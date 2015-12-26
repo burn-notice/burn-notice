@@ -2,6 +2,8 @@ document.copyToClipboard = (hint, text) ->
   window.prompt(hint, text)
 
 $(document).on 'ready page:load page:change', ->
+  Turbolinks.enableProgressBar()
+
   $('[data-toggle="popover"]').popover()
   $('[data-toggle="tooltip"]').tooltip()
 
