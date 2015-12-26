@@ -12,8 +12,8 @@
               span>= t('users.email_confirmed')
               span.glyphicon.glyphicon-ok
           - else
-            = button_to t('users.confirm_email'), confirmation_mail_user_path(current_user), method: :patch, class: "btn btn-default btn-block"
-        = form_for current_user do |form|
+            = button_to t('users.confirm_email'), confirmation_mail_user_path(current_user), method: :patch, remote: true, class: "btn btn-default btn-block"
+        = form_for current_user, remote: true do |form|
           .input-group
             = form.email_field :email, class: 'form-control', required: true
             span.input-group-btn
@@ -24,7 +24,7 @@
           p
             - if existing_providers.include?(key)
               = link_to "#", class: "btn btn-default btn-block disabled"
-                span'= name
+                span>= name
                 span.glyphicon.glyphicon-ok
             - else
               = link_to t('users.connect_via', provider: name), path, class: "btn btn-default btn-block"
@@ -32,13 +32,13 @@
     .panel.panel-default
       .panel-heading= t('users.actions')
       .panel-body
-        = form_for current_user do |form|
+        = form_for current_user, remote: true do |form|
           .input-group
             = form.text_field :nickname, class: 'form-control', placeholder: 'Peter', required: true
             span.input-group-btn
               = form.submit t('users.change_nickname'), class: "btn btn-default"
       .panel-body
-        = form_for current_user do |form|
+        = form_for current_user, remote: true do |form|
           .input-group
             = form.time_zone_select :time_zone, ActiveSupport::TimeZone.all.find_all { |z| z.name =~ /Pacific|Eastern|Central Time|London|Berlin/ }, {include_blank: true}, {class: 'form-control'}
             span.input-group-btn

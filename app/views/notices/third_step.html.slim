@@ -3,5 +3,5 @@
 = render 'three_step', step: @step
 
 = form_errors @notice
-= form_for @notice, url: third_step_notice_path(@notice), html: {class: "form-horizontal"} do |form|
+= form_for @notice, url: third_step_notice_path(@notice), remote: true, html: {class: "form-horizontal"} do |form|
   = render 'share_form', notice: @notice, form: form

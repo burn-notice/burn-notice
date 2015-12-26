@@ -11,20 +11,20 @@ class UsersController < ApplicationController
       if current_user.save
         send_validation(current_user)
         flash[:notice] = t('users.profile_updated_and_confirmation_email')
-        redirect_to user_path(current_user), notice: t('users.profile_updated')
+        redirect_via_turbolinks_to user_path(current_user), notice: t('users.profile_updated')
       else
-        redirect_to user_path(current_user), alert: current_user.errors.full_messages.to_sentence
+        redirect_via_turbolinks_to user_path(current_user), alert: current_user.errors.full_messages.to_sentence
       end
     else
       current_user.save!
-      redirect_to user_path(current_user), notice: t('users.profile_updated')
+      redirect_via_turbolinks_to user_path(current_user), notice: t('users.profile_updated')
     end
   end
 
   def confirmation_mail
     send_validation(current_user)
 
-    redirect_to current_user, notice: t('users.confirmation_mail', email: current_user.email)
+    redirect_via_turbolinks_to current_user, notice: t('users.confirmation_mail', email: current_user.email)
   end
 
   def destroy

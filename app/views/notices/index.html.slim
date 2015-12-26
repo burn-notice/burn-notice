@@ -4,7 +4,7 @@
 = render 'activation_popup'
 
 - if @notices.present?
-  = form_tag bulk_notices_path, method: :post do
+  = form_tag bulk_notices_path, method: :post, remote: true do
     .panel.panel-default
       .panel-heading
         .row

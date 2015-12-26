@@ -2,5 +2,5 @@
 - set_crumbs t('navigation.notices') => notices_path, t('notices.share_notice') => url_for
 
 = form_errors @notice
-= form_for @notice, url: share_notice_path(@notice), html: {class: "form-horizontal"} do |form|
+= form_for @notice, url: share_notice_path(@notice), remote: true, html: {class: "form-horizontal"} do |form|
   = render 'share_form', notice: @notice, form: form

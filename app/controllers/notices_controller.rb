@@ -23,7 +23,7 @@ class NoticesController < ApplicationController
       @notice = current_user.notices.build(notice_params)
       @notice.policy = Policy.from_name
       if @notice.save
-        redirect_to second_step_notice_path(@notice)
+        redirect_via_turbolinks_to second_step_notice_path(@notice)
       end
     end
   end
@@ -35,7 +35,7 @@ class NoticesController < ApplicationController
     else
       @notice.policy = Policy.from_name(policy_params.symbolize_keys)
       if @notice.save
-        redirect_to third_step_notice_path(@notice)
+        redirect_via_turbolinks_to third_step_notice_path(@notice)
       end
     end
   end
@@ -43,11 +43,13 @@ class NoticesController < ApplicationController
   def third_step
     @step = :third
     @notice = current_user.notices.from_param(params[:id])
+
     share_via_email(@notice)
   end
 
   def share
     @notice = current_user.notices.from_param(params[:id])
+
     share_via_email(@notice)
   end
 
@@ -57,7 +59,7 @@ class NoticesController < ApplicationController
     if @notice.save
       redirect_to share_notice_path(@notice), notice: t('notices.created')
     else
-      render :new
+      render :new, flush: true
     end
   end
 
@@ -65,28 +67,21 @@ class NoticesController < ApplicationController
     @notice = current_user.notices.from_param(params[:id])
     @notice.update! status: :open
 
-    redirect_to notices_path, notice: t('notices.enabled')
+    redirect_via_turbolinks_to notices_path, notice: t('notices.enabled')
   end
 
   def disable
     @notice = current_user.notices.from_param(params[:id])
     @notice.update! status: :disabled
 
-    redirect_to notices_path, notice: t('notices.disabled')
-  end
-
-  def burn
-    @notice = current_user.notices.from_param(params[:id])
-    @notice.burn!
-
-    redirect_to notices_path, notice: t('notices.burned')
+    redirect_via_turbolinks_to notices_path, notice: t('notices.disabled')
   end
 
   def destroy
     @notice = current_user.notices.from_param(params[:id])
     @notice.cremate!
 
-    redirect_to notices_path, notice: t('notices.destroyed')
+    redirect_via_turbolinks_to notices_path, notice: t('notices.destroyed')
   end
 
   def bulk
@@ -98,7 +93,7 @@ class NoticesController < ApplicationController
       notices.each { |notice| notice.cremate! }
     end
 
-    redirect_to notices_path
+    redirect_via_turbolinks_to notices_path
   end
 
   private
@@ -112,7 +107,7 @@ class NoticesController < ApplicationController
           MailerJob.new.async.deliver(mail, I18n.locale)
         end
 
-        redirect_to :back, notice: t('notices.sent_via_email', recepients: recepients.to_sentence)
+        redirect_via_turbolinks_to :back, notice: t('notices.sent_via_email', recepients: recepients.to_sentence)
       else
         notice.errors.add(:share_recipients, :blank)
       end
