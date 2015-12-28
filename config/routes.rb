@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     patch :confirmation_mail, on: :member
   end
   resources :articles
+  resources :charges
 
   resource :sitemap, only: :show
 
@@ -46,6 +47,8 @@ Rails.application.routes.draw do
 
   get '/blog',     to: 'articles#index'
   get '/faq',      to: 'home#faq'
+  get '/pricing',  to: 'home#pricing'
+  post '/donation',  to: 'home#donation'
 
   # dev
   get '/styleguide', to: 'styleguide#index'

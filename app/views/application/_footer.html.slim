@@ -13,6 +13,9 @@ footer
           = link_to faq_url, title: 'Burn-Notice FAQ' do
             <span class="glyphicon glyphicon-info-sign"></span> FAQ
         li
+          = link_to pricing_url, title: t('navigation.pricing') do
+            <span class="glyphicon glyphicon-piggy-bank"></span> #{t('pricing')}
+        li
           = mail_to 'peter@burn-notice.me' do
             <span class="glyphicon glyphicon-send"></span> E-Mail
         li= link_to 'https://twitter.com/BurnNoticeMe', title: 'Burn-Notice on Twitter - @BurnNoticeMe' do
