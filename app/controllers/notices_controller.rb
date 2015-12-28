@@ -23,7 +23,7 @@ class NoticesController < ApplicationController
       @notice = current_user.notices.build(notice_params)
       @notice.policy = Policy.from_name
       if @notice.save
-        redirect_via_turbolinks_to second_step_notice_path(@notice)
+        redirect_to second_step_notice_path(@notice)
       end
     end
   end
