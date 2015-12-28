@@ -28,6 +28,7 @@ gem 'typus', github: 'typus/typus'
 gem 'gemoji'
 gem 'rack-cache'
 gem 'pg'
+gem 'stripe'
 gem 'redcarpet'
 gem 'exception_notification'
 

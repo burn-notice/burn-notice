@@ -16,6 +16,8 @@ de:
     locale: 'Sprache'
     logout: 'Abmelden'
     profile: 'Profil'
+    pricing: 'Preise'
+    payment: 'Zahlung'
   footer:
     references: 'In den Medien und im Netz'
   locale:
@@ -26,6 +28,23 @@ de:
     register_now_xs: 'Jetzt anmelden & ausprobieren!'
     register_with_oauth: 'Anmelden mit Facebook & Co <span class="caret"></span>'
     select_oauth_provider: 'Wähle eine der Möglichkeiten zum Anmelden:'
+    thx_for_your_donation: 'Vielen Dank für deine Spende!'
+    make_a_donation: "Jetzt spenden!"
+    donate: "spenden"
+    donate_for_expenses: "Ausgaben-Spende"
+  balance:
+    expenses: "Ausgaben"
+    the_monthly_cost: "Dies sind die monatlichen Ausgaben für den Betrieb von Burn-Notice."
+    expenses_this_month: "Ausgaben diesen Monat"
+    expenses_per_month: "€ / Monat"
+    expenses_service_type: "Service"
+    expenses_service_provider: "Anbieter"
+    payments: "Zahlungen <small>(alle 24 Stunden aktualisiert)</small>"
+    the_monthly_payments: 'Dies ist die Bilanz von Spenden und monatlichen Zahlungen, die für Burn-Notice bei <a href="https://www.stripe.com">Stripe</a> in den letzten 30 Tagen eingegangen sind.'
+    amount: "Betrag"
+    payment_date: "Zahlungs-Datum"
+    payment_type: "Zahlungs-Typ"
+    covered_this_month: "Diesen Monat gedeckt"
   sessions:
     sign_in_provider: 'Einfach mit OAuth anmelden'
     enter_data: 'Bitte gib deine Daten ein'

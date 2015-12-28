@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     "#{nickname} (#{email})"
   end
 
+  def stripe?
+    stripe_customer_token.present?
+  end
+
   private
 
   def defaults

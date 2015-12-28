@@ -1,0 +1,18 @@
+.jumbotron
+  h1= t('navigation.pricing')
+  = render 'donation_claim'
+  p
+    = form_tag donation_path do
+      |
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="#{Rails.configuration.stripe[:publishable_key]}"
+              data-image="#{image_url('logo.png')}"
+              data-amount="100"
+              data-currency="EUR"
+              data-name="Burn-Notice"
+              data-label="#{t('home.make_a_donation')}"
+              data-panel-label="#{t('home.donate')}"
+              data-description="#{t('home.donate_for_expenses')}"
+              data-locale="#{I18n.locale}"></script>
+
+= render 'balance'

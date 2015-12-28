@@ -1,0 +1,15 @@
+p
+  span data-toggle="tooltip" data-placement="bottom" data-original-title="it is only 1€/month"
+    | <span class="glyphicon glyphicon-piggy-bank"></span> As a registered user, please feel free to subscribe to our paid monthly plan!
+  = form_tag charges_path do
+    |
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="#{Rails.configuration.stripe[:publishable_key]}"
+            data-image="#{image_url('logo.png')}"
+            data-name="Burn-Notice"
+            data-label="Subscribe now!"
+            data-amount="100"
+            data-currency="EUR"
+            data-panel-label="subscribe"
+            data-description="subscribe to plan"
+            data-locale="auto"></script>

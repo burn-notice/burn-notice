@@ -1,0 +1,50 @@
+- render_cached(:balance, Time.now.day) do
+  #expenses.panel.panel-default
+    .panel-heading= t('balance.expenses')
+    .panel-body
+      p= t('balance.the_monthly_cost')
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th #
+          th= t('balance.expenses_per_month')
+          th= t('balance.expenses_service_provider')
+          th= t('balance.expenses_service_type')
+      tbody
+        - expense_sum = 0
+        - expenses.each_with_index do |expense, index|
+          - expense_sum += expense.amount / 100
+          tr
+            td= index + 1
+            td= stripe_price(expense)
+            td= expense.service
+            td= link_to expense.provider, expense.url
+        tr.warning
+          td
+          td colspan="3"
+            | #{t('balance.expenses_this_month')}: <strong>€ #{expense_sum}</strong>
+
+  #payments.panel.panel-default
+    .panel-heading== t('balance.payments')
+    .panel-body
+      p== t('balance.the_monthly_payments')
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th #
+          th= t('balance.amount')
+          th= t('balance.payment_date')
+          th= t('balance.payment_type')
+      tbody
+        - transactions_sum = 0
+        - recent_transactions.each_with_index do |transaction, index|
+          tr(class="#{'danger' if transaction.amount < 1}")
+            - transactions_sum += transaction.amount / 100
+            td= index + 1
+            td= stripe_price(transaction)
+            td= stripe_date(transaction)
+            td= transaction.description || transaction.type
+        tr.success
+          td
+          td colspan="3"
+            | #{t('balance.covered_this_month')}: <strong>#{(transactions_sum / (expense_sum / 100.0)).to_i }%</strong>

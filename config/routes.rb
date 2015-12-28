@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     patch :confirmation_mail, on: :member
   end
   resources :articles
+  resources :charges
 
   resource :sitemap, only: :show
 
@@ -44,10 +45,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'blog', to: "articles#index"
-  get 'faq',  to: "home#faq"
+  get '/blog',     to: 'articles#index'
+  get '/faq',      to: 'home#faq'
+  get '/pricing',  to: 'home#pricing'
+  post '/donation',  to: 'home#donation'
 
-  get 'styleguide', to: "styleguide#index"
+  # dev
+  get '/styleguide', to: 'styleguide#index'
 
-  get 'ping', to: -> (env) { [200, {"Content-Type" => "text/html"}, ["pong"]] }
+  get '/ping', to: -> (env) { [200, {'Content-Type' => 'text/html'}, ['pong']] }
 end
