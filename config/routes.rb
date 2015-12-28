@@ -44,10 +44,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'blog', to: "articles#index"
-  get 'faq',  to: "home#faq"
+  get '/blog',     to: 'articles#index'
+  get '/faq',      to: 'home#faq'
 
-  get 'styleguide', to: "styleguide#index"
+  # dev
+  get '/styleguide', to: 'styleguide#index'
 
-  get 'ping', to: -> (env) { [200, {"Content-Type" => "text/html"}, ["pong"]] }
+  get '/ping', to: -> (env) { [200, {'Content-Type' => 'text/html'}, ['pong']] }
 end
