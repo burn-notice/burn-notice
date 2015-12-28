@@ -4,6 +4,7 @@ describe StripeHelper do
   let(:plan) { Stripe::Plan.construct_from(JSON.parse(PLAN_JSON)) }
   let(:event) { Stripe::Event.construct_from(JSON.parse(EVENT_JSON)) }
   let(:events) { Stripe::ListObject.construct_from(JSON.parse(EVENT_LIST_JSON)) }
+  let(:transactions) { Stripe::ListObject.construct_from(JSON.parse(TRANSACTION_LIST_JSON)) }
   let(:customer) { Stripe::Customer.construct_from(JSON.parse(CUSTOMER_JSON)) }
 
   it "displays plan information nicely" do
@@ -11,13 +12,54 @@ describe StripeHelper do
   end
 
   it "collects recent payments" do
-    expect(recent_payments(events).first.plan.to_json).to eql(plan.to_json)
+    expect(recent_transactions(transactions).first.amount).to eql(100)
   end
 
   it "gets plan from customer" do
     expect(user_plan(customer).to_json).to eql(plan.to_json)
   end
 end
+
+TRANSACTION_LIST_JSON = <<TRANSACTION_LIST
+{
+  "object": "list",
+  "url": "/v1/balance/history",
+  "has_more": false,
+  "data": [
+    {
+      "id": "txn_17MPwq4Y9IeTYc8FAiySaItV",
+      "object": "balance_transaction",
+      "amount": 100,
+      "available_on": 1451692800,
+      "created": 1451166696,
+      "currency": "eur",
+      "description": null,
+      "fee": 28,
+      "fee_details": [
+        {
+          "amount": 28,
+          "application": null,
+          "currency": "eur",
+          "description": "Stripe processing fees",
+          "type": "stripe_fee"
+        }
+      ],
+      "net": 72,
+      "source": "ch_17MPwq4Y9IeTYc8FF6UTD1sX",
+      "sourced_transfers": {
+        "object": "list",
+        "data": [
+        ],
+        "has_more": false,
+        "total_count": 0,
+        "url": "/v1/transfers?source_transaction=ch_17MPwq4Y9IeTYc8FF6UTD1sX"
+      },
+      "status": "pending",
+      "type": "charge"
+    }
+  ]
+}
+TRANSACTION_LIST
 
 EVENT_LIST_JSON = <<EVENT_LIST
 {
