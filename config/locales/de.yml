@@ -29,7 +29,7 @@ de:
     register_with_oauth: 'Anmelden mit Facebook & Co <span class="caret"></span>'
     select_oauth_provider: 'Wähle eine der Möglichkeiten zum Anmelden:'
     thx_for_your_donation: 'Vielen Dank für deine Spende!'
-    make_a_donation: "Jetzt spenden!"
+    make_a_donation: "Jetzt 1€ spenden!"
     donate: "spenden"
     donate_for_expenses: "Ausgaben-Spende"
   balance:
@@ -109,7 +109,7 @@ de:
     paid_until_now: 'Bisher gezahlt'
     only_1_euro: 'Nur 1€ pro Monat'
     please_subscribe: 'Als angemeldeter Benutzer würden wir uns freuen, wenn du dich für einen monatlichen Bezahl-Plan anmeldest und uns damit Hilfst den Betrieb von Burn-Notice für Jedermann sicher zu stellen!'
-    subscribe_now: "Jetzt anmelden!"
+    subscribe_now: "Jetzt zum 1€ Plan anmelden!"
     subscribe: "anmelden"
     subscribe_to_plan: "zum Plan anmelden"
   articles:

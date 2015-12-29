@@ -1,0 +1,45 @@
+@import "compass";
+
+$default-color: #62c462;
+$default-color-light: tint($default-color, 20%);
+$default-color-lighter: tint($default-color, 40%);
+
+.container {
+    .stripe-button-el {
+        background-image: -webkit-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -moz-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -ms-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -o-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -webkit-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -moz-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -ms-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: -o-linear-gradient($default-color-light,$default-color-lighter);
+        background-image: linear-gradient($default-color-light,$default-color-lighter);
+    }
+
+    .stripe-button-el span {
+        background: $default-color;
+        background-image: -webkit-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -moz-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -ms-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -o-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -webkit-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -moz-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -ms-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: -o-linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+        background-image: linear-gradient($default-color-lighter,$default-color 85%,$default-color-light);
+    }
+
+    .stripe-button-el:not(:disabled):active span,.stripe-button-el.active span {
+        background: $default-color;
+        background-image: -webkit-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -moz-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -ms-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -o-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -webkit-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -moz-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -ms-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: -o-linear-gradient($default-color,$default-color 85%,$default-color-light);
+        background-image: linear-gradient($default-color,$default-color 85%,$default-color-light);
+    }
+}

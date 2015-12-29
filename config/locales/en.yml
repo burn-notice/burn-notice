@@ -29,7 +29,7 @@ en:
     register_with_oauth: 'Signup with Facebook etc <span class="caret"></span>'
     select_oauth_provider: 'Select one of the identity-providers:'
     thx_for_your_donation: 'Thank you for your donation!'
-    make_a_donation: "Make a donation!"
+    make_a_donation: "Make a 1€ donation!"
     donate: "donate"
     donate_for_expenses: "donate for expenses"
   balance:
@@ -105,11 +105,11 @@ en:
     please_subscribe_first: 'Please subscribe to a plan first!'
     plan_canceled: 'Sorry to see you go, thank you for your support!'
     plan_subscribed: 'Thank you for your support!'
-    plan_details: 'Details of your Plan'
+    plan_details: 'Details of your plan'
     paid_until_now: 'Paid until now'
     only_1_euro: 'It is only 1€ / month'
     please_subscribe: 'As a registered user, please feel free to subscribe to our paid monthly plan and help us keep the service available for everyone!'
-    subscribe_now: "Subscribe now!"
+    subscribe_now: "Subscribe to 1€ plan now!"
     subscribe: "subscribe"
     subscribe_to_plan: "subscribe to plan"
   articles:
