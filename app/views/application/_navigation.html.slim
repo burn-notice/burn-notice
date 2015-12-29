@@ -22,11 +22,10 @@
                 = link_to new_notice_path do
                   span.glyphicon.glyphicon-pencil.smaller>
                   span.margin-left-small= t('navigation.draft')
-              - if signed_in? && current_user.admin?
-                li
-                  = link_to charges_path do
-                    span.glyphicon.glyphicon-piggy-bank.smaller>
-                    span.margin-left-small= t('navigation.payment')
+              li
+                = link_to charges_path do
+                  span.glyphicon.glyphicon-piggy-bank.smaller>
+                  span.margin-left-small= t('navigation.payment')
 
         - if signed_in? && current_user.admin?
           li

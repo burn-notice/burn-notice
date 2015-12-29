@@ -25,7 +25,7 @@ class ChargesController < ApplicationController
   end
 
   def destroy
-    redirect_to charges_path, alert: t('charges.please_subscribe') unless current_user.stripe?
+    redirect_to charges_path, alert: t('charges.please_subscribe_first') unless current_user.stripe?
 
     customer = Stripe::Customer.retrieve(current_user.stripe_customer_token)
     customer.subscriptions.each { |subscription| subscription.delete }

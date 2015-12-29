@@ -97,13 +97,21 @@ en:
     delete_account: "Delete account"
     destroyed: "Your account and all the data have been destroyed!"
   charges:
+    amount_per_month: "€ / month"
+    plan_name: "Plan name"
+    plan_created: "Plan created"
     cancel_plan: 'cancel plan'
     only_one_subscription: 'Sorry, right now we only support one plan at a time, please go to our pricing page if you would like to donate to Burn-Notice!'
-    please_subscribe: 'Please subscribe to a plan first!'
+    please_subscribe_first: 'Please subscribe to a plan first!'
     plan_canceled: 'Sorry to see you go, thank you for your support!'
     plan_subscribed: 'Thank you for your support!'
     plan_details: 'Details of your Plan'
-    paid_until_now: 'paid until now'
+    paid_until_now: 'Paid until now'
+    only_1_euro: 'It is only 1€ / month'
+    please_subscribe: 'As a registered user, please feel free to subscribe to our paid monthly plan and help us keep the service available for everyone!'
+    subscribe_now: "Subscribe now!"
+    subscribe: "subscribe"
+    subscribe_to_plan: "subscribe to plan"
   articles:
     title: 'Burn after reading - the Burn-Notice blog'
     wrote_on: 'wrote on <em>%{date}</em>'

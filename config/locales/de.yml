@@ -96,6 +96,22 @@ de:
     change_time_zone: "Zeit-Zone ändern"
     delete_account: "Konto löschen"
     destroyed: "Dein Konto und alle Daten wurden gelöscht!"
+  charges:
+    amount_per_month: "€ / Monat"
+    plan_name: "Plan Name"
+    plan_created: "Plan erstellt"
+    cancel_plan: 'Plan beenden'
+    only_one_subscription: 'Leider unterstützen wir nur einen Plan zur Zeit, bitte gehe auf usere Preise-Seite wenn du etwas für Burn-Notice spenden möchtest!'
+    please_subscribe_first: 'Bitte melde dich erst für einen Plan an!'
+    plan_canceled: 'Schade, vielen Dank für deine Unterstützung!'
+    plan_subscribed: 'Vielen Dank für deine Unterstützung!'
+    plan_details: 'Details deines Plans'
+    paid_until_now: 'Bisher gezahlt'
+    only_1_euro: 'Nur 1€ pro Monat'
+    please_subscribe: 'Als angemeldeter Benutzer würden wir uns freuen, wenn du dich für einen monatlichen Bezahl-Plan anmeldest und uns damit Hilfst den Betrieb von Burn-Notice für Jedermann sicher zu stellen!'
+    subscribe_now: "Jetzt anmelden!"
+    subscribe: "anmelden"
+    subscribe_to_plan: "zum Plan anmelden"
   articles:
     title: 'Burn after reading - das Burn-Notice Blog'
     wrote_on: 'hat am <em>%{date}</em> geschrieben'

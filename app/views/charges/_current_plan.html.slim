@@ -1,0 +1,22 @@
+.panel.panel-success
+  .panel-heading
+    h3.panel-title= t('charges.plan_subscribed')
+  .panel-body= t('charges.plan_details')
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th= t('charges.amount_per_month')
+        th= t('charges.plan_name')
+        th= t('charges.plan_created')
+    - render_cached(:user_plan, Time.now.hour) do
+      - plan = user_plan
+      tbody
+        tr
+          td= stripe_price(plan)
+          td= plan.name
+          td= stripe_date(plan)
+      tr
+        td colspan="2"
+          | #{t('charges.paid_until_now')}: <strong>€ #{plan.amount / 100 * plan.interval_count}</strong>
+        td
+          = link_to t('charges.cancel_plan'), charge_path(current_user), method: :delete, class: 'btn btn-warning btn-xs'
