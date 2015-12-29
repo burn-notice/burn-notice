@@ -11,6 +11,4 @@ p
             data-panel-label="#{t('charges.subscribe')}"
             data-description="#{t('charges.subscribe_to_plan')}"
             data-locale="auto"></script>
-p
-  span data-toggle="tooltip" data-placement="bottom" data-original-title=t('charges.only_1_euro')
-    = t('charges.please_subscribe')
+= render 'subscription_claim'
