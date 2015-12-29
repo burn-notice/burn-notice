@@ -4,9 +4,6 @@ class ChargesController < ApplicationController
   def index
   end
 
-  def new
-  end
-
   def create
     redirect_to charges_path, alert: t('charges.only_one_subscription') if current_user.stripe?
 
