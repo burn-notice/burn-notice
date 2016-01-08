@@ -153,7 +153,9 @@ en:
       burned: 'burned'
       disabled: 'disabled'
       open: 'open'
-    day: 'day'
+    day:
+      one: 'day'
+      other: 'days'
     reads: '%{count} reads'
     times: '%{count} times'
     bulk_actions: 'bulk actions'
