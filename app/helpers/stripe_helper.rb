@@ -33,7 +33,7 @@ module StripeHelper
   end
 
   def recent_transactions(transactions = nil)
-    transactions ||= Stripe::BalanceTransaction.all(available_on: {gt: 1.month.ago.to_i}, limit: 100)
+    transactions ||= Stripe::BalanceTransaction.all(available_on: {gt: 1.month.ago.to_i}, type: :charge, limit: 100)
     transactions
   end
 end
