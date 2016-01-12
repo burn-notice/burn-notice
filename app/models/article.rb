@@ -32,7 +32,7 @@ class Article < ActiveRecord::Base
   end
 
   def to_param
-    "#{title.parameterize}-#{id}"
+    "#{title.present? ? title.parameterize : 'lorem-ipsum'}-#{id}"
   end
 
   def to_label

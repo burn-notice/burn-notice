@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  end
+  get '/admin', controller: DashboardManifest::ROOT_DASHBOARD, action: :index, as: :admin
+
   resources :notices do
     get :first_step, on: :collection
     post :first_step, on: :collection
