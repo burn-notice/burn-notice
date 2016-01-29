@@ -12,7 +12,7 @@
       ul.nav.navbar-nav
         li.dropdown
           - if signed_in?
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login">#{t('navigation.notices')} <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{t('navigation.notices')} <span class="caret"></span></a>
             ul.dropdown-menu aria-labelledby="login"
               li
                 = link_to notices_path do
@@ -22,10 +22,6 @@
                 = link_to new_notice_path do
                   span.glyphicon.glyphicon-pencil.smaller>
                   span.margin-left-small= t('navigation.draft')
-              li
-                = link_to charges_path do
-                  span.glyphicon.glyphicon-piggy-bank.smaller>
-                  span.margin-left-small= t('navigation.payment')
 
         - if signed_in? && current_user.admin?
           li
@@ -33,8 +29,8 @@
           li
             = link_to 'Admin', admin_path
 
-      ul.nav.navbar-nav.navbar-right(data-no-turbolink)
-        li.dropdown
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown(data-no-turbolink)
           a class="dropdown-toggle" data-toggle="dropdown" href="#" id="language" title=t('navigation.locale')
             span.glyphicon.glyphicon-globe.small>
             = t('navigation.locale')
@@ -43,13 +39,24 @@
             - I18n.available_locales.each do |locale|
               li= link_to t("locale.#{locale}"), url_for(locale: locale)
         - if signed_in?
-          li.navbar-user= link_to gravatar(current_user), user_path(current_user), alt: current_user.nickname
-          li
+          ul.nav.navbar-nav
+            li.dropdown.navbar-user
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{gravatar(current_user)} <span class="caret"></span></a>
+              ul.dropdown-menu aria-labelledby="login"
+                li
+                  = link_to user_path(current_user) do
+                    span.glyphicon.glyphicon-user.smaller>
+                    span.margin-left-small= t('navigation.profile')
+                li
+                  = link_to charges_path(current_user) do
+                    span.glyphicon.glyphicon-piggy-bank.smaller>
+                    span.margin-left-small= t('navigation.payment')
+          li(data-no-turbolink)
             = link_to logout_path, title: t('navigation.logout') do
               span.glyphicon.glyphicon-log-out.small>
               = t('navigation.logout')
         - else
-          li.dropdown
+          li.dropdown(data-no-turbolink)
             a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login" title="Login"
               span.glyphicon.glyphicon-log-out.small>
               | Login
