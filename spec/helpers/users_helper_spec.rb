@@ -5,7 +5,7 @@ describe UsersHelper do
 
   context "gravatar" do
     it "can calculate proper gravatar hashes" do
-      expect(helper.gravatar(user)).to eql("<img alt=\"lora\" src=\"//www.gravatar.com/avatar/2b2add070f207cf95bbd160dd13224ae\" />")
+      expect(helper.gravatar(user)).to eql("<img alt=\"lora\" title=\"lora\" src=\"//www.gravatar.com/avatar/2b2add070f207cf95bbd160dd13224ae\" />")
     end
   end
 end
