@@ -51,12 +51,10 @@
   },
   "addons": [
     "memcachier",
-    "redistogo",
     "papertrail",
     "sendgrid",
     "newrelic",
     "heroku-postgresql",
-    "scheduler",
-    "librato"
+    "scheduler"
   ]
 }
