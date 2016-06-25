@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_action :set_auth, only: [:complete, :ticket, :signup]
+
   def create
     auth = request.env['omniauth.auth'].slice('provider', 'uid', 'info')
     if authorization = Authorization.find_by_provider_and_uid(auth['provider'], auth['uid'])
@@ -49,13 +52,12 @@ class SessionsController < ApplicationController
   end
 
   def signup
-    @auth = session[:auth_data]
+    email = @auth['info']['email']
     check_existing_user(email)
     @user = User.new(nickname: @auth['info']['nickname'], email: email)
   end
 
   def ticket
-    @auth = session[:auth_data]
     email = @auth['info']['email']
     if check_existing_user(email)
       render :email
@@ -77,7 +79,6 @@ class SessionsController < ApplicationController
   end
 
   def complete
-    @auth = session[:auth_data]
     user_params = params.require(:user).permit!
     if session[:email_auth_address]
       user_params[:email] = session[:email_auth_address]
@@ -99,6 +100,11 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def set_auth
+    @auth = session[:auth_data]
+    _404("no auth available in session") if @auth.blank?
+  end
 
   def check_existing_user(email)
     if existing_user = User.find_by_email(email)
