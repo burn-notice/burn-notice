@@ -104,7 +104,7 @@ class NoticesController < ApplicationController
         recepients = recepients.strip.split(/[\s,;]+/)
         recepients.each do |recepient|
           mail = UserMailer.notify(current_user, recepient, notice)
-          MailerJob.new.async.deliver(mail, I18n.locale)
+          MailerJob.perform_async(mail, I18n.locale)
         end
 
         redirect_via_turbolinks_to :back, notice: t('notices.sent_via_email', recepients: recepients.to_sentence)
