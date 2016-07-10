@@ -21,3 +21,8 @@ end
 Fabricator(:legacy_notice, from: :notice) do
   data { MOIN_ENCODED_LEGACY }
 end
+
+Fabricator(:notice_with_opening, from: :notice) do
+  data { MOIN_ENCODED_LEGACY }
+  openings(count: 1)
+end

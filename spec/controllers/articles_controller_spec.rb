@@ -18,13 +18,13 @@ describe ArticlesController do
       get :index, format: :rss
 
       expect(response).to be_success
-      expect(response.content_type).to eql(Mime::RSS.to_s)
+      expect(response.content_type).to eql(Mime[:rss].to_s)
     end
   end
 
   context "articles#show" do
     it "loads article and article-facets" do
-      get :show, id: @article
+      get :show, params: {id: @article}
 
       expect(response).to be_success
       expect(assigns[:article]).to eql(@article)

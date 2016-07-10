@@ -7,7 +7,7 @@ describe UsersController do
 
   context "GET :show" do
     it "renders the users profile page" do
-      get :show, id: @user
+      get :show, params: {id: @user}
 
       expect(response).to be_success
     end
@@ -17,18 +17,18 @@ describe UsersController do
     it "resets validation and sends an email when address is changed" do
       @user.update! validation_date: Time.new(2015, 1, 1, 0, 0, 0).utc
       expect {
-        post :update, id: @user, user: {email: 'different@email.com'}
+        post :update, params: {id: @user, user: {email: 'different@email.com'}}
       }.to change { @user.reload.validation_date }.from(@user.validation_date).to(nil)
 
-      expect(response).to be_success
+      expect(response).to be_a_redirect
     end
 
     it "updates the nickname" do
       expect {
-        post :update, id: @user, user: {nickname: 'new'}
+        post :update, params: {id: @user, user: {nickname: 'new'}}
       }.to change { @user.reload.nickname }.from(@user.nickname).to('new')
 
-      expect(response).to be_success
+      expect(response).to be_a_redirect
     end
   end
 end

@@ -1,8 +1,8 @@
 class PublicController < ApplicationController
   respond_to :html
+  before_action :get_notice
 
   def open
-    @notice = Notice.find_by_token!(params[:token])
     @opening = @notice.openings.create do |it|
       it.ip = request.ip
       it.meta = {
@@ -13,17 +13,11 @@ class PublicController < ApplicationController
   end
 
   def read
-    @notice = Notice.find_by_token!(params[:token])
-
     @opening = @notice.openings.find(params[:opening_id])
     if @notice.valid_secret?(params[:answer])
-      if @notice.open?
-        @opening.update! authorization: :authorized
-        @data = @notice.read_data(params[:answer])
-        @notice.apply_policy(authorized: true)
-      else
-        redirect_to(root_path, alert: t('public.no_longer_available'))
-      end
+      @opening.update! authorization: :authorized
+      @data = @notice.read_data(params[:answer])
+      @notice.apply_policy(authorized: true)
     else
       @opening.update! authorization: :unauthorized
       @notice.apply_policy(authorized: false)
@@ -33,5 +27,13 @@ class PublicController < ApplicationController
         redirect_to(open_path(@notice), alert: t('public.invalid_answer'))
       end
     end
+  end
+
+  private
+
+  def get_notice
+    @notice = Notice.find_by_token!(params[:token])
+
+    redirect_to(root_path, alert: t('public.no_longer_available')) unless @notice.open?
   end
 end

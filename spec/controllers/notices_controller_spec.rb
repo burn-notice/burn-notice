@@ -17,7 +17,7 @@ describe NoticesController do
     end
 
     it "should switch to user-tz" do
-      get :show, id: @notice
+      get :show, params: {id: @notice}
       expect(response.body).to include('11.11. 01:11')
     end
   end
@@ -32,7 +32,7 @@ describe NoticesController do
     it "should remove data and mark as deleted" do
       expect {
         expect {
-          post :destroy, id: @notice
+          post :destroy, params: {id: @notice}
           @notice.reload
         }.to change { @notice.status }.from('open').to('deleted')
       }.to change { @notice.data.empty? }.from(false).to(true)
