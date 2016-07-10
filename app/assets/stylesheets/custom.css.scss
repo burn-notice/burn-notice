@@ -2,8 +2,8 @@
 
 $default-color: #62c462;
 
-html.turbolinks-progress-bar::before {
-  background-color: $default-color !important;
+.turbolinks-progress-bar {
+  background-color: $default-color;
   height: 5px !important;
 }
 

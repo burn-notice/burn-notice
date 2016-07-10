@@ -29,7 +29,7 @@ describe ApplicationHelper do
 
     it "caches using cache_key" do
       allow(article).to receive(:new_record?) { false }
-      allow(helper).to receive(:cache).with("de/articles/123-20150101000000000000000", {expires_in: 86400, skip_digest: true})
+      allow(helper).to receive(:cache).with("de/articles/123-20150101000000000000", {expires_in: 86400, skip_digest: true})
 
       helper.render_cached(article)
     end

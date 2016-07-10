@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0'
 gem 'responders'
 gem 'puma'
 gem 'sass-rails'
@@ -21,7 +21,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'slim-rails'
 gem 'kaminari'
-gem 'typus', github: 'typus/typus'
 gem 'gemoji'
 gem 'rack-cache'
 gem 'pg'
@@ -38,10 +37,10 @@ end
 group :development do
   gem 'letter_opener'
   gem 'partially_useful'
-  gem 'meta_request'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'quiet_assets'
+  # gem 'meta_request'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
+  # gem 'quiet_assets'
 end
 
 group :development, :test do
@@ -49,6 +48,7 @@ group :development, :test do
   gem 'fabrication'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
+  gem 'rails-controller-testing'
   gem 'faker'
   gem 'brakeman', require: false
   gem 'codeclimate-test-reporter', require: false

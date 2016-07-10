@@ -17,3 +17,4 @@
 
 *.DS_Store
 config/keys/*_production.pem
+.byebug_history

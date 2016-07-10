@@ -1,8 +1,0 @@
-# Use the README file as a reference to customize settings.
-
-Policy:
-  fields:
-    default: name, setting, notice_id
-    form: name, setting, notice_id
-  relationships: 
-  application: Application
