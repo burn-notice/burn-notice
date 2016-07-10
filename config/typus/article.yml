@@ -1,8 +1,0 @@
-# Use the README file as a reference to customize settings.
-
-Article:
-  fields:
-    default: en_headline, user, published_at, tags
-    form: user, published_at, tags, de_headline, de_content, en_headline, en_content
-  relationships: user
-  application: Application
