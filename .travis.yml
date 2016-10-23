@@ -6,9 +6,6 @@ services:
 language: ruby
 script: "bundle exec rake"
 bundler_args: "--without development production"
-branches:
-  only:
-    - master
 before_script:
   - psql --version
   - psql -c 'create database "burn-notice_test";' -U postgres
