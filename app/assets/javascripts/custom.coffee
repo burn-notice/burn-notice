@@ -1,7 +1,7 @@
 document.copyToClipboard = (hint, text) ->
   window.prompt(hint, text)
 
-$(document).on 'ready page:load page:change', ->
+$(document).on 'ready page:load page:change turbolinks:load', ->
   $('[data-toggle="popover"]').popover()
   $('[data-toggle="tooltip"]').tooltip()
 
