@@ -4,3 +4,4 @@
 //= require bootstrap.min
 //= require custom
 //= require analytics
+//= require zxcvbn
