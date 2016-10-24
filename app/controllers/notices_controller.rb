@@ -3,7 +3,20 @@ class NoticesController < ApplicationController
   around_action :user_time_zone, if: :change_time_zone?
 
   def index
+    @filter_status = [:open, :disabled, :closed]
+    @order_sent = 'ASC'
+
     @notices = current_user.notices.includes(:policy, :openings).page(params[:page])
+    if filter = params[:filter]
+      @notices = @notices.where(status: filter[:status]) if filter[:status]
+    end
+    if order = params[:order]
+      if order[:sent]
+        @notices = @notices.reorder(created_at: order[:sent])
+        @order_sent = 'DESC' if order[:sent] == 'ASC'
+      end
+    end
+
   end
 
   def show
