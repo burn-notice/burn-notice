@@ -33,13 +33,19 @@ $(document).on 'ready page:load page:change turbolinks:load', ->
     return
 
   $('input.notice-password').on 'keyup change', ->
-    if $('input.notice-password').val().length < 2
-      return
+    $('.password-strength-indicator .label').removeClass('label-default')
     $('.password-strength-indicator .label').removeClass('label-danger')
     $('.password-strength-indicator .label').removeClass('label-warning')
     $('.password-strength-indicator .label').removeClass('label-primary')
     $('.password-strength-indicator .label').removeClass('label-info')
     $('.password-strength-indicator .label').removeClass('label-success')
+
+    if $('input.notice-password').val().length < 2
+      $('.password-strength-indicator .label').addClass('label-default')
+      $('.password-strength-indicator .label').text(I18n.passwordStrength.unknown)
+      $('.password-strength-indicator .label').attr('data-original-title', '')
+      return
+
     result = zxcvbn($('input.notice-password').val())
     switch result.score
       when 0
