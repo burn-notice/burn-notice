@@ -1,7 +1,7 @@
 document.copyToClipboard = (hint, text) ->
   window.prompt(hint, text)
 
-$(document).on 'ready page:load page:change', ->
+$(document).on 'ready page:load page:change turbolinks:load', ->
   $('[data-toggle="popover"]').popover()
   $('[data-toggle="tooltip"]').tooltip()
 
@@ -31,3 +31,37 @@ $(document).on 'ready page:load page:change', ->
   ), ->
     $button.hide()
     return
+
+  $('input.notice-password').on 'keyup change', ->
+    $('.password-strength-indicator .label').removeClass('label-default')
+    $('.password-strength-indicator .label').removeClass('label-danger')
+    $('.password-strength-indicator .label').removeClass('label-warning')
+    $('.password-strength-indicator .label').removeClass('label-primary')
+    $('.password-strength-indicator .label').removeClass('label-info')
+    $('.password-strength-indicator .label').removeClass('label-success')
+
+    if $('input.notice-password').val().length < 2
+      $('.password-strength-indicator .label').addClass('label-default')
+      $('.password-strength-indicator .label').text(I18n.passwordStrength.unknown)
+      $('.password-strength-indicator .label').attr('data-original-title', '')
+      return
+
+    result = zxcvbn($('input.notice-password').val())
+    switch result.score
+      when 0
+        $('.password-strength-indicator .label').addClass('label-danger')
+        $('.password-strength-indicator .label').text(I18n.passwordStrength.tooGuessable)
+      when 1
+        $('.password-strength-indicator .label').addClass('label-warning')
+        $('.password-strength-indicator .label').text(I18n.passwordStrength.veryGuessable)
+      when 2
+        $('.password-strength-indicator .label').addClass('label-primary')
+        $('.password-strength-indicator .label').text(I18n.passwordStrength.somewhatGuessable)
+      when 3
+        $('.password-strength-indicator .label').addClass('label-info')
+        $('.password-strength-indicator .label').text(I18n.passwordStrength.safelyUnguessable)
+      when 4
+        $('.password-strength-indicator .label').addClass('label-success')
+        $('.password-strength-indicator .label').text(I18n.passwordStrength.veryUnguessable)
+    if result.feedback
+      $('.password-strength-indicator .label').attr('data-original-title', result.feedback.warning + ' ' + result.feedback.suggestions.join(', '))

@@ -28,7 +28,7 @@
             = link_to 'Styleguide', styleguide_path
 
       ul.nav.navbar-nav.navbar-right
-        li.dropdown(data-no-turbolink)
+        li.dropdown(data-turbolinks="false")
           a class="dropdown-toggle" data-toggle="dropdown" href="#" id="language" title=t('navigation.locale')
             span.glyphicon.glyphicon-globe.small>
             = t('navigation.locale')
@@ -54,7 +54,7 @@
               span.glyphicon.glyphicon-log-out.small>
               = t('navigation.logout')
         - else
-          li.dropdown(data-no-turbolink)
+          li.dropdown(data-turbolinks="false")
             a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login" title="Login"
               span.glyphicon.glyphicon-log-out.small>
               | Login
