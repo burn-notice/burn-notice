@@ -16,12 +16,12 @@
     = render 'callout', section: 'notices', key: 'question'
 .row
   = form.label :answer, t('notices.answer'), class: "col-lg-2 control-label"
-  .col-lg-4
+  #secret-strength.col-lg-4
     .input-group
-      = form.password_field :answer, class: "form-control notice-password"
+      = form.password_field :answer, class: "form-control notice-password", 'v-model': "secret", 'v-on:keyup': "checkLevel"
       = render 'show_password', key: '#notice_answer'
     .input-group.password-strength-indicator
       small= t('notices.password-strength-label') + ': '
-      span.label.label-default(data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom")= t('notices.password-strength-unknown')
+      <span v-bind:class="label" v-bind:title="warning">{{level}}</span>
   .col-lg-6
     = render 'callout', section: 'notices', key: 'answer'
