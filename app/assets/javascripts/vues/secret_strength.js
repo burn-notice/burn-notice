@@ -14,6 +14,7 @@ $(document).on('turbolinks:load', function () {
   var app = new Vue({
     el: rootElementSelector,
     updated: function () {
+      // TODO (PS) workaround for binding-issues with bootstrap-tooltip
       $(this.$el).find('#password-strength-label').tooltip('destroy').tooltip();
     },
     data: {
