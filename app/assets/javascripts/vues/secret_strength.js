@@ -1,6 +1,10 @@
-//= require zxcvbn
+//= require vendor/zxcvbn
 
 $(document).on('turbolinks:load', function () {
+  var rootElementSelector = '#secret-strength';
+  if ($(rootElementSelector).length === 0) {
+    return;
+  }
   function labelClass(name) {
     return 'label label-' + name;
   }
@@ -8,7 +12,7 @@ $(document).on('turbolinks:load', function () {
   var labelTexts = [I18n.passwordStrength.tooGuessable, I18n.passwordStrength.veryGuessable, I18n.passwordStrength.somewhatGuessable, I18n.passwordStrength.safelyUnguessable, I18n.passwordStrength.veryUnguessable];
 
   var app = new Vue({
-    el: '#secret-strength',
+    el: rootElementSelector,
     updated: function () {
       $(this.$el).find('#password-strength-label').tooltip('destroy').tooltip();
     },
