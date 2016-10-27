@@ -22,6 +22,6 @@
       = render 'show_password', key: '#notice_answer'
     .input-group.password-strength-indicator
       small= t('notices.password-strength-label') + ': '
-      <span v-bind:class="label" v-bind:title="warning">{{level}}</span>
+      span#password-strength-label v-bind:class="label" v-bind:title="tooltip" {{level}}
   .col-lg-6
     = render 'callout', section: 'notices', key: 'answer'

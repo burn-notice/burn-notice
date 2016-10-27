@@ -9,16 +9,23 @@ $(document).on('turbolinks:load', function () {
 
   var app = new Vue({
     el: '#secret-strength',
+    updated: function () {
+      $(this.$el).find('#password-strength-label').tooltip('destroy').tooltip();
+    },
     data: {
       level: I18n.passwordStrength.unknown,
       secret: '',
-      warning: '',
+      tooltip: '',
       label: labelClass('default')
     },
     methods: {
       checkLevel: function () {
         var result = zxcvbn(this.secret);
-        this.warning = result.feedback.warning;
+        if (result.score <= 2) {
+          this.tooltip = result.feedback.warning + ' ' + result.feedback.suggestions.join(', ');
+        } else {
+          this.tooltip = '✅';
+        }
         if (this.secret.length < 1) {
           this.label = labelClass('default');
           this.level = I18n.passwordStrength.unknown;
