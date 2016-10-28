@@ -129,6 +129,7 @@ de:
     please_enter_secret: 'Gib die geheime Antwort zum Entschlüsseln ein!'
     no_longer_available: 'Die Nachricht ist nicht länger verfügbar!'
     answer_button: 'beantworten und lesen'
+    download_as_file: 'Als Datei speichern'
     too_many_attempts: 'Die Nachricht wurde wegen zu vieler falscher Zugriffsversuche deaktiviert!'
     invalid_answer: 'Die geheime Antwort war nicht korrekt!'
     correct_answer: 'Die Antwort war korrekt, Entschlüsselung erfolgreich!'

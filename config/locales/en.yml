@@ -129,6 +129,7 @@ en:
     please_enter_secret: 'Please enter your shared secret!'
     no_longer_available: 'The Burn-Notice is not available any longer!'
     answer_button: 'answer and read'
+    download_as_file: 'Save as file'
     too_many_attempts: 'The notice has been disabled due to too many invalid attempts!'
     invalid_answer: 'The secret answer was incorrect!'
     correct_answer: 'Your answer was correct, encryption was successful!'
