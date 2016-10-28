@@ -21,7 +21,7 @@
       = label_tag :answer, t('notices.answer'), class: "col-lg-2 control-label"
       .col-lg-4
         .input-group
-          = password_field_tag :answer, '', class: "form-control"
+          = password_field_tag :answer, '', class: "form-control", autocomplete: :nope
           = render 'notices/show_password', key: '#answer'
       .col-lg-6
         = render 'callout', section: 'notices', key: 'answer'
