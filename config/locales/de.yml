@@ -143,6 +143,7 @@ de:
     secure_button: 'nächster Schritt, verschicken!'
     share_notice: 'Verschicken'
     manage_your_history: 'Verwalte deine Nachrichten'
+    nothing_found: 'Leider gibt es für diesen Filter keine Ergebnisse.'
     table_header:
       status: 'Status'
       sent: 'Versendet'

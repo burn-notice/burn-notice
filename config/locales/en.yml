@@ -143,6 +143,7 @@ en:
     secure_button: 'next step, share it!'
     share_notice: 'share it'
     manage_your_history: 'Manage your Burn-Notice history'
+    nothing_found: 'Sorry, there are no results for this filter.'
     table_header:
       status: 'Status'
       sent: 'Sent'
