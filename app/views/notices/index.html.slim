@@ -3,7 +3,7 @@
 
 = render 'activation_popup'
 
-- if @notices.present?
+- if @notices.present? || params[:filter]
   = form_tag bulk_notices_path, method: :post, remote: true do
     .panel.panel-default
       .panel-heading
@@ -19,28 +19,49 @@
             tr
               th= check_box_tag :select_all, '', false, onchange: "$('.select-all').prop('checked', $(this).prop('checked'))"
               th
-              th= t('notices.table_header.sent')
+                .dropdown
+                  button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                    => params[:filter] ? params[:filter][:status] : t('notices.table_header.status')
+                    span.caret
+                  ul.dropdown-menu aria-labelledby="dropdownMenu1"
+                    - @filter_status.each do |status|
+                      li
+                        = link_to url_for(@table_params.merge(filter: {status: status})) do
+                          = render 'status', status: status
+                    li role="separator" class="divider"
+                    li= link_to 'No filter', url_for(@table_params.merge(filter: nil))
+              th
+                => t('notices.table_header.sent')
+                = link_to url_for(@table_params.merge(order: {sent: @order_sent}))
+                  - if params[:order] && params[:order][:sent] == 'ASC'
+                    span.glyphicon.glyphicon-arrow-up.smaller
+                  - else
+                    span.glyphicon.glyphicon-arrow-down.smaller
               th= t('notices.table_header.question')
               th= t('notices.table_header.policy')
               th= t('notices.table_header.opened')
               th
           tbody
-          - @notices.each do |notice|
+          - if @notices.present?
+            - @notices.each do |notice|
+              tr
+                td= check_box_tag "selected[]", notice.id, false, class: 'select-all'
+                td= render 'status', status: notice.status
+                td= d(notice.created_at)
+                td= link_to notice.question, notice_path(notice, anchor: :openings)
+                td= render 'policy', notice: notice
+                td.openings
+                  - if notice.openings.present?
+                    = link_to notice_path(notice, anchor: :openings) do
+                      span.glyphicon.glyphicon-th-list>
+                      span= t('notices.times', count: notice.openings.size)
+                  - else
+                    span -
+                td
+                  = render 'actions', notice: notice
+          - else
             tr
-              td= check_box_tag "selected[]", notice.id, false, class: 'select-all'
-              td= render 'status', notice: notice
-              td= d(notice.created_at)
-              td= link_to notice.question, notice_path(notice, anchor: :openings)
-              td= render 'policy', notice: notice
-              td.openings
-                - if notice.openings.present?
-                  = link_to notice_path(notice, anchor: :openings) do
-                    span.glyphicon.glyphicon-th-list>
-                    span= t('notices.times', count: notice.openings.size)
-                - else
-                  span -
-              td
-                = render 'actions', notice: notice
+              td(colspan=7)= t('notices.nothing_found')
       .panel-footer
         .row
           .col-lg-12

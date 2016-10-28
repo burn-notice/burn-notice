@@ -8,7 +8,7 @@
       .col-lg-4
         dl.dl-horizontal
           dt= t('notices.table_header.status')
-          dd= render 'status', notice: @notice
+          dd= render 'status', status: @notice.status
           dt= t('notices.table_header.sent')
           dd= d(@notice.created_at)
           dt= t('notices.table_header.policy')
