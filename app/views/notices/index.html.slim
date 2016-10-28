@@ -26,13 +26,13 @@
                   ul.dropdown-menu aria-labelledby="dropdownMenu1"
                     - @filter_status.each do |status|
                       li
-                        = link_to url_for(filter: {status: status}) do
+                        = link_to url_for(@table_params.merge(filter: {status: status})) do
                           = render 'status', status: status
                     li role="separator" class="divider"
-                    li= link_to 'No filter', url_for(filter: nil)
+                    li= link_to 'No filter', url_for(@table_params.merge(filter: nil))
               th
                 => t('notices.table_header.sent')
-                = link_to url_for(order: {sent: @order_sent})
+                = link_to url_for(@table_params.merge(order: {sent: @order_sent}))
                   - if params[:order] && params[:order][:sent] == 'ASC'
                     span.glyphicon.glyphicon-arrow-up.smaller
                   - else
