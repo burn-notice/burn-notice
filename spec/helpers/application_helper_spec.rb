@@ -11,6 +11,13 @@ describe ApplicationHelper do
     end
   end
 
+  context "title" do
+    it "creates a proper title" do
+      helper.set_title("specific", "unspecific")
+      expect(helper.title("least specific")).to eql("specific · unspecific · least specific")
+    end
+  end
+
   context "render_cached" do
     let(:article) { Fabricate.build(:article, id: 123, updated_at: Time.utc(2015, 1, 1, 0, 0, 0)) }
     before { allow(helper).to receive_messages(action_name: 'test') }
