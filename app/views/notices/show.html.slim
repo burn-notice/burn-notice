@@ -59,7 +59,8 @@
           ul.list-group
             - authorized.group_by(&:ip).each do |ip, openings|
               li.list-group-item
-                span.badge= openings.size
+                - meta_info = openings.map { |opening| "From: #{opening.referer} - With: #{opening.user_agent}" }.join('<br>')
+                span.badge(data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=meta_info title="meta")= openings.size
                 = ip
         - else
           p -
