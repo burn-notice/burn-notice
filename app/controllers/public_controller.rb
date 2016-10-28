@@ -29,6 +29,11 @@ class PublicController < ApplicationController
     end
   end
 
+  def read_public
+    @data = @notice.read_data(params[:answer])
+    render :read
+  end
+
   private
 
   def get_notice
