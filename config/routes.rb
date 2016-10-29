@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   scope '/p' do
     get  '/open/:token',  to: 'public#open',  as: :open
     post '/read',         to: 'public#read',  as: :read
+    get  '/read_public',  to: 'public#read_public' if Rails.env.development?
   end
 
   scope '/auth' do

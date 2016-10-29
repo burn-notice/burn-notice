@@ -5,8 +5,10 @@
     p.lead
       == markdown(emojify(@data))
   .panel-footer
-    a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('public.policy_content') title=@notice.policy.name.humanize
-    small<= t('public.this_will_self_destruct')
+    = link_to t('public.download_as_file'), "data:text/plain;charset=utf-8,#{URI.encode(@data)}", download: "#{@notice.question.parameterize}.txt", class: "btn btn-default btn-xs"
+    .pull-right
+      a.glyphicon.glyphicon-info-sign.info data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('public.policy_content') title=@notice.policy.name.humanize
+      small<= t('public.this_will_self_destruct')
 
 hr.spacer
 
