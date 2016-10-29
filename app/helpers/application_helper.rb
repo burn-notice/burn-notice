@@ -17,8 +17,8 @@ module ApplicationHelper
     cache(key, expires_in: 24.hours, skip_digest: true) { yield }
   end
 
-  def set_title(title)
-    content_for(:title, title)
+  def set_title(*title)
+    content_for(:title, title.join(' · '))
   end
 
   def set_crumbs(crumbs = {})
@@ -26,9 +26,10 @@ module ApplicationHelper
   end
 
   def title(default = 'Burn-Notice')
-    parts = [default]
+    parts = []
     parts << content_for(:title) if content_for?(:title)
-    parts.join(' / ')
+    parts << default
+    parts.join(' · ')
   end
 
   def markdown(text)
