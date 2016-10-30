@@ -83,6 +83,7 @@ class Notice < ActiveRecord::Base
   private
 
   def send_burned_mail
+    return if user.disable_burned_emails
     mail = UserMailer.burned(self)
     MailerJob.perform_async(mail, I18n.locale)
   end

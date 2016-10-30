@@ -29,6 +29,15 @@ describe Notice do
       expect(notice.data).to eql({})
     end
 
+    it "sends no notification when disabled" do
+      notice = Fabricate(:notice)
+      notice.user.update!(disable_burned_emails: true)
+
+      expect {
+        notice.burn!
+      }.to change { ActionMailer::Base.deliveries.size }.by(0)
+    end
+
     it "handles unauthorized openings" do
       notice = Fabricate.build(:notice, openings: [Fabricate.build(:opening)])
       notice.apply_policy(authorized: false)
