@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.0.0)
+    bitfields (0.7.0)
     brakeman (3.3.2)
     builder (3.2.2)
     byebug (9.0.5)
@@ -284,6 +285,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bitfields
   brakeman
   byebug
   codeclimate-test-reporter

@@ -30,4 +30,18 @@ describe UserMailer do
       expect(mail.body.encoded).to match("new Burn-Notice")
     end
   end
+
+  describe "burned" do
+    let(:notice)  { Fabricate(:notice) }
+    let(:mail)    { UserMailer.burned(notice) }
+
+    it "renders the headers" do
+      expect(mail.subject).to_not be_nil
+      expect(mail.to).to eq([notice.user.email])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match("burned")
+    end
+  end
 end

@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  include Bitfields
+  bitfield :flags, 1 => :disable_burned_emails
+
+  enum access: {user: 0, admin: 42}
+
   before_validation :defaults
 
   has_many :notices, -> { active.order('created_at DESC') }, dependent: :destroy
@@ -10,8 +15,6 @@ class User < ActiveRecord::Base
   validates :nickname, :email, :token, presence: true
   validates :email, :token, uniqueness: true
   validates :time_zone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}, allow_nil: true, allow_blank: true
-
-  enum access: {user: 0, admin: 42}
 
   def validate!
     update_attributes! validation_date: Time.now
