@@ -81,6 +81,7 @@ en:
     signup: 'You are signed-up, please validate your e-mail address!'
     validate: 'Please validate your e-mail address!'
     notify: "You've got a new Burn-Notice!"
+    burned: 'Your notice got burned!'
     email_auth: 'Login to Burn-Notice'
   users:
     confirmation_mail: "A confirmation e-mail was sent to %{email}."

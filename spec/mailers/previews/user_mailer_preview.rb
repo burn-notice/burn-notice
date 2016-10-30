@@ -15,4 +15,10 @@ class UserMailerPreview < ActionMailer::Preview
     notice = Notice.first
     UserMailer.notify(user, 'recipient@mail.de', notice)
   end
+
+  def burned
+    user = User.first
+    notice = Notice.first
+    UserMailer.burned(user, notice)
+  end
 end

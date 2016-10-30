@@ -81,6 +81,7 @@ de:
     signup: 'Du hast dich erfolgreich registriert, bitte bestätige deine E-Mail Adresse!'
     validate: 'Bitte bestätige deine E-Mail Adresse!'
     notify: 'Du hast eine Burn-Notice erhalten!'
+    burned: 'Deine Burn-Notice wurde zerstört!'
     email_auth: 'Logge dich bei Burn-Notice ein.'
   users:
     confirmation_mail: "Eine Bestätigungs-Mail wurde an %{email} versendet."

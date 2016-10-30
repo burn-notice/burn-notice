@@ -21,7 +21,11 @@ describe Notice do
     it "burns a notice" do
       notice = Fabricate(:notice)
 
-      expect { notice.burn! }.to change { notice.reload.status }.from("open").to("closed")
+      expect {
+        expect {
+          notice.burn!
+        }.to change { notice.reload.status }.from("open").to("closed")
+      }.to change { ActionMailer::Base.deliveries.size }.by(1)
       expect(notice.data).to eql({})
     end
 
@@ -36,7 +40,7 @@ describe Notice do
     end
 
     it "handles burn_after_reading" do
-      notice = Fabricate.build(:notice)
+      notice = Fabricate.build(:notice, token: 123)
       expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("open").to("closed")
     end
 

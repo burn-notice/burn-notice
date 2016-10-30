@@ -20,6 +20,13 @@ class UserMailer < ActionMailer::Base
     mail to: email, subject: t('mailers.notify'), reply_to: user.email
   end
 
+  def burned(notice)
+    @notice = notice
+    @user = notice.user
+
+    mail to: @user.email, subject: t('mailers.burned')
+  end
+
   def email_auth(email, token)
     @token = token
 
