@@ -1,0 +1,22 @@
+- panel_class ||= {'authorized' => 'success', 'unauthorized' => 'danger', 'requested' => 'info'}[group_key]
+.panel-group id="accordion-#{group_key}"
+  div class="panel panel-#{panel_class}"
+    .panel-heading
+      h3.panel-title
+        span.glyphicon.glyphicon-info-sign.smaller> data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t("notices.#{group_key}_requests_content") title=t("notices.#{group_key}_requests_hint")
+        span= t("notices.#{group_key}_requests")
+    - if openings = grouped_openings[group_key]
+      - openings.group_by(&:ip).each do |ip, openings_by_ip|
+        a.list-group-item data-toggle="collapse" data-parent="#accordion-#{group_key}" href="#collapse-#{group_key}-#{ip.parameterize}"
+          span.badge= openings_by_ip.size
+          = ip
+        panel-collapse.collapse id="collapse-#{group_key}-#{ip.parameterize}"
+          .panel-body
+            - openings_by_ip.each do |opening|
+              dl.dl-vertical
+                dt Referer
+                dd= link_to(truncate(opening.referer, length: 50), opening.referer)
+                dt User-Agent
+                dd= opening.user_agent
+    - else
+      .list-group-item -
