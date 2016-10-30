@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :nickname, :time_zone)
+    params.require(:user).permit(:email, :nickname, :time_zone, :disable_burned_emails)
   end
 
   def send_validation(user)
