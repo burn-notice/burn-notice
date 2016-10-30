@@ -19,47 +19,8 @@
 - grouped_openings = @notice.openings.group_by(&:authorization)
 .row
   .col-lg-4
-    .panel.panel-info
-      .panel-heading
-        h3.panel-title
-          span.glyphicon.glyphicon-info-sign.smaller> data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.opening_requests_content') title=t('notices.opening_requests_hint')
-          span= t('notices.opening_requests')
-      .panel-body
-        - if requested = grouped_openings["requested"]
-          ul.list-group
-            - requested.group_by(&:ip).each do |ip, openings|
-              li.list-group-item
-                span.badge= openings.size
-                = ip
-        - else
-          p -
+    = render 'request_panel', grouped_openings: grouped_openings, group_key: 'requested'
   .col-lg-4
-    .panel.panel-danger
-      .panel-heading
-        h3.panel-title
-          span.glyphicon.glyphicon-info-sign.smaller> data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.unauthorized_requests_content') title=t('notices.unauthorized_requests_hint')
-          span= t('notices.unauthorized_requests')
-      .panel-body
-        - if unauthorized = grouped_openings["unauthorized"]
-          ul.list-group
-            - unauthorized.group_by(&:ip).each do |ip, openings|
-              li.list-group-item
-                span.badge= openings.size
-                = ip
-        - else
-          p -
+    = render 'request_panel', grouped_openings: grouped_openings, group_key: 'unauthorized'
   .col-lg-4
-    .panel.panel-success
-      .panel-heading
-        h3.panel-title
-          span.glyphicon.glyphicon-info-sign.smaller> data-html="true" data-container="body" data-toggle="popover" data-placement="auto" data-content=t('notices.authorized_requests_content') title=t('notices.authorized_requests_hint')
-          span= t('notices.authorized_requests')
-      .panel-body
-        - if authorized = grouped_openings["authorized"]
-          ul.list-group
-            - authorized.group_by(&:ip).each do |ip, openings|
-              li.list-group-item
-                span.badge= openings.size
-                = ip
-        - else
-          p -
+    = render 'request_panel', grouped_openings: grouped_openings, group_key: 'authorized'
