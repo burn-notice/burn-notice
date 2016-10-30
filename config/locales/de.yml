@@ -97,6 +97,10 @@ de:
     change_time_zone: "Zeit-Zone ändern"
     delete_account: "Konto löschen"
     destroyed: "Dein Konto und alle Daten wurden gelöscht!"
+    settings: 'Einstellungen'
+    change_settings: 'Einstellungen ändern'
+    flags:
+      disable_burned_emails: 'keine E-Mail beim Nachrichten-Zerstören'
   charges:
     amount_per_month: "€ / Monat"
     plan_name: "Plan Name"

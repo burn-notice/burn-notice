@@ -97,6 +97,10 @@ en:
     change_time_zone: "Change timezone"
     delete_account: "Delete account"
     destroyed: "Your account and all the data have been destroyed!"
+    settings: 'Settings'
+    change_settings: 'Change settings'
+    flags:
+      disable_burned_emails: 'disable notification e-mail on burning a message'
   charges:
     amount_per_month: "€ / month"
     plan_name: "Plan name"
