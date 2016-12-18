@@ -39,10 +39,6 @@ group :development do
   gem 'letter_opener'
   gem 'partially_useful'
   gem 'web-console'
-  # gem 'meta_request'
-  # gem 'better_errors'
-  # gem 'binding_of_caller'
-  # gem 'quiet_assets'
 end
 
 group :development, :test do
@@ -52,6 +48,4 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rails-controller-testing'
   gem 'faker'
-  gem 'brakeman', require: false
-  gem 'codeclimate-test-reporter', require: false
 end
