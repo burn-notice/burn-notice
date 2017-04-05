@@ -1,0 +1,13 @@
+{
+  "name": "burn-notice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:burn-notice/burn-notice.git",
+  "author": "phoet <phoetmail@googlemail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "3.3.0",
+    "vue": "2.0.3",
+    "zxcvbn": "^4.4.2"
+  }
+}

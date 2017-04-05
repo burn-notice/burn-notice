@@ -22,6 +22,23 @@ describe NoticesController do
     end
   end
 
+  context "create" do
+    before do
+      login(user)
+    end
+
+    let(:notice_params) { { question: 'who?', answer: 'me!', content: 'that.' } }
+    let(:policy_params) { { name: 'burn_after_reading' } }
+
+    it "creates a notice" do
+      expect {
+        post :create, params: { notice: notice_params.merge(policy_attributes: policy_params) }
+      }.to change(Notice, :count).by(1)
+
+      expect(response).to be_a_redirect
+    end
+  end
+
   context "destroy" do
     before do
       @notice = Fabricate(:notice, user: user)

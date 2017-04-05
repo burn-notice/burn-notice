@@ -1,4 +1,4 @@
-//= require vendor/zxcvbn
+//= require zxcvbn/dist/zxcvbn
 
 $(document).on('turbolinks:load', function () {
   var rootElementSelector = '#secret-strength';
