@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '5.1.0.beta1'
+gem 'rails', '5.1.0.rc1'
 gem 'responders'
 gem 'puma'
 gem 'sass-rails'
