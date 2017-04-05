@@ -2,3 +2,14 @@
 # yarn lockfile v1
 
 
+bootstrap@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.0.tgz#27d83ec81c51b3f86d20cf610ded3724e4b7ace3"
+
+vue@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.0.3.tgz#3f7698f83d6ad1f0e35955447901672876c63fde"
+
+zxcvbn@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/zxcvbn/-/zxcvbn-4.4.2.tgz#28ec17cf09743edcab056ddd8b1b06262cc73c30"
