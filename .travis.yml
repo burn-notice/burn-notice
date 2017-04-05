@@ -10,3 +10,5 @@ before_script:
   - psql --version
   - psql -c 'create database "burn-notice_test";' -U postgres
   - RAILS_ENV=test bundle exec rake db:test:prepare
+notifications:
+  email: false
