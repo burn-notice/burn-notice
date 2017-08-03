@@ -236,7 +236,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stripe (3.0.3)
+    stripe (3.1.0)
       faraday (~> 0.9)
     sucker_punch (2.0.2)
       concurrent-ruby (~> 1.0.0)
