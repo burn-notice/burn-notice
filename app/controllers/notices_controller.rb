@@ -123,7 +123,7 @@ class NoticesController < ApplicationController
           MailerJob.perform_async(mail, I18n.locale)
         end
 
-        redirect_to :back, notice: t('notices.sent_via_email', recepients: recepients.to_sentence)
+        redirect_back(fallback_location: notices_path, notice: t('notices.sent_via_email', recepients: recepients.to_sentence))
       else
         notice.errors.add(:share_recipients, :blank)
       end

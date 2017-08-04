@@ -39,10 +39,32 @@ describe NoticesController do
       login(user)
     end
 
-    it "should remove data and mark as deleted" do
+    it "creates a notice with given params" do
       expect {
         post :create, params: params
       }.to change { user.notices.count }.by(1)
+    end
+  end
+
+  context "share" do
+    before do
+      @notice = Fabricate(:notice, user: user)
+      @params = {
+        id: @notice.to_param,
+        notice: {
+          share_recipients: "hanno@nym.de",
+        },
+      }
+
+      login(user)
+    end
+
+    it "sends a mail to share recipient" do
+      expect {
+        patch :share, params: @params
+
+        expect(response).to be_redirect
+      }.to change { ActionMailer::Base.deliveries.size }.by(1)
     end
   end
 
