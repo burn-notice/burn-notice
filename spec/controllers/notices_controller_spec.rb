@@ -22,6 +22,30 @@ describe NoticesController do
     end
   end
 
+  context "create" do
+    let(:params) {
+      {
+        notice: {
+          content: "abc",
+          question: "def",
+          answer: "ghi",
+          policy_attributes: {
+            name: "burn_after_openings",
+          },
+        }
+      }
+    }
+    before do
+      login(user)
+    end
+
+    it "should remove data and mark as deleted" do
+      expect {
+        post :create, params: params
+      }.to change { user.notices.count }.by(1)
+    end
+  end
+
   context "destroy" do
     before do
       @notice = Fabricate(:notice, user: user)

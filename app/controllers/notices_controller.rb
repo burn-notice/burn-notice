@@ -49,7 +49,7 @@ class NoticesController < ApplicationController
     if request.get?
       @step = :second
     else
-      @notice.policy = Policy.from_name(policy_params.symbolize_keys)
+      @notice.policy = Policy.from_name(policy_params.to_h.symbolize_keys)
       if @notice.save
         redirect_to third_step_notice_path(@notice)
       end
@@ -71,7 +71,7 @@ class NoticesController < ApplicationController
 
   def create
     @notice = current_user.notices.build(notice_params)
-    @notice.policy = Policy.from_name(policy_params.symbolize_keys)
+    @notice.policy = Policy.from_name(policy_params.to_h.symbolize_keys)
     if @notice.save
       redirect_to share_notice_path(@notice), notice: t('notices.created')
     else
