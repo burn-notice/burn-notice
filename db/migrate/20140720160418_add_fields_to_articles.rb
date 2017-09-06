@@ -1,4 +1,4 @@
-class AddFieldsToArticles < ActiveRecord::Migration
+class AddFieldsToArticles < ActiveRecord::Migration[4.2]
   def change
     add_column :articles, :title, :string
     add_column :articles, :body, :text

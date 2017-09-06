@@ -1,4 +1,4 @@
-class CreateOpenings < ActiveRecord::Migration
+class CreateOpenings < ActiveRecord::Migration[4.2]
   def change
     create_table :openings do |t|
       t.boolean :authorized
