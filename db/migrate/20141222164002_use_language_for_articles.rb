@@ -1,4 +1,4 @@
-class UseLanguageForArticles < ActiveRecord::Migration
+class UseLanguageForArticles < ActiveRecord::Migration[4.2]
   def change
     add_column :articles, :content, :json
     add_column :articles, :headline, :json
