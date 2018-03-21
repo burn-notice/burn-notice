@@ -18,10 +18,10 @@
   = form.label :answer, t('notices.answer'), class: "col-lg-2 control-label"
   #secret-strength.col-lg-4
     .input-group
-      = form.password_field :answer, class: "form-control notice-password", 'v-model': "secret", 'v-on:keyup': "checkLevel"
+      = form.password_field :answer, class: "form-control notice-password", 'v-model': "secret"
       = render 'show_password', key: '#notice_answer'
     .input-group.password-strength-indicator
       small= t('notices.password-strength.label') + ': '
-      span#password-strength-label v-bind:class="label" v-bind:title="tooltip" {{level}}
+      span#password-strength-label :class="label" :title="tooltip" {{level}}
   .col-lg-6
     = render 'callout', section: 'notices', key: 'answer'
