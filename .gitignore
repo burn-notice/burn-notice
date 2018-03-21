@@ -14,7 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/node_modules
 
 *.DS_Store
 config/keys/*_production.pem
