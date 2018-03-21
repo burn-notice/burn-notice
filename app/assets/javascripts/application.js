@@ -4,5 +4,6 @@
 //= require bootstrap/dist/js/bootstrap
 //= require vue/dist/vue
 //= require custom
+//= require styleguide
 //= require_directory ./vues/
 //= require analytics
