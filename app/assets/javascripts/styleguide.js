@@ -1,10 +1,10 @@
 $(document).on('ready page:load page:change turbolinks:load', function() {
-  const cleanSource = function(html) {
-    let lines = html.split(/\n/);
+  var cleanSource = function(html) {
+    var lines = html.split(/\n/);
     lines.shift();
     lines.splice(-1, 1);
-    const indentSize = lines[0].length - lines[0].trim().length;
-    const re = new RegExp(` {${indentSize}}`);
+    var indentSize = lines[0].length - lines[0].trim().length;
+    var re = new RegExp(' {' + indentSize + '}');
     lines = lines.map(function(line) {
       if (line.match(re)) { line = line.substring(indentSize); }
       return line;
@@ -12,8 +12,8 @@ $(document).on('ready page:load page:change turbolinks:load', function() {
     lines = lines.join("\n");
     return lines;
   };
-  const $button = $("<div id='source-button' class='btn btn-primary btn-xs'>&lt; &gt;</div>").click(function() {
-    let html = $(this).parent().html();
+  var $button = $("<div id='source-button' class='btn btn-primary btn-xs'>&lt; &gt;</div>").click(function() {
+    var html = $(this).parent().html();
     html = cleanSource(html);
     $("#source-modal pre").text(html);
     $("#source-modal").modal();
