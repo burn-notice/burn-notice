@@ -13,12 +13,12 @@ class Notice < ActiveRecord::Base
   accepts_nested_attributes_for :policy
 
   validates :token, :question, :policy, presence: :true
-  validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? && notice.open? }
+  validates :answer, :content, presence: :true, if: Proc.new { |notice| notice.data.blank? && notice.unread? }
 
-  enum status: {open: 0, disabled: 1, closed: 2, deleted: 3}
+  enum status: {unread: 0, disabled: 1, closed: 2, deleted: 3}
 
   scope :active, -> { where("status <> ?", Notice.statuses[:deleted]) }
-  scope :expired, -> { open.where('notices.updated_at < ?', 1.day.ago).joins(:policy).where('policies.name = ?', 'burn_after_time') }
+  scope :expired, -> { unread.where('notices.updated_at < ?', 1.day.ago).joins(:policy).where('policies.name = ?', 'burn_after_time') }
 
   def valid_secret?(secret)
     read_data(secret).present?

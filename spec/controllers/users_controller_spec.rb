@@ -9,7 +9,7 @@ describe UsersController do
     it "renders the users profile page" do
       get :show, params: {id: @user}
 
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

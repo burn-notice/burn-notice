@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "vue": "^2.5.16",
+    "zxcvbn": "^4.4.2"
+  }
+}

@@ -9,7 +9,7 @@ describe ChargesController do
     it "shows the pricing page" do
       get :index
 
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end

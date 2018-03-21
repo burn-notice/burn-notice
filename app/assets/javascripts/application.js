@@ -1,8 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require vendor/bootstrap.min
-//= require vendor/vue
+//= require bootstrap/dist/js/bootstrap
+//= require vue/dist/vue
 //= require custom
+//= require styleguide
 //= require_directory ./vues/
 //= require analytics

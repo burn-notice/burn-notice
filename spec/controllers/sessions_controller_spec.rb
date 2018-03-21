@@ -5,7 +5,7 @@ describe SessionsController do
     it "sets the user given by auth" do
       get :signup, session: {auth_data: GITHUB_AUTH_HASH}
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns[:user].nickname).to eql('phoet')
     end
 
