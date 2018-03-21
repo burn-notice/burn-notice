@@ -1,8 +1,8 @@
-- if @notice.open?
+- if @notice.unread?
   - if @notice.user == current_user
     .alert.alert-info
       strong= t('public.current_user_warning')
-  
+
   = form_errors @notice
   = form_tag read_path, class: "form-horizontal", autocomplete: :off do |form|
     = hidden_field_tag :token, @notice.token

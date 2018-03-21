@@ -3,7 +3,7 @@ class NoticesController < ApplicationController
   around_action :user_time_zone, if: :change_time_zone?
 
   def index
-    @filter_status = [:open, :disabled, :closed]
+    @filter_status = [:unread, :disabled, :closed]
     @order_sent = 'ASC'
     @table_params = {}
 

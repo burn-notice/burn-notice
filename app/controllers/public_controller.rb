@@ -39,6 +39,6 @@ class PublicController < ApplicationController
   def get_notice
     @notice = Notice.find_by_token!(params[:token])
 
-    redirect_to(root_path, alert: t('public.no_longer_available')) unless @notice.open?
+    redirect_to(root_path, alert: t('public.no_longer_available')) unless @notice.unread?
   end
 end

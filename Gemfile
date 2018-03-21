@@ -36,6 +36,7 @@ group :production do
 end
 
 group :development do
+  gem 'listen'
   gem 'letter_opener'
   gem 'partially_useful'
   gem 'web-console'

@@ -12,7 +12,7 @@ describe Notice do
   context "defaults" do
     it "is valid" do
       notice = Fabricate(:notice)
-      expect(notice).to be_open
+      expect(notice).to be_unread
       expect(notice.token).to be_present
     end
   end
@@ -24,7 +24,7 @@ describe Notice do
       expect {
         expect {
           notice.burn!
-        }.to change { notice.reload.status }.from("open").to("closed")
+        }.to change { notice.reload.status }.from("unread").to("closed")
       }.to change { ActionMailer::Base.deliveries.size }.by(1)
       expect(notice.data).to eql({})
     end
@@ -41,40 +41,40 @@ describe Notice do
     it "handles unauthorized openings" do
       notice = Fabricate.build(:notice, openings: [Fabricate.build(:opening)])
       notice.apply_policy(authorized: false)
-      expect(notice.status).to eql("open")
+      expect(notice.status).to eql("unread")
 
       notice.openings << Fabricate.build(:opening)
       notice.openings << Fabricate.build(:opening)
-      expect { notice.apply_policy(authorized: false) }.to change { notice.status }.from("open").to("disabled")
+      expect { notice.apply_policy(authorized: false) }.to change { notice.status }.from("unread").to("disabled")
     end
 
     it "handles burn_after_reading" do
       notice = Fabricate.build(:notice, token: 123)
-      expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("open").to("closed")
+      expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("unread").to("closed")
     end
 
     it "handles burn_after_openings" do
       notice = Fabricate(:notice, policy: Fabricate(:policy_openings))
       notice.apply_policy(authorized: true)
-      expect(notice.status).to eql("open")
+      expect(notice.status).to eql("unread")
 
       notice.openings << Fabricate(:authorized_opening)
       notice.openings << Fabricate(:authorized_opening)
 
       notice.apply_policy(authorized: true)
-      expect(notice.status).to eql("open")
+      expect(notice.status).to eql("unread")
 
       notice.openings << Fabricate(:authorized_opening)
-      expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("open").to("closed")
+      expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("unread").to("closed")
     end
 
     it "handles burn_after_time" do
       notice = Fabricate(:notice, policy: Fabricate(:policy_time))
       notice.apply_policy(authorized: true)
-      expect(notice.status).to eql("open")
+      expect(notice.status).to eql("unread")
 
       travel_to(1.week.from_now) do
-        expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("open").to("closed")
+        expect { notice.apply_policy(authorized: true) }.to change { notice.status }.from("unread").to("closed")
       end
     end
   end
@@ -140,7 +140,7 @@ describe Notice do
       travel_to 10.days.from_now do
         expect{
           Notice.burn_expired
-        }.to change { notice.reload.status }.from('open').to('closed')
+        }.to change { notice.reload.status }.from('unread').to('closed')
       end
     end
   end

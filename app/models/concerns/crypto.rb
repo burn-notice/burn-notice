@@ -7,7 +7,7 @@ module Crypto
   TEST_PASSWORD = 'xxxxxx'
 
   def encrypt(data, secret)
-    cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
+    cipher = OpenSSL::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.encrypt
     cipher.key  = key = cipher.random_key
     cipher.iv   = simple_digest(secret)
@@ -25,7 +25,7 @@ module Crypto
   end
 
   def decrypt(data, secret)
-    cipher = OpenSSL::Cipher::Cipher.new(CRYPT_256_BIT_AES_CBC)
+    cipher = OpenSSL::Cipher.new(CRYPT_256_BIT_AES_CBC)
     cipher.decrypt
     cipher.key  = private_key.private_decrypt(decode(data[:encrypted_key]))
     cipher.iv   = simple_digest(secret)
@@ -58,7 +58,7 @@ module Crypto
   end
 
   def simple_digest(text)
-    digest(text.gsub(/\s/, '').downcase)
+    digest(text.gsub(/\s/, '').downcase)[0...16]
   end
 
   def digest(text)

@@ -11,7 +11,7 @@ describe PublicController do
         get :open, params: {token: @notice.token}
       }.to change { @notice.openings.count }.by(1)
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns[:notice]).to eql(@notice)
     end
   end
@@ -28,9 +28,9 @@ describe PublicController do
     it "shows the secret message for valid secret" do
       expect {
         post :read, params: {token: @notice.token, opening_id: @notice.openings.last.id, answer: 'some-secret'}
-      }.to change { @notice.reload.status }.from("open").to("closed")
+      }.to change { @notice.reload.status }.from("unread").to("closed")
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns[:notice]).to eql(@notice)
     end
   end

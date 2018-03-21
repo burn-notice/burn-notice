@@ -80,7 +80,7 @@ describe NoticesController do
         expect {
           post :destroy, params: {id: @notice}
           @notice.reload
-        }.to change { @notice.status }.from('open').to('deleted')
+        }.to change { @notice.status }.from('unread').to('deleted')
       }.to change { @notice.data.empty? }.from(false).to(true)
     end
   end
