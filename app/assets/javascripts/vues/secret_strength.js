@@ -5,11 +5,6 @@ $(document).on('turbolinks:load', function () {
   if ($(rootElementSelector).length === 0) {
     return;
   }
-  function labelClass(name) {
-    return 'label label-' + name;
-  }
-  var labelStyles = ['danger', 'warning', 'primary', 'info', 'success'];
-  var labelTexts = [I18n.passwordStrength.tooGuessable, I18n.passwordStrength.veryGuessable, I18n.passwordStrength.somewhatGuessable, I18n.passwordStrength.safelyUnguessable, I18n.passwordStrength.veryUnguessable];
 
   var app = new Vue({
     el: rootElementSelector,
@@ -18,26 +13,39 @@ $(document).on('turbolinks:load', function () {
       $(this.$el).find('#password-strength-label').tooltip('destroy').tooltip();
     },
     data: {
-      level: I18n.passwordStrength.unknown,
       secret: '',
-      tooltip: '',
-      label: labelClass('default')
+      labelStyles: ['danger', 'warning', 'primary', 'info', 'success'],
+      labelTexts: [I18n.passwordStrength.tooGuessable, I18n.passwordStrength.veryGuessable, I18n.passwordStrength.somewhatGuessable, I18n.passwordStrength.safelyUnguessable, I18n.passwordStrength.veryUnguessable],
+    },
+    computed: {
+      result: function () {
+        return zxcvbn(this.secret);
+      },
+      tooltip: function () {
+        if (this.result.score <= 2) {
+          return this.result.feedback.warning + ' ' + this.result.feedback.suggestions.join(', ');
+        } else {
+          return '✅';
+        }
+      },
+      label: function () {
+        if (this.secret.length < 1) {
+          return this.labelClass('default');
+        } else {
+          return this.labelClass(this.labelStyles[this.result.score]);
+        }
+      },
+      level: function () {
+        if (this.secret.length < 1) {
+          return I18n.passwordStrength.unknown;
+        } else {
+          return this.labelTexts[this.result.score];
+        }
+      }
     },
     methods: {
-      checkLevel: function () {
-        var result = zxcvbn(this.secret);
-        if (result.score <= 2) {
-          this.tooltip = result.feedback.warning + ' ' + result.feedback.suggestions.join(', ');
-        } else {
-          this.tooltip = '✅';
-        }
-        if (this.secret.length < 1) {
-          this.label = labelClass('default');
-          this.level = I18n.passwordStrength.unknown;
-        } else {
-          this.label = labelClass(labelStyles[result.score]);
-          this.level = labelTexts[result.score];
-        }
+      labelClass: function (name) {
+        return 'label label-' + name;
       }
     }
   });
