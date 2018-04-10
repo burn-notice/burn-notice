@@ -26,7 +26,7 @@ en:
   home:
     register_now: 'Check out our <span class="label label-primary">&beta;eta</span>, signup now!'
     register_now_xs: 'Try it now!'
-    register_with_oauth: 'Signup with Facebook etc <span class="caret"></span>'
+    register_with_oauth: 'Signup with Twitter etc <span class="caret"></span>'
     select_oauth_provider: 'Select one of the identity-providers:'
     thx_for_your_donation: 'Thank you for your donation!'
     make_a_donation: "Make a 1€ donation!"

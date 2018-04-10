@@ -38,7 +38,6 @@ module ApplicationHelper
   end
 
   PROVIDERS = {
-    # facebook: 'Facebook',
     twitter: 'Twitter',
     google_oauth2: 'Google',
     github: 'GitHub',
