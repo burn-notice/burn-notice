@@ -26,7 +26,7 @@ de:
   home:
     register_now: 'Jetzt anmelden und die <span class="label label-primary">&beta;eta</span> ausprobieren!'
     register_now_xs: 'Jetzt anmelden & ausprobieren!'
-    register_with_oauth: 'Anmelden mit Facebook & Co <span class="caret"></span>'
+    register_with_oauth: 'Anmelden mit Twitter & Co <span class="caret"></span>'
     select_oauth_provider: 'Wähle eine der Möglichkeiten zum Anmelden:'
     thx_for_your_donation: 'Vielen Dank für deine Spende!'
     make_a_donation: "Jetzt 1€ spenden!"
