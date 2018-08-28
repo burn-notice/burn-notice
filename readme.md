@@ -4,7 +4,7 @@
 
 Simple, Secure, Encrypted one-time Information
 
-[![Burn-Notice](https://www.burn-notice.me/assets/logo-ef53f5d0b26a3abaa34e0a6db67c9395.png)](https://www.burn-notice.me/)
+[![Burn-Notice](https://www.burn-notice.me/assets/logo-6599ff60df3240d4f9a79598ba685924976672c88bb0277478bc5b1fb2788896.png)](https://www.burn-notice.me/)
 
 ## License
 
