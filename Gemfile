@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').chomp
 
-gem 'rails', '5.2.4.3'
+gem 'rails', '5.2.4.4'
 gem 'responders'
 gem 'puma'
 gem 'sass-rails'
