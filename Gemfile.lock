@@ -69,7 +69,7 @@ GEM
       sprockets (< 4.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    dalli (3.2.2)
+    dalli (3.2.3)
     diff-lcs (1.5.0)
     erubi (1.11.0)
     exception_notification (4.5.0)
